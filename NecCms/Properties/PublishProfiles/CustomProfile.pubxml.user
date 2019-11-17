@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACOQ/jGqQOUufa6MXTvcMkwAAAAACAAAAAAAQZgAAAAEAACAAAABropChDRZagex+2oZC/E7/2xWIEqmSccDhJ7tHDvVv/gAAAAAOgAAAAAIAACAAAAD9YpJchDHcU4+SWuTOW6m3UHz7hjXP9D+GqkcIf6nMgiAAAABw19GI6u7M1vQgaDuPukn1UV55KDdzg1A9EYCpION9FEAAAAAkw5EJP3aGoLFtKSova3lYGizGJaAw3iz4UHCdkBK5eF9zdDnv829z46/X5B/8kZNKSdnynTcMQ1/gIHSr+bY8</EncryptedPassword>
+    <_PublishTargetUrl>ftp://aybarshukuk.com/httpdocs</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>11/04/2019 21:48:46</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>11/04/2019 21:48:46</publishTime>
+    </File>
+    <File Include="NecCms.deps.json">
+      <publishTime>11/18/2019 00:38:07</publishTime>
+    </File>
+    <File Include="NecCms.dll">
+      <publishTime>11/18/2019 00:38:05</publishTime>
+    </File>
+    <File Include="NecCms.pdb">
+      <publishTime>11/18/2019 00:38:05</publishTime>
+    </File>
+    <File Include="NecCms.runtimeconfig.json">
+      <publishTime>11/04/2019 21:51:50</publishTime>
+    </File>
+    <File Include="NecCms.Views.dll">
+      <publishTime>11/18/2019 00:38:06</publishTime>
+    </File>
+    <File Include="NecCms.Views.pdb">
+      <publishTime>11/18/2019 00:38:06</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>11/18/2019 00:38:07</publishTime>
+    </File>
+    <File Include="wwwroot/homebanner.css">
+      <publishTime>11/04/2019 22:03:34</publishTime>
+    </File>
+    <File Include="wwwroot/Modules/Haber/Views/theme/default.css">
+      <publishTime>11/04/2019 20:31:33</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/fil.js">
+      <publishTime>11/04/2019 20:28:30</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/fil/responsive.js">
+      <publishTime>11/04/2019 20:29:35</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/history/history.js">
+      <publishTime>11/04/2019 20:28:13</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/init.front.js">
+      <publishTime>11/04/2019 20:39:27</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/MenuMatic.js">
+      <publishTime>11/04/2019 20:28:22</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/mootools-1.5.2.js">
+      <publishTime>11/04/2019 20:27:36</publishTime>
+    </File>
+    <File Include="wwwroot/scripts/mootools-locale.tr-TR.js">
+      <publishTime>11/04/2019 20:37:38</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/base-resp.css">
+      <publishTime>11/04/2019 20:30:44</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/base.css">
+      <publishTime>11/04/2019 20:29:54</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/ara.png">
+      <publishTime>11/04/2019 20:36:26</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/arrow_down.gif">
+      <publishTime>11/18/2019 00:18:20</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/divider.png">
+      <publishTime>11/04/2019 20:40:54</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/globe.png">
+      <publishTime>11/04/2019 20:36:13</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/law-logo2018.jpg">
+      <publishTime>11/04/2019 20:39:49</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/logo.png">
+      <publishTime>11/04/2019 20:32:01</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/imgeler/mobil-menu.png">
+      <publishTime>11/04/2019 20:35:51</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/MenuMatic.css">
+      <publishTime>11/04/2019 20:30:07</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/normalize.css">
+      <publishTime>11/04/2019 20:29:47</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/subversion-wide.css">
+      <publishTime>11/04/2019 20:31:02</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/theme-resp.css">
+      <publishTime>11/04/2019 20:30:53</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/theme.css">
+      <publishTime>11/04/2019 20:29:59</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/kasaroglu/theme.js">
+      <publishTime>11/04/2019 20:29:13</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/_icons/icomoon/fonts/icomoon.ttf">
+      <publishTime>11/04/2019 20:37:01</publishTime>
+    </File>
+    <File Include="wwwroot/Themes/_icons/icomoon/style.css">
+      <publishTime>11/04/2019 20:30:20</publishTime>
+    </File>
+    <File Include="wwwroot/tr/27898/Hakkimizda.html">
+      <publishTime>11/04/2019 20:48:59</publishTime>
+    </File>
+    <File Include="wwwroot/upload/Node/27960/files/s4.jpg">
+      <publishTime>11/04/2019 20:40:14</publishTime>
+    </File>
+    <File Include="wwwroot/upload/Node/27960/pics/faaliyet2.jpg">
+      <publishTime>11/04/2019 20:32:59</publishTime>
+    </File>
+    <File Include="wwwroot/upload/Node/27960/pics/hakkimizda2.jpg">
+      <publishTime>11/04/2019 20:32:45</publishTime>
+    </File>
+    <File Include="wwwroot/upload/Node/27960/pics/yayinlar2.jpg">
+      <publishTime>11/04/2019 20:32:52</publishTime>
+    </File>
+    <File Include="wwwroot/upload/Node/27962/pics/gle-logo.jpg">
+      <publishTime>11/04/2019 20:33:28</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

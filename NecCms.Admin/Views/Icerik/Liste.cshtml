@@ -1,0 +1,26 @@
+﻿<partial name="~/Views/Shared/_Table.cshtml" />
+
+<script>
+    durumDegistir = (id) => {
+        Swal.fire({
+            title: 'Durumu değiştirmek istediğinize emin misiniz?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Evet!',
+            cancelButtonText: 'Hayır'
+        }).then((result) => {
+            if (result.value) {
+                fetch('/Icerik/Durum?id=' + id)
+                    .then(res => res.json())
+                    .then(res => {
+                        table.ajax.reload();
+                        Swal.fire(
+                            'Başarılı!',
+                            'Durumu değiştirildi.',
+                            'success'
+                        )
+                    })
+            }
+        })
+    }
+</script>

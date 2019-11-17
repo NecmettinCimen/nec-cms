@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewData["Title"] = "İçerik Ekle";
+}
+
+@section Styles{
+    <link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet" />
+    <link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">İçerik </h4>
+
+                <form id="editModalForm">
+
+                    <div id="editModalRow"></div>
+                    <div class="row mt-5"><div class="col-md-12"><button type="submit" class="btn btn-primary">Kaydet</button></div></div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/assets/plugins/quill/katex.min.js"></script>
+    <script src="~/assets/plugins/quill/quill.min.js"></script>
+    <script>
+
+        pageInit({
+            url: '/Icerik/Ekle',
+            name: 'İçerik',
+            parentname: 'İçerik Yönetimi',
+            saveurl: '/Icerik/Kaydet',
+            formsubmittype: 'formdata',
+            customsuccessfun:'window.location="/Icerik/Liste"',
+            form: [
+                {
+                    type: 'input',
+                    html: true,
+                    hidden: true,
+                    id: 'id',
+                },
+                {
+                    type: 'input',
+                    id: 'baslik',
+                    name: 'Başlık',
+                    maxLength: 200
+                },
+                {
+                    type: 'input',
+                    subtype: 'file',
+                    id: 'resimfile',
+                    name: 'Resim'
+                },
+                {
+                    type: 'textarea',
+                    id: 'giris',
+                    name: 'Giris',
+                    maxLength: 400
+                },
+                {
+                    type: 'html',
+                    name: 'İçerik',
+                    html:'<div class="row"><div class="col-md-12"><div id="snow-editor" style="height: 500px;"></div></div></div>'
+                },
+                {
+                    type: 'input',
+                    html: true,
+                    hidden: true,
+                    id: 'icerik',
+                },
+                {
+                    type: 'select',
+                    id: 'icerikKategoriId',
+                    name: 'İçerik Kategorisi',
+                    ajax: '/Icerik/KategoriListesi',
+                    text: 'isim',
+                    style: 'width: 30%;float: left;margin-left: 5px;',
+                    required: true,
+                },
+
+                {
+                    type: 'date',
+                    id: 'yayinlanmaTarihi',
+                    name: "Yayınlanma Tarihi",
+                    style: 'width: 30%;float: left;margin-left: 5px;',
+                },
+                {
+                    type: 'input',
+                    id: 'url',
+                    name: 'Özel Adres',
+                    maxLength: 250,
+                    style: 'width: 30%;float: left;margin-left: 5px;',
+                },
+            ]
+        })
+        var quill;
+        setTimeout(() => {
+
+            quill = new Quill("#snow-editor", {
+                theme: "snow",
+                modules: {
+                    toolbar: [
+                        [{
+                            font: []
+                        }, {
+                            size: []
+                        }],
+                        ["bold", "italic", "underline", "strike"],
+                        [{
+                            color: []
+                        }, {
+                            background: []
+                        }],
+                        [{
+                            script: "super"
+                        }, {
+                            script: "sub"
+                        }],
+                        [{
+                            header: [!1, 1, 2, 3, 4, 5, 6]
+                        }, "blockquote", "code-block"],
+                        [{
+                            list: "ordered"
+                        }, {
+                            list: "bullet"
+                        }, {
+                            indent: "-1"
+                        }, {
+                            indent: "+1"
+                        }],
+                        ["direction", {
+                            align: []
+                        }],
+                        ["link", "image", "video", "formula"],
+                        ["clean"]
+                    ]
+                }
+            });
+
+            quill.on('text-change', function (delta, oldDelta, source) {
+                $('#icerik').val($('#snow-editor > div.ql-editor')[0].innerHTML)
+            });
+            loadPage()
+            if (window.location.pathname.toLowerCase().match('duzenle')) {
+            fetch(window.location.pathname.toLowerCase().replace('duzenle', 'bul'))
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    $('#id').val(res.data.id);
+                    $('#baslik').val(res.data.baslik);
+                    $('#giris').val(res.data.giris);
+                    $('#snow-editor > div.ql-editor')[0].innerHTML = (res.data.icerik);
+                    $('#icerikKategoriId').val(res.data.icerikKategoriId).change();
+                    $('#yayinlanmaTarihi').val(res.data.yayinlanmaTarihi);
+                    $('#url').val(res.data.url);
+                })
+        }
+        }, 1000)
+
+        
+    </script>
+}

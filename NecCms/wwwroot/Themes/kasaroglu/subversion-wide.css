@@ -1,0 +1,82 @@
+/*FWSubversion{name:Geniş Ekran;group:Ekran Yayılımı}*/
+#pbody
+{
+	max-width: none;
+	margin: 0px 0 0;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+}
+#top > .body
+{
+	max-width: 1140px;
+	position: relative;
+	margin: auto;
+}
+.pre-top
+{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.pre-top > .wrap > .body
+{
+	width: ;
+	margin-right: 289px;
+}
+#top
+{
+	margin: auto;
+}
+.site-search-wrap
+{
+	margin-right: 0px;
+}
+#wrapper-content
+{
+	padding-top: 0;
+}
+.stage
+{
+	max-width: none;
+}
+.layout-B .stage-1 .res-slider-wrap, .layout-D .stage-2 .res-slider-wrap
+{
+	margin-left: inherit;
+	margin-right: inherit;
+}
+/*otomatik daraltma*/
+.stage.layout-C
+{
+	max-width: 1140px;
+}
+.stage.layout-D .stage-group
+{
+	max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.stage-0 .body section > .columns, .stage-0 .body > *
+{
+	max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*otomatik daraltmadan etkilenmesin*/
+.stage .body section, .stage .body div.res-slider-wrap, .stage .body div.share-box
+{
+	max-width: 10000px;
+}
+.page-title
+{
+	margin: 0 auto 1em;
+	border-bottom: 1px solid #DADADA;
+	padding: 0px 0px 0.5em 0;
+	box-shadow: 0px 5px 3px -3px #E1DEDE;
+}
+.narrowed .stage-0 .body > *
+{
+	max-width: 810px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}

@@ -1,0 +1,205 @@
+@media (max-width: 480px) {
+    .stage .urun_list_item .cats .thumb,
+    .stage li.urun_list_item .cats li.main-urun .thumb {
+        overflow: hidden;
+        height: 80px;
+    }
+    
+    .pre-top .wrap .body {
+        display: none !important;
+    }
+}
+
+/*small Device*/
+@media (max-width: 768px) {
+    body {
+    }
+    
+    .stage .stage-0 > .body,
+    .stage .stage-1 > .body {
+        /*auto padding margin:0  0px; */
+    }
+    
+    .box_login_s.online,
+    .nivo-slider {
+        display: none;
+    }
+    
+    .box_login_s {
+        display: none;
+    }
+    
+    .search {
+        display: none;
+        clear: both;
+        padding: 5px 0;
+        margin: 0;
+        width: 100%;
+        position: static;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .site-search .ara {
+        float: right;
+        position: static;
+        margin: 5px 5px 0 0;
+    }
+    
+    .site-search .text {
+        width: 80%;
+        text-indent: 5px;
+        font-style: italic;
+    }
+    
+    body #top {
+        height: 105px;
+        position: static;
+    }
+    
+    .logo-overlay {
+        background-size: contain;
+        line-height: 50px;
+        height: 85px;
+        max-width: 250px;
+        width: 63%;
+        /*margin: 8px 0 0;*/
+    }
+    
+    #flags {
+        right: 19px;
+    }
+    
+    .navi {
+        display: none;
+    }
+    
+    .layout-B .stage-1 > .body {
+        margin: 0;
+    }
+    
+    .columns.brick .col4 {
+        margin: 0 auto 1px;
+        max-width: 350px;
+    }
+    
+    .stage section.band-gray {
+        padding: 0;
+        margin-left: -20px;
+        margin-right: -20px;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .banner {
+        height: 150px;
+        background-size: cover;
+    }
+    
+    .duyuru-box .duyuru-item {
+        float: none;
+        width: auto;
+    }
+    
+    #content {
+        padding-top: 0;
+    }
+}
+
+/*  medium device */
+@media (min-width: 768px) and (max-width: 979px) {
+    body {
+        font-size: 0.9em;
+    }
+}
+
+/* small + medium device */
+@media (max-width: 1140px) {
+    .navi a,
+    .navi a:link,
+    .navi a:visited {
+        padding-left: 15px;
+        padding-right: 15px;
+        background-image: none;
+    }
+}
+
+@media (max-width: 979px) {
+    #wrapper-content {
+        padding: 0;
+    }
+    
+    #pbody {
+        overflow: auto;
+    }
+    
+    #footer .body {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    
+    .law-logo {
+        display: none;
+    }
+    
+    .navi {
+        right: 0;
+    }
+    
+    .navi a,
+    .navi a:link,
+    .navi a:visited {
+        padding-left: 15px;
+        padding-right: 15px;
+        background-image: none;
+        font-weight: normal;
+    }
+    
+    .stage .body table {
+        max-width: 99.9%;
+    }
+    
+    .stage .body img {
+        max-width: 99.9%;
+    }
+    
+    .stage .urun_list_item .cats .thumb img,
+    .stage li.urun_list_item .cats li.main-urun .thumb img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+    
+    #wrapper {
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+    }
+    
+    .stage .stage-0 > .body {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: auto;
+    }
+    
+    #pbody {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .layout-B .stage-1 > .body {
+        margin: 0;
+    }
+    
+    #top > .body {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0;
+    }
+    
+    .layout-B .stage-1 .res-slider-wrap,
+    .layout-D .stage-2 .res-slider-wrap {
+        margin-left: inherit;
+        margin-right: inherit;
+    }
+}

@@ -1,0 +1,694 @@
+/*+clearfix {*/
+.box01e:after, .haber-grup .page-haber:after, .sirali_haber_v2 .boxes:after, .sirali_haber_v2 .handle:after, .haber-m-b .kutu-band:after, .haber-m-b .thumbs:after, .haber-m-num .items:after, .manset-bbc:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	font-size: 0;
+}
+.box01e, .haber-grup .page-haber, .sirali_haber_v2 .boxes, .sirali_haber_v2 .handle, .haber-m-b .kutu-band, .haber-m-b .thumbs, .haber-m-num .items, .manset-bbc
+{
+	display: block;
+	*height: 1px;
+}
+@media (max-width: 480px)
+{
+	.page-haber .haber-images:after
+	{
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		font-size: 0;
+	}
+	.page-haber .haber-images
+	{
+		display: block;
+		*height: 1px;
+	}
+}
+/*+}*/
+/*Rules*/
+.page-haber .node-content
+{
+	clear: none;
+}
+.haber-grup .rss-link
+{
+	float: right;
+}
+.page-haber .haber-images
+{
+	float: right;
+	max-width: 252px;
+	margin: 0px 0px 0px 20px;
+	text-align: center;
+	border: 1px solid #B0AFAF;
+	padding: 5px;
+	background-color: #FFFFFF;
+}
+.page-haber .haber-pic
+{
+	display: block;
+	width: 100%;
+}
+.haber-images .more
+{
+	margin-left: 0;
+	margin-right: -6px;
+}
+.haber-images .more-pics
+{
+	display: block;
+	float: left;
+	margin: 6px 6px 0 0;
+}
+.page-haber .date
+{
+	display: block;
+	font-size: 12px;
+	color: #858585;
+	margin-top: 9px;
+}
+.link-galeri-view
+{
+	text-align: right;
+	font-size: 0.9em;
+}
+/*haber box*/
+.haber_box .haber_holder
+{
+	position: relative;
+	overflow: hidden;
+	border-bottom: 1px dotted #B7B7B7;
+}
+.haber_box UL, .haber_box UL LI
+{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-image: none;
+}
+.haber_box .box01
+{
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+.haber_box .box01 P
+{
+	margin: 0;
+	font-size: 12px;
+	line-height: 140%;
+	color: #2D2D2D;
+	text-align: justify;
+}
+.haber_box .box01 IMG
+{
+	float: left;
+	padding: 2px;
+	border: 1px solid #C6BFBF;
+	background-color: #FFFFFF;
+	margin: 5px 10px 0px 0px;
+}
+.haber_box .box01 H5, .box01e H5
+{
+	margin-bottom: 0;
+	margin: 0px;
+}
+.haber_box .box01 .date, .box01e .date
+{
+	font-size: 0.7em;
+	display: block;
+	color: #888888;
+	font-weight: 300;
+	margin-bottom: 0.5em;
+}
+/*[clearfix]*/
+.box01e, .haber-grup .page-haber
+{
+	margin-bottom: 20px;
+	border-bottom: 1px dotted #CACACA;
+	padding-bottom: 20px;
+}
+.haber-grup .page-haber H2 A
+{
+	color: inherit;
+}
+.box01e IMG, .box01e A IMG
+{
+	margin-bottom: 0;
+	border: 1px solid #B7B7B7;
+	padding: 3px;
+	float: left;
+	margin-right: 15px;
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0.5em;
+}
+@media (max-width: 480px)
+{
+	/*[clearfix]*/
+	.page-haber .haber-images
+	{
+		margin: 0.5em 0;
+		width: auto;
+		max-width: none;
+		float: none;
+	}
+	.haber-images .more-pics
+	{
+		width: 23.8%;
+		margin: 0.2em 1% 0 0;
+	}
+	.box01e .img
+	{
+	}
+	.box01e IMG, .box01e A IMG
+	{
+		float: none;
+		margin-right: 0;
+		width: 98%;
+		margin-bottom: 1em;
+	}
+}
+/*duyuru box*/
+.duyuru-item
+{
+	margin: 5px 0px 0px;
+	padding: 0 0 5px;
+	background-image: none;
+	border-bottom: 1px dotted #CFCFCF;
+}
+.duyuru-item H5
+{
+	border: none;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	font-size: 1em;
+}
+.duyuru-item .date
+{
+	margin: 0px;
+	font-size: 0.75em;
+	color: #8F8F8F;
+	text-align: justify;
+}
+.duyuru-devam
+{
+	font-size: 12px;
+}
+.haber_box_s
+{
+	margin-bottom: 15px;
+}
+.box01s
+{
+	border-bottom: 1px dotted #939393;
+}
+.box01s H5
+{
+	font-size: 12px;
+	line-height: 135%;
+	margin: 2px 0px;
+}
+.box01s .date
+{
+	font-size: 9px;
+	display: block;
+	margin: 0px;
+	color: #5E5E5E;
+}
+/*siralihaber v2*/
+.sirali_haber_v2
+{
+	margin: 0;
+	border: 1px solid #DDD;
+	height: 300px;
+	background-color: #FCFCFC;
+	overflow: hidden;
+}
+/*[clearfix]*/
+.sirali_haber_v2 .boxes
+{
+	width: 426px;
+	margin: 0px 0px 0px 5px;
+	float: left;
+	height: 295px;
+	overflow: hidden;
+}
+.sirali_haber_v2 .box01
+{
+	display: none;
+	overflow: hidden;
+	/*[empty]border:;*/
+}
+.sirali_haber_v2 .box01 IMG
+{
+	margin: 7px 0px 0px;
+	width: 422px;
+	border: none;
+}
+.sirali_haber_v2 .handles
+{
+	margin: 6px 0px 0px 437px;
+}
+/*[clearfix]*/
+.sirali_haber_v2 .handle
+{
+	height: 55px;
+	overflow: hidden;
+	margin: 1px 0px 0 -20px;
+	padding: 0px 0px 1px 0;
+}
+.sirali_haber_v2 .handle_body
+{
+	border-bottom: 1px solid #DFDFDF;
+	margin-left: 15px;
+	height: 55px;
+	background-color: #FFFFFF;
+	padding-left: 7px;
+}
+.sirali_haber_v2 .active .handle_body
+{
+	background-color: #ECECEC;
+}
+.sirali_haber_v2 .handle .pointer
+{
+	float: left;
+	width: 15px;
+	height: 106%;
+}
+.sirali_haber_v2 .active .pointer
+{
+	background-image: url(images/ticker_arrow.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.sirali_haber_v2 .handle .thumb
+{
+	margin: 2px 10px 0px 2px;
+}
+.sirali_haber_v2 .handle .thumb IMG
+{
+	border: 1px solid #D2D2D2;
+}
+.sirali_haber_v2 .handle .date
+{
+	font-size: 10px;
+	color: #9C8888;
+	font-style: italic;
+}
+.sirali_haber_v2 .active .date
+{
+	color: #F9A9A9;
+}
+.sirali_haber_v2 .handle H3
+{
+	margin: 0px;
+	font-size: 12px;
+	line-height: 141%;
+}
+.sirali_haber_v2 .handle H3 A:link, .sirali_haber_v2 .handle H3 A:visited
+{
+	color: #000000;
+	display: block;
+}
+.sirali_haber_v2 .active H3 A:link, .sirali_haber_v2 .active H3 A:visited
+{
+	display: block;
+}
+.sirali_haber_v2 .handle .thumb
+{
+	float: left;
+}
+.sirali_haber_v2 .more
+{
+	margin: 3px 10px 0px 0px;
+	text-align: right;
+	font-size: 13px;
+}
+/*haber Manset band*/
+.haber-m-b
+{
+}
+/*[clearfix]*/
+.haber-m-b .kutu-band
+{
+	height: 350px;
+	position: relative;
+	overflow: hidden;
+	margin: 0px;
+}
+.haber-m-b .kutu-band .box
+{
+}
+.haber-m-b .box .title
+{
+	float: left;
+	width: 49%;
+}
+.haber-m-b .box .title H2
+{
+	font-size: 26px;
+	font-weight: normal;
+	text-align: left;
+	font-weight: 400;
+}
+.haber-m-b .box .title DIV
+{
+}
+.haber-m-b .box .pic
+{
+	float: right;
+	margin: 11px 0px 0px 0;
+	width: 49%;
+}
+.haber-m-b .box .pic IMG
+{
+	box-shadow: 0px 0px 10px #858585;
+	padding: 5px;
+	background-color: #FFFFFF;
+	width: 100%;
+}
+/*[clearfix]*/
+.haber-m-b .thumbs
+{
+	margin: 42px -5px 0px;
+	border: 1px solid #FFFFFF;
+	padding: 10px 5px 5px;
+	background-image: url(images/haberBandThumbBg.jpg);
+	background-repeat: repeat-x;
+	box-shadow: 0px 0px 3px #626262;
+	background-position: 7px -26px;
+	height: 13px;
+}
+.haber-m-b .thumbs .thumb
+{
+	float: left;
+	display: block;
+	margin: -48px 0 0px 7px;
+	outline: 0px none;
+	min-width: 85px;
+}
+.haber-m-b .thumbs .thumb IMG
+{
+	float: left;
+	border: 1px solid #B5B5B5;
+	padding: 3px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+	font-size: 10px;
+}
+.haber-m-b .thumbs .thumb.active IMG
+{
+	border: 2px solid #5EAF00;
+	margin-top: 0;
+	width: auto;
+}
+.haber-m-b .balloon
+{
+	width: 233px;
+	height: 62px;
+	background-image: url(images/balloonBg02.png);
+}
+.haber-m-b .balloon H5
+{
+	font-size: 11px;
+	color: #FFFFFF;
+	text-align: center;
+	margin: 12px 5px 0px;
+	font-family: arial;
+	height: 29px;
+	overflow: hidden;
+	font-weight: bold;
+}
+/*habermanset numaral*/
+.haber-m-num
+{
+	height: 360px;
+	overflow: hidden;
+	position: relative;
+	background-color: #FFFFFF;
+	border: 1px solid #BFBFBF;
+	border-radius: 7px;
+	box-shadow: 0px 0px 3px #959595;
+}
+/*[clearfix]*/
+.haber-m-num .items
+{
+	position: relative;
+	margin: 0px;
+	height: 280px;
+}
+.haber-m-num .box .title
+{
+	width: 40%;
+	float: left;
+	/*[empty]height:;*/
+	margin: 0px 0px 0px 25px;
+}
+.haber-m-num .box .title H2
+{
+	font-size: 1.4em;
+	font-weight: normal;
+	text-align: left;
+	margin-bottom: 25px;
+}
+.haber-m-num .box .title H2 A
+{
+}
+.haber-m-num .items .box .title DIV
+{
+	font-weight: normal;
+	text-align: justify;
+	margin: 0px;
+	max-height: 147px;
+	overflow: hidden;
+}
+.haber-m-num .box .pic
+{
+	float: right;
+	position: relative;
+	z-index: 5;
+	margin: 5px 6px 0 0;
+	height: 309px;
+	overflow: hidden;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	width: 52%;
+}
+.haber-m-num .box .pic IMG
+{
+	width: 100%;
+}
+.haber-m-num .numerator
+{
+	position: absolute;
+	z-index: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	/*[empty]background-color:;*/
+	background-color: #F0F0F0;
+	box-shadow: inset 1px 4px 6px -6px;
+	padding-left: 10px;
+}
+.haber-m-num .numerator A
+{
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	width: 25px;
+	text-align: center;
+	margin-left: 0;
+	font-size: 11px;
+	color: #000000;
+	font-family: verdana;
+	font-weight: normal;
+}
+.haber-m-num .numerator A.active
+{
+	background-image: url(images/bg-active-numerator.png);
+	width: 36px;
+	outline: none;
+	margin-left: -5px;
+	margin-right: -5px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.haber-m-num .numerator A.more
+{
+	width: auto;
+	margin-left: 20px;
+	font-size: 11px;
+}
+/*haber galeri*/
+.haber-grup .albums, .haber-grup .album
+{
+	list-style: none;
+	background-image: none;
+	padding: 0px;
+	margin: 0px;
+}
+.haber-grup .album
+{
+	float: left;
+	width: 47.5%;
+	max-width: 187px;
+	margin-right: 1%;
+	margin-left: 1%;
+	border: 1px solid #D2D2D2;
+	margin-bottom: 15px;
+}
+.haber-grup .albums .album .thumb
+{
+	text-align: center;
+}
+.haber-grup .albums .album .thumb IMG
+{
+	width: 100%;
+}
+.haber-grup .albums .album .title
+{
+	font-size: 12px;
+	line-height: 135%;
+	text-align: left;
+	margin: 0px 5px;
+	overflow: hidden;
+	height: 66px;
+}
+.albums .album .title .extra
+{
+	color: #A3A1A1;
+	font-style: italic;
+}
+.haber-album-pic
+{
+	float: left;
+	width: 158px;
+	height: 139px;
+	padding: 2px;
+	margin: 3px;
+	overflow: hidden;
+	text-align: center;
+}
+.haber-album-pic .thumb_holder
+{
+	height: 130px;
+	border: 1px solid #CDCDCD;
+	border-radius: 13px;
+	padding: 3px;
+	background-color: #F2F2F2;
+	line-height: 123px;
+}
+.haber-album-pic .thumb_holder IMG
+{
+	vertical-align: middle;
+	background: #FFF;
+	border-radius: 10px;
+	display: inline-block;
+	max-height: 100%;
+}
+/*BBC galeri eklenti*/
+/*[clearfix]*/
+.manset-bbc
+{
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.manset-bbc UL, .manset-bbc UL LI
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+.manset-bbc UL LI
+{
+	float: left;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 13%;
+	width: calc(24.5% - 5px);
+	height: 0 !important;
+}
+.manset-bbc LI:first-child
+{
+	width: calc(50.9% - 10px);
+	margin-right: 10px;
+	font-size: 1.4em;
+	padding-bottom: 27%;
+}
+.manset-bbc LI:nth-child(2), .manset-bbc LI:nth-child(4)
+{
+	margin-right: 10px;
+}
+.manset-bbc LI:nth-child(2), .manset-bbc LI:nth-child(3)
+{
+	margin-bottom: 10px;
+}
+.manset-bbc LI .img
+{
+	height: 100% !important;
+}
+.manset-bbc LI IMG
+{
+	width: 100%;
+	max-width: 100% !important;
+	/*vertical center*/
+	margin: auto;
+	position: absolute;
+	top: -100%;
+	bottom: -100%;
+}
+.manset-bbc .inf
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.88) 100%);
+	transition: all 0.3s ease;
+}
+.manset-bbc LI:hover .inf
+{
+	height: 150%;
+}
+.manset-bbc LI H3
+{
+	font-size: 0.95em;
+	line-height: 125%;
+	margin: 0;
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	color: #FFFFFF;
+	text-align: left;
+	font-weight: 400;
+}
+.manset-bbc .devam
+{
+	clear: both;
+	float: right;
+	margin-top: 5px;
+}
+@media (max-width: 768px)
+{
+	.manset-bbc UL LI
+	{
+		width: 49.99% !important;
+		margin: 0 !important;
+		box-sizing: border-box;
+		font-size: 1em !important;
+		padding-bottom: 27%;
+	}
+	BODY .manset-bbc LI:last-child
+	{
+		display: none;
+	}
+}

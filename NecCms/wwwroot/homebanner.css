@@ -1,0 +1,52 @@
+﻿.homebanner {
+    height: 500px;
+    background-image: url(./upload/Node/27960/files/s4.jpg);
+    background-position: top center;
+    overflow: hidden;
+}
+
+    .homebanner .con {
+        max-width: 1140px;
+        margin: auto;
+        color: #fff;
+        margin-top: 150px;
+    }
+
+        .homebanner .con .headline {
+            max-width: 430px;
+            font-weight: 400;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 1px #000;
+        }
+
+    .homebanner .buttonX {
+        border: 1px solid #fff;
+        background-color: transparent;
+        border-radius: 0;
+        padding: 8px 20px;
+        color: #fff;
+    }
+
+@media (max-width: 1140px) {
+    .homebanner {
+        width: 100%;
+    }
+
+        .homebanner .con {
+            margin-top: 150px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+}
+
+@media (max-width: 768px) {
+    .homebanner {
+        height: 243px !important;
+        background-size: cover;
+        background-position: calc(50% - 50px) 0 !important;
+    }
+
+        .homebanner .con {
+            display: none;
+        }
+}

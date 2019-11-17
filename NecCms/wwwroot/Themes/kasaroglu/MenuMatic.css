@@ -1,0 +1,256 @@
+/*+clearfix {*/
+.navi:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	font-size: 0;
+}
+.navi
+{
+	display: block;
+	*height: 1px;
+}
+/*+}*/
+#subMenusContainer LI
+{
+	list-style: none;
+}
+#subMenusContainer
+{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 2px;
+	width: 100%;
+	height: 0;
+	overflow: visible;
+	z-index: 1000;
+	font-weight: bold;
+	font-size: 13px;
+}
+/*[clearfix]*/
+.navi
+{
+	display: block;
+	position: absolute;
+	right: 115px;
+	list-style: none;
+	font-size: 1.1em;
+	font-weight: normal;
+	line-height: 100%;
+	width: auto;
+	margin-top: 38px;
+	z-index: 10000;
+	/*margin-right: 20px;*/
+}
+#top.fixed .navi
+{
+	margin-top: 14px;
+}
+.navi_body
+{
+	max-width: 990px;
+	margin-left: auto;
+}
+.navi_top
+{
+	display: none;
+}
+.navi LI
+{
+	display: inline-block;
+	list-style: none;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	=float: left;
+}
+.navi LI:last-child A
+{
+}
+.navi A, .navi A:link, .navi A:visited
+{
+	text-decoration: none;
+	display: block;
+	padding: 8px 30px;
+	color: #000000;
+	border-right: none;
+	font-weight: 400;
+}
+.navi A:hover, .navi LI.active A:hover
+{
+	color: #007138;
+	border-bottom: 2px solid #007138;
+}
+.navi .active A:link, .navi .active A:visited
+{
+	border-bottom: 2px solid #951E1A;
+	color: #000000;
+}
+.navi A.mainMenuParentBtnFocused, .navi .active A.mainMenuParentBtnFocused
+{
+}
+.navi UL LI, .navi UL LI LI, .navi UL LI LI LI
+{
+	margin: 0;
+	padding: 0;
+}
+#subMenusContainer UL
+{
+	margin: 0;
+	padding: 0;
+	border: 1px solid #C6C6C6;
+	width: 250px;
+}
+#subMenusContainer UL LI
+{
+	margin: 0;
+	display: block;
+	padding: 0;
+}
+#subMenusContainer UL LI A
+{
+	margin: 0;
+	border-bottom: 1px solid #D6D6D6;
+	padding: 8px 5px 8px 15px;
+	background-color: #FFFFFF;
+	display: block;
+}
+#subMenusContainer A, .navi LI LI A
+{
+	text-align: left;
+	color: #000;
+	font-weight: normal;
+}
+#subMenusContainer A.subMenuParentBtnFocused
+{
+	color: #000000;
+}
+#subMenusContainer A:hover, #subMenusContainer A:focus, #subMenusContainer A.subMenuParentBtnFocused, .navi LI LI A:hover, .navi LI LI A:focus
+{
+	background-color: #E4E4E4;
+	color: #000000;
+}
+.subMenuParentBtn
+{
+	background: url(imgeler/arrow_right.gif) no-repeat right center;
+}
+.subMenuParentBtnFocused
+{
+	background: url(imgeler/arrow_right_over.gif) no-repeat right center;
+}
+.mainMenuParentBtn
+{
+	background: url(imgeler/arrow_down.gif) no-repeat right center;
+}
+.mainMenuParentBtnFocused
+{
+	background: url(imgeler/arrow_down_over.gif) no-repeat right center;
+}
+.smOW
+{
+	display: none;
+	position: absolute;
+	overflow: hidden;
+	padding: 0 2px 0 0;
+	margin: 0 0 0 -2px;
+}
+.navi UL, .navi OL, #subMenusContainer UL, #subMenusContainer OL
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 117%;
+}
+.navi OL, .navi UL, #subMenusContainer UL, #subMenusContainer OL
+{
+	background: none;
+	left: 0;
+}
+#subMenusContainer .sep
+{
+	height: 1px;
+	margin: 0 -2px 0 0;
+	padding: 0;
+	background-color: #CCCCCC;
+}
+.navi LI LI
+{
+	float: none;
+}
+.navi LI LI A, .navi LI LI A:link, .navi LI LI A:visited
+{
+	position: relative;
+	float: none;
+	color: #000000;
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid #D7D7D7;
+}
+.navi LI UL
+{
+	position: absolute;
+	width: 200px;
+	margin-left: -1000em;
+	margin-top: 0;
+	font-size: 13px;
+	border: 1px solid #CDCDCD;
+}
+.navi LI UL UL
+{
+	margin: -1em 0 0 -1000em;
+}
+.navi LI:hover UL UL
+{
+	margin-left: -1000em;
+}
+.navi LI:hover UL
+{
+	margin-left: 0;
+}
+.navi LI LI:hover UL
+{
+	margin-left: 10em;
+	margin-top: -2.5em;
+}
+.navi LI A:focus + UL
+{
+	margin-left: 0;
+	margin-top: 2.2em;
+}
+.navi LI LI A:focus + UL
+{
+	left: 0;
+	margin-left: 1010em;
+	margin-top: -2.2em;
+}
+.navi LI LI A:focus
+{
+	left: 0;
+	margin-left: 1000em;
+	width: 10em;
+	margin-top: 0;
+}
+.navi LI LI LI A:focus
+{
+	left: 0;
+	margin-left: 2010em;
+	width: 10em;
+	margin-top: -1em;
+}
+.navi LI:hover A:focus
+{
+	margin-left: 0;
+}
+.navi LI LI:hover A:focus + UL
+{
+	margin-left: 10em;
+}
+/*Büyük karakterli alfabe fix*/
+.lang-ru .navi A:link, .lang-ru .navi A:visited, .lang-mk .navi A:link, .lang-mk .navi A:visited
+{
+	text-transform: lowercase;
+}

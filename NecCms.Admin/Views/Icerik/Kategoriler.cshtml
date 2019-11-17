@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+@section Styles{
+
+    <link href="~/assets/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="card-title" style="float:left">İçerik Kategorileri</h4>
+                        <h4 class="card-title" style="float:right;cursor:pointer" data-toggle="modal" data-target="#editModal"><i class="fa fa-plus"></i> Ekle</h4>
+                    </div>
+                </div>
+                <table id="datatable" class="table dt-responsive nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pageHeader" id="editModalTitle"></h5>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editModalForm" method="post">
+                <div class="modal-body">
+                    <div id="editModalRow"></div>
+                    <button type="button" class="btn btn-danger" id="editModalDelete" data-toggle="modal" data-target="#deleteModal">Sil</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Kapat</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.flash.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.select.min.js"></script>
+    <script src="~/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/assets/plugins/datatables/vfs_fonts.js"></script>
+
+
+}
