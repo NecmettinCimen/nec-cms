@@ -159,6 +159,7 @@ silitem = () => {
                 }).then(res => {
                     if (res) {
                         table.ajax.reload();
+                        $('#editModal').modal('hide')
                         Swal.fire(
                             'Başarılı!',
                             'Kaldırıldı.',
@@ -172,7 +173,7 @@ silitem = () => {
 
 var tid;
 setFormId = (id) => {
-    if (id == 0 || !tpage.formSil) $('#editModalDelete').css('display', 'none')
+    if (id == 0) $('#editModalDelete').css('display', 'none')
     else $('#editModalDelete').css('display', 'flex')
 
     tid = id;

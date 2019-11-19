@@ -1,0 +1,164 @@
+<partial name="~/Views/Shared/_Table.cshtml" />
+<partial name="~/Views/Shared/_EditModal.cshtml" />
+
+
+@section Styles{
+<link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet" />
+<link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet" />
+<link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet" />
+<style>
+    .hide {
+        display: none !important;
+    }
+</style>
+}
+
+<div class="hide">
+    <div id="infodiv">
+        <input hidden name="id" id="id" />
+        <input hidden name="parametreId" id="parametreId" />
+        <strong>Kodu:</strong>
+        <label id="kodu"></label>
+        <br />
+        <strong>Adı:</strong>
+        <label id="adi"></label>
+        <br />
+        <strong>Açıklama:</strong>
+        <label id="aciklama"></label>
+        <br />
+        <a onclick="showHtml()">Raw</a>
+        <div id="formelementdiv"></div>
+        <div id="formelementhtml" class="row">
+            <div class="col-md-12">
+                <div id="snow-editor" style="height: 250px;"></div>
+            </div>
+        </div>
+        <div id="formelementhtmlraw" class="row hide">
+            <div class="col-md-12">
+                <textarea class="form-control" id="rawhtml" onchange="formelementhtmlrawonchanged(this)"
+                    style="height: 250px;"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+<script src="~/assets/plugins/quill/katex.min.js"></script>
+<script src="~/assets/plugins/quill/quill.min.js"></script>
+<script>
+    $('#editModalRow').html($('#infodiv').html())
+    $('#infodiv').remove()
+    $('#editModalDelete').remove();
+
+
+    var quill = new Quill("#snow-editor", {
+        theme: "snow",
+        modules: {
+            toolbar: [
+                [{
+                    font: []
+                }, {
+                    size: []
+                }],
+                ["bold", "italic", "underline", "strike"],
+                [{
+                    color: []
+                }, {
+                    background: []
+                }],
+                [{
+                    script: "super"
+                }, {
+                    script: "sub"
+                }],
+                [{
+                    header: [!1, 1, 2, 3, 4, 5, 6]
+                }, "blockquote", "code-block"],
+                [{
+                    list: "ordered"
+                }, {
+                    list: "bullet"
+                }, {
+                    indent: "-1"
+                }, {
+                    indent: "+1"
+                }],
+                ["direction", {
+                    align: []
+                }],
+                ["link", "image", "video", "formula"],
+                ["clean"]
+            ]
+        }
+    });
+
+    quill.on('text-change', function (delta, oldDelta, source) {
+        $('#deger').val($('#snow-editor > div.ql-editor')[0].innerHTML)
+    });
+
+
+    duzenleForm = (id) => {
+        fetch('/Tema/ParametreDegerListesi/' + id)
+            .then(res => res.json())
+            .then(list => {
+
+                tpage = {
+                    saveurl: '/Tema/ParametreDegeriKaydet',
+                    formsubmittype: 'formdata',
+                    form: [
+                        { type: 'input', subtype: 'number,int', id: 'id' },
+                        { type: 'input', subtype: 'number,int', id: 'parametreId' },
+                        { type: 'input', id: 'deger' },
+                    ]
+                }
+                var res = list.data[0]
+                if(res.parametre)
+                $('#id').val(res.parametre.id)
+                
+                $('#parametreId').val(res.id)
+
+                $('#kodu').text(res.kodu)
+                $('#adi').text(res.isim)
+                $('#aciklama').text(res.aciklama)
+                $('#formelementdiv').empty().append(tipHtml(res))
+
+                $('#formelementhtml').addClass('hide')
+                if (res.tip == 3) {
+                    formelementhtmlrawonchanged({ value: res.parametre ? res.parametre.deger : "" })
+                    $('#formelementhtml').removeClass('hide')
+                }
+
+                $('#editModal').modal('show')
+            })
+    }
+
+    tipHtml = (data) => {
+        switch (data.tip) {
+            case 1:
+                return '<input name="deger" class="form-control" value="' + (data.parametre ? data.parametre.deger : '') + '" type="text" />'
+            case 2:
+                return '<input class="form-control" type="file" /><input name="deger" id="deger"  value="' + (data.parametre ? data.parametre.degerInt : 0) + '" hidden />'
+            case 3:
+                return "<input name='deger' id='deger' hidden value='" + (data.parametre ? data.parametre.deger : null) + "'  />"
+        }
+    }
+
+    showHtml = () => {
+        if ($('#formelementhtml').hasClass('hide')) {
+            $('#formelementhtml').removeClass('hide')
+            $('#formelementhtmlraw').addClass('hide')
+
+        } else {
+            $('#formelementhtml').addClass('hide')
+            $('#formelementhtmlraw').removeClass('hide')
+        }
+    }
+
+    formelementhtmlrawonchanged = (current) => {
+
+        quill.setContents([])
+        quill.clipboard.dangerouslyPasteHTML(0, current.value)
+    }
+
+</script>
+}

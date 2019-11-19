@@ -22,6 +22,9 @@ namespace NecCms.Database
         public DbSet<Dosyalar> Dosyalar { get; set; }
         public DbSet<Uyeler> Uyeler { get; set; }
         public DbSet<Etkinlikler> Etkinlikler { get; set; }
+
+        public DbSet<Tema.Parametre> Parametre { get; set; }
+        public DbSet<Tema.ParametreDegeri> ParametreDegeri { get; set; }
     }
     public class BaseEntity
     {
@@ -152,5 +155,23 @@ namespace NecCms.Database
         public Icerik.Icerikler Icerik { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
+    }
+
+    public class Tema{
+        public class Parametre:BaseEntity{
+            [Required]
+            public string Kodu { get; set; }
+            public string Isim { get; set; }
+            public string Aciklama { get; set; }
+            [Required]
+            public int Tip { get; set; }
+            public int Sira { get; set; }
+        }
+        public class ParametreDegeri:BaseEntity{
+            public int ParametreId { get; set; }
+            public Parametre Parametre { get; set; }
+            public string Deger { get; set; }
+            public int DegerInt { get; set; }
+        }
     }
 }

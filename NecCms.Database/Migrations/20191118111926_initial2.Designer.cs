@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NecCms.Database;
 
 namespace NecCms.Database.Migrations
 {
     [DbContext(typeof(CrmContext))]
-    partial class CrmContextModelSnapshot : ModelSnapshot
+    [Migration("20191118111926_initial2")]
+    partial class initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -266,14 +268,11 @@ namespace NecCms.Database.Migrations
 
                     b.Property<string>("Isim");
 
-                    b.Property<string>("Kodu")
-                        .IsRequired();
+                    b.Property<string>("Kodu");
 
                     b.Property<int>("KullaniciId");
 
                     b.Property<bool>("Sil");
-
-                    b.Property<int>("Sira");
 
                     b.Property<DateTime>("Tarih");
 
@@ -293,8 +292,6 @@ namespace NecCms.Database.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Deger");
-
-                    b.Property<int>("DegerInt");
 
                     b.Property<int>("KullaniciId");
 

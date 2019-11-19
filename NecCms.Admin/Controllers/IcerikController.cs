@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NecCms.Admin.Models;
 using NecCms.Database;
 using NecCms.Database.Service;
 using System;
@@ -22,22 +23,7 @@ namespace NecCms.Admin.Controllers
 
             if (file != null)
             {
-                string resim = DateTime.Now.ToString("yyyyMMddHHmmss.") + Path.GetFileName(file.FileName).Split(".").Last();
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images", resim);
-                using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    file.CopyTo(fileStream);
-                }
-                Dosyalar dosya = new Dosyalar
-                {
-                    Adi = resim,
-                    Boyutu = file.Length,
-                    Tipi = file.ContentType,
-                    Yolu = filePath
-                };
-                _genericService.Save(dosya);
-                model.ResimId = dosya.Id;
-
+                model.ResimId = DosyaIslemleri.Kaydet(file,_genericService);
             }
 
             if (model.Id != 0)
@@ -73,7 +59,7 @@ namespace NecCms.Admin.Controllers
         }
 
         #region kategoriler
-        public IActionResult Kategoriler() => View();
+        public IActionResult Kategoriler() => View("~/Views/Shared/_Crud.cshtml");
         public IActionResult KategoriKaydet([FromBody]Icerik.IcerikKategori model) => Json(new { data = _genericService.Save(model) });
         public IActionResult KategoriSil([FromBody]Icerik.IcerikKategori model) => Json(new { data = _genericService.Remove(model) });
         public IActionResult KategoriListesi(int? id) => Json(new { data = _genericService.IQueryable<Icerik.IcerikKategori>().Where(x => x.Id == id || !id.HasValue).ToList() });
