@@ -62,7 +62,7 @@
                     <div style="max-width: 1140px; margin: auto;">
                         <p>
                             <div class="duyuru-box">
-                            @foreach (IcerikDto item in IcerikYonetimi.Find("haberler",take:3))
+                            @foreach (IcerikDto item in IcerikYonetimi.FindByKategoriUrl("haberler",3))
                             {
                                 <div class="duyuru-item">
                                     <div class="t">

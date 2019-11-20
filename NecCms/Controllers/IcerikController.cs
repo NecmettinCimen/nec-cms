@@ -13,20 +13,9 @@ namespace NecCms.Controllers
         public IcerikController(IGenericService genericService) => _genericService = genericService;
         public IActionResult Index(string kategori, string icerik)
         {
-            List<IcerikDto> icerikler = IcerikYonetimi.Find(kategori, icerik);
+            IcerikDto model = IcerikYonetimi.Find(kategori, icerik);
 
-            if (icerikler.Count == 0)
-            {
-                return Redirect("/");
-            }
-            else if (icerikler.Count == 1)
-            {
-                return View(icerikler.First());
-            }
-            else
-            {
-                return View(icerikler);
-            }
+            return View(model);
         }
     }
 }

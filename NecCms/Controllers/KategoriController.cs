@@ -13,17 +13,15 @@ namespace NecCms.Controllers
         public KategoriController(IGenericService genericService) => _genericService = genericService;
         public IActionResult Index(string kategori)
         {
-            List<Menu> dbkategori = IcerikYonetimi.genericService.IQueryable<Menu>().Where(x => x.Url.ToLower().Contains(kategori.ToLower())).ToList();
-            if (dbkategori.Count == 0)
-                return Redirect("/");
+            KategoriDto model = IcerikYonetimi.FindByKategoriUrl(kategori, 0, 5);
 
-            List<IcerikDto> icerikler = IcerikYonetimi.Find(kategori);
-            return View(new KategoriDto
-            {
-                Id = dbkategori.First().Id,
-                Isim = dbkategori.First().Isim,
-                Icerikler = icerikler
-            });
+            return View(model);
+        }
+        public IActionResult Skip(string kategori, int skip)
+        {
+            KategoriDto model = IcerikYonetimi.FindByKategoriUrl(kategori, skip, 5);
+
+            return Json(model);
         }
     }
 }

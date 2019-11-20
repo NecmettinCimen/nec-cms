@@ -53,6 +53,7 @@ namespace NecCms.Admin.Controllers
         {
             data = (from x in _genericService.IQueryable<Icerik.Icerikler>()
                     join m in _genericService.IQueryable<Menu>() on x.MenuId equals m.Id
+                    orderby x.Id descending
                     select new
                     {
                         x.Baslik,

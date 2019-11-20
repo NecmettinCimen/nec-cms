@@ -305,7 +305,7 @@ formElements = (item) => {
 
         case 'date':
 
-            elementHtml += `<input ${item.onchange ? `onchange="${item.onchange}"` : ""}   type="text" class="form-control date" id="${item.id}" ${item.required || item.required == null ? "required" : ""} name="${item.id}" >`;
+            elementHtml += `<input ${item.onchange ? `onchange="${item.onchange}"` : ""} ${item.value ? `value="${item.value}"` : ""}   type="text" class="form-control date" id="${item.id}" ${item.required || item.required == null ? "required" : ""} name="${item.id}" >`;
             break;
 
         case 'datetime':
