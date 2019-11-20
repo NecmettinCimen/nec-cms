@@ -55,7 +55,14 @@ namespace NecCms
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
-            {    routes.MapRoute(
+            {    
+                routes.MapRoute(
+                    name: "kategori",
+                    template: "{kategori}",
+                    defaults:new {controller="Kategori",action="Index"}
+                    );
+            
+                routes.MapRoute(
                     name: "icerik",
                     template: "{kategori}/{icerik}",
                     defaults:new {controller="Icerik",action="Index"}

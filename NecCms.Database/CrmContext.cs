@@ -17,7 +17,6 @@ namespace NecCms.Database
             modelBuilder.Entity<Kullanici>().HasData(new Kullanici { Id = 1, AdSoyad = "Admin", Eposta = "admin@crm.com", Parola = "admin@crm.com", Rol = RolEnum.Admin, Telefon = "05456286324" });
         }
         public DbSet<Kullanici> Kullanicilar { get; set; }
-        public DbSet<Icerik.IcerikKategori> IcerikKategorileri { get; set; }
         public DbSet<Icerik.Icerikler> Icerikler { get; set; }
         public DbSet<Icerik.FotografGalerisi> FotografGalerisi { get; set; }
         public DbSet<Icerik.FotografGalerisiDosyalar> FotografGalerisiDosyalar { get; set; }
@@ -27,6 +26,8 @@ namespace NecCms.Database
 
         public DbSet<Tema.Parametre> Parametre { get; set; }
         public DbSet<Tema.ParametreDegeri> ParametreDegeri { get; set; }
+     
+        public DbSet<Menu> Menu { get; set; }
     }
     public class BaseEntity
     {
@@ -65,22 +66,12 @@ namespace NecCms.Database
 
     public class Icerik
     {
-        public class IcerikKategori : BaseEntity
-        {
-            public int? UstKategoriId { get; set; }
-            public IcerikKategori UstKategori { get; set; }
-            [Required]
-            [MaxLength(50)]
-            public string Isim { get; set; }
-        }
         public class Icerikler : BaseEntity
         {
-            public int IcerikKategoriId { get; set; }
-            public IcerikKategori IcerikKategori { get; set; }
-            [MaxLength(200)]
+            public int MenuId { get; set; }
+            public Menu Menu { get; set; }
             [Required]
             public string Baslik { get; set; }
-            [MaxLength(400)]
             [Required]
             public string Giris { get; set; }
             public string Icerik { get; set; }
@@ -93,7 +84,6 @@ namespace NecCms.Database
             public int? ResimId { get; set; }
             public Dosyalar Resim { get; set; }
             [Required]
-            [MaxLength(250)]
             public string Url { get; set; }
         }
         public class FotografGalerisi : BaseEntity
@@ -179,5 +169,15 @@ namespace NecCms.Database
             public string Deger { get; set; }
             public int DegerInt { get; set; }
         }
+    }
+
+    public class Menu:BaseEntity{
+        [Required]
+        public string Isim { get; set; }
+        public string Url { get; set; }
+        [Required]
+        public int Sira { get; set; }
+        public int? UstId { get; set; }
+        public Menu Ust { get; set; }
     }
 }

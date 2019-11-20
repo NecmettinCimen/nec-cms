@@ -23,7 +23,7 @@ namespace NecCms.Admin.Controllers
 
             if (file != null)
             {
-                model.ResimId = DosyaIslemleri.Kaydet(file,_genericService);
+                model.ResimId = DosyaIslemleri.Kaydet(file, _genericService);
             }
 
             if (model.Id != 0)
@@ -49,7 +49,18 @@ namespace NecCms.Admin.Controllers
         }
 
         public IActionResult Kaldir([FromBody]Icerik.Icerikler model) => Json(new { data = _genericService.Remove(model) });
-        public IActionResult IcerikListesi() => Json(new { data = _genericService.IQueryable<Icerik.Icerikler>().Select(x => new { x.Baslik, x.Id, x.Durum }) });
+        public IActionResult IcerikListesi() => Json(new
+        {
+            data = (from x in _genericService.IQueryable<Icerik.Icerikler>()
+                    join m in _genericService.IQueryable<Menu>() on x.MenuId equals m.Id
+                    select new
+                    {
+                        x.Baslik,
+                        x.Id,
+                        x.Durum,
+                        Menu = m.Isim
+                    })
+        });
         public IActionResult Durum(int id)
         {
             Icerik.Icerikler dbmodel = _genericService.IQueryable<Icerik.Icerikler>().First(x => x.Id == id);
@@ -57,12 +68,5 @@ namespace NecCms.Admin.Controllers
 
             return Json(new { data = _genericService.Save(dbmodel) });
         }
-
-        #region kategoriler
-        public IActionResult Kategoriler() => View("~/Views/Shared/_Crud.cshtml");
-        public IActionResult KategoriKaydet([FromBody]Icerik.IcerikKategori model) => Json(new { data = _genericService.Save(model) });
-        public IActionResult KategoriSil([FromBody]Icerik.IcerikKategori model) => Json(new { data = _genericService.Remove(model) });
-        public IActionResult KategoriListesi(int? id) => Json(new { data = _genericService.IQueryable<Icerik.IcerikKategori>().Where(x => x.Id == id || !id.HasValue).ToList() });
-        #endregion
     }
 }

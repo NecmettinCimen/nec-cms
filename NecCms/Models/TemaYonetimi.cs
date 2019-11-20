@@ -14,13 +14,12 @@ namespace NecCms.Models
             // if (nesne == null)
             if (true)
             {
-                GenericService _genericService = new GenericService();
 
                 using (CrmContext db = new CrmContext())
                 {
-                    nesne = (from pd in _genericService.IQueryable<Tema.ParametreDegeri>()
-                             join p in _genericService.IQueryable<Tema.Parametre>() on pd.ParametreId equals p.Id
-                             join d in _genericService.IQueryable<Dosyalar>() on pd.DegerInt equals d.Id into dn
+                    nesne = (from pd in IcerikYonetimi.genericService.IQueryable<Tema.ParametreDegeri>()
+                             join p in IcerikYonetimi.genericService.IQueryable<Tema.Parametre>() on pd.ParametreId equals p.Id
+                             join d in IcerikYonetimi.genericService.IQueryable<Dosyalar>() on pd.DegerInt equals d.Id into dn
                              from d in dn.DefaultIfEmpty()
                              select new TemaDto
                              {

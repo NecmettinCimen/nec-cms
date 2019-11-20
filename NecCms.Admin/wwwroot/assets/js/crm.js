@@ -28,28 +28,28 @@ pageInit = (page) => {
 
     if (page.columns)
         table = $('#datatable').DataTable({
-            ordering:false,
-            language:{
-                "sDecimal":        ",",
-                "sEmptyTable":     "Tabloda herhangi bir veri mevcut değil",
-                "sInfo":           "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
-                "sInfoEmpty":      "Kayıt yok",
-                "sInfoFiltered":   "(_MAX_ kayıt içerisinden bulunan)",
-                "sInfoPostFix":    "",
-                "sInfoThousands":  ".",
-                "sLengthMenu":     "Sayfada _MENU_ kayıt göster",
+            ordering: false,
+            language: {
+                "sDecimal": ",",
+                "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+                "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                "sInfoEmpty": "Kayıt yok",
+                "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "Sayfada _MENU_ kayıt göster",
                 "sLoadingRecords": "Yükleniyor...",
-                "sProcessing":     "İşleniyor...",
-                "sSearch":         "Ara:",
-                "sZeroRecords":    "Eşleşen kayıt bulunamadı",
+                "sProcessing": "İşleniyor...",
+                "sSearch": "Ara:",
+                "sZeroRecords": "Eşleşen kayıt bulunamadı",
                 "oPaginate": {
-                    "sFirst":    "İlk",
-                    "sLast":     "Son",
-                    "sNext":     "Sonraki",
+                    "sFirst": "İlk",
+                    "sLast": "Son",
+                    "sNext": "Sonraki",
                     "sPrevious": "Önceki"
                 },
                 "oAria": {
-                    "sSortAscending":  ": artan sütun sıralamasını aktifleştir",
+                    "sSortAscending": ": artan sütun sıralamasını aktifleştir",
                     "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
                 },
                 "select": {
@@ -96,6 +96,7 @@ initdatepicker = () => $('.date').datepicker({
 
 submitForm = (e) => {
     e.preventDefault();
+    Swal.showLoading()
     showToaster(1)
     if (tpage.customSaveFunc) {
         eval(tpage.customSaveFunc);
@@ -116,6 +117,7 @@ submitForm = (e) => {
             },
             body
         }).then(res => {
+            swal.close()
             if (res.status == 500) {
                 return false;
             } else {
@@ -151,7 +153,7 @@ async function FileUpload(oFormElement) {
                 eval(tpage.customsuccessfun)
             }
             else {
-            showToaster(2)
+                showToaster(2)
                 table.ajax.reload();
                 $('#editModal').modal('hide')
             }
@@ -163,44 +165,44 @@ async function FileUpload(oFormElement) {
 }
 
 silitem = () => {
-        Swal.fire({
-            title: 'Kaldırmak istediğinize emin misiniz?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Evet!',
-            cancelButtonText: 'Hayır'
-        }).then((result) => {
-            if (result.value) {
+    Swal.fire({
+        title: 'Kaldırmak istediğinize emin misiniz?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Evet!',
+        cancelButtonText: 'Hayır'
+    }).then((result) => {
+        if (result.value) {
 
-                showToaster(1)
-                fetch((tpage.silurl || tpage.url.replace('/Index', '') + '/Kaldir'), {
-                    method: 'post',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        Id: tid
-                    })
-                }).then(res => {
-                    if (res.status == 500) {
-                        return false;
-                    } else {
-                        showToaster(2)
-                        return res.json()
-                    }
-                }).then(res => {
-                    if (res) {
-                        table.ajax.reload();
-                        $('#editModal').modal('hide')
-                        Swal.fire(
-                            'Başarılı!',
-                            'Kaldırıldı.',
-                            'success'
-                        )
-                    }
+            showToaster(1)
+            fetch((tpage.silurl || tpage.url.replace('/Index', '') + '/Kaldir'), {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Id: tid
                 })
-            }
-        })
+            }).then(res => {
+                if (res.status == 500) {
+                    return false;
+                } else {
+                    showToaster(2)
+                    return res.json()
+                }
+            }).then(res => {
+                if (res) {
+                    table.ajax.reload();
+                    $('#editModal').modal('hide')
+                    Swal.fire(
+                        'Başarılı!',
+                        'Kaldırıldı.',
+                        'success'
+                    )
+                }
+            })
+        }
+    })
 }
 
 var tid;

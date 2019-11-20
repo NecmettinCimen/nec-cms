@@ -1,30 +1,4 @@
-﻿var pages = [{
-    url: '/Icerik/Kategoriler',
-    parentname: 'İçerik Yönetimi',
-    name: 'İçerik Kategorileri',
-    tableurl: '/Icerik/KategoriListesi/',
-    saveurl: '/Icerik/KategoriKaydet',
-    silurl: '/Icerik/KategoriSil',
-    columns: [
-        {
-            title: "İsim",
-            data: 'isim'
-        }],
-    form: [
-        {
-            type: 'select',
-            id: 'ustKategoriId',
-            name: 'Üst İçerik Kategorisi',
-            ajax: '/Icerik/KategoriListesi',
-            text: 'isim',
-            style: 'width: 100%;float: left;margin-left: 5px;',
-        }, {
-            type: 'input',
-            id: 'isim',
-            name: 'İsim',
-            maxLength: 50
-        }]
-},
+﻿var pages = [
 {
     url: '/Icerik/Liste',
     parentname: 'İçerik Yönetimi',
@@ -43,6 +17,11 @@
         {
             title: "Başlık",
             data: 'baslik'
+        },
+        {
+            title: 'Menu',
+            data: 'menu',
+            render: (data) => `<a class="btn btn-outline-warning btn-sm btn-pill">${data}</a>`
         },
         {
             title: 'Durum',
@@ -99,7 +78,7 @@
         { title: "No", data: 'id' },
         { title: "Kodu", data: 'kodu' },
         { title: "İsim", data: 'isim' },
-        { title: "Durum", data: 'durum',render:(data)=>"<button class='btn btn-outline-"+(data?'success':'danger')+"'>"+(data?'Veri var':'Veri yok')+"</button>" },
+        { title: "Durum", data: 'durum', render: (data) => "<button class='btn btn-outline-" + (data ? 'success' : 'danger') + "'>" + (data ? 'Veri var' : 'Veri yok') + "</button>" },
     ]
 },
 ];

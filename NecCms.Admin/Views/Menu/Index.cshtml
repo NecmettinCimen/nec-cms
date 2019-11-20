@@ -1,0 +1,146 @@
+@section Styles{
+<link href="~/assets/css/jkanban.min.css" rel="stylesheet" />
+<style>
+    body {
+        font-family: "Lato";
+        margin: 0;
+        padding: 0;
+    }
+
+    #myKanban {
+        overflow-x: auto;
+        padding: 20px 0;
+    }
+
+    .success {
+        background: #00B961;
+        color: #fff
+    }
+
+    .info {
+        background: #2A92BF;
+        color: #fff
+    }
+
+    .warning {
+        background: #F4CE46;
+        color: #fff
+    }
+
+    .error {
+        background: #FB7D44;
+        color: #fff
+    }
+</style>
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="card-title pageHeader" style="float:left"></h4>
+                        <a id="formOpenButton">
+                            <h4 class="card-title" style="float:right;cursor:pointer" data-toggle="modal"
+                                data-target="#editModal" onclick="setFormId(0)"><i class="fa fa-plus"></i> Ekle</h4>
+                        </a>
+                    </div>
+                </div>
+                <div id="myKanban"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Views/Shared/_EditModal.cshtml" />
+
+
+@section Scripts{
+<script src="~/assets/js/jkanban.min.js"></script>
+<script src="~/assets/js/url_slug.min.js"></script>
+<script>
+    pageInit(
+        {
+            url: '/Menu',
+            parentname: 'Menu',
+            name: 'Menu Yönetimi',
+            customsuccessfun: 'addKanban(res.data)',
+            saveurl: '/Menu/Kaydet',
+            tableurl: '/Menu/Liste/',
+            form: [
+                { type: 'input', subtype: 'number,int', id: 'ustId', hidden: true },
+                {
+                    type: 'input', id: 'isim', name: 'İsim',
+                    onchange: "$('#url').val('/'+url_slug(this.value))"
+                },
+                { type: 'input', id: 'url', name: 'Url' },
+                { type: 'input', subtype: 'number,int', id: 'sira', name: 'Sıra' }
+            ]
+        });
+
+    initData = () => {
+        fetch('/Menu/Liste')
+            .then(res => res.json())
+            .then(res => {
+                $('#myKanban').empty();
+                initKanban();
+                res.data.sort((a, b) => a.sira - b.sira).filter(x => x.ustId == null).map(item => {
+                    Kanban.addBoards(
+                        [{
+                            'id': 'item_' + item.id,
+                            'title': item.isim,
+                            'item': [...res.data.sort((a, b) => a.sira - b.sira).filter(x => x.ustId == item.id).map(x => ({
+                                'id': 'item_' + x.id,
+                                'title': x.isim,
+                            })),
+                            { 'id': 'ustid_' + item.id, 'title': 'Menu Ekle' }
+                            ]
+                        }]
+                    )
+                });
+            })
+    }
+
+    initData()
+
+    addKanban = (data) => {
+        initData();
+        $('#editModal').modal('hide')
+    }
+
+    var table = {
+        ajax: {
+            reload: () => initData()
+        }
+    }
+
+    var Kanban;
+    initKanban = () => {
+        Kanban = new jKanban({
+            element: '#myKanban',
+            gutter: '10px',
+            addItemButton: true,
+            buttonContent: 'Düzenle',
+            buttonClick: function (el, boardId) {
+                setFormId(parseInt(boardId.replace('item_', '')))
+                $('#editModal').modal('show')
+            },
+            click: function (el) {
+                if (el.dataset.eid.startsWith('ustid_')) {
+                    var ustId = el.dataset.eid.replace('ustid_', '');
+
+                    setFormId(0)
+                    $('#ustId').val(ustId)
+
+                    $('#editModal').modal('show')
+                } else {
+                    setFormId(parseInt(el.dataset.eid.replace('item_', '')))
+                    $('#editModal').modal('show')
+                }
+            }
+        });
+    }
+</script>
+}

@@ -1,0 +1,73 @@
+@model KategoriDto
+<div class="stage layout-C">
+    <div class="stage-body">
+
+        <div class="stage-0">
+            <div class="body">
+                <div class="breadcrumbs">
+                    <div class="body">
+                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                            <a href="/tr/" itemprop="url">
+                                <span itemprop="title">
+                                    Ana Sayfa </span>
+                            </a>
+                            <span class="sep">›</span>
+                        </div>
+                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                            <a href="/tr/27985/Yayinlar" itemprop="url">
+                                <span itemprop="title">
+                                    @Model.Isim </span>
+                            </a>
+                            <span class="sep">›</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainContent"></div>
+                <div class="haber-grup">
+                    <h1 class="page-title">@Model.Isim</h1>
+
+                    @foreach(var item in Model.Icerikler){
+
+                    <div class="box01e">
+                        <h5><a href="@item.Kategori/@item.Url">@item.Baslik</a>
+                            <span class="date">@item.Tarih.ToShortDateString()</span></h5>
+                        <div class="spot">@item.Giris
+                        </div>
+                        <span class="devami"><a href="@item.Kategori/@item.Url">[Devamı]</a></span>
+                        <div class="clear_b"></div>
+                    </div>
+                    }
+
+                    <div class="pages">
+                        <span>1</span><a href="/tr/27985/Yayinlar/page/2">2</a> 
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="bot"></div>
+        </div>
+        <div class="stage-sep">
+            <div class="body"></div>
+        </div>
+        <div class="stage-1">
+            <div class="body">
+                <div class="page_navi">
+                    <ul>
+                        <li class="active"><a href="/tr/27985/Yayinlar">@Model.Isim</a>
+                            <ul>
+                                @foreach(var m in MenuYonetimi.Menuler.First(x=>x.Id == @Model.Id).Menuler){
+                                    <li class="page"><a href="@m.Url">@m.Isim</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <section class="node-content"></section>
+            </div>
+            <div class="clear"></div>
+            <div class="bot"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="stage-bot"></div>
+    </div>
+</div>
