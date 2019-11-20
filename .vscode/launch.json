@@ -30,7 +30,7 @@
             "name": "Web",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Webbuild",
             "program": "${workspaceFolder}/NecCms/bin/Debug/netcoreapp2.2/NecCms.dll",
             "args": [],
             "cwd": "${workspaceFolder}/NecCms",

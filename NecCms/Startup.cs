@@ -31,6 +31,7 @@ namespace NecCms
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddFactory<Database.Service.IGenericService, Database.Service.GenericService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -49,16 +50,33 @@ namespace NecCms
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
-            {
+            {    routes.MapRoute(
+                    name: "icerik",
+                    template: "{kategori}/{icerik}",
+                    defaults:new {controller="Icerik",action="Index"}
+                    );
+            
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
+            Models.TemaYonetimi.Nesne();
+        }
+    }
+    public static class ServiceCollectionExtensions
+    {
+        public static void AddFactory<TService, TImplementation>(this IServiceCollection services)
+        where TService : class
+        where TImplementation : class, TService
+        {
+            services.AddTransient<TService, TImplementation>();
+            services.AddSingleton<Func<TService>>(x => () => x.GetService<TService>());
         }
     }
 }

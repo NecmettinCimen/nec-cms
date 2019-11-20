@@ -24,6 +24,7 @@
 @section Scripts{
     <script src="~/assets/plugins/quill/katex.min.js"></script>
     <script src="~/assets/plugins/quill/quill.min.js"></script>
+    <script src="~/assets/js/url_slug.min.js"></script>
     <script>
 
         pageInit({
@@ -44,7 +45,8 @@
                     type: 'input',
                     id: 'baslik',
                     name: 'Başlık',
-                    maxLength: 200
+                    maxLength: 200,
+                    onchange:"$('#url').val(url_slug(this.value))"
                 },
                 {
                     type: 'input',

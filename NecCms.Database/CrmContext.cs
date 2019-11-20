@@ -9,6 +9,8 @@ namespace NecCms.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=sql.poseidon.domainhizmetleri.com;Database=aybarshu_kuk;User Id=aybarshu_kuk;Password=Huzt!903;");
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -126,6 +128,7 @@ namespace NecCms.Database
         [Required]
         [MaxLength(20)]
         public string Tipi { get; set; }
+        public string Data { get; set; }
     }
     public class Uyeler : BaseEntity
     {
@@ -157,8 +160,10 @@ namespace NecCms.Database
         public string Longitude { get; set; }
     }
 
-    public class Tema{
-        public class Parametre:BaseEntity{
+    public class Tema
+    {
+        public class Parametre : BaseEntity
+        {
             [Required]
             public string Kodu { get; set; }
             public string Isim { get; set; }
@@ -167,7 +172,8 @@ namespace NecCms.Database
             public int Tip { get; set; }
             public int Sira { get; set; }
         }
-        public class ParametreDegeri:BaseEntity{
+        public class ParametreDegeri : BaseEntity
+        {
             public int ParametreId { get; set; }
             public Parametre Parametre { get; set; }
             public string Deger { get; set; }

@@ -14,7 +14,7 @@ namespace NecCms.Admin.Controllers
         public TemaController(IGenericService genericService) => _genericService = genericService;
         public IActionResult Yonetim() => View("~/Views/Shared/_Crud.cshtml");
         public IActionResult Duzenle() => View();
-        public IActionResult ParametreListesi(int? id) => Json(new { data = _genericService.IQueryable<Tema.Parametre>().Where(x => x.Id == id || !id.HasValue).ToList() });
+        public IActionResult ParametreListesi(int? id) => Json(new { data = _genericService.IQueryable<Tema.Parametre>().Where(x => x.Id == id || !id.HasValue).OrderByDescending(x=>x.Id).ToList() });
         public IActionResult ParametreKaydet([FromBody]Tema.Parametre model) => Json(new { data = _genericService.Save(model) });
         public IActionResult ParametreKaldir([FromBody]Tema.Parametre model) => Json(new { data = _genericService.Remove(model) });
         public IActionResult ParametreDegerListesi(int? id) => Json(new
@@ -28,6 +28,8 @@ namespace NecCms.Admin.Controllers
                 e.Kodu,
                 e.Aciklama,
                 e.Tip,
+                Durum=_genericService.IQueryable<Tema.ParametreDegeri>()
+                    .Count(w => w.ParametreId == e.Id),
                 Parametre = !id.HasValue ? null : _genericService.IQueryable<Tema.ParametreDegeri>()
                     .Where(w => w.ParametreId == e.Id).Select(x => new
                     {
@@ -37,6 +39,7 @@ namespace NecCms.Admin.Controllers
                         Dosya = _genericService.IQueryable<Dosyalar>().FirstOrDefault(f => f.Id == x.DegerInt)
                     }).FirstOrDefault()
             })
+            .OrderByDescending(x=>x.Id)
             .ToList()
         });
         public IActionResult ParametreDegeriKaydet(Tema.ParametreDegeri model)

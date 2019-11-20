@@ -129,7 +129,7 @@ INPUT:focus
 #wrapper
 {
 	height: 100%;
-	background-color: #0D5746;
+	background-color: #1a2d45;
 }
 #wrapper-content
 {
@@ -151,7 +151,7 @@ INPUT:focus
 .pre-top
 {
 	overflow: hidden;
-	background-color: #0D5746;
+	background-color: #1a2d45;
 	color: #FFF;
 	font-size: 0.9em;
 	height: 40px;
@@ -504,7 +504,7 @@ IMG._resim-cerceve, .resim-cerceve
 	padding: 0.4em;
 	border-radius: 100px;
 	display: inline-block;
-	background-color: #0D5746;
+	background-color: #1a2d45;
 	color: #FFF;
 	cursor: default;
 	transition: all 0.3s ease-out;
@@ -513,7 +513,7 @@ A:hover .ikon-daire, A .ikon-daire.hover
 {
 	background-color: #09836D;
 	color: #FFFFFF;
-	border-color: #0D5746;
+	border-color: #1a2d45;
 	transform: scale(1.05);
 	cursor: pointer;
 }

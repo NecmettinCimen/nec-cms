@@ -18,7 +18,6 @@
             ajax: '/Icerik/KategoriListesi',
             text: 'isim',
             style: 'width: 100%;float: left;margin-left: 5px;',
-            required: true,
         }, {
             type: 'input',
             id: 'isim',
@@ -68,6 +67,7 @@
     saveurl: '/Tema/ParametreKaydet',
     silurl: '/Tema/ParametreKaldir',
     columns: [
+        { title: "No", data: 'id' },
         { title: "Kodu", data: 'kodu' },
         { title: "İsim", data: 'isim' },
         { title: "Tip", data: 'tip', render: (data) => `<button disabled class="btn btn-outline-info">${["", "Yazı", "Dosya", "Resim"][data]}</button>` },
@@ -96,8 +96,10 @@
     saveurl: '/Tema/ParametreDegeriKaydet',
     formsubmittype: 'formdata',
     columns: [
+        { title: "No", data: 'id' },
         { title: "Kodu", data: 'kodu' },
         { title: "İsim", data: 'isim' },
+        { title: "Durum", data: 'durum',render:(data)=>"<button class='btn btn-outline-"+(data?'success':'danger')+"'>"+(data?'Veri var':'Veri yok')+"</button>" },
     ]
 },
 ];

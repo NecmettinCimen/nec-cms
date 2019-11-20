@@ -9,36 +9,33 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.4, user-scalable=1" />
 
-    <title>Kasaroğlu Hukuk Bürosu</title>
+    <title>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</title>
     <meta charset="utf-8">
-    <meta name="description" content="Kasaroğlu Hukuk Bürosu">
-    <meta name="keywords" content="Kasaroğlu Hukuk Bürosu. Kasaroğlu Hukuk Bürosu">
-    <meta name="author" content="Kasaroğlu Hukuk Bürosu">
+    <meta name="description" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))">
+    <meta name="keywords" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))">
+    <meta name="author" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))">
     <meta name="robots" content="all,follow" />
 
-    <!-- Twitter Card data
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="http://www.kasaroglu.av.tr/tr/"/>
-    <meta name="twitter:title" content="Kasaroğlu Hukuk Bürosu">
-    <meta name="twitter:description" content="Kasaroğlu Hukuk Bürosu">
-    -->
-    <!-- Open Graph data
+    <meta name="twitter:url" content="http://aybarshukuk.com"/>
+    <meta name="twitter:title" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))">
+    <meta name="twitter:description" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))">
+
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="Kasaroğlu Hukuk Bürosu"/>
-    <meta property="og:title" content="Kasaroğlu Hukuk Bürosu"/>
-    <meta property="og:description" content="Kasaroğlu Hukuk Bürosu"/>
-    <meta property="og:url" content="http://www.kasaroglu.av.tr/tr/"/>-->
-    <!-- google
-        <meta itemprop="name" content="Kasaroğlu Hukuk Bürosu"/>
-        <meta itemprop="description" content="Kasaroğlu Hukuk Bürosu"/>
-            <link rel="canonical" href="http://www.kasaroglu.av.tr/tr/"/>
-    -->
+    <meta property="og:site_name" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))"/>
+    <meta property="og:title" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))"/>
+    <meta property="og:description" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))"/>
+    <meta property="og:url" content="http://aybarshukuk.com"/>
+
+        <meta itemprop="name" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))"/>
+        <meta itemprop="description" content="@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))"/>
+            <link rel="canonical" href="http://aybarshukuk.com"/>
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
 
     <script type="text/javascript">
         window.appBase = "";
         window.baseUrl = "/tr";
-        window.theme = "kasaroglu";
+        window.theme = "aybars";
         window.lang = "tr";
         window.isHome = true
     </script>
@@ -59,18 +56,7 @@
     <link rel="stylesheet" href="~/Themes/kasaroglu/subversion-wide.css?fw0b5hzz08" media="all" />
     <link rel="stylesheet" href="~/Modules/Haber/Views/theme/default.css?fw0b5hzz08" media="all" />
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110806494-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-110806494-2');
-    </script>
+ 
 
 </head>
 
@@ -101,18 +87,18 @@
                                 <section class="node-content">
                                     <div style="z-index: 10001; position: relative;">
                                         <p>
-                                            <a href="https://www.facebook.com/Kasaro%C4%9Flu-Hukuk-B%C3%BCrosu-1547102035508323/" target="_blank" rel="noopener">
+                                            <a href="https://www.facebook.com/" target="_blank" rel="noopener">
                                                 <em class="icon-facebook3 "
                                                     style="font-size: 18px;">
                                                     <!--icon-->
                                                 </em>
                                             </a>
-                                            <a href="https://www.instagram.com/kasarogluhukuk/" target="_blank" rel="noopener">
+                                            <a href="https://www.instagram.com/" target="_blank" rel="noopener">
                                                 <em class="icon-instagram " style="font-size: 18px;">
                                                     <!--icon-->
                                                 </em>
                                             </a> <span style="font-size: 18px;">
-                                                <a href="https://tr.linkedin.com/company/kasaroğlu-law-office"
+                                                <a href="https://tr.linkedin.com"
                                                    target="_blank" rel="noopener">
                                                     <em class="icon-linkedin ">
                                                         <!--icon-->
@@ -120,7 +106,7 @@
                                                 </a>
                                             </span> | <em class="icon-phone2 " style="vertical-align: middle; font-size: 18px;">
                                                 <!--icon-->
-                                            </em> +90 312 428 40 82
+                                            </em> +90 422 000 00 00
                                         </p>
                                     </div>
                                     <style>
@@ -145,30 +131,17 @@
                             <div id="mobMenuContainer"></div>
                         </div>
                         <div class="logo-overlay">
-                            <a href="/tr/"><img src="~/Themes/kasaroglu/imgeler/logo.png" alt="logo" /></a>
+                            <a href="/"><img src="~/Themes/kasaroglu/imgeler/logo.png" alt="logo" /></a>
                         </div>
-                        <div class="site-title">Kasaroğlu Hukuk Bürosu</div>
+                        <div class="site-title">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</div>
 
                         <div id="flags">
-                            <div class="text">
-                                <div class="body">
-                                    <span class="active">
-                                        <a href="/tr" title="Türkçe">
-                                            TR
-                                        </a>
-                                    </span><span>
-                                        <a href="/en" title="English (İngilizce)">
-                                            EN
-                                        </a>
-                                    </span>
-                                </div>
-                            </div>
 
                             <div class="site-search-wrap">
                                 <div class="search site-search" data-type="">
                                     <form action="/tr/Home:Search/arama/" method="GET">
                                         <input type="text" value="Arama" class="text" name="q">
-                                        <input type="submit" class="ara" value="Ara ">
+                                        <input style="float:left" type="submit" class="ara" value="Ara ">
                                     </form>
                                 </div>
                             </div>
@@ -470,35 +443,7 @@
             </div>
             <!-- pbody -->
         </div>
-        <!-- wrapper-content -->
-        <div class="share-box">
-            <div class="body">
-                <div class="tools-A">
-                    <a class="page-to-home" href="/tr/"><i></i> Ana Sayfa</a>
-                    <a class="page-to-top" href="#pbody"><i></i> Başa Dön</a>
-                    <a class="page-share" href="#"><i></i> Paylaş</a>
-                </div>
-                <div>
-                    <div class="addthis_toolbox addthis_inline_share_toolbox"></div>
-                </div>
-            </div>
-        </div>
-        <!-- <script async type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba36d5cb12baa2b"></script> -->
-        <script type="text/javascript">
-            window.addEvent('domready', function () {
 
-                $$('.addthis_toolbox').set('slide', {
-                    mode: 'horizontal'
-                });
-                $$('.addthis_toolbox').slide('hide');
-                $$('.page-share').addEvent('click', function (e) {
-                    e.stop();
-                    Fil.loadScriptAssets(['http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ba36d5cb12baa2b'], function () {
-                        $$('.addthis_toolbox').slide('toggle');
-                    })
-                })
-            })
-        </script>
 
         <div id="footer">
             <div class="body">
@@ -511,44 +456,19 @@
                         </div>
                         <p>
                             <span style="font-size: 0.9em;">
-                                Bu web sitesi ve içindeki bilgiler, Türkiye Barolar
-                                Birliği'nin Meslek Kurallarına ve özellikle reklam yasağına uygun şekilde
-                                tasarlanmıştır. Kasaroğlu web sitesinin içinde yer alan tüm bilgi ve materyaller sadece
-                                bilgilendirme olup, bunların tamamına veya bir kısmına dayanılarak yapılan işlemlere,
-                                eylemlere ve bunların sonuçlarına ilişkin hiçbir sorumluluk kabul edilmez. Söz konusu
-                                bilgilerin aktarılması ile hiçbir şekilde kullanıcılar ve web tarayıcıları ile Kasaroğlu
-                                arasında bir avukat-müvekkil ilişkisi yaratılması amaçlanmamıştır ve bilgilerin bu
-                                kişilerce alınması hiçbir şekilde bu yönde bir ilişki oluşturmayacaktır. Müvekkiller
-                                veya okuyucular hiçbir şekilde, mevcut duruma ve özelliklerine ilişkin olarak uygun
-                                hukuki veya başka herhangi bir profesyonel görüş almadan, Kasaroğlu web sitesinde yer
-                                alan herhangi bir hususa dayanarak bir eylemde bulunmamalıdır. Kasaroğlu, bu web sitesi
-                                aracılığıyla ulaşılan üçüncü kişilere ait içeriklerden hiçbir şekilde sorumlu
-                                değildir.
+                                @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi"))
                             </span>
                         </p>
                         <p>
-                            Şirket Birleşme ve Devralmalarında yoğun olarak hizmet veren Kasaroğlu Hukuk Bürosu’nun en önemli çözüm ortağı, bu alandaki tecrübe ve bilgi birikimi ile “<a href="http://www.hikadanismanlik.com.tr/" target="_blank" rel="noopener">
-                                Kasaroğlu
-                                Uluslararası Danışmanlık Hizmetleri A.Ş’dir
-                            </a>”.
+                           @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi2"))
                         </p>
                         <style>
-                            <!-- .gle-logo {
+                             .gle-logo {
                                 float: right;
                                 margin-left: 1em;
                             }
-
-                            -->
                         </style>
                     </section>
-                </div>
-                <div class="filweb">
-                    <p>
-                        FilWEB © Tüm hakları saklıdır. <a href="http://www.filbilisim.com" target="_blank">
-                            Fil Bilişim
-                            Web Tasarım Ankara
-                        </a>
-                    </p>
                 </div>
             </div>
         </div>

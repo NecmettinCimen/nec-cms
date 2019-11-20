@@ -14,7 +14,6 @@ window.addEvent('scroll', function (e) {
     }
 });
 window.addEvent('domready', function () {
-	  $$(".share-box").pick().inject($("footer"),"before");
 	  
     $$('.navi li').addEvent('mouseover', function (e) {
         $('top').addClass('opak');

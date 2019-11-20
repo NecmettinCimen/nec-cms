@@ -135,9 +135,9 @@
     tipHtml = (data) => {
         switch (data.tip) {
             case 1:
-                return '<input name="deger" class="form-control" value="' + (data.parametre ? data.parametre.deger : '') + '" type="text" />'
+                return '<textarea name="deger" class="form-control" type="text" rows="5" >' + (data.parametre ? data.parametre.deger : '') + '</textarea>'
             case 2:
-                return '<input class="form-control" type="file" /><input name="deger" id="deger"  value="' + (data.parametre ? data.parametre.degerInt : 0) + '" hidden />'
+                return '<input class="form-control" type="file" name="file" /><input name="deger" id="deger"  value="' + (data.parametre ? data.parametre.degerInt : 0) + '" hidden />'
             case 3:
                 return "<input name='deger' id='deger' hidden value='" + (data.parametre ? data.parametre.deger : null) + "'  />"
         }
