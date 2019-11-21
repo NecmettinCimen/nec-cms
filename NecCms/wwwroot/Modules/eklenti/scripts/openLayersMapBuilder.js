@@ -12,7 +12,11 @@ var openLayersMapBuilder = function () {
         height: "350",
         mapData: {}
 
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
     /**
      * http://leaflet-extras.github.io/leaflet-providers/preview/
@@ -30,22 +34,37 @@ var openLayersMapBuilder = function () {
         'Esri': "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
         'Esri Uydu': "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         'Suluboya': "http://{a-c}.tile.stamen.com/watercolor/{z}/{x}/{y}.png"
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
     this.$map = null;
     this.Map = null;
     this.MapLayers = {};
 
     this.loadAPI = function (callback) {
+<<<<<<< HEAD
         Fil.loadScriptAssets(['https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js'], callback);
         Fil.loadScriptAssets(['https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css']);
 
     };
+=======
+        Fil.loadScriptAssets(['https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js'], callback)
+        Fil.loadScriptAssets(['https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css']);
+
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
     this.init = function (options) {
 
         this.loadAPI(function () {
+<<<<<<< HEAD
             this.setOptions(options);
+=======
+            this.setOptions(options)
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
             this.$map = $(options.id);
             this.setHeight(options.height);
             this.setMapData(options.mapData);
@@ -60,7 +79,11 @@ var openLayersMapBuilder = function () {
         }.bind(this))
 
 
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
 
     this.drawMap = function () {
@@ -101,7 +124,11 @@ var openLayersMapBuilder = function () {
         window.addEventListener("load", map.updateSize.bind(map));
 
 
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
     this.initMarkerPopup = function () {
 
@@ -110,7 +137,11 @@ var openLayersMapBuilder = function () {
 
         if (!this.$mapPopup) {
             this.$mapPopup = document.createElement("div");
+<<<<<<< HEAD
             this.$map.appendChild(this.$mapPopup);
+=======
+            this.$map.appendChild(this.$mapPopup)
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
             this.$mapPopup.setAttribute("class", "ol-infowin");
             this.$mapPopup.style.position = "relative";
 
@@ -131,9 +162,15 @@ var openLayersMapBuilder = function () {
 
             var $popup = popup.getElement();
             if (feature) {
+<<<<<<< HEAD
                 $popup.style.display = "block";
                 var coord = feature.getGeometry().getCoordinates();
                 console.log("F", coord);
+=======
+                $popup.style.display = "block"
+                var coord = feature.getGeometry().getCoordinates();
+                console.log("F", coord)
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
 
                 var props = feature.getProperties();
@@ -145,7 +182,11 @@ var openLayersMapBuilder = function () {
                 infoElement.querySelector(".t").innerHTML = props.title;
                 infoElement.querySelector(".c").innerHTML = props.desc;
 
+<<<<<<< HEAD
                 $popup.appendChild(infoElement);
+=======
+                $popup.appendChild(infoElement)
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
                 popup.setPosition(coord);
 
                 //icon ebatına göre shift et;
@@ -161,7 +202,11 @@ var openLayersMapBuilder = function () {
 
 
         })
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
     this.addMarker = function (markerData) {
         if (!this.MapLayers.Markers) {
@@ -204,6 +249,7 @@ var openLayersMapBuilder = function () {
             console.log('Feature Moved To:' + this.getGeometry().getCoordinates());
         }, iconFeature);*/
 
+<<<<<<< HEAD
     };
     this.getIconPath = function (path) {
         if (!path) path = window.baseUrl + "/../styles/Eklenti/images/map/00default.png";
@@ -213,11 +259,26 @@ var openLayersMapBuilder = function () {
         this.mapData = data;
 
     };
+=======
+    }
+    this.getIconPath = function (path) {
+        if (!path) path = window.baseUrl + "/../styles/Eklenti/images/map/00default.png";
+        return path
+    }
+    this.setMapData = function (data) {
+        this.mapData = data;
+
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
     this.setHeight = function (height) {
         this.$map.setStyle('height', height);
         //todo: google.maps.event.trigger(this.map, 'resize');
         return this;
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
     this.setOptions = function (options) {
         var objectConstructor = {}.constructor;
 
@@ -237,11 +298,19 @@ var openLayersMapBuilder = function () {
 
         this.options = simpleMerge(options, this.options);
         return this.options;
+<<<<<<< HEAD
     };
     this.triggerEvent = function (element, eventName, params) {
         element.dispatchEvent(new CustomEvent(eventName, params));
     }
 };
+=======
+    }
+    this.triggerEvent = function (element, eventName, params) {
+        element.dispatchEvent(new CustomEvent(eventName, params));
+    }
+}
+>>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 
 
 
