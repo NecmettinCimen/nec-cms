@@ -1,7 +1,7 @@
 ﻿@section Styles{
-    <link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet" />
-    <link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet" />
-    <link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet" />
+    <link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet"/>
+    <link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet"/>
+    <link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet"/>
 }
 
 <div class="row">
@@ -13,7 +13,11 @@
                 <form id="editModalForm">
 
                     <div id="editModalRow"></div>
-                    <div class="row mt-5"><div class="col-md-12"><button type="submit" class="btn btn-primary">Kaydet</button></div></div>
+                    <div class="row mt-5">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Kaydet</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 
@@ -94,7 +98,7 @@
                     style: 'width: 30%;float: left;margin-left: 5px;',
                 },
             ]
-        })
+        });
         var quill;
         setTimeout(() => {
 
@@ -142,7 +146,7 @@
             quill.on('text-change', function (delta, oldDelta, source) {
                 $('#icerik').val($('#snow-editor > div.ql-editor')[0].innerHTML)
             });
-            loadPage()
+            loadPage();
             if (window.location.pathname.toLowerCase().match('duzenle')) {
             fetch(window.location.pathname.toLowerCase().replace('duzenle', 'bul'))
                 .then(res => res.json())

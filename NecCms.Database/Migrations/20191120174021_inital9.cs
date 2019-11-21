@@ -9,27 +9,27 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
-                table: "Icerikler");
+                "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
+                "Icerikler");
 
             migrationBuilder.DropTable(
-                name: "IcerikKategorileri");
+                "IcerikKategorileri");
 
             migrationBuilder.RenameColumn(
-                name: "IcerikKategoriId",
-                table: "Icerikler",
-                newName: "MenuId");
+                "IcerikKategoriId",
+                "Icerikler",
+                "MenuId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Icerikler_IcerikKategoriId",
+                "IX_Icerikler_IcerikKategoriId",
                 table: "Icerikler",
                 newName: "IX_Icerikler_MenuId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_Menu_MenuId",
-                table: "Icerikler",
-                column: "MenuId",
-                principalTable: "Menu",
+                "FK_Icerikler_Menu_MenuId",
+                "Icerikler",
+                "MenuId",
+                "Menu",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -37,63 +37,64 @@ namespace NecCms.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_Menu_MenuId",
-                table: "Icerikler");
+                "FK_Icerikler_Menu_MenuId",
+                "Icerikler");
 
             migrationBuilder.RenameColumn(
-                name: "MenuId",
-                table: "Icerikler",
-                newName: "IcerikKategoriId");
+                "MenuId",
+                "Icerikler",
+                "IcerikKategoriId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Icerikler_MenuId",
+                "IX_Icerikler_MenuId",
                 table: "Icerikler",
                 newName: "IX_Icerikler_IcerikKategoriId");
 
             migrationBuilder.CreateTable(
-                name: "IcerikKategorileri",
-                columns: table => new
+                "IcerikKategorileri",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Isim = table.Column<string>(maxLength: 50, nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Isim = table.Column<string>(maxLength: 50),
+                    KullaniciId = table.Column<int>(),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
                     UstKategoriId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IcerikKategorileri", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
-                        column: x => x.UstKategoriId,
-                        principalTable: "IcerikKategorileri",
-                        principalColumn: "Id",
+                        "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
+                        x => x.UstKategoriId,
+                        "IcerikKategorileri",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_IcerikKategorileri_KullaniciId",
-                table: "IcerikKategorileri",
-                column: "KullaniciId");
+                "IX_IcerikKategorileri_KullaniciId",
+                "IcerikKategorileri",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IcerikKategorileri_UstKategoriId",
-                table: "IcerikKategorileri",
-                column: "UstKategoriId");
+                "IX_IcerikKategorileri_UstKategoriId",
+                "IcerikKategorileri",
+                "UstKategoriId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
-                table: "Icerikler",
-                column: "IcerikKategoriId",
-                principalTable: "IcerikKategorileri",
+                "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
+                "Icerikler",
+                "IcerikKategoriId",
+                "IcerikKategorileri",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

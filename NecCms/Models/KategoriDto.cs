@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-namespace NecCms.Models{
-    public class KategoriDto{
+namespace NecCms.Models
+{
+    public class KategoriDto
+    {
         public int Id { get; set; }
         public string Isim { get; set; }
         public string Url { get; set; }

@@ -17,10 +17,10 @@ window.addEvent('domready', function () {
 	  
     $$('.navi li').addEvent('mouseover', function (e) {
         $('top').addClass('opak');
-    })
+    });
     $$('.navi li').addEvent('mouseleave', function (e) {
         $('top').removeClass('opak');
-    })
+    });
     window.addEvent('scroll', function () {
         siteMainMenu.hideAllSubMenusNow()
     })

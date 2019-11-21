@@ -9,83 +9,85 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Etkinlikler");
+                "Etkinlikler");
 
             migrationBuilder.CreateTable(
-                name: "Iletisim",
-                columns: table => new
+                "Iletisim",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    Konu = table.Column<string>(maxLength: 100, nullable: false),
-                    AdSoyad = table.Column<string>(maxLength: 100, nullable: false),
-                    Eposta = table.Column<string>(maxLength: 50, nullable: false),
-                    Aciklama = table.Column<string>(maxLength: 500, nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    Konu = table.Column<string>(maxLength: 100),
+                    AdSoyad = table.Column<string>(maxLength: 100),
+                    Eposta = table.Column<string>(maxLength: 50),
+                    Aciklama = table.Column<string>(maxLength: 500)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Iletisim", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Iletisim_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Iletisim_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Iletisim_KullaniciId",
-                table: "Iletisim",
-                column: "KullaniciId");
+                "IX_Iletisim_KullaniciId",
+                "Iletisim",
+                "KullaniciId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Iletisim");
+                "Iletisim");
 
             migrationBuilder.CreateTable(
-                name: "Etkinlikler",
-                columns: table => new
+                "Etkinlikler",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IcerikId = table.Column<int>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    IcerikId = table.Column<int>(),
+                    KullaniciId = table.Column<int>(),
                     Latitude = table.Column<string>(nullable: true),
                     Longitude = table.Column<string>(nullable: true),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false)
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Etkinlikler", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Etkinlikler_Icerikler_IcerikId",
-                        column: x => x.IcerikId,
-                        principalTable: "Icerikler",
-                        principalColumn: "Id",
+                        "FK_Etkinlikler_Icerikler_IcerikId",
+                        x => x.IcerikId,
+                        "Icerikler",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Etkinlikler_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Etkinlikler_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Etkinlikler_IcerikId",
-                table: "Etkinlikler",
-                column: "IcerikId");
+                "IX_Etkinlikler_IcerikId",
+                "Etkinlikler",
+                "IcerikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Etkinlikler_KullaniciId",
-                table: "Etkinlikler",
-                column: "KullaniciId");
+                "IX_Etkinlikler_KullaniciId",
+                "Etkinlikler",
+                "KullaniciId");
         }
     }
 }

@@ -7,16 +7,16 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Data",
-                table: "Dosyalar",
+                "Data",
+                "Dosyalar",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Data",
-                table: "Dosyalar");
+                "Data",
+                "Dosyalar");
         }
     }
 }

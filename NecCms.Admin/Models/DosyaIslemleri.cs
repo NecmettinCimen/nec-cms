@@ -11,19 +11,21 @@ namespace NecCms.Admin.Models
     {
         public static int Kaydet(IFormFile file, IGenericService _genericService)
         {
-            string resim = DateTime.Now.ToString("yyyyMMddHHmmss.") + Path.GetFileName(file.FileName).Split(".").Last();
+            var resim = DateTime.Now.ToString("yyyyMMddHHmmss.") + Path.GetFileName(file.FileName).Split(".").Last();
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", resim);
-            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
+
             string data;
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
             {
                 file.CopyTo(memoryStream);
                 data = Convert.ToBase64String(memoryStream.ToArray());
             }
-            Dosyalar dosya = new Dosyalar
+
+            var dosya = new Dosyalar
             {
                 Adi = resim,
                 Boyutu = file.Length,

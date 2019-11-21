@@ -1,5 +1,3 @@
-using System;
-
 namespace NecCms.Admin.Models
 {
     public class ErrorViewModel

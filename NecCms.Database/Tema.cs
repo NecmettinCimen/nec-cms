@@ -6,14 +6,16 @@ namespace NecCms.Database
     {
         public class Parametre : BaseEntity
         {
-            [Required]
-            public string Kodu { get; set; }
+            [Required] public string Kodu { get; set; }
+
             public string Isim { get; set; }
             public string Aciklama { get; set; }
-            [Required]
-            public int Tip { get; set; }
+
+            [Required] public int Tip { get; set; }
+
             public int Sira { get; set; }
         }
+
         public class ParametreDegeri : BaseEntity
         {
             public int ParametreId { get; set; }

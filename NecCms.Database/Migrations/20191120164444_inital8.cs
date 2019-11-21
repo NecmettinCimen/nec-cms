@@ -7,35 +7,35 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Isim",
-                table: "Menu",
+                "Isim",
+                "Menu",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "Sira",
-                table: "Menu",
+                "Sira",
+                "Menu",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Url",
-                table: "Icerikler",
+                "Url",
+                "Icerikler",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldMaxLength: 250);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Giris",
-                table: "Icerikler",
+                "Giris",
+                "Icerikler",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldMaxLength: 400);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Baslik",
-                table: "Icerikler",
+                "Baslik",
+                "Icerikler",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldMaxLength: 200);
@@ -44,32 +44,32 @@ namespace NecCms.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Sira",
-                table: "Menu");
+                "Sira",
+                "Menu");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Isim",
-                table: "Menu",
+                "Isim",
+                "Menu",
                 nullable: true,
                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Url",
-                table: "Icerikler",
+                "Url",
+                "Icerikler",
                 maxLength: 250,
                 nullable: false,
                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Giris",
-                table: "Icerikler",
+                "Giris",
+                "Icerikler",
                 maxLength: 400,
                 nullable: false,
                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Baslik",
-                table: "Icerikler",
+                "Baslik",
+                "Icerikler",
                 maxLength: 200,
                 nullable: false,
                 oldClrType: typeof(string));

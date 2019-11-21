@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
+using NecCms.Database.Service;
 
 namespace NecCms.Admin
 {
@@ -27,7 +28,7 @@ namespace NecCms.Admin
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddFactory<Database.Service.IGenericService, Database.Service.GenericService>();
+            services.AddFactory<IGenericService, GenericService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -36,13 +37,9 @@ namespace NecCms.Admin
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 app.UseExceptionHandler("/Home/Error");
-            }
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -50,8 +47,8 @@ namespace NecCms.Admin
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
@@ -60,8 +57,8 @@ namespace NecCms.Admin
     public static class ServiceCollectionExtensions
     {
         public static void AddFactory<TService, TImplementation>(this IServiceCollection services)
-        where TService : class
-        where TImplementation : class, TService
+            where TService : class
+            where TImplementation : class, TService
         {
             services.AddTransient<TService, TImplementation>();
             services.AddSingleton<Func<TService>>(x => () => x.GetService<TService>());

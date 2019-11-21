@@ -4,16 +4,6 @@ namespace NecCms.Database
 {
     public class CrmContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=sql.poseidon.domainhizmetleri.com;Database=aybarshu_kuk;User Id=aybarshu_kuk;Password=Huzt!903;");
-            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Kullanici>().HasData(new Kullanici { Id = 1, AdSoyad = "Admin", Eposta = "admin@crm.com", Parola = "admin@crm.com", Rol = RolEnum.Admin, Telefon = "05456286324" });
-        }
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Icerik.Icerikler> Icerikler { get; set; }
         public DbSet<Icerik.FotografGalerisi> FotografGalerisi { get; set; }
@@ -23,8 +13,24 @@ namespace NecCms.Database
 
         public DbSet<Tema.Parametre> Parametre { get; set; }
         public DbSet<Tema.ParametreDegeri> ParametreDegeri { get; set; }
-     
+
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Iletisim> Iletisim { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                "Server=sql.poseidon.domainhizmetleri.com;Database=aybarshu_kuk;User Id=aybarshu_kuk;Password=Huzt!903;");
+            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kullanici>().HasData(new Kullanici
+            {
+                Id = 1, AdSoyad = "Admin", Eposta = "admin@crm.com", Parola = "admin@crm.com", Rol = RolEnum.Admin,
+                Telefon = "05456286324"
+            });
+        }
     }
 }

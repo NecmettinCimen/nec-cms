@@ -7,16 +7,36 @@ namespace NecCms.Admin.Controllers
 {
     public class MenuController : Controller
     {
-        readonly IGenericService _genericService;
+        private readonly IGenericService _genericService;
 
-        public MenuController(IGenericService genericService) => _genericService = genericService;
+        public MenuController(IGenericService genericService)
+        {
+            _genericService = genericService;
+        }
 
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-        public IActionResult Liste(int? id) => Json(new { data = _genericService.IQueryable<Menu>().Where(x => !id.HasValue || x.Id == id).OrderBy(x=>x.Sira).ToList() });
+        public IActionResult Liste(int? id)
+        {
+            return Json(new
+            {
+                data = _genericService.IQueryable<Menu>().Where(x => !id.HasValue || x.Id == id).OrderBy(x => x.Sira)
+                    .ToList()
+            });
+        }
 
-        public IActionResult Kaydet([FromBody]Menu model) { _genericService.Save<Menu>(model); return Json(new { data = model });}
+        public IActionResult Kaydet([FromBody] Menu model)
+        {
+            _genericService.Save(model);
+            return Json(new {data = model});
+        }
 
-        public IActionResult Kaldir([FromBody]Menu model) => Json(new { data = _genericService.Remove<Menu>(model) });
+        public IActionResult Kaldir([FromBody] Menu model)
+        {
+            return Json(new {data = _genericService.Remove(model)});
+        }
     }
 }

@@ -1,6 +1,6 @@
 @section Styles{
-<link href="~/assets/css/jkanban.min.css" rel="stylesheet" />
-<style>
+    <link href="~/assets/css/jkanban.min.css" rel="stylesheet"/>
+    <style>
     body {
         font-family: "Lato";
         margin: 0;
@@ -44,7 +44,9 @@
                         <h4 class="card-title pageHeader" style="float:left"></h4>
                         <a id="formOpenButton">
                             <h4 class="card-title" style="float:right;cursor:pointer" data-toggle="modal"
-                                data-target="#editModal" onclick="setFormId(0)"><i class="fa fa-plus"></i> Ekle</h4>
+                                data-target="#editModal" onclick="setFormId(0)">
+                                <i class="fa fa-plus"></i> Ekle
+                            </h4>
                         </a>
                     </div>
                 </div>
@@ -54,13 +56,13 @@
     </div>
 </div>
 
-<partial name="~/Views/Shared/_EditModal.cshtml" />
+<partial name="~/Views/Shared/_EditModal.cshtml"/>
 
 
 @section Scripts{
-<script src="~/assets/js/jkanban.min.js"></script>
-<script src="~/assets/js/url_slug.min.js"></script>
-<script>
+    <script src="~/assets/js/jkanban.min.js"></script>
+    <script src="~/assets/js/url_slug.min.js"></script>
+    <script>
     pageInit(
         {
             url: '/Menu',
@@ -101,20 +103,20 @@
                     )
                 });
             })
-    }
+    };
 
-    initData()
+    initData();
 
     addKanban = (data) => {
         initData();
         $('#editModal').modal('hide')
-    }
+    };
 
     var table = {
         ajax: {
             reload: () => initData()
         }
-    }
+    };
 
     var Kanban;
     initKanban = () => {
@@ -124,19 +126,19 @@
             addItemButton: true,
             buttonContent: 'Düzenle',
             buttonClick: function (el, boardId) {
-                setFormId(parseInt(boardId.replace('item_', '')))
+                setFormId(parseInt(boardId.replace('item_', '')));
                 $('#editModal').modal('show')
             },
             click: function (el) {
                 if (el.dataset.eid.startsWith('ustid_')) {
                     var ustId = el.dataset.eid.replace('ustid_', '');
 
-                    setFormId(0)
-                    $('#ustId').val(ustId)
+                    setFormId(0);
+                    $('#ustId').val(ustId);
 
                     $('#editModal').modal('show')
                 } else {
-                    setFormId(parseInt(el.dataset.eid.replace('item_', '')))
+                    setFormId(parseInt(el.dataset.eid.replace('item_', '')));
                     $('#editModal').modal('show')
                 }
             }

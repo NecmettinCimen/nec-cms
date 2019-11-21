@@ -1,6 +1,7 @@
 using System;
 
-namespace NecCms.Models{
+namespace NecCms.Models
+{
     public class IcerikDto
     {
         public string Url { get; set; }

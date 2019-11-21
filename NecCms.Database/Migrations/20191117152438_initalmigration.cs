@@ -9,185 +9,192 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Kullanicilar",
-                columns: table => new
+                "Kullanicilar",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    AdSoyad = table.Column<string>(maxLength: 25, nullable: false),
-                    Telefon = table.Column<string>(maxLength: 15, nullable: false),
-                    Eposta = table.Column<string>(maxLength: 50, nullable: false),
-                    Parola = table.Column<string>(maxLength: 50, nullable: false),
-                    Rol = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    AdSoyad = table.Column<string>(maxLength: 25),
+                    Telefon = table.Column<string>(maxLength: 15),
+                    Eposta = table.Column<string>(maxLength: 50),
+                    Parola = table.Column<string>(maxLength: 50),
+                    Rol = table.Column<int>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Kullanicilar", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Kullanicilar_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Kullanicilar_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Dosyalar",
-                columns: table => new
+                "Dosyalar",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    Adi = table.Column<string>(maxLength: 200, nullable: false),
-                    Yolu = table.Column<string>(maxLength: 250, nullable: false),
-                    Boyutu = table.Column<long>(nullable: false),
-                    Tipi = table.Column<string>(maxLength: 20, nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    Adi = table.Column<string>(maxLength: 200),
+                    Yolu = table.Column<string>(maxLength: 250),
+                    Boyutu = table.Column<long>(),
+                    Tipi = table.Column<string>(maxLength: 20)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dosyalar", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Dosyalar_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Dosyalar_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "IcerikKategoriler",
-                columns: table => new
+                "IcerikKategoriler",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    Isim = table.Column<string>(maxLength: 50, nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    Isim = table.Column<string>(maxLength: 50)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IcerikKategoriler", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Uyeler",
-                columns: table => new
+                "Uyeler",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    AdSoyad = table.Column<string>(maxLength: 100, nullable: false),
-                    Email = table.Column<string>(maxLength: 100, nullable: false),
-                    Telefon = table.Column<string>(maxLength: 15, nullable: false),
-                    Cinsiyet = table.Column<bool>(nullable: false),
-                    DogumTarihi = table.Column<DateTime>(nullable: false),
-                    Bolum = table.Column<string>(maxLength: 100, nullable: false),
-                    Hakkinda = table.Column<string>(maxLength: 250, nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    AdSoyad = table.Column<string>(maxLength: 100),
+                    Email = table.Column<string>(maxLength: 100),
+                    Telefon = table.Column<string>(maxLength: 15),
+                    Cinsiyet = table.Column<bool>(),
+                    DogumTarihi = table.Column<DateTime>(),
+                    Bolum = table.Column<string>(maxLength: 100),
+                    Hakkinda = table.Column<string>(maxLength: 250)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Uyeler", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Uyeler_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Uyeler_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FotografGalerisiDosya",
-                columns: table => new
+                "FotografGalerisiDosya",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    DosyaId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    DosyaId = table.Column<int>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FotografGalerisiDosya", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
-                        column: x => x.DosyaId,
-                        principalTable: "Dosyalar",
-                        principalColumn: "Id",
+                        "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
+                        x => x.DosyaId,
+                        "Dosyalar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Icerikler",
-                columns: table => new
+                "Icerikler",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    IcerikKategoriId = table.Column<int>(nullable: false),
-                    Baslik = table.Column<string>(maxLength: 200, nullable: false),
-                    Giris = table.Column<string>(maxLength: 400, nullable: false),
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    IcerikKategoriId = table.Column<int>(),
+                    Baslik = table.Column<string>(maxLength: 200),
+                    Giris = table.Column<string>(maxLength: 400),
                     Icerik = table.Column<string>(nullable: true),
-                    YayinlanmaTarihi = table.Column<DateTime>(nullable: false),
-                    Durum = table.Column<int>(nullable: false),
-                    YazarId = table.Column<int>(nullable: false),
-                    Url = table.Column<string>(maxLength: 250, nullable: false)
+                    YayinlanmaTarihi = table.Column<DateTime>(),
+                    Durum = table.Column<int>(),
+                    YazarId = table.Column<int>(),
+                    Url = table.Column<string>(maxLength: 250)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Icerikler", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
-                        column: x => x.IcerikKategoriId,
-                        principalTable: "IcerikKategoriler",
-                        principalColumn: "Id",
+                        "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
+                        x => x.IcerikKategoriId,
+                        "IcerikKategoriler",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Icerikler_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Icerikler_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Icerikler_Kullanicilar_YazarId",
-                        column: x => x.YazarId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Icerikler_Kullanicilar_YazarId",
+                        x => x.YazarId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Etkinlikler",
-                columns: table => new
+                "Etkinlikler",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    IcerikId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    IcerikId = table.Column<int>(),
                     Latitude = table.Column<string>(nullable: true),
                     Longitude = table.Column<string>(nullable: true)
                 },
@@ -195,155 +202,160 @@ namespace NecCms.Database.Migrations
                 {
                     table.PrimaryKey("PK_Etkinlikler", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Etkinlikler_Icerikler_IcerikId",
-                        column: x => x.IcerikId,
-                        principalTable: "Icerikler",
-                        principalColumn: "Id",
+                        "FK_Etkinlikler_Icerikler_IcerikId",
+                        x => x.IcerikId,
+                        "Icerikler",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Etkinlikler_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Etkinlikler_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FotografGalerisileri",
-                columns: table => new
+                "FotografGalerisileri",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
-                    IcerikId = table.Column<int>(nullable: false),
-                    FotografGalerisiDosyaId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
+                    IcerikId = table.Column<int>(),
+                    FotografGalerisiDosyaId = table.Column<int>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FotografGalerisileri", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
-                        column: x => x.FotografGalerisiDosyaId,
-                        principalTable: "FotografGalerisiDosya",
-                        principalColumn: "Id",
+                        "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
+                        x => x.FotografGalerisiDosyaId,
+                        "FotografGalerisiDosya",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisileri_Icerikler_IcerikId",
-                        column: x => x.IcerikId,
-                        principalTable: "Icerikler",
-                        principalColumn: "Id",
+                        "FK_FotografGalerisileri_Icerikler_IcerikId",
+                        x => x.IcerikId,
+                        "Icerikler",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
-                table: "Kullanicilar",
-                columns: new[] { "Id", "AdSoyad", "Eposta", "KullaniciId", "Parola", "Rol", "Sil", "Tarih", "Telefon" },
-                values: new object[] { 1, "Admin", "admin@crm.com", 1, "admin@crm.com", 1, false, new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "05456286324" });
+                "Kullanicilar",
+                new[] {"Id", "AdSoyad", "Eposta", "KullaniciId", "Parola", "Rol", "Sil", "Tarih", "Telefon"},
+                new object[]
+                {
+                    1, "Admin", "admin@crm.com", 1, "admin@crm.com", 1, false,
+                    new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "05456286324"
+                });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dosyalar_KullaniciId",
-                table: "Dosyalar",
-                column: "KullaniciId");
+                "IX_Dosyalar_KullaniciId",
+                "Dosyalar",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Etkinlikler_IcerikId",
-                table: "Etkinlikler",
-                column: "IcerikId");
+                "IX_Etkinlikler_IcerikId",
+                "Etkinlikler",
+                "IcerikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Etkinlikler_KullaniciId",
-                table: "Etkinlikler",
-                column: "KullaniciId");
+                "IX_Etkinlikler_KullaniciId",
+                "Etkinlikler",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FotografGalerisiDosya_DosyaId",
-                table: "FotografGalerisiDosya",
-                column: "DosyaId");
+                "IX_FotografGalerisiDosya_DosyaId",
+                "FotografGalerisiDosya",
+                "DosyaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FotografGalerisiDosya_KullaniciId",
-                table: "FotografGalerisiDosya",
-                column: "KullaniciId");
+                "IX_FotografGalerisiDosya_KullaniciId",
+                "FotografGalerisiDosya",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FotografGalerisileri_FotografGalerisiDosyaId",
-                table: "FotografGalerisileri",
-                column: "FotografGalerisiDosyaId");
+                "IX_FotografGalerisileri_FotografGalerisiDosyaId",
+                "FotografGalerisileri",
+                "FotografGalerisiDosyaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FotografGalerisileri_IcerikId",
-                table: "FotografGalerisileri",
-                column: "IcerikId");
+                "IX_FotografGalerisileri_IcerikId",
+                "FotografGalerisileri",
+                "IcerikId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FotografGalerisileri_KullaniciId",
-                table: "FotografGalerisileri",
-                column: "KullaniciId");
+                "IX_FotografGalerisileri_KullaniciId",
+                "FotografGalerisileri",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IcerikKategoriler_KullaniciId",
-                table: "IcerikKategoriler",
-                column: "KullaniciId");
+                "IX_IcerikKategoriler_KullaniciId",
+                "IcerikKategoriler",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Icerikler_IcerikKategoriId",
-                table: "Icerikler",
-                column: "IcerikKategoriId");
+                "IX_Icerikler_IcerikKategoriId",
+                "Icerikler",
+                "IcerikKategoriId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Icerikler_KullaniciId",
-                table: "Icerikler",
-                column: "KullaniciId");
+                "IX_Icerikler_KullaniciId",
+                "Icerikler",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Icerikler_YazarId",
-                table: "Icerikler",
-                column: "YazarId");
+                "IX_Icerikler_YazarId",
+                "Icerikler",
+                "YazarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Kullanicilar_KullaniciId",
-                table: "Kullanicilar",
-                column: "KullaniciId");
+                "IX_Kullanicilar_KullaniciId",
+                "Kullanicilar",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Uyeler_KullaniciId",
-                table: "Uyeler",
-                column: "KullaniciId");
+                "IX_Uyeler_KullaniciId",
+                "Uyeler",
+                "KullaniciId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Etkinlikler");
+                "Etkinlikler");
 
             migrationBuilder.DropTable(
-                name: "FotografGalerisileri");
+                "FotografGalerisileri");
 
             migrationBuilder.DropTable(
-                name: "Uyeler");
+                "Uyeler");
 
             migrationBuilder.DropTable(
-                name: "FotografGalerisiDosya");
+                "FotografGalerisiDosya");
 
             migrationBuilder.DropTable(
-                name: "Icerikler");
+                "Icerikler");
 
             migrationBuilder.DropTable(
-                name: "Dosyalar");
+                "Dosyalar");
 
             migrationBuilder.DropTable(
-                name: "IcerikKategoriler");
+                "IcerikKategoriler");
 
             migrationBuilder.DropTable(
-                name: "Kullanicilar");
+                "Kullanicilar");
         }
     }
 }

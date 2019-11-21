@@ -1,14 +1,13 @@
-﻿
-$(() => loadPage())
+﻿$(() => loadPage());
 
 var table, tpage;
 loadPage = () => {
-    var page = pages.find(f => f.url.toLowerCase() == window.location.pathname.toLowerCase())
+    var page = pages.find(f => f.url.toLowerCase() == window.location.pathname.toLowerCase());
 
     if (page) {
         pageInit(page);
     }
-}
+};
 
 pageInit = (page) => {
     tpage = page;
@@ -75,17 +74,17 @@ pageInit = (page) => {
         $('#editModalRow').append(prepareForm(page.form));
 
     if (page.formsubmittype == 'formdata') {
-        $('#editModalForm').attr('action', (tpage.saveurl || (tpage.url.replace('/Index', '') + '/Save')))
-        $('#editModalForm').attr('enctype', 'multipart/form-data')
+        $('#editModalForm').attr('action', (tpage.saveurl || (tpage.url.replace('/Index', '') + '/Save')));
+        $('#editModalForm').attr('enctype', 'multipart/form-data');
         $('#editModalForm').attr('onsubmit', 'FileUpload(this);return false;')
     }
 
-    $('#editModalForm').on('submit', submitForm)
+    $('#editModalForm').on('submit', submitForm);
 
     initdatepicker()
 
 
-}
+};
 
 
 initdatepicker = () => $('.date').datepicker({
@@ -96,8 +95,8 @@ initdatepicker = () => $('.date').datepicker({
 
 submitForm = (e) => {
     e.preventDefault();
-    Swal.showLoading()
-    showToaster(1)
+    Swal.showLoading();
+    showToaster(1);
     if (tpage.customSaveFunc) {
         eval(tpage.customSaveFunc);
         return;
@@ -117,11 +116,11 @@ submitForm = (e) => {
             },
             body
         }).then(res => {
-            swal.close()
+            swal.close();
             if (res.status == 500) {
                 return false;
             } else {
-                showToaster(2)
+                showToaster(2);
                 return res.json()
             }
         }).then(res => {
@@ -136,10 +135,10 @@ submitForm = (e) => {
             }
         })
     }
-}
+};
 
 async function FileUpload(oFormElement) {
-    showToaster(1)
+    showToaster(1);
     const formData = new FormData(oFormElement);
 
     try {
@@ -150,11 +149,11 @@ async function FileUpload(oFormElement) {
 
         if (response.ok) {
             if (tpage.customsuccessfun) {
-                swal.close()
+                swal.close();
                 eval(tpage.customsuccessfun)
             }
             else {
-                showToaster(2)
+                showToaster(2);
                 table.ajax.reload();
                 $('#editModal').modal('hide')
             }
@@ -175,7 +174,7 @@ silitem = () => {
     }).then((result) => {
         if (result.value) {
 
-            showToaster(1)
+            showToaster(1);
             fetch((tpage.silurl || tpage.url.replace('/Index', '') + '/Kaldir'), {
                 method: 'post',
                 headers: {
@@ -188,13 +187,13 @@ silitem = () => {
                 if (res.status == 500) {
                     return false;
                 } else {
-                    showToaster(2)
+                    showToaster(2);
                     return res.json()
                 }
             }).then(res => {
                 if (res) {
                     table.ajax.reload();
-                    $('#editModal').modal('hide')
+                    $('#editModal').modal('hide');
                     Swal.fire(
                         'Başarılı!',
                         'Kaldırıldı.',
@@ -204,12 +203,12 @@ silitem = () => {
             })
         }
     })
-}
+};
 
 var tid;
 setFormId = (id) => {
-    if (id == 0) $('#editModalDelete').css('display', 'none')
-    else $('#editModalDelete').css('display', 'flex')
+    if (id == 0) $('#editModalDelete').css('display', 'none');
+    else $('#editModalDelete').css('display', 'flex');
 
     tid = id;
     $("#editModalForm").trigger('reset');
@@ -219,60 +218,60 @@ setFormId = (id) => {
             .then(res => res.json())
             .then(res => res.data.map(item => Object.keys(item).map(name => $('#' + name).val(setValue(name, item[name])).change())))
 
-}
+};
 
 setValue = (name, value) => {
     if (name.toLowerCase().match('tarih'))
         return formatDateLocate(value);
     else
         return value;
-}
+};
 
 prepareForm = (formList) => {
     var formHtml = formList.map(item => formElements(item));
     return formHtml;
-}
+};
 formElements = (item) => {
     var elementHtml = '<div class="form-group" style="' + (item.style || "") + '" >';
 
     if (!item.hidden)
-        elementHtml += `<label for="${item.id}">${item.name}</label>`
+        elementHtml += `<label for="${item.id}">${item.name}</label>`;
 
     switch (item.type) {
         case 'input':
-            elementHtml += `<input class="form-control ${item.class || ""}" id="${item.id}" name="${item.id}" placeholder="${item.placeholder || item.name}" `
+            elementHtml += `<input class="form-control ${item.class || ""}" id="${item.id}" name="${item.id}" placeholder="${item.placeholder || item.name}" `;
 
             if (item.subtype)
-                elementHtml += ` type="${item.subtype.split(',')[0]}"`
+                elementHtml += ` type="${item.subtype.split(',')[0]}"`;
             else
-                elementHtml += ` type=""text"`
+                elementHtml += ` type=""text"`;
 
             if (item.pattern)
-                elementHtml += ` pattern="${item.pattern}"`
+                elementHtml += ` pattern="${item.pattern}"`;
 
             if (item.maxLength)
-                elementHtml += ` maxLength="${item.maxLength}"`
+                elementHtml += ` maxLength="${item.maxLength}"`;
 
             if (item.hidden)
-                elementHtml += ` hidden`
+                elementHtml += ` hidden`;
 
             if (item.required)
-                elementHtml += ` required`
+                elementHtml += ` required`;
 
             if (item.value != undefined)
-                elementHtml += ` value="${item.value}"`
+                elementHtml += ` value="${item.value}"`;
 
             if (item.onchange)
-                elementHtml += ` onchange="${item.onchange}" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"`
+                elementHtml += ` onchange="${item.onchange}" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"`;
 
             if (item.dataset)
-                elementHtml += ` dataset="${item.dataset}"`
+                elementHtml += ` dataset="${item.dataset}"`;
 
-            elementHtml += '>'
+            elementHtml += '>';
             break;
         case 'textarea':
             elementHtml += `<textarea class="form-control" id="${item.id}" name="${item.id}"` +
-                ` rows="3" maxLength="${item.maxLength}" ></textarea>`
+                ` rows="3" maxLength="${item.maxLength}" ></textarea>`;
             break;
         case 'select':
             if (item.ajax)
@@ -286,13 +285,13 @@ formElements = (item) => {
                                 data: s.data
                             }))
                         })
-                    })
+                    });
 
             setTimeout(() => $(`#${item.id}`).select2({
                 width: 'resolve',
                 placeHolder: item.name,
                 data: item.data
-            }), 100)
+            }), 100);
 
             elementHtml += `<select class="form-control" ${item.required ? `required` : ""}` +
                 ` ${item.subinputval ? `subinputval="${item.subinputval}"` : ""}` +
@@ -301,7 +300,7 @@ formElements = (item) => {
                 `${item.subonchange ? `subonchange="${item.subonchange}"` : ""} ` +
                 `style="width:100%" ${item.multi ? 'multiple="multiple"' : ""}` +
                 ` name="${item.id}" id="${item.id}"></select>` +
-                `<div class="row"><div class="col-md-12" id="${item.id + "after"}" ></div></div>`
+                `<div class="row"><div class="col-md-12" id="${item.id + "after"}" ></div></div>`;
             break;
 
         case 'date':
@@ -333,18 +332,18 @@ formElements = (item) => {
                     class: item.id,
                     name: value.text,
                     style: item.inputstyle
-                }))))
+                }))));
 
             elementHtml += `<div class="row"><div class="col-md-12" id="${item.id}" ></div></div>`;
 
             break;
         case 'html':
-            elementHtml += item.html
+            elementHtml += item.html;
             break;
         default:
     }
     return elementHtml + '</div>';
-}
+};
 
 showToaster = (id) => {
     if (id === 1)
@@ -352,13 +351,13 @@ showToaster = (id) => {
     if (id === 2)
         id = "#basarilitoast";
 
-    $(id).toast('show')
+    $(id).toast('show');
     setTimeout(() => $(id).toast('hide'), 2000);
-}
+};
 
 
-formatDateLocate = (date) => date.substring(8, 10) + "." + date.substring(5, 7) + "." + date.substring(0, 4)
-formatDateIso = (date) => date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2)
+formatDateLocate = (date) => date.substring(8, 10) + "." + date.substring(5, 7) + "." + date.substring(0, 4);
+formatDateIso = (date) => date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
 
 selectInputsChanged = (current) => {
     var itemid = "#" + current.id;
@@ -374,4 +373,4 @@ selectInputsChanged = (current) => {
         required: $(current).attr('required'),
         style: 'width: 30%;float: left;margin-left: 5px;',
     })));
-}
+};

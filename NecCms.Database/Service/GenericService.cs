@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+﻿using System.Linq;
+
 namespace NecCms.Database.Service
 {
     public interface IGenericService
@@ -13,12 +11,16 @@ namespace NecCms.Database.Service
 
     public class GenericService : IGenericService
     {
-        readonly CrmContext db = new CrmContext();
-        public IQueryable<T> IQueryable<T>() where T : BaseEntity => db.Set<T>().Where(x => !x.Sil);
+        private readonly CrmContext db = new CrmContext();
+
+        public IQueryable<T> IQueryable<T>() where T : BaseEntity
+        {
+            return db.Set<T>().Where(x => !x.Sil);
+        }
 
         public bool Remove<T>(T model) where T : BaseEntity
         {
-            T dbmodel = db.Set<T>().Find(model.Id);
+            var dbmodel = db.Set<T>().Find(model.Id);
             dbmodel.Sil = true;
 
             db.Set<T>().Update(dbmodel);

@@ -45,10 +45,10 @@ Fil.renderFront = function () {
         // popup box yüklene
         var loadLightBoxFiles = true;
         var i = 0;
-        var mediaStorage = new Array();
+        var mediaStorage = [];
         $$('IMG[rel=fwShowBigImg],IMG[data-showLarge=true]').each(function (el) {
             el.mediaIndex = i;
-            mediaStorage[i] = new Array(el.get('src').replace(/(.*)(\.[0-9]*px)(\.[a-z]{1,}$)/gi, '$1$3'), el.get('alt'));
+            mediaStorage[i] = [el.get('src').replace(/(.*)(\.[0-9]*px)(\.[a-z]{1,}$)/gi, '$1$3'), el.get('alt')];
             i++;
         });
         $$('IMG[rel=fwShowBigImg],IMG[data-showLarge=true]').addEvent('click', function (e) {
@@ -92,7 +92,7 @@ Fil.renderFront = function () {
         tabs.push(tab.getElement('.h'));
         contents.push(tab.getElement('.c'));
 
-    })
+    });
     if(tabs.length > 0){
         var ID=Fil.randomDomId();
         var tabHolder=new Element('div',{'class':'mootabs','id':ID});
@@ -147,7 +147,7 @@ Fil.renderFront = function () {
         function replaceImg(data ){
 
             if(!data) {
-                console.warn("No svg data. IF-RIMG-01")
+                console.warn("No svg data. IF-RIMG-01");
                 return;
             }
             var ele=new Element( 'div', { html: data });
@@ -163,7 +163,7 @@ Fil.renderFront = function () {
                 svgClass +=" "+imgClass;
             }
 
-            $svg.setAttribute("class",svgClass)
+            $svg.setAttribute("class", svgClass);
 
             // Remove any invalid XML tags as per http://validator.w3.org
             $svg.removeAttribute('xmlns:a');
@@ -197,9 +197,9 @@ Fil.renderFront = function () {
             });
             myRequest.send();
         }
-        return;
+
     });
-}
+};
 
 
 function initFront() {
@@ -238,7 +238,7 @@ function initFront() {
     }
     //auto load parallax script
     if ($$('.parallaxbox').length > 0) {
-        $$('.parallaxbox').setStyle("transition","background-position 2s ease-out")
+        $$('.parallaxbox').setStyle("transition", "background-position 2s ease-out");
         Asset.javascript(window.baseUrl + '/../scripts/fil/parallax.js');
     }
 

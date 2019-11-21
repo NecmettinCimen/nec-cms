@@ -7,191 +7,191 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
-                table: "FotografGalerisiDosya");
+                "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
+                "FotografGalerisiDosya");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
-                table: "FotografGalerisiDosya");
+                "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
+                "FotografGalerisiDosya");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
-                table: "FotografGalerisileri");
+                "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
+                "FotografGalerisileri");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisileri_Icerikler_IcerikId",
-                table: "FotografGalerisileri");
+                "FK_FotografGalerisileri_Icerikler_IcerikId",
+                "FotografGalerisileri");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
-                table: "FotografGalerisileri");
+                "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
+                "FotografGalerisileri");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
-                table: "IcerikKategoriler");
+                "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
+                "IcerikKategoriler");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
-                table: "Icerikler");
+                "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
+                "Icerikler");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_IcerikKategoriler",
-                table: "IcerikKategoriler");
+                "PK_IcerikKategoriler",
+                "IcerikKategoriler");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_FotografGalerisileri",
-                table: "FotografGalerisileri");
+                "PK_FotografGalerisileri",
+                "FotografGalerisileri");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_FotografGalerisiDosya",
-                table: "FotografGalerisiDosya");
+                "PK_FotografGalerisiDosya",
+                "FotografGalerisiDosya");
 
             migrationBuilder.RenameTable(
-                name: "IcerikKategoriler",
+                "IcerikKategoriler",
                 newName: "IcerikKategorileri");
 
             migrationBuilder.RenameTable(
-                name: "FotografGalerisileri",
+                "FotografGalerisileri",
                 newName: "FotografGalerisi");
 
             migrationBuilder.RenameTable(
-                name: "FotografGalerisiDosya",
+                "FotografGalerisiDosya",
                 newName: "FotografGalerisiDosyalar");
 
             migrationBuilder.RenameIndex(
-                name: "IX_IcerikKategoriler_KullaniciId",
+                "IX_IcerikKategoriler_KullaniciId",
                 table: "IcerikKategorileri",
                 newName: "IX_IcerikKategorileri_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisileri_KullaniciId",
+                "IX_FotografGalerisileri_KullaniciId",
                 table: "FotografGalerisi",
                 newName: "IX_FotografGalerisi_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisileri_IcerikId",
+                "IX_FotografGalerisileri_IcerikId",
                 table: "FotografGalerisi",
                 newName: "IX_FotografGalerisi_IcerikId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisileri_FotografGalerisiDosyaId",
+                "IX_FotografGalerisileri_FotografGalerisiDosyaId",
                 table: "FotografGalerisi",
                 newName: "IX_FotografGalerisi_FotografGalerisiDosyaId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisiDosya_KullaniciId",
+                "IX_FotografGalerisiDosya_KullaniciId",
                 table: "FotografGalerisiDosyalar",
                 newName: "IX_FotografGalerisiDosyalar_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisiDosya_DosyaId",
+                "IX_FotografGalerisiDosya_DosyaId",
                 table: "FotografGalerisiDosyalar",
                 newName: "IX_FotografGalerisiDosyalar_DosyaId");
 
             migrationBuilder.AddColumn<int>(
-                name: "ResimId",
-                table: "Icerikler",
+                "ResimId",
+                "Icerikler",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "UstKategoriId",
-                table: "IcerikKategorileri",
+                "UstKategoriId",
+                "IcerikKategorileri",
                 nullable: true);
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_IcerikKategorileri",
-                table: "IcerikKategorileri",
-                column: "Id");
+                "PK_IcerikKategorileri",
+                "IcerikKategorileri",
+                "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_FotografGalerisi",
-                table: "FotografGalerisi",
-                column: "Id");
+                "PK_FotografGalerisi",
+                "FotografGalerisi",
+                "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_FotografGalerisiDosyalar",
-                table: "FotografGalerisiDosyalar",
-                column: "Id");
+                "PK_FotografGalerisiDosyalar",
+                "FotografGalerisiDosyalar",
+                "Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Icerikler_ResimId",
-                table: "Icerikler",
-                column: "ResimId");
+                "IX_Icerikler_ResimId",
+                "Icerikler",
+                "ResimId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_IcerikKategorileri_UstKategoriId",
-                table: "IcerikKategorileri",
-                column: "UstKategoriId");
+                "IX_IcerikKategorileri_UstKategoriId",
+                "IcerikKategorileri",
+                "UstKategoriId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisi_FotografGalerisiDosyalar_FotografGalerisiDosyaId",
-                table: "FotografGalerisi",
-                column: "FotografGalerisiDosyaId",
-                principalTable: "FotografGalerisiDosyalar",
+                "FK_FotografGalerisi_FotografGalerisiDosyalar_FotografGalerisiDosyaId",
+                "FotografGalerisi",
+                "FotografGalerisiDosyaId",
+                "FotografGalerisiDosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisi_Icerikler_IcerikId",
-                table: "FotografGalerisi",
-                column: "IcerikId",
-                principalTable: "Icerikler",
+                "FK_FotografGalerisi_Icerikler_IcerikId",
+                "FotografGalerisi",
+                "IcerikId",
+                "Icerikler",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisi_Kullanicilar_KullaniciId",
-                table: "FotografGalerisi",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_FotografGalerisi_Kullanicilar_KullaniciId",
+                "FotografGalerisi",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisiDosyalar_Dosyalar_DosyaId",
-                table: "FotografGalerisiDosyalar",
-                column: "DosyaId",
-                principalTable: "Dosyalar",
+                "FK_FotografGalerisiDosyalar_Dosyalar_DosyaId",
+                "FotografGalerisiDosyalar",
+                "DosyaId",
+                "Dosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisiDosyalar_Kullanicilar_KullaniciId",
-                table: "FotografGalerisiDosyalar",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_FotografGalerisiDosyalar_Kullanicilar_KullaniciId",
+                "FotografGalerisiDosyalar",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
-                table: "IcerikKategorileri",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
+                "IcerikKategorileri",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
-                table: "IcerikKategorileri",
-                column: "UstKategoriId",
-                principalTable: "IcerikKategorileri",
+                "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
+                "IcerikKategorileri",
+                "UstKategoriId",
+                "IcerikKategorileri",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
-                table: "Icerikler",
-                column: "IcerikKategoriId",
-                principalTable: "IcerikKategorileri",
+                "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
+                "Icerikler",
+                "IcerikKategoriId",
+                "IcerikKategorileri",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
-                table: "Icerikler",
-                column: "ResimId",
-                principalTable: "FotografGalerisiDosyalar",
+                "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
+                "Icerikler",
+                "ResimId",
+                "FotografGalerisiDosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -199,179 +199,179 @@ namespace NecCms.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisi_FotografGalerisiDosyalar_FotografGalerisiDosyaId",
-                table: "FotografGalerisi");
+                "FK_FotografGalerisi_FotografGalerisiDosyalar_FotografGalerisiDosyaId",
+                "FotografGalerisi");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisi_Icerikler_IcerikId",
-                table: "FotografGalerisi");
+                "FK_FotografGalerisi_Icerikler_IcerikId",
+                "FotografGalerisi");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisi_Kullanicilar_KullaniciId",
-                table: "FotografGalerisi");
+                "FK_FotografGalerisi_Kullanicilar_KullaniciId",
+                "FotografGalerisi");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisiDosyalar_Dosyalar_DosyaId",
-                table: "FotografGalerisiDosyalar");
+                "FK_FotografGalerisiDosyalar_Dosyalar_DosyaId",
+                "FotografGalerisiDosyalar");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_FotografGalerisiDosyalar_Kullanicilar_KullaniciId",
-                table: "FotografGalerisiDosyalar");
+                "FK_FotografGalerisiDosyalar_Kullanicilar_KullaniciId",
+                "FotografGalerisiDosyalar");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
-                table: "IcerikKategorileri");
+                "FK_IcerikKategorileri_Kullanicilar_KullaniciId",
+                "IcerikKategorileri");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
-                table: "IcerikKategorileri");
+                "FK_IcerikKategorileri_IcerikKategorileri_UstKategoriId",
+                "IcerikKategorileri");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
-                table: "Icerikler");
+                "FK_Icerikler_IcerikKategorileri_IcerikKategoriId",
+                "Icerikler");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
-                table: "Icerikler");
+                "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
+                "Icerikler");
 
             migrationBuilder.DropIndex(
-                name: "IX_Icerikler_ResimId",
-                table: "Icerikler");
+                "IX_Icerikler_ResimId",
+                "Icerikler");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_IcerikKategorileri",
-                table: "IcerikKategorileri");
+                "PK_IcerikKategorileri",
+                "IcerikKategorileri");
 
             migrationBuilder.DropIndex(
-                name: "IX_IcerikKategorileri_UstKategoriId",
-                table: "IcerikKategorileri");
+                "IX_IcerikKategorileri_UstKategoriId",
+                "IcerikKategorileri");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_FotografGalerisiDosyalar",
-                table: "FotografGalerisiDosyalar");
+                "PK_FotografGalerisiDosyalar",
+                "FotografGalerisiDosyalar");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_FotografGalerisi",
-                table: "FotografGalerisi");
+                "PK_FotografGalerisi",
+                "FotografGalerisi");
 
             migrationBuilder.DropColumn(
-                name: "ResimId",
-                table: "Icerikler");
+                "ResimId",
+                "Icerikler");
 
             migrationBuilder.DropColumn(
-                name: "UstKategoriId",
-                table: "IcerikKategorileri");
+                "UstKategoriId",
+                "IcerikKategorileri");
 
             migrationBuilder.RenameTable(
-                name: "IcerikKategorileri",
+                "IcerikKategorileri",
                 newName: "IcerikKategoriler");
 
             migrationBuilder.RenameTable(
-                name: "FotografGalerisiDosyalar",
+                "FotografGalerisiDosyalar",
                 newName: "FotografGalerisiDosya");
 
             migrationBuilder.RenameTable(
-                name: "FotografGalerisi",
+                "FotografGalerisi",
                 newName: "FotografGalerisileri");
 
             migrationBuilder.RenameIndex(
-                name: "IX_IcerikKategorileri_KullaniciId",
+                "IX_IcerikKategorileri_KullaniciId",
                 table: "IcerikKategoriler",
                 newName: "IX_IcerikKategoriler_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisiDosyalar_KullaniciId",
+                "IX_FotografGalerisiDosyalar_KullaniciId",
                 table: "FotografGalerisiDosya",
                 newName: "IX_FotografGalerisiDosya_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisiDosyalar_DosyaId",
+                "IX_FotografGalerisiDosyalar_DosyaId",
                 table: "FotografGalerisiDosya",
                 newName: "IX_FotografGalerisiDosya_DosyaId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisi_KullaniciId",
+                "IX_FotografGalerisi_KullaniciId",
                 table: "FotografGalerisileri",
                 newName: "IX_FotografGalerisileri_KullaniciId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisi_IcerikId",
+                "IX_FotografGalerisi_IcerikId",
                 table: "FotografGalerisileri",
                 newName: "IX_FotografGalerisileri_IcerikId");
 
             migrationBuilder.RenameIndex(
-                name: "IX_FotografGalerisi_FotografGalerisiDosyaId",
+                "IX_FotografGalerisi_FotografGalerisiDosyaId",
                 table: "FotografGalerisileri",
                 newName: "IX_FotografGalerisileri_FotografGalerisiDosyaId");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_IcerikKategoriler",
-                table: "IcerikKategoriler",
-                column: "Id");
+                "PK_IcerikKategoriler",
+                "IcerikKategoriler",
+                "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_FotografGalerisiDosya",
-                table: "FotografGalerisiDosya",
-                column: "Id");
+                "PK_FotografGalerisiDosya",
+                "FotografGalerisiDosya",
+                "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_FotografGalerisileri",
-                table: "FotografGalerisileri",
-                column: "Id");
+                "PK_FotografGalerisileri",
+                "FotografGalerisileri",
+                "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
-                table: "FotografGalerisiDosya",
-                column: "DosyaId",
-                principalTable: "Dosyalar",
+                "FK_FotografGalerisiDosya_Dosyalar_DosyaId",
+                "FotografGalerisiDosya",
+                "DosyaId",
+                "Dosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
-                table: "FotografGalerisiDosya",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_FotografGalerisiDosya_Kullanicilar_KullaniciId",
+                "FotografGalerisiDosya",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
-                table: "FotografGalerisileri",
-                column: "FotografGalerisiDosyaId",
-                principalTable: "FotografGalerisiDosya",
+                "FK_FotografGalerisileri_FotografGalerisiDosya_FotografGalerisiDosyaId",
+                "FotografGalerisileri",
+                "FotografGalerisiDosyaId",
+                "FotografGalerisiDosya",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisileri_Icerikler_IcerikId",
-                table: "FotografGalerisileri",
-                column: "IcerikId",
-                principalTable: "Icerikler",
+                "FK_FotografGalerisileri_Icerikler_IcerikId",
+                "FotografGalerisileri",
+                "IcerikId",
+                "Icerikler",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
-                table: "FotografGalerisileri",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_FotografGalerisileri_Kullanicilar_KullaniciId",
+                "FotografGalerisileri",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
-                table: "IcerikKategoriler",
-                column: "KullaniciId",
-                principalTable: "Kullanicilar",
+                "FK_IcerikKategoriler_Kullanicilar_KullaniciId",
+                "IcerikKategoriler",
+                "KullaniciId",
+                "Kullanicilar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
-                table: "Icerikler",
-                column: "IcerikKategoriId",
-                principalTable: "IcerikKategoriler",
+                "FK_Icerikler_IcerikKategoriler_IcerikKategoriId",
+                "Icerikler",
+                "IcerikKategoriId",
+                "IcerikKategoriler",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

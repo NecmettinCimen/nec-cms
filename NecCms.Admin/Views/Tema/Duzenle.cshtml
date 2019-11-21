@@ -1,12 +1,12 @@
-<partial name="~/Views/Shared/_Table.cshtml" />
-<partial name="~/Views/Shared/_EditModal.cshtml" />
+<partial name="~/Views/Shared/_Table.cshtml"/>
+<partial name="~/Views/Shared/_EditModal.cshtml"/>
 
 
 @section Styles{
-<link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet" />
-<link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet" />
-<link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet" />
-<style>
+    <link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet"/>
+    <link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet"/>
+    <link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet"/>
+    <style>
     .hide {
         display: none !important;
     }
@@ -15,17 +15,17 @@
 
 <div class="hide">
     <div id="infodiv">
-        <input hidden name="id" id="id" />
-        <input hidden name="parametreId" id="parametreId" />
+        <input hidden name="id" id="id"/>
+        <input hidden name="parametreId" id="parametreId"/>
         <strong>Kodu:</strong>
         <label id="kodu"></label>
-        <br />
+        <br/>
         <strong>Adı:</strong>
         <label id="adi"></label>
-        <br />
+        <br/>
         <strong>Açıklama:</strong>
         <label id="aciklama"></label>
-        <br />
+        <br/>
         <a onclick="showHtml()">Raw</a>
         <div id="formelementdiv"></div>
         <div id="formelementhtml" class="row">
@@ -41,13 +41,14 @@
         </div>
     </div>
 </div>
+
 @section Scripts{
 
-<script src="~/assets/plugins/quill/katex.min.js"></script>
-<script src="~/assets/plugins/quill/quill.min.js"></script>
-<script>
-    $('#editModalRow').html($('#infodiv').html())
-    $('#infodiv').remove()
+    <script src="~/assets/plugins/quill/katex.min.js"></script>
+    <script src="~/assets/plugins/quill/quill.min.js"></script>
+    <script>
+    $('#editModalRow').html($('#infodiv').html());
+    $('#infodiv').remove();
     $('#editModalDelete').remove();
 
 
@@ -110,53 +111,53 @@
                         { type: 'input', subtype: 'number,int', id: 'parametreId' },
                         { type: 'input', id: 'deger' },
                     ]
-                }
-                var res = list.data[0]
+                };
+                var res = list.data[0];
                 if(res.parametre)
-                $('#id').val(res.parametre.id)
+                $('#id').val(res.parametre.id);
                 
-                $('#parametreId').val(res.id)
+                $('#parametreId').val(res.id);
 
-                $('#kodu').text(res.kodu)
-                $('#adi').text(res.isim)
-                $('#aciklama').text(res.aciklama)
-                $('#formelementdiv').empty().append(tipHtml(res))
+                $('#kodu').text(res.kodu);
+                $('#adi').text(res.isim);
+                $('#aciklama').text(res.aciklama);
+                $('#formelementdiv').empty().append(tipHtml(res));
 
-                $('#formelementhtml').addClass('hide')
+                $('#formelementhtml').addClass('hide');
                 if (res.tip == 3) {
-                    formelementhtmlrawonchanged({ value: res.parametre ? res.parametre.deger : "" })
+                    formelementhtmlrawonchanged({ value: res.parametre ? res.parametre.deger : "" });
                     $('#formelementhtml').removeClass('hide')
                 }
 
                 $('#editModal').modal('show')
             })
-    }
+    };
 
     tipHtml = (data) => {
         switch (data.tip) {
             case 1:
-                return '<textarea name="deger" class="form-control" type="text" rows="5" >' + (data.parametre ? data.parametre.deger : '') + '</textarea>'
+                return '<textarea name="deger" class="form-control" type="text" rows="5" >' + (data.parametre ? data.parametre.deger : '') + '</textarea>';
             case 2:
-                return '<input class="form-control" type="file" name="file" /><input name="deger" id="deger"  value="' + (data.parametre ? data.parametre.degerInt : 0) + '" hidden />'
+                return '<input class="form-control" type="file" name="file" /><input name="deger" id="deger"  value="' + (data.parametre ? data.parametre.degerInt : 0) + '" hidden />';
             case 3:
                 return "<input name='deger' id='deger' hidden value='" + (data.parametre ? data.parametre.deger : null) + "'  />"
         }
-    }
+    };
 
     showHtml = () => {
         if ($('#formelementhtml').hasClass('hide')) {
-            $('#formelementhtml').removeClass('hide')
+            $('#formelementhtml').removeClass('hide');
             $('#formelementhtmlraw').addClass('hide')
 
         } else {
-            $('#formelementhtml').addClass('hide')
+            $('#formelementhtml').addClass('hide');
             $('#formelementhtmlraw').removeClass('hide')
         }
-    }
+    };
 
     formelementhtmlrawonchanged = (current) => {
 
-        quill.setContents([])
+        quill.setContents([]);
         quill.clipboard.dangerouslyPasteHTML(0, current.value)
     }
 

@@ -11,11 +11,11 @@
 
             var value = this.value;
 
-            var formElement = tpage.form.find(f => f.id === name)
+            var formElement = tpage.form.find(f => f.id === name);
 
             if (formElement) {
                 if (formElement.type === 'select') {
-                    value = parseInt(value)
+                    value = parseInt(value);
                     if (formElement.boolean) {
                         value = value ? true : false
                     }
@@ -34,8 +34,8 @@
                         value = null
                 } else if (formElement.type == 'datetime') {
                     if (value) {
-                        var saat = parseInt($('#saat_' + name).val())
-                        var dakika = parseInt($('#dakika_' + name).val())
+                        var saat = parseInt($('#saat_' + name).val());
+                        var dakika = parseInt($('#dakika_' + name).val());
                         value = formatDateIso(value) + `T${saat < 10 ? "0" + saat : saat}:${dakika < 10 ? "0" + dakika : dakika}:00.0000`;
                     }
                     else

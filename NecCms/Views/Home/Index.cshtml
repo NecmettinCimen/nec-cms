@@ -9,18 +9,19 @@
                         <div class="con">
                             <p class="headline">
                                 <strong>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</strong>
-                                <br />@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyaziicerik"))
+                                <br/>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyaziicerik"))
                             </p>
                             <p style="margin-top: 2em;">
                                 <a class="buttonX" href='@Html.Raw(TemaYonetimi.Find("anasayfaresimustubuttonurl"))'>
-                                    @Html.Raw(TemaYonetimi.Find("anasayfaresimustubutton")) <em class="icon-arrow-right5 " style="font-size: 14px;">
+                                    @Html.Raw(TemaYonetimi.Find("anasayfaresimustubutton"))
+                                    <em class="icon-arrow-right5 " style="font-size: 14px;">
                                         <!--icon-->
                                     </em>
                                 </a>
                             </p>
                         </div>
                     </section>
-                    <link href="~/homebanner.css" rel="stylesheet" />
+                    <link href="~/homebanner.css" rel="stylesheet"/>
 
                 </section>
             </div>
@@ -40,29 +41,45 @@
                             @Html.Raw(TemaYonetimi.Find("anasayfaaltaciklama"))
                         </p>
                     </div>
-                    <p><span class="page-break"></span></p>
+                    <p>
+                        <span class="page-break"></span>
+                    </p>
                     <section>
                         <div class="columns fluid brick">
                             <div class="col4">
-                                <p><img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))" /></p>
-                                <h3><a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))</a></h3>
+                                <p>
+                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))"/>
+                                </p>
+                                <h3>
+                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))</a>
+                                </h3>
                             </div>
                             <div class="col4">
-                                <p><img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))" /></p>
-                                <h3><a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a></h3>
+                                <p>
+                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))"/>
+                                </p>
+                                <h3>
+                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a>
+                                </h3>
                             </div>
                             <div class="col4">
-                                <p><img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3"))" /></p>
-                                <h3><a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a></h3>
+                                <p>
+                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3"))"/>
+                                </p>
+                                <h3>
+                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a>
+                                </h3>
                             </div>
                         </div>
                     </section>
-                    <p> <span class="page-break"></span></p>
+                    <p>
+                        <span class="page-break"></span>
+                    </p>
                     <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))</h1>
                     <div style="max-width: 1140px; margin: auto;">
                         <p>
-                            <div class="duyuru-box">
-                            @foreach (IcerikDto item in IcerikYonetimi.FindByKategoriUrl("haberler",3))
+                        <div class="duyuru-box">
+                            @foreach (var item in IcerikYonetimi.FindByKategoriUrl("haberler", 3))
                             {
                                 <div class="duyuru-item">
                                     <div class="t">
@@ -76,17 +93,17 @@
                                     </div>
                                 </div>
                             }
-                            </div>
-                            <div style="clear: both;">
-                                <!-- clear -->
-                            </div>
-                            <p style="clear: both; text-align: center; margin-top: 2em;">
-                                <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
-                                    <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                        <!--icon-->
-                                    </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
-                                </a>
-                            </p>
+                        </div>
+                        <div style="clear: both;">
+                            <!-- clear -->
+                        </div>
+                        <p style="clear: both; text-align: center; margin-top: 2em;">
+                            <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
+                                <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
+                                    <!--icon-->
+                                </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
+                            </a>
+                        </p>
                     </div>
                 </section>
 

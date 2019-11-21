@@ -3,7 +3,7 @@ window.addEvent('domready',function(){
 
     Fil.responsive();
 
-})
+});
 
 
 /**
@@ -30,7 +30,7 @@ Fil.responsive =function () {
         //menu DOM manüpüle edilmeden önce kaydedelim
         $initialMenuNav=$$(".navi-wrap").getElement("nav").pick().clone(true,false);
         $initialMenuNav.getElement("ul").removeClass("site-navi").addClass("mob-navi");
-    }
+    };
 
     var generateMobMenu=function (){
 
@@ -158,5 +158,5 @@ Fil.responsive =function () {
 	//dopdov menu oluşumunu bozuyor:
    //disabled:  switchMode.delay(100);
 
-}
+};
 

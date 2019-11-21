@@ -475,7 +475,7 @@ var MenuMaticSubMenu = new Class({
         }
         this.childMenu.store('class', this);
         this.btn.store('class', this);
-        this.childMenu.store('status', 'closed')
+        this.childMenu.store('status', 'closed');
 
         this.options.onSubMenuInit_begin(this);
 
@@ -632,7 +632,7 @@ var MenuMaticSubMenu = new Class({
             }.bind(this),
 
             'keydown': function (e) {
-                e = new Event(e)
+                e = new Event(e);
                 if (e.key === 'up' || e.key === 'down' || e.key === 'left' || e.key === 'right') {
                     e.stop();
                 }
@@ -978,7 +978,7 @@ var MenuMaticSubMenu = new Class({
         }
 
         var top;
-        var overlap
+        var overlap;
         if (this.subMenuType == 'initial') {
             if (this.options.direction.y === 'up') {
                 if (this.options.orientation === 'vertical') {
@@ -1041,7 +1041,7 @@ var MenuMaticSubMenu = new Class({
                 if (smRight > viewportRightEdge) {
                     this.options.direction.x = 'left';
                     this.options.direction.xInverse = 'right';
-                    this.childMenu.style.left = this.btn.getCoordinates().left - this.childMenu.getCoordinates().width + this.options.tweakSubsequent.x + 'px'
+                    this.childMenu.style.left = this.btn.getCoordinates().left - this.childMenu.getCoordinates().width + this.options.tweakSubsequent.x + 'px';
                     if (this.options.effect === 'slide' || this.options.effect === 'slide & fade') {
                         this.myEffect.set({'margin-left': this.width, 'opacity': this.options.opacity});
                     }

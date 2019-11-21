@@ -7,14 +7,14 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
-                table: "Icerikler");
+                "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
+                "Icerikler");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_Dosyalar_ResimId",
-                table: "Icerikler",
-                column: "ResimId",
-                principalTable: "Dosyalar",
+                "FK_Icerikler_Dosyalar_ResimId",
+                "Icerikler",
+                "ResimId",
+                "Dosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -22,14 +22,14 @@ namespace NecCms.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Icerikler_Dosyalar_ResimId",
-                table: "Icerikler");
+                "FK_Icerikler_Dosyalar_ResimId",
+                "Icerikler");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
-                table: "Icerikler",
-                column: "ResimId",
-                principalTable: "FotografGalerisiDosyalar",
+                "FK_Icerikler_FotografGalerisiDosyalar_ResimId",
+                "Icerikler",
+                "ResimId",
+                "FotografGalerisiDosyalar",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

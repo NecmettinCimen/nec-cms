@@ -9,14 +9,15 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Menu",
-                columns: table => new
+                "Menu",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Sil = table.Column<bool>(nullable: false),
-                    Tarih = table.Column<DateTime>(nullable: false),
-                    KullaniciId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>()
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sil = table.Column<bool>(),
+                    Tarih = table.Column<DateTime>(),
+                    KullaniciId = table.Column<int>(),
                     Isim = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     UstId = table.Column<int>(nullable: true)
@@ -25,34 +26,34 @@ namespace NecCms.Database.Migrations
                 {
                     table.PrimaryKey("PK_Menu", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Menu_Kullanicilar_KullaniciId",
-                        column: x => x.KullaniciId,
-                        principalTable: "Kullanicilar",
-                        principalColumn: "Id",
+                        "FK_Menu_Kullanicilar_KullaniciId",
+                        x => x.KullaniciId,
+                        "Kullanicilar",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Menu_Menu_UstId",
-                        column: x => x.UstId,
-                        principalTable: "Menu",
-                        principalColumn: "Id",
+                        "FK_Menu_Menu_UstId",
+                        x => x.UstId,
+                        "Menu",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Menu_KullaniciId",
-                table: "Menu",
-                column: "KullaniciId");
+                "IX_Menu_KullaniciId",
+                "Menu",
+                "KullaniciId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Menu_UstId",
-                table: "Menu",
-                column: "UstId");
+                "IX_Menu_UstId",
+                "Menu",
+                "UstId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Menu");
+                "Menu");
         }
     }
 }

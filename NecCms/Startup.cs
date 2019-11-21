@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NecCms.Database.Service;
+using NecCms.Models;
 
 namespace NecCms
 {
@@ -31,7 +29,7 @@ namespace NecCms
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddFactory<Database.Service.IGenericService, Database.Service.GenericService>();
+            services.AddFactory<IGenericService, GenericService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -55,38 +53,39 @@ namespace NecCms
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
-            {    
+            {
                 routes.MapRoute(
-                    name: "kategori",
-                    template: "{kategori}",
-                    defaults:new {controller="Kategori",action="Index"}
-                    );
+                    "kategori",
+                    "{kategori}",
+                    new {controller = "Kategori", action = "Index"}
+                );
 
                 routes.MapRoute(
-                    name: "kategori",
-                    template: "{kategori}/sayfa/{skip?}",
-                    defaults:new {controller="Kategori",action="Index"}
-                    );
-            
+                    "kategori",
+                    "{kategori}/sayfa/{skip?}",
+                    new {controller = "Kategori", action = "Index"}
+                );
+
                 routes.MapRoute(
-                    name: "icerik",
-                    template: "{kategori}/{icerik}",
-                    defaults:new {controller="Icerik",action="Index"}
-                    );
-            
+                    "icerik",
+                    "{kategori}/{icerik}",
+                    new {controller = "Icerik", action = "Index"}
+                );
+
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
             });
-            
-            Models.TemaYonetimi.Nesne();
+
+            TemaYonetimi.Nesne();
         }
     }
+
     public static class ServiceCollectionExtensions
     {
         public static void AddFactory<TService, TImplementation>(this IServiceCollection services)
-        where TService : class
-        where TImplementation : class, TService
+            where TService : class
+            where TImplementation : class, TService
         {
             services.AddTransient<TService, TImplementation>();
             services.AddSingleton<Func<TService>>(x => () => x.GetService<TService>());

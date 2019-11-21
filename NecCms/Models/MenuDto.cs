@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 
-namespace NecCms.Models{
-    public class MenuDto{
+namespace NecCms.Models
+{
+    public class MenuDto
+    {
         public int Sira { get; set; }
         public string Isim { get; set; }
         public int Id { get; set; }

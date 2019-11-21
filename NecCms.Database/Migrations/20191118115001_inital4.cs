@@ -7,22 +7,22 @@ namespace NecCms.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Deger",
-                table: "ParametreDegeri",
+                "Deger",
+                "ParametreDegeri",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Kodu",
-                table: "Parametre",
+                "Kodu",
+                "Parametre",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "Sira",
-                table: "Parametre",
+                "Sira",
+                "Parametre",
                 nullable: false,
                 defaultValue: 0);
         }
@@ -30,18 +30,18 @@ namespace NecCms.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Sira",
-                table: "Parametre");
+                "Sira",
+                "Parametre");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Deger",
-                table: "ParametreDegeri",
+                "Deger",
+                "ParametreDegeri",
                 nullable: true,
                 oldClrType: typeof(string));
 
             migrationBuilder.AlterColumn<string>(
-                name: "Kodu",
-                table: "Parametre",
+                "Kodu",
+                "Parametre",
                 nullable: true,
                 oldClrType: typeof(string));
         }

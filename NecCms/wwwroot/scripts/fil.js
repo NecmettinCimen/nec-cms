@@ -13,18 +13,18 @@ String.prototype.turkishToUpper = function () {
     var letters = {"i": "İ", "ş": "Ş", "ğ": "Ğ", "ü": "Ü", "ö": "Ö", "ç": "Ç", "ı": "I"};
     string = string.replace(/(([iışğüçö]))/g, function (letter) {
         return letters[letter];
-    })
+    });
     return string.toUpperCase();
-}
+};
 
 String.prototype.turkishToLower = function () {
     var string = this;
     var letters = {"İ": "i", "I": "ı", "Ş": "ş", "Ğ": "ğ", "Ü": "ü", "Ö": "ö", "Ç": "ç"};
     string = string.replace(/(([İIŞĞÜÇÖ]))/g, function (letter) {
         return letters[letter];
-    })
+    });
     return string.toLowerCase();
-}
+};
 
 /* /JAVASCRİPT PROTOTOYPING   */
 
@@ -35,7 +35,7 @@ Fil.load = function (component, complete) {
     var base = window.baseUrl.replace(new RegExp("(/idare)?/([a-z]{2})$"), "");
     Fil.loadScriptAssets([base + "/scripts/fil/" + component + ".js"], complete)
 
-}
+};
 
 Fil.isArray = function (input) {
     return typeof(input) == 'object' && (input instanceof Array);
@@ -50,7 +50,7 @@ Fil.escapeHtml = function (string) {
         return htmlEscapes[match];
     });
 
-}
+};
 
 
 
@@ -75,7 +75,7 @@ Fil.copyToClipboard=function(str){
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-}
+};
 
 Fil.isMobile = function () {
     //if (Browser.Platform.android || Browser.Platform.ios || Browser.Platform.webos)
@@ -89,7 +89,7 @@ Fil.isMobile = function () {
 
 Fil.isTouchDevice = function isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
-}
+};
 
 /**
  * Aray halinde verilen js dosyalarını sıra ile yükler ve bitince "complete" fn fire edilir.
@@ -99,7 +99,7 @@ Fil.isTouchDevice = function isTouchDevice() {
  */
 Fil.loadScriptAssets = function (scriptsArray, complete) {
     //(S)tarted yada (C)omplated işaretlerini taşır
-    if (!window._fwlapnd) window._fwlapnd = new Array();
+    if (!window._fwlapnd) window._fwlapnd = [];
 
     var files = [];
     if (typeof scriptsArray == "string") {
@@ -118,7 +118,7 @@ Fil.loadScriptAssets = function (scriptsArray, complete) {
                     //C: Complete
                     window._fwlapnd[filepath] = "C";
                     loadScript(i + 1);
-                }
+                };
 
                 //File eklenmiş ancak henüz yüklemesi bitmemişse onload ekleyelim
 
@@ -212,7 +212,7 @@ Fil.queryToJSON = function (queryString) {
     });
 
     return JSON.parse(JSON.stringify(result));
-}
+};
 /**
  *
  * mouse tekerleğini durdurup smoothScrol ile daha düzgün bir kaydırma yapar
@@ -267,7 +267,7 @@ Fil.mouseScroll = function () {
         document.scrollFx.start(window.getScroll().y, window.getScroll().y + delta);
 
     });
-}
+};
 
 /**
  * Kullanım
@@ -369,13 +369,13 @@ Fil.notify = function (message, timeout) {
         window.filNotifierBox.hto = null;
         b.isOpen = false;
         return false;
-    }
+    };
     this.error = function () {
         var b = window.filNotifierBox;
         window.filNotifierBox.content.getElement('div:last-child').addClass('error');
         // b.addClass('error');
         return this;
-    }
+    };
 
 
     return this;
@@ -405,7 +405,7 @@ Fil.dispose = function (element, method) {
 
     el.tween(prop, '0');
 
-}
+};
 
 /**
  * textarea gibi alanlar yazdıkça genişler
@@ -419,14 +419,14 @@ Fil.elementAutoExpand = function (el) {
             el.setStyle('height', (el.scrollHeight + 5) + 'px')
         }
         return this;
-    }
+    };
     resize();
     el.addEvent('keyup', function () {
             resize();
         }
     );
 
-}
+};
 
 /**
  * @deprecated
@@ -467,7 +467,7 @@ Element.prototype.filTips = function (title, text, position) {
                     position: rp,
                     edge: re,
                     offset: ro
-                })
+                });
                 T.setStyle("display", "block");
             }).delay(50);
         }
@@ -483,7 +483,7 @@ Element.prototype.filTips = function (title, text, position) {
         }
     })
 
-}
+};
 
 /**
  * @deprecated
@@ -540,7 +540,7 @@ Fil.verticalAlign = function (elements, container) {
         }
     })
 
-}
+};
 
 /**
  * @deprecated

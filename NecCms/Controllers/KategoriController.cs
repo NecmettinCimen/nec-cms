@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NecCms.Models;
-using NecCms.Database;
-using NecCms.Database.Service;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using NecCms.Database.Service;
+using NecCms.Models;
 
 namespace NecCms.Controllers
 {
     public class KategoriController : Controller
     {
-        readonly IGenericService _genericService;
+        private readonly IGenericService _genericService;
         private readonly IHostingEnvironment _hostingEnvironment;
+
         public KategoriController(IHostingEnvironment hostingEnvironment, IGenericService genericService)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -30,11 +28,11 @@ namespace NecCms.Controllers
 
             if (kategori.ToLower() == "iletisim")
                 return View("~/Views/Iletisim/Index.cshtml");
-            
+
             skip = skip == 0 ? 0 : skip - 1;
-            KategoriDto model = IcerikYonetimi.FindByKategoriUrl(kategori, skip * 10, 10);
-            
-            model.SayfaNo=skip;
+            var model = IcerikYonetimi.FindByKategoriUrl(kategori, skip * 10, 10);
+
+            model.SayfaNo = skip;
 
             return View(model);
         }
