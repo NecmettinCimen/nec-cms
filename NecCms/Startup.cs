@@ -61,6 +61,12 @@ namespace NecCms
                     template: "{kategori}",
                     defaults:new {controller="Kategori",action="Index"}
                     );
+
+                routes.MapRoute(
+                    name: "kategori",
+                    template: "{kategori}/sayfa/{skip?}",
+                    defaults:new {controller="Kategori",action="Index"}
+                    );
             
                 routes.MapRoute(
                     name: "icerik",

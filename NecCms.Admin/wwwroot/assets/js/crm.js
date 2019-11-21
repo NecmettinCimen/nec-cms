@@ -150,6 +150,7 @@ async function FileUpload(oFormElement) {
 
         if (response.ok) {
             if (tpage.customsuccessfun) {
+                swal.close()
                 eval(tpage.customsuccessfun)
             }
             else {

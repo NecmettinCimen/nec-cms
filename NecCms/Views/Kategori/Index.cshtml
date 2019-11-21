@@ -38,49 +38,14 @@
                         <div class="clear_b"></div>
                     </div>
                     }
-                    <div id="loadiv"></div>
-
                     <div class="pages">
-                        <a style="padding: 5px 9px;
-                        margin-right: 5px;
-                        margin-bottom: 5px;
-                        line-height: 100%;
-                        display: inline-block;
-                        border: 1px solid #BDBDBD;
-                        font-size: 1em;
-                        color: #606060;" id="loadmore" onclick="loadMore()">
-                            <h4>Daha Fazla Yükle</h4>
-                        </a>
+                        @for(int i=0;i<(Model.IcerikSayisi/10)+1;i++){ @if(Model.SayfaNo==i) { <span>@(i+1)</span>
+                            }
+                            else{
+                            <a href="/@Model.Isim/sayfa/@(i+1)">@(i+1)</a>
+                            }
+                            }
                     </div>
-                    @section Scripts{
-
-                    <script>
-                        var skip = 1;
-                        var kategori = '@Model.Url'.slice(1);
-                        loadMore = () => {
-                            fetch("/Kategori/Skip?kategori=" + kategori + "&skip=" + (skip * 5))
-                                .then(res => res.json())
-                                .then(res => {
-                                    skip++;
-                                    if (res.icerikler.length == 0) {
-                                        $(document.body).getElement('#loadmore').remove()
-                                        return
-                                    }
-                                    var html = "";
-                                    res.icerikler.map(item => html += '<div class="box01e">' +
-                                        '    <h5><a href="' + item.kategori + '/' + item.url + '">' + item.baslik + '</a>' +
-                                        '        <span class="date">' + item.tarih + '</span></h5>' +
-                                        '    <div class="spot">' + item.giris +
-                                        '    </div>' +
-                                        '    <span class="devami"><a href="' + item.kategori + '/' + item.url + '">[Devamı]</a></span>' +
-                                        '    <div class="clear_b"></div>' +
-                                        '</div>');
-
-                                        $(document.body).getElement('#loadiv').append($('<div/>').html(html).text());
-                                })
-                        }
-                    </script>
-                    }
                 </div>
             </div>
             <div class="clear"></div>
@@ -89,7 +54,7 @@
         <div class="stage-sep">
             <div class="body"></div>
         </div>
-        <div class="stage-1">
+        <div class="stage-1" style="display: @(Model.Menuler.Menuler.Count>0?" block":"none");">
             <div class="body">
                 <div class="page_navi">
                     <ul>

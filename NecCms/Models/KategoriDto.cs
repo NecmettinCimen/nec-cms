@@ -7,5 +7,7 @@ namespace NecCms.Models{
         public string Url { get; set; }
         public MenuDto Menuler { get; set; }
         public List<IcerikDto> Icerikler { get; set; }
+        public int SayfaNo { get; set; }
+        public int IcerikSayisi { get; set; }
     }
 }

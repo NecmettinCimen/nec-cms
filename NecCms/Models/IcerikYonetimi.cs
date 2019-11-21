@@ -23,23 +23,24 @@ namespace NecCms.Models
 
             Menu kategori = dbkategoriList.First();
 
-            List<IcerikDto> icerikler = (from i in genericService.IQueryable<Icerik.Icerikler>()
-                                         where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
-                                         && i.MenuId == kategori.Id
-                                         orderby i.Id descending
-                                         select new IcerikDto
-                                         {
-                                             Baslik = i.Baslik,
-                                             Giris = i.Giris,
-                                             Kategori = kategori.Isim,
-                                             Tarih = i.YayinlanmaTarihi,
-                                             Url = i.Url
-                                         }
-                        ).Skip(skip).Take(take).ToList();
+            IQueryable<IcerikDto> icerikler = (from i in genericService.IQueryable<Icerik.Icerikler>()
+                                               where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
+                                               && i.MenuId == kategori.Id
+                                               orderby i.Id descending
+                                               select new IcerikDto
+                                               {
+                                                   Baslik = i.Baslik,
+                                                   Giris = i.Giris,
+                                                   Kategori = kategori.Isim,
+                                                   Tarih = i.YayinlanmaTarihi,
+                                                   Url = i.Url
+                                               }
+                        );
 
             return new KategoriDto
             {
-                Icerikler = icerikler,
+                Icerikler = icerikler.Skip(skip).Take(take).ToList(),
+                IcerikSayisi = icerikler.Count(),
                 Id = kategori.Id,
                 Isim = kategori.Isim,
                 Url = kategori.Url,
