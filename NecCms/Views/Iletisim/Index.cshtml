@@ -1,0 +1,183 @@
+@model Boolean
+<script src="~/Modules/eklenti/scripts/openLayersMapBuilder.js"></script>
+
+<div class="stage layout-B">
+    <div class="stage-body">
+
+        <div class="stage-1">
+            <div class="body">
+                <section class="node-content">
+
+                    <section>
+                        <div id="fwMap38070" class="eklenti-gmap"></div>
+                    </section>
+
+
+                    <script>
+                        window.addEvent("domready", function () {
+                            new openLayersMapBuilder().init({
+                                id: "fwMap38070",
+                                height: "400px",
+                                mapData: { "points": [{ "lat": 40.884319275308485, "lng": 29.206820908155578, "title": "Istanbul", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }, { "lat": 39.90095700361897, "lng": 32.85794442989072, "title": "Ankara", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 40.45313629016082, "lng": 31.057059893137875 }, "zoom": 7, "type": "roadmap", "markerClustering": false }
+                            });
+                        })
+                    </script>
+
+                    <p>
+                        <script>
+                            if (window.innerWidth < 450)
+                                GMap.map.setZoom(6);
+
+                        </script>
+                    </p>
+                </section>
+            </div>
+            <div class="clear"></div>
+            <div class="bot"></div>
+        </div>
+        <div class="stage-sep">
+            <div class="body"></div>
+        </div>
+        <div class="stage-0">
+            <div class="body">
+                <div class="breadcrumbs">
+                    <div class="body">
+                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                            <a href="/tr/" itemprop="url">
+                                <span itemprop="title">
+                                    Ana Sayfa
+                                </span>
+                            </a>
+                            <span class="sep">›</span>
+                        </div>
+                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                            <a href="/tr/28036/Iletisim" itemprop="url">
+                                <span itemprop="title">
+                                    İletişim
+                                </span>
+                            </a>
+                            <span class="sep">›</span>
+                        </div>
+                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                            <a href="/tr/bize-ulasin" itemprop="url">
+                                <span itemprop="title">
+                                    Ofislerimiz
+                                </span>
+                            </a>
+                            <span class="sep">›</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="mainContent"></div>
+                <h1 class="page-title">Ofislerimiz</h1>
+                <section class="node-content">
+                    <section>
+                        <div class="columns fluid">
+                            <div class="col6">
+                                <h2>
+                                    <strong>Ankara Merkez</strong>
+                                </h2>
+                                <p>
+                                    <img src="/upload/Node/27946/pics/image-4659cb9873a91.jpg?c=9949" alt="ankara"
+                                         data-showlarge="true"/>
+                                </p>
+                                <p style="text-align: justify;">
+                                    Kasaroğlu Hukuk Bürosu, Ankara Kavaklıdere’de birçok
+                                    büyükelçilik binasının da bulunduğu şehir merkezinin iş bölgesinde yer almaktadır.
+                                    Kızılay, Çankaya ve diğer semtlerden kolaylıkla ulaşım sağlayabilirsiniz.
+                                </p>
+                                <p>
+                                    <strong>KASAROĞLU Hukuk Bürosu</strong><br/>Şili Meydani, Kavaklıdere Sokak No:
+                                    23/7<br/>Kavaklıdere 06680 ANKARA - TÜRKİYE<br/><br/>
+                                    <em class="icon-phone2 "
+                                        style="font-size: 16px;">
+                                        <!--icon-->
+                                    </em> +90 312 428 40 82 (Pbx)<br/>
+                                    <em class="icon-phone5 "
+                                        style="font-size: 16px;">
+                                        <!--icon-->
+                                    </em> +90 312 428 40 87<br/>
+                                    <em class="icon-envelope3 "
+                                        style="font-size: 16px;">
+                                        <!--icon-->
+                                    </em> <a href="mailto:info@kasaroglu.av.tr">info@kasaroglu.av.tr</a>
+                                </p>
+                            </div>
+                            <div class="col6">
+                                <div class="iletisim_formu">
+                                    <form method="post" action="/iletisim/kaydet" name="pageForm" enctype="application/x-www-form-urlencoded" id="form01">
+                                        @if (Model)
+                                        {
+                                            <h1>Başarılı! Mesajınız Kayıt Edildi.</h1>
+                                        }
+                                        <div class="item f-konu">
+                                            <label>Konu <i class="flrq"></i></label>
+                                            <input name="konu" class="inp size6" maxlength="100" type="text" required />
+                                        </div>
+                                        <div class="item f-gonderenin_adi_soyadi">
+                                            <label>
+                                                Adınız Soyadınız
+                                                <i
+                                                    class="flrq">
+                                                </i>
+                                            </label>
+                                            <input name="adSoyad" maxlength="100" class="inp size6" type="text"
+                                                   required />
+                                        </div>
+                                        <div class="item f-eposta">
+                                            <label>
+                                                Eposta Adresiniz
+                                                <i
+                                                    class="flrq">
+                                                </i>
+                                            </label>
+                                            <input name="eposta"
+                                                   class="inp size6" type="text" maxlength="50" required />
+                                        </div>
+                                        <div class="item f-ileti">
+                                            <label>
+                                                Öneriniz / Sorunuz
+                                                <i
+                                                    class="flrq">
+                                                </i>
+                                            </label>
+                                            <textarea name="aciklama" class="inp size8"
+                                              maxlength="500"  rows="7" required></textarea>
+                                        </div>
+                                        <div class="item f-captcha">
+                                            <script
+                                                src="https://www.google.com/recaptcha/api.js?render=6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj"></script>
+                                            <script>
+                                                grecaptcha.ready(function () {
+                                                    grecaptcha.execute('6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj', { action: 'iletisim' }).then(function (token) {
+                                                        console.log(token)
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                        <div class="item f-gonder">
+                                            <p>
+                                                <input value="Gönder" name="" type="submit" class="button size4"
+                                                       data-validators="">
+                                            </p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <style>
+                        .page-title {
+                            display: none
+                        }
+                    </style>
+                </section>
+
+            </div>
+            <div class="clear"></div>
+            <div class="bot"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="stage-bot"></div>
+    </div>
+</div>
