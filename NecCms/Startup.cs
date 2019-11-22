@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NecCms.Database;
 using NecCms.Database.Service;
+using NecCms.Logger;
 using NecCms.Models;
 
 namespace NecCms
@@ -29,7 +31,10 @@ namespace NecCms
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<CrmContext>();
             services.AddFactory<IGenericService, GenericService>();
+            services.AddFactory<ILoggerService, LoggerService>();
+            services.AddFactory<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -51,6 +56,8 @@ namespace NecCms
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+        app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseMvc(routes =>
             {
@@ -76,8 +83,6 @@ namespace NecCms
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
-
-            TemaYonetimi.Nesne();
         }
     }
 

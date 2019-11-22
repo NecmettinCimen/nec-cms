@@ -1,38 +1,5 @@
 @section Styles{
     <link href="~/assets/css/jkanban.min.css" rel="stylesheet"/>
-    <style>
-    body {
-        font-family: "Lato";
-        margin: 0;
-        padding: 0;
-    }
-
-    #myKanban {
-        overflow-x: auto;
-        padding: 20px 0;
-    }
-
-    .success {
-        background: #00B961;
-        color: #fff
-    }
-
-    .info {
-        background: #2A92BF;
-        color: #fff
-    }
-
-    .warning {
-        background: #F4CE46;
-        color: #fff
-    }
-
-    .error {
-        background: #FB7D44;
-        color: #fff
-    }
-</style>
-
 }
 
 <div class="row">
@@ -50,7 +17,7 @@
                         </a>
                     </div>
                 </div>
-                <div id="myKanban"></div>
+                <div style="overflow-x: auto;" id="myKanban"></div>
             </div>
         </div>
     </div>
@@ -112,19 +79,40 @@
         $('#editModal').modal('hide')
     };
 
-    var table = {
+     table = {
         ajax: {
             reload: () => initData()
         }
     };
+    
+    sirala=()=>{
+        let boards=$('[data-order]'), i=1, menuler=[];
+        for (let j=0;j<boards.length;j++){
+            let menu = boards[j];
+            menuler.push({id:$(menu).attr("data-id").replace('item_',''), sira:i++});
+            
+            let items = $(menu).find('.kanban-item');
+            for(let k=0;k<items.length;k++){
+                let item=items[k];
+                if($(item).attr("data-eid").startsWith('item_'))
+                    menuler.push({id:$(item).attr("data-eid").replace('item_',''), sira:i++});
+            }
+        }  
+        showToaster(1);
+        fetch('/Menu/SiralamaKaydet',{headers:{'content-type':'application/json'},method:'post',body:JSON.stringify(menuler)})
+        .then(res=>res.json())
+        .then(res=>showToaster(2));
+    };
 
-    var Kanban;
+    let Kanban;
     initKanban = () => {
         Kanban = new jKanban({
             element: '#myKanban',
             gutter: '10px',
             addItemButton: true,
             buttonContent: 'Düzenle',
+            dragendEl:sirala,
+            dragendBoard:sirala,
             buttonClick: function (el, boardId) {
                 setFormId(parseInt(boardId.replace('item_', '')));
                 $('#editModal').modal('show')

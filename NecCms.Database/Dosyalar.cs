@@ -11,7 +11,5 @@ namespace NecCms.Database
         [Required] public long Boyutu { get; set; }
 
         [Required] [MaxLength(20)] public string Tipi { get; set; }
-
-        public string Data { get; set; }
     }
 }

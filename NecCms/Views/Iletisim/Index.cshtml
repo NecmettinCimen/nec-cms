@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @model bool
-=======
-@model Boolean
->>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
 <script src="~/Modules/eklenti/scripts/openLayersMapBuilder.js"></script>
 
 <div class="stage layout-B">
@@ -22,7 +18,7 @@
                             new openLayersMapBuilder().init({
                                 id: "fwMap38070",
                                 height: "400px",
-                                mapData: { "points": [{ "lat": 40.884319275308485, "lng": 29.206820908155578, "title": "Istanbul", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }, { "lat": 39.90095700361897, "lng": 32.85794442989072, "title": "Ankara", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 40.45313629016082, "lng": 31.057059893137875 }, "zoom": 7, "type": "roadmap", "markerClustering": false }
+                                mapData: { "points": [{ "lat": 38.348347, "lng": 38.313202, "title": "Malatya", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 38.348347, "lng": 38.313202 }, "zoom": 17, "type": "roadmap", "markerClustering": false }
                             });
                         })
                     </script>
@@ -65,7 +61,7 @@
                         <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
                             <a href="/tr/bize-ulasin" itemprop="url">
                                 <span itemprop="title">
-                                    Ofislerimiz
+                                    @Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))
                                 </span>
                             </a>
                             <span class="sep">›</span>
@@ -73,38 +69,35 @@
                     </div>
                 </div>
                 <div id="mainContent"></div>
-                <h1 class="page-title">Ofislerimiz</h1>
+                <h1 class="page-title">@Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))</h1>
                 <section class="node-content">
                     <section>
                         <div class="columns fluid">
                             <div class="col6">
                                 <h2>
-                                    <strong>Ankara Merkez</strong>
+                                    <strong>@Html.Raw(TemaYonetimi.Find("iletisimbaslik"))</strong>
                                 </h2>
                                 <p>
-                                    <img src="/upload/Node/27946/pics/image-4659cb9873a91.jpg?c=9949" alt="ankara"
+                                    <img src="@Html.Raw(TemaYonetimi.Find("iletisimresim"))" alt="@Html.Raw(TemaYonetimi.Find("iletisimadres"))"
                                          data-showlarge="true"/>
                                 </p>
                                 <p style="text-align: justify;">
-                                    Kasaroğlu Hukuk Bürosu, Ankara Kavaklıdere’de birçok
-                                    büyükelçilik binasının da bulunduğu şehir merkezinin iş bölgesinde yer almaktadır.
-                                    Kızılay, Çankaya ve diğer semtlerden kolaylıkla ulaşım sağlayabilirsiniz.
+                                    @Html.Raw(TemaYonetimi.Find("iletisimaciklama"))
                                 </p>
                                 <p>
-                                    <strong>KASAROĞLU Hukuk Bürosu</strong><br/>Şili Meydani, Kavaklıdere Sokak No:
-                                    23/7<br/>Kavaklıdere 06680 ANKARA - TÜRKİYE<br/><br/>
+                                    @Html.Raw(TemaYonetimi.Find("iletisimadres"))
                                     <em class="icon-phone2 "
                                         style="font-size: 16px;">
                                         <!--icon-->
-                                    </em> +90 312 428 40 82 (Pbx)<br/>
+                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimtelefon"))<br/>
                                     <em class="icon-phone5 "
                                         style="font-size: 16px;">
                                         <!--icon-->
-                                    </em> +90 312 428 40 87<br/>
+                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimfax"))<br/>
                                     <em class="icon-envelope3 "
                                         style="font-size: 16px;">
                                         <!--icon-->
-                                    </em> <a href="mailto:info@kasaroglu.av.tr">info@kasaroglu.av.tr</a>
+                                    </em> <a href="mailto:info@kasaroglu.av.tr">@Html.Raw(TemaYonetimi.Find("iletisimmail"))</a>
                                 </p>
                             </div>
                             <div class="col6">
@@ -116,11 +109,7 @@
                                         }
                                         <div class="item f-konu">
                                             <label>Konu <i class="flrq"></i></label>
-<<<<<<< HEAD
                                             <input name="konu" class="inp size6" maxlength="100" type="text" required/>
-=======
-                                            <input name="konu" class="inp size6" maxlength="100" type="text" required />
->>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
                                         </div>
                                         <div class="item f-gonderenin_adi_soyadi">
                                             <label>
@@ -130,11 +119,7 @@
                                                 </i>
                                             </label>
                                             <input name="adSoyad" maxlength="100" class="inp size6" type="text"
-<<<<<<< HEAD
                                                    required/>
-=======
-                                                   required />
->>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
                                         </div>
                                         <div class="item f-eposta">
                                             <label>
@@ -144,11 +129,7 @@
                                                 </i>
                                             </label>
                                             <input name="eposta"
-<<<<<<< HEAD
                                                    class="inp size6" type="text" maxlength="50" required/>
-=======
-                                                   class="inp size6" type="text" maxlength="50" required />
->>>>>>> 7899e80702cea993dd3d3d649b173e1502ac6eb6
                                         </div>
                                         <div class="item f-ileti">
                                             <label>

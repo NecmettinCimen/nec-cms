@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -10,28 +11,32 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.4, user-scalable=1"/>
 
-    <title>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</title>
+    <title>Aybars Hukuk</title>
     <meta charset="utf-8">
-    <meta name="description" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))">
-    <meta name="keywords" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))">
-    <meta name="author" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))">
+  
+    <meta name="description" content="Aybars Hukuk Bürosu">
+    <meta name="keywords" content="Aybars Hukuk Bürosu. Aybars Hukuk Bürosu">
+    <meta name="author" content="Aybars Hukuk Bürosu">
     <meta name="robots" content="all,follow"/>
 
+    <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="http://aybarshukuk.com"/>
-    <meta name="twitter:title" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))">
-    <meta name="twitter:description" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))">
-
+    <meta name="twitter:url" content="https://www.aybarshukuk.com"/>
+    <meta name="twitter:title" content="Aybars Hukuk Bürosu">
+    <meta name="twitter:description" content="Aybars Hukuk Bürosu">
+	
+    <!-- Open Graph data -->
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))"/>
-    <meta property="og:title" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))"/>
-    <meta property="og:description" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))"/>
-    <meta property="og:url" content="http://aybarshukuk.com"/>
+    <meta property="og:site_name" content="Aybars Hukuk Bürosu"/>
+    <meta property="og:title" content="Aybars Hukuk Bürosu"/>
+    <meta property="og:description" content="Aybars Hukuk Bürosu"/>
+    <meta property="og:url" content="https://www.aybarshukuk.com"/>
+	    <!-- google -->
+    <meta itemprop="name" content="Aybars Hukuk Bürosu"/>
+    <meta itemprop="description" content="Aybars Hukuk Bürosu"/>
+	    <link rel="canonical" href="https://www.aybarshukuk.com"/>
 
-    <meta itemprop="name" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))"/>
-    <meta itemprop="description" content="@Html.Raw(TemaYonetimi.Find(" anasayfaresimustuyazibaslik"))"/>
-    <link rel="canonical" href="http://aybarshukuk.com"/>
-    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon"/>
 
     <script type="text/javascript">
         window.appBase = "";
@@ -57,7 +62,17 @@
     <link rel="stylesheet" href="~/Themes/kasaroglu/subversion-wide.css" asp-append-version="true" media="all"/>
     <link rel="stylesheet" href="~/Modules/Haber/Views/theme/default.css" asp-append-version="true" media="all"/>
 
+        
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112200-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-153112200-1');
+</script>
+    
 </head>
 
 <body class="Sayfa-default home fw-front">
@@ -130,7 +145,7 @@
                     </div>
                     <div class="logo-overlay">
                         <a href="/">
-                            <img src="~/Themes/kasaroglu/imgeler/logo.png" alt="logo"/>
+                            <img src="@Html.Raw(TemaYonetimi.Find(kodu:"logo"))" alt="logo"/>
                         </a>
                     </div>
                     <div class="site-title">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</div>
@@ -139,8 +154,8 @@
 
                         <div class="site-search-wrap">
                             <div class="search site-search" data-type="">
-                                <form action="/tr/Home:Search/arama/" method="GET">
-                                    <input type="text" value="Arama" class="text" name="q">
+                                <form action="/Arama" method="GET">
+                                    <input type="text" value="Arama" class="text" name="arama">
                                     <input style="float:left" type="submit" class="ara" value="Ara ">
                                 </form>
                             </div>

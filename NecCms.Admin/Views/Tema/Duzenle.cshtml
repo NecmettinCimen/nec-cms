@@ -26,6 +26,7 @@
         <strong>Açıklama:</strong>
         <label id="aciklama"></label>
         <br/>
+        <div id="resim"></div>
         <a onclick="showHtml()">Raw</a>
         <div id="formelementdiv"></div>
         <div id="formelementhtml" class="row">
@@ -113,8 +114,13 @@
                     ]
                 };
                 var res = list.data[0];
-                if(res.parametre)
-                $('#id').val(res.parametre.id);
+                
+                $('#resim').empty();
+                if(res.parametre){
+                    $('#id').val(res.parametre.id);
+                if (res.tip == 2)
+                    $('#resim').append('<img style="width: 400px" src="/Tema/Resim?id='+res.parametre.degerInt+'" />');
+                }
                 
                 $('#parametreId').val(res.id);
 

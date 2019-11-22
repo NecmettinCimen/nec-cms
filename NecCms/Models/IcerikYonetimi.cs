@@ -7,30 +7,20 @@ namespace NecCms.Models
 {
     public class IcerikYonetimi
     {
-        private static GenericService GenericService;
-
-        public static GenericService genericService
-        {
-            get
-            {
-                if (GenericService == null) GenericService = new GenericService();
-                return GenericService;
-            }
-            set => GenericService = value;
-        }
-
         private static KategoriDto findByKategoriUrl(string url, int skip, int take)
         {
-            var dbkategoriList = genericService.IQueryable<Menu>().Where(x => x.Url.ToLower().Contains(url.ToLower()))
+            GenericService genericService = new GenericService();
+            var dbkategoriList = genericService.Queryable<Menu>().Where(x => x.Url.ToLower().Contains(url.ToLower()))
                 .ToList();
             if (dbkategoriList.Count == 0)
                 return null;
 
             var kategori = dbkategoriList.First();
 
-            var icerikler = from i in genericService.IQueryable<Icerik.Icerikler>()
+            var icerikler = from i in genericService.Queryable<Icerik.Icerikler>()
+                join m in genericService.Queryable<Menu>() on i.MenuId equals  m.Id
                 where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
-                      && i.MenuId == kategori.Id
+                      && m.Url.ToLower() == kategori.Url.ToLower()
                 orderby i.Id descending
                 select new IcerikDto
                 {
@@ -40,7 +30,7 @@ namespace NecCms.Models
                     Tarih = i.YayinlanmaTarihi,
                     Url = i.Url
                 };
-
+            
             return new KategoriDto
             {
                 Icerikler = icerikler.Skip(skip).Take(take).ToList(),
@@ -65,24 +55,50 @@ namespace NecCms.Models
 
         public static IcerikDto Find(string kategoriurl, string icerikurl)
         {
-            var icerik = (from m in genericService.IQueryable<Menu>()
-                    .Where(x => x.Url.ToLower().Contains(kategoriurl.ToLower()))
-                join i in genericService.IQueryable<Icerik.Icerikler>() on m.Id equals i.MenuId
-                where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
-                      && i.Url.ToLower().Contains(icerikurl.ToLower())
-                join d in genericService.IQueryable<Dosyalar>() on i.ResimId equals d.Id into dnull
-                from d in dnull.DefaultIfEmpty()
-                orderby i.Id descending
-                select new IcerikDto
+            string prefix = "";
+            #if DEBUG
+                        prefix = "https://aybarshukuk.com";
+            #endif
+            GenericService genericService = new GenericService();
+            var icerik = (genericService.Queryable<Menu>()
+                .Where(x => x.Url.ToLower().Contains(kategoriurl.ToLower()))
+                .Join(genericService.Queryable<Icerik.Icerikler>(), m => m.Id, i => i.MenuId, (m, i) => new {m, i})
+                .Where(@t =>
+                    @t.i.Durum == Icerik.IcerikDurumEnum.Yayinlandi && @t.i.Url.ToLower().Contains(icerikurl.ToLower()))
+                .GroupJoin(genericService.Queryable<Dosyalar>(), @t => @t.i.ResimId, d => d.Id,
+                    (@t, dnull) => new {@t, dnull})
+                .SelectMany(@t => @t.dnull.DefaultIfEmpty(), (@t, d) => new {@t, d})
+                .OrderByDescending(@t => @t.@t.@t.i.Id)
+                .Select(@t => new IcerikDto
                 {
-                    Baslik = i.Baslik,
-                    Icerik = i.Icerik,
-                    Giris = i.Giris,
-                    ResimData = d != null ? "data:" + d.Tipi + ";base64," + d.Data : "",
-                    Kategori = m.Isim,
-                    Tarih = i.YayinlanmaTarihi,
-                    Url = i.Url
-                }).FirstOrDefault();
+                    Baslik = @t.@t.@t.i.Baslik,
+                    Icerik = @t.@t.@t.i.Icerik,
+                    Giris = @t.@t.@t.i.Giris,
+                    ResimData = @t.d != null ? $"{prefix}/images/{@t.d.Adi}" : "",
+                    Kategori = @t.@t.@t.m.Isim,
+                    Tarih = @t.@t.@t.i.YayinlanmaTarihi,
+                    Url = @t.@t.@t.i.Url
+                })).FirstOrDefault();
+            return icerik;
+        }
+
+        public static List<IcerikDto> Arama(string arama, int skip)
+        {
+      
+            GenericService genericService = new GenericService();
+            var icerik = (genericService.Queryable<Menu>()
+                .Join(genericService.Queryable<Icerik.Icerikler>(), m => m.Id, i => i.MenuId, (m, i) => new {m, i})
+                .Where(@t =>
+                    @t.i.Durum == Icerik.IcerikDurumEnum.Yayinlandi && @t.i.Baslik.Contains(arama))
+                .OrderByDescending(@t => @t.i.Id)
+                .Select(@t => new IcerikDto
+                {
+                    Baslik = @t.i.Baslik,
+                    Giris = @t.i.Giris,
+                    Kategori = @t.m.Isim,
+                    Tarih = @t.i.YayinlanmaTarihi,
+                    Url = @t.i.Url
+                })).Skip(skip).Take(10).ToList();
             return icerik;
         }
     }

@@ -16,7 +16,7 @@
                             <span class="sep">›</span>
                         </div>
                         <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="@Model.Url" itemprop="url">
+                            <a  itemprop="url">
                                 <span itemprop="title">
                                     @Model.Isim
                                 </span>
@@ -54,7 +54,7 @@
                             }
                             else
                             {
-                                <a href="/@Model.Isim/sayfa/@(i + 1)">@(i + 1)</a>
+                                <a href="/Arama?arama=@Model.Isim&skip=@(i + 1)">@(i + 1)</a>
                             }
                         }
                     </div>
@@ -66,30 +66,7 @@
         <div class="stage-sep">
             <div class="body"></div>
         </div>
-        <div class="stage-1" style="display: @(Model.Menuler.Menuler.Count > 0 ? " block" : "none");">
-            <div class="body">
-                <div class="page_navi">
-                    <ul>
-                        <li class="active">
-                            <a href="@Model.Menuler.Url">@Model.Menuler.Isim</a>
-                        </li>
-                        <ul>
-                            @foreach (var m in Model.Menuler.Menuler)
-                            {
-                                <li class="page">
-                                    <a style="color:@(Model.Url.Contains(m.Url) ? " black" : "grey")"
-                                       href="@m.Url">
-                                        @m.Isim</a>
-                                </li>
-                            }
-                        </ul>
-                    </ul>
-                </div>
-                <section class="node-content"></section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
+        
         <div class="clear"></div>
         <div class="stage-bot"></div>
     </div>

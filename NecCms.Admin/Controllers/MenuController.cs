@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using NecCms.Database;
@@ -23,7 +24,7 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = _genericService.IQueryable<Menu>().Where(x => !id.HasValue || x.Id == id).OrderBy(x => x.Sira)
+                data = _genericService.Queryable<Menu>().Where(x => !id.HasValue || x.Id == id).OrderBy(x => x.Sira)
                     .ToList()
             });
         }
@@ -34,6 +35,17 @@ namespace NecCms.Admin.Controllers
             return Json(new {data = model});
         }
 
+        public IActionResult SiralamaKaydet([FromBody] List<Menu> model)
+        {
+            foreach (var item in model)
+            {
+                var temp = _genericService.Queryable<Menu>().First(x => x.Id == item.Id);
+                temp.Sira = item.Sira;
+                _genericService.Save(temp);
+            }
+            return Json(new {data = true});
+        }
+        
         public IActionResult Kaldir([FromBody] Menu model)
         {
             return Json(new {data = _genericService.Remove(model)});

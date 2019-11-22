@@ -1,0 +1,42 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Disallow: 
+Crawl-Delay: 20
+
+User-agent: Yandex
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: YandexBot
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: Bingbot
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: Slurp
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: DuckDuckBot
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: Baiduspider
+Disallow: 
+Crawl-Delay: 50
+
+User-agent: facebot
+Disallow: 
+Crawl-Delay: 20
+
+User-agent: ia_archiver
+Disallow: 
+Crawl-Delay: 50
+
+ 
+ 
+

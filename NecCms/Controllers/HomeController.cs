@@ -8,7 +8,6 @@ namespace NecCms.Controllers
     {
         public IActionResult Index()
         {
-            TemaYonetimi.Nesne();
             return View();
         }
 

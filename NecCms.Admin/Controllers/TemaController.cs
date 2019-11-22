@@ -14,6 +14,12 @@ namespace NecCms.Admin.Controllers
         {
             _genericService = genericService;
         }
+        
+        public IActionResult Resim(int id)
+        {
+                Dosyalar resim = _genericService.Queryable<Dosyalar>().First(f=>f.Id == id);
+                return File(System.IO.File.OpenRead(resim.Yolu), resim.Tipi);
+            }
 
         public IActionResult Yonetim()
         {
@@ -29,7 +35,7 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = _genericService.IQueryable<Tema.Parametre>().Where(x => x.Id == id || !id.HasValue)
+                data = _genericService.Queryable<Tema.Parametre>().Where(x => x.Id == id || !id.HasValue)
                     .OrderByDescending(x => x.Id).ToList()
             });
         }
@@ -48,7 +54,7 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = _genericService.IQueryable<Tema.Parametre>()
+                data = _genericService.Queryable<Tema.Parametre>()
                     .Where(x => x.Id == id || !id.HasValue)
                     .Select(e => new
                     {
@@ -57,17 +63,17 @@ namespace NecCms.Admin.Controllers
                         e.Kodu,
                         e.Aciklama,
                         e.Tip,
-                        Durum = _genericService.IQueryable<Tema.ParametreDegeri>()
+                        Durum = _genericService.Queryable<Tema.ParametreDegeri>()
                             .Count(w => w.ParametreId == e.Id),
                         Parametre = !id.HasValue
                             ? null
-                            : _genericService.IQueryable<Tema.ParametreDegeri>()
+                            : _genericService.Queryable<Tema.ParametreDegeri>()
                                 .Where(w => w.ParametreId == e.Id).Select(x => new
                                 {
                                     x.Id,
                                     x.Deger,
                                     x.DegerInt,
-                                    Dosya = _genericService.IQueryable<Dosyalar>()
+                                    Dosya = _genericService.Queryable<Dosyalar>()
                                         .FirstOrDefault(f => f.Id == x.DegerInt)
                                 }).FirstOrDefault()
                     })

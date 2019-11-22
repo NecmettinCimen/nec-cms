@@ -23,7 +23,7 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = _genericService.IQueryable<Iletisim>().Select(x => new
+                data = _genericService.Queryable<Iletisim>().Select(x => new
                 {
                     x.Id,
                     x.Konu,

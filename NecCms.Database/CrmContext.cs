@@ -17,6 +17,10 @@ namespace NecCms.Database
         public DbSet<Menu> Menu { get; set; }
         public DbSet<Iletisim> Iletisim { get; set; }
 
+        public DbSet<CustomLogger> Loggers { get; set; }
+
+        public DbQuery<IstekKullaniciSayisiDto> IstekKullaniciSayisi { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
@@ -32,5 +36,11 @@ namespace NecCms.Database
                 Telefon = "05456286324"
             });
         }
+    }
+    public class IstekKullaniciSayisiDto
+    {
+        public string y { get; set; }
+        public int a { get; set; }
+        public int b { get; set; }
     }
 }

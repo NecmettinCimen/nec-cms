@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NecCms.Database;
+using NecCms.Database.Service;
 
 namespace NecCms.Models
 {
@@ -12,9 +13,11 @@ namespace NecCms.Models
         {
             get
             {
+                var genericService = new GenericService();
+                
                 // if (menuler == null)
                 if (true)
-                    menuler = (from m in IcerikYonetimi.genericService.IQueryable<Menu>()
+                    menuler = (from m in genericService.Queryable<Menu>()
                         where m.UstId == null
                         orderby m.Sira
                         select new MenuDto
@@ -23,7 +26,7 @@ namespace NecCms.Models
                             Isim = m.Isim,
                             Sira = m.Sira,
                             Url = m.Url,
-                            Menuler = (from m2 in IcerikYonetimi.genericService.IQueryable<Menu>()
+                            Menuler = (from m2 in genericService.Queryable<Menu>()
                                 where m2.UstId == m.Id
                                 orderby m2.Sira
                                 select new MenuDto
@@ -38,27 +41,5 @@ namespace NecCms.Models
             set => menuler = value;
         }
 
-        public static void Fill()
-        {
-            menuler = (from m in IcerikYonetimi.genericService.IQueryable<Menu>()
-                where m.UstId == null
-                orderby m.Sira
-                select new MenuDto
-                {
-                    Id = m.Id,
-                    Isim = m.Isim,
-                    Sira = m.Sira,
-                    Url = m.Url,
-                    Menuler = (from m2 in IcerikYonetimi.genericService.IQueryable<Menu>()
-                        where m2.UstId == m.Id
-                        orderby m2.Sira
-                        select new MenuDto
-                        {
-                            Isim = m2.Isim,
-                            Sira = m2.Sira,
-                            Url = m2.Url
-                        }).ToList()
-                }).ToList();
-        }
     }
 }

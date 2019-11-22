@@ -204,15 +204,7 @@ Fil.renderFront = function () {
 
 function initFront() {
     Fil.scriptBase = window.baseUrl + '/../scripts';
-    //set Mootools locale -----------------------------------------------
-    if (window.lang == 'tr') {
-        Asset.javascript( './scripts/mootools-locale.tr-TR.js', {
-            onLoad: function () {
-                Locale.use('tr-TR');
-                Form.Validator.errorPrefix = ''
-            }
-        });
-    }
+
     //init search box -----------------------------------------------
     var inpEle = $$('.site-search input.text');
     if (inpEle.length != 0) {

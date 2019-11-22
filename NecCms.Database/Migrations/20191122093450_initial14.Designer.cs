@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NecCms.Database;
 
 namespace NecCms.Database.Migrations
 {
     [DbContext(typeof(CrmContext))]
-    partial class CrmContextModelSnapshot : ModelSnapshot
+    [Migration("20191122093450_initial14")]
+    partial class initial14
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,16 +27,21 @@ namespace NecCms.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasMaxLength(250);
+                    b.Property<string>("Host");
 
-                    b.Property<string>("QueryString")
-                        .HasMaxLength(100);
+                    b.Property<int>("KullaniciId");
 
-                    b.Property<string>("RemoteIpAddress")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("LocalIpAddress");
+
+                    b.Property<string>("Path");
+
+                    b.Property<string>("QueryString");
+
+                    b.Property<string>("RemoteIpAddress");
+
+                    b.Property<string>("Scheme");
+
+                    b.Property<bool>("Sil");
 
                     b.Property<int>("StatusCode");
 
@@ -42,11 +49,9 @@ namespace NecCms.Database.Migrations
 
                     b.Property<long>("Time");
 
-                    b.Property<string>("UserAgent")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
                     b.HasKey("Id");
+
+                    b.HasIndex("KullaniciId");
 
                     b.ToTable("Loggers");
                 });
@@ -62,6 +67,8 @@ namespace NecCms.Database.Migrations
                         .HasMaxLength(200);
 
                     b.Property<long>("Boyutu");
+
+                    b.Property<string>("Data");
 
                     b.Property<int>("KullaniciId");
 
@@ -394,6 +401,14 @@ namespace NecCms.Database.Migrations
                     b.HasIndex("KullaniciId");
 
                     b.ToTable("Uyeler");
+                });
+
+            modelBuilder.Entity("NecCms.Database.CustomLogger", b =>
+                {
+                    b.HasOne("NecCms.Database.Kullanici", "Kullanici")
+                        .WithMany()
+                        .HasForeignKey("KullaniciId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("NecCms.Database.Dosyalar", b =>

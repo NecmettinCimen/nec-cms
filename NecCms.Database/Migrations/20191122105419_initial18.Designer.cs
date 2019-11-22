@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NecCms.Database;
 
 namespace NecCms.Database.Migrations
 {
     [DbContext(typeof(CrmContext))]
-    partial class CrmContextModelSnapshot : ModelSnapshot
+    [Migration("20191122105419_initial18")]
+    partial class initial18
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,12 +27,16 @@ namespace NecCms.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("LocalIpAddress")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.Property<string>("Path")
                         .IsRequired()
-                        .HasMaxLength(250);
+                        .HasMaxLength(100);
 
                     b.Property<string>("QueryString")
-                        .HasMaxLength(100);
+                        .HasMaxLength(500);
 
                     b.Property<string>("RemoteIpAddress")
                         .IsRequired()
@@ -41,10 +47,6 @@ namespace NecCms.Database.Migrations
                     b.Property<DateTime>("Tarih");
 
                     b.Property<long>("Time");
-
-                    b.Property<string>("UserAgent")
-                        .IsRequired()
-                        .HasMaxLength(250);
 
                     b.HasKey("Id");
 

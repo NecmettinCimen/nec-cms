@@ -32,7 +32,7 @@ namespace NecCms.Admin.Controllers
 
         public IActionResult Bul(int id)
         {
-            return Json(new {data = _genericService.IQueryable<Icerik.Icerikler>().First(x => x.Id == id)});
+            return Json(new {data = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id)});
         }
 
         public IActionResult Kaydet(Icerik.Icerikler model)
@@ -43,7 +43,7 @@ namespace NecCms.Admin.Controllers
 
             if (model.Id != 0)
             {
-                var dbmodel = _genericService.IQueryable<Icerik.Icerikler>().First(x => x.Id == model.Id);
+                var dbmodel = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == model.Id);
                 if (file == null) model.ResimId = dbmodel.ResimId;
                 model.YazarId = dbmodel.YazarId;
                 model.Durum = dbmodel.Durum;
@@ -69,8 +69,8 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = from x in _genericService.IQueryable<Icerik.Icerikler>()
-                    join m in _genericService.IQueryable<Menu>() on x.MenuId equals m.Id
+                data = from x in _genericService.Queryable<Icerik.Icerikler>()
+                    join m in _genericService.Queryable<Menu>() on x.MenuId equals m.Id
                     orderby x.Id descending
                     select new
                     {
@@ -84,7 +84,7 @@ namespace NecCms.Admin.Controllers
 
         public IActionResult Durum(int id)
         {
-            var dbmodel = _genericService.IQueryable<Icerik.Icerikler>().First(x => x.Id == id);
+            var dbmodel = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id);
             dbmodel.Durum = dbmodel.Durum == Icerik.IcerikDurumEnum.Hazirlandi
                 ? Icerik.IcerikDurumEnum.Yayinlandi
                 : Icerik.IcerikDurumEnum.Hazirlandi;
