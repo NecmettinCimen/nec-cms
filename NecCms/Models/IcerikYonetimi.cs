@@ -17,16 +17,20 @@ namespace NecCms.Models
 
             var kategori = dbkategoriList.First();
 
+            var dbkategoriList2 = genericService.Queryable<Menu>()
+                .Where(x => x.UstId == kategori.Id).Select(s=>s.Id).ToList();
+            dbkategoriList2.Add(kategori.Id);
+
             var icerikler = from i in genericService.Queryable<Icerik.Icerikler>()
                 join m in genericService.Queryable<Menu>() on i.MenuId equals  m.Id
                 where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
-                      && m.Url.ToLower() == kategori.Url.ToLower()
+                      && dbkategoriList2.Contains(i.MenuId)
                 orderby i.Id descending
                 select new IcerikDto
                 {
                     Baslik = i.Baslik,
                     Giris = i.Giris,
-                    Kategori = kategori.Isim,
+                    Kategori = m.Isim,
                     Tarih = i.YayinlanmaTarihi,
                     Url = i.Url
                 };
@@ -37,7 +41,8 @@ namespace NecCms.Models
                 IcerikSayisi = icerikler.Count(),
                 Id = kategori.Id,
                 Isim = kategori.Isim,
-                Url = kategori.Url,
+                KategoriUrl  = kategori.Url,
+                Tip=kategori.Tip,
                 Menuler = MenuYonetimi.Menuler.Find(x =>
                     kategori.UstId.HasValue ? x.Id == kategori.UstId : x.Id == kategori.Id)
             };

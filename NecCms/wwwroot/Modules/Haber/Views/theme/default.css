@@ -692,3 +692,37 @@
 		display: none;
 	}
 }
+
+.cardcustom{
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	background-color: white;
+	padding:5px;
+	text-align: start !important;
+	margin-top: 10px;
+}
+ /*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+	.cardup{
+		width: auto !important;
+		margin-top: 10px;
+	}
+}
+
+ /*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+	.cardup{
+		width: auto !important;
+		margin-top: 10px;
+	}
+
+}
+
+ /*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+	.cardup{
+		width: 45% !important;
+		float: left;
+		margin-left: 3.5%;
+	}
+}

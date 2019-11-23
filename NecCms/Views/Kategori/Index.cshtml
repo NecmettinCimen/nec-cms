@@ -1,3 +1,5 @@
+@try
+{
 @model KategoriDto
 <title>@Model.Isim</title>
 <div class="stage layout-C">
@@ -16,7 +18,7 @@
                             <span class="sep">›</span>
                         </div>
                         <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="@Model.Url" itemprop="url">
+                            <a href="@Model.KategoriUrl" itemprop="url">
                                 <span itemprop="title">
                                     @Model.Isim
                                 </span>
@@ -26,21 +28,30 @@
                     </div>
                 </div>
                 <div id="mainContent"></div>
-                <div class="haber-grup" id="haber-grup">
+                <div class="haber-grup" id="haber-grup" style="min-height: 415px;">
                     <h1 class="page-title">@Model.Isim</h1>
-
+                    @if (Model.Icerikler.Count < 1)
+                    {
+                        
+                        <div class="box01e">
+                            <h5>
+                                Hiç İçerik Bulunamadı.
+                            </h5>
+                            <div class="clear_b"></div>
+                        </div>
+                    }
                     @foreach (var item in Model.Icerikler)
                     {
                         <div class="box01e">
                             <h5>
-                                <a href="@item.Kategori/@item.Url">@item.Baslik</a>
-                                <span class="date">@item.Tarih.ToShortDateString()</span>
+                                <a href="@Model.KategoriUrl/@item.Url">@item.Baslik</a>
+                                <span class="date">@item.Tarih.ToShortDateString() - @item.Kategori</span>
                             </h5>
                             <div class="spot">
                                 @item.Giris
                             </div>
                             <span class="devami">
-                                <a href="@item.Kategori/@item.Url">[Devamı]</a>
+                                <a href="@Model.KategoriUrl/@item.Url">[Devamı]</a>
                             </span>
                             <div class="clear_b"></div>
                         </div>
@@ -77,7 +88,7 @@
                             @foreach (var m in Model.Menuler.Menuler)
                             {
                                 <li class="page">
-                                    <a style="color:@(Model.Url.Contains(m.Url) ? " black" : "grey")"
+                                    <a style="color:@(Model.KategoriUrl.Contains(m.Url) ? " black" : "grey")"
                                        href="@m.Url">
                                         @m.Isim</a>
                                 </li>
@@ -94,3 +105,7 @@
         <div class="stage-bot"></div>
     </div>
 </div>
+}
+catch(Exception)
+{
+}

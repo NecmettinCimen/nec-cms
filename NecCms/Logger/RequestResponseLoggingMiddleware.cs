@@ -23,9 +23,7 @@ namespace NecCms.Logger
 
         public async Task Invoke(HttpContext context)
         {
-#if DEBUG
-            await _next(context);
-#endif
+
             if (context.Request.Path.ToString().StartsWith("/images"))
             {
                 await _next(context);

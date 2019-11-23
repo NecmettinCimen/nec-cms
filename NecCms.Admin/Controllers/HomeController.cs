@@ -6,11 +6,18 @@ using NecCms.Admin.Models;
 using NecCms.Database;
 using  System.Linq;
 using Microsoft.EntityFrameworkCore;
+using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IGenericService _genericService;
+
+        public HomeController(IGenericService genericService)
+        {
+            _genericService = genericService;
+        }
         public IActionResult Index()
         {
             return View();
@@ -74,6 +81,16 @@ namespace NecCms.Admin.Controllers
 
             return Json(result);
         }
+        public IActionResult Istekler(DateTime baslangic, DateTime bitis, int take)
+        {
+            List<CustomLogger> result;
+            using (var db = new CrmContext())
+            {
+                result = db.Set<CustomLogger>().Where(w=>w.Tarih>baslangic && w.Tarih<bitis).OrderByDescending(o=>o.Id).Take(take).ToList();
+            }
+            return Json(result);
+        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

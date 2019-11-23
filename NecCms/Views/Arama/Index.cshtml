@@ -1,3 +1,5 @@
+@try
+{
 @model KategoriDto
 <title>@Model.Isim</title>
 <div class="stage layout-C">
@@ -28,19 +30,28 @@
                 <div id="mainContent"></div>
                 <div class="haber-grup" id="haber-grup">
                     <h1 class="page-title">@Model.Isim</h1>
-
+@if (Model.Icerikler.Count < 1)
+                    {
+                        
+                        <div class="box01e">
+                            <h5>
+                                Hiç İçerik Bulunamadı.
+                            </h5>
+                            <div class="clear_b"></div>
+                        </div>
+                    }
                     @foreach (var item in Model.Icerikler)
                     {
                         <div class="box01e">
                             <h5>
-                                <a href="@item.Kategori/@item.Url">@item.Baslik</a>
+                                <a href="@item.KategoriUrl/@item.Url">@item.Baslik</a>
                                 <span class="date">@item.Tarih.ToShortDateString()</span>
                             </h5>
                             <div class="spot">
                                 @item.Giris
                             </div>
                             <span class="devami">
-                                <a href="@item.Kategori/@item.Url">[Devamı]</a>
+                                <a href="@item.KategoriUrl/@item.Url">[Devamı]</a>
                             </span>
                             <div class="clear_b"></div>
                         </div>
@@ -71,3 +82,7 @@
         <div class="stage-bot"></div>
     </div>
 </div>
+}
+catch (Exception)
+{
+}

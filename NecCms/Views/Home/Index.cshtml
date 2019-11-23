@@ -46,65 +46,83 @@
                     </p>
                     <section>
                         <div class="columns fluid brick">
-                            <div class="col4">
-                                <p>
-                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))"/>
-                                </p>
-                                <h3>
-                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik1url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik1"))</a>
-                                </h3>
+                            <div class="cardup">
+                            <div class="cardcustom">
+                                <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))</h1>
+                                <div style="max-width: 1140px; margin: auto;">
+                                    <p>
+                                    <div class="duyuru-box">
+                                        @foreach (var item in IcerikYonetimi.FindByKategoriUrl("haberler", 5))
+                                        {
+                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
+                                                <div class="t">
+                                                    <h5>
+                                                        <a
+                                                            href="@item.Kategori/@item.Url">
+                                                            @item.Baslik
+                                                        </a>
+                                                    </h5>
+                                                    <span class="date">@item.Tarih.ToShortDateString()</span>
+                                                    <br />
+                                                    @item.Giris
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div style="clear: both;">
+                                        <!-- clear -->
+                                    </div>
+                                    <p style="clear: both; text-align: center; margin-top: 2em;">
+                                        <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
+                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
+                                                <!--icon-->
+                                            </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col4">
-                                <p>
-                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))"/>
-                                </p>
-                                <h3>
-                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik2url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a>
-                                </h3>
                             </div>
-                            <div class="col4">
-                                <p>
-                                    <img src="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3resim"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3"))"/>
-                                </p>
-                                <h3>
-                                    <a href="@Html.Raw(TemaYonetimi.Find("anasayfabaslik3url"))">@Html.Raw(TemaYonetimi.Find("anasayfabaslik2"))</a>
-                                </h3>
+                            <div class="cardup">
+                            <div class="cardcustom">
+                                <h1 style="text-align: center;">Yayınlar</h1>
+                                <div style="max-width: 1140px; margin: auto;">
+                                    <p>
+                                    <div class="duyuru-box">
+                                        @foreach (var item in AybatsHukuk.Yayinlar())
+                                        {
+                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
+                                                                                            <div class="t">
+                                                                                                <h5>
+                                                                                                    <a
+                                                                                                        href="@item.Kategori/@item.Url">
+                                                                                                        @item.Baslik
+                                                                                                    </a>
+                                                                                                </h5>
+                                                                                                <span class="date">@item.Tarih.ToShortDateString() - <a href="@item.KategoriUrl">@item.Kategori</a></span>
+                                                                                                <br />
+                                                                                                @item.Giris
+                                                                                            </div>
+                                                                                        </div>
+                                        }
+                                    </div>
+                                    <div style="clear: both;">
+                                        <!-- clear -->
+                                    </div>
+                                    <p style="clear: both; text-align: center; margin-top: 2em;">
+                                        <a href="/yayinlar">
+                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
+                                                <!--icon-->
+                                            </em> Tüm Yayınlar
+                                        </a>
+                                    </p>
+                                </div> </div>
                             </div>
-                        </div>
+                                </div>
                     </section>
                     <p>
                         <span class="page-break"></span>
                     </p>
-                    <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))</h1>
-                    <div style="max-width: 1140px; margin: auto;">
-                        <p>
-                        <div class="duyuru-box">
-                            @foreach (var item in IcerikYonetimi.FindByKategoriUrl("haberler", 3))
-                            {
-                                <div class="duyuru-item">
-                                    <div class="t">
-                                        <h5>
-                                            <a
-                                                href="@item.Kategori/@item.Url">
-                                                @item.Baslik
-                                            </a>
-                                        </h5>
-                                        <span class="date">@item.Tarih.ToShortDateString()</span>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                        <div style="clear: both;">
-                            <!-- clear -->
-                        </div>
-                        <p style="clear: both; text-align: center; margin-top: 2em;">
-                            <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
-                                <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                    <!--icon-->
-                                </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
-                            </a>
-                        </p>
-                    </div>
+                    
                 </section>
 
             </div>

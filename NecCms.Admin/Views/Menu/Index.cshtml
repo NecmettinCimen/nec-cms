@@ -1,5 +1,12 @@
 @section Styles{
     <link href="~/assets/css/jkanban.min.css" rel="stylesheet"/>
+    <style>
+        .menuekle{
+            background: transparent;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
 }
 
 <div class="row">
@@ -45,6 +52,7 @@
                     onchange: "$('#url').val('/'+url_slug(this.value))"
                 },
                 { type: 'input', id: 'url', name: 'Url' },
+                { type: 'select', id: 'tip', name: 'Tip', data:[{id:1,text:'Tek Sayfa'},{id:2,text:'Liste'},{id:3,text:'Menu Listesi'}] },
                 { type: 'input', subtype: 'number,int', id: 'sira', name: 'Sıra' }
             ]
         });
@@ -56,18 +64,19 @@
                 $('#myKanban').empty();
                 initKanban();
                 res.data.sort((a, b) => a.sira - b.sira).filter(x => x.ustId == null).map(item => {
-                    Kanban.addBoards(
-                        [{
-                            'id': 'item_' + item.id,
-                            'title': item.isim,
-                            'item': [...res.data.sort((a, b) => a.sira - b.sira).filter(x => x.ustId == item.id).map(x => ({
-                                'id': 'item_' + x.id,
-                                'title': x.isim,
-                            })),
-                            { 'id': 'ustid_' + item.id, 'title': 'Menu Ekle' }
-                            ]
-                        }]
-                    )
+                    let itemlist =res.data.sort((a, b) => a.sira - b.sira).filter(x => x.ustId == item.id).map(x => ({
+                                                                                            'id': 'item_' + x.id,
+                                                                                            'title': x.isim,
+                                                                                        }))
+                    if(item.tip!==1){
+                        itemlist.push({ 'id': 'ustid_' + item.id, 'title': 'Menu Ekle',class:['menuekle'] });
+                    }
+                    let data =[{
+                                                          'id': 'item_' + item.id,
+                                                          'title': item.isim,
+                                                          item:itemlist
+                                                      }] ;
+                    Kanban.addBoards(data)
                 });
             })
     };
@@ -95,7 +104,7 @@
             for(let k=0;k<items.length;k++){
                 let item=items[k];
                 if($(item).attr("data-eid").startsWith('item_'))
-                    menuler.push({id:$(item).attr("data-eid").replace('item_',''), sira:i++});
+                    menuler.push({id:$(item).attr("data-eid").replace('item_',''), sira:i++, ustId:$(menu).attr("data-id").replace('item_','')});
             }
         }  
         showToaster(1);
@@ -111,8 +120,8 @@
             gutter: '10px',
             addItemButton: true,
             buttonContent: 'Düzenle',
-            dragendEl:sirala,
             dragendBoard:sirala,
+            dragendEl:sirala,
             buttonClick: function (el, boardId) {
                 setFormId(parseInt(boardId.replace('item_', '')));
                 $('#editModal').modal('show')

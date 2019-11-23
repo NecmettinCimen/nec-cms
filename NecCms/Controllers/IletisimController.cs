@@ -19,10 +19,10 @@ namespace NecCms.Controllers
             return View(false);
         }
 
-        public IActionResult Kaydet(Iletisim model)
+        public IActionResult Kaydet([FromBody]Iletisim model)
         {
             _genericService.Save(model);
-            return View("Index", true);
+            return Json(true);
         }
 
     }

@@ -1,0 +1,67 @@
+@model KategoriDto
+<div class="stage layout-D">
+    <div class="stage-body">
+
+        <div class="stage-sep">
+            <div class="body"></div>
+        </div>
+        <div class="stage-group">
+            <div class="stage-0">
+                <div class="body">
+                    <div class="breadcrumbs">
+                        <div class="body">
+                            <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                                <a href="/" itemprop="url">
+                                    <span itemprop="title">
+                                        Anasayfa
+                                    </span>
+                                </a>
+                                <span class="sep">›</span>
+                            </div>
+                            <div itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
+                                <a href="@Model.KategoriUrl" itemprop="url">
+                                    <span itemprop="title">
+                                        @Model.Isim
+                                    </span>
+                                </a>
+                                <span class="sep">›</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mainContent"></div>
+                    <h1 class="page-title">@Model.Isim</h1>
+                    
+                    <section style="min-height: 400px">
+                        <div class="columns">
+                            <ul class="sub-page-list Sayfa-default">
+                                @foreach (var item in Model.Menuler.Menuler)
+                                {
+                                    <li>
+                                        <a href="@item.Url">
+                                            <i class=""></i> @item.Isim
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </section>
+
+                </div>
+                <div class="clear"></div>
+                <div class="bot"></div>
+            </div>
+            <div class="stage-sep">
+                <div class="body"></div>
+            </div>
+            <div class="stage-1">
+                <div class="body">
+                    <div class="page_navi"></div><section class="node-content"></section>
+                </div>
+                <div class="clear"></div>
+                <div class="bot"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="stage-bot"></div>
+    </div>
+</div>

@@ -102,14 +102,14 @@
                             </div>
                             <div class="col6">
                                 <div class="iletisim_formu">
-                                    <form method="post" action="/iletisim/kaydet" name="pageForm" enctype="application/x-www-form-urlencoded" id="form01">
+                                    <form onsubmit="return false;iletisimform()" method="post">
                                         @if (Model)
                                         {
                                             <h1>Başarılı! Mesajınız Kayıt Edildi.</h1>
                                         }
                                         <div class="item f-konu">
                                             <label>Konu <i class="flrq"></i></label>
-                                            <input name="konu" class="inp size6" maxlength="100" type="text" required/>
+                                            <input id="Konu" class="inp size6" maxlength="100" type="text" required/>
                                         </div>
                                         <div class="item f-gonderenin_adi_soyadi">
                                             <label>
@@ -118,7 +118,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <input name="adSoyad" maxlength="100" class="inp size6" type="text"
+                                            <input id="AdSoyad" maxlength="100" class="inp size6" type="text"
                                                    required/>
                                         </div>
                                         <div class="item f-eposta">
@@ -128,7 +128,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <input name="eposta"
+                                            <input id="Eposta"
                                                    class="inp size6" type="text" maxlength="50" required/>
                                         </div>
                                         <div class="item f-ileti">
@@ -138,7 +138,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <textarea name="aciklama" class="inp size8"
+                                            <textarea id="Aciklama" class="inp size8"
                                               maxlength="500"  rows="7" required></textarea>
                                         </div>
                                         <div class="item f-captcha">
@@ -178,3 +178,24 @@
         <div class="stage-bot"></div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script>
+        iletisimform=e=>{
+            fetch('/iletisim/kaydet',{
+                method:'post',
+                headers:{'content-type':'application/json'},
+                body:JSON.stringify({
+                    Konu:document.getElementById('Konu').value,
+                    AdSoyad:document.getElementById('AdSoyad').value,
+                    Eposta:document.getElementById('Eposta').value,
+                    Aciklama:document.getElementById('Aciklama').value,
+                })
+            })
+            .then(res=>res.json())
+            .then(res=>alert(res));
+            return false;
+        }
+    </script>
+}

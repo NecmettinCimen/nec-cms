@@ -41,6 +41,7 @@ namespace NecCms.Admin.Controllers
             {
                 var temp = _genericService.Queryable<Menu>().First(x => x.Id == item.Id);
                 temp.Sira = item.Sira;
+                temp.UstId = item.UstId;
                 _genericService.Save(temp);
             }
             return Json(new {data = true});
