@@ -30,6 +30,7 @@ namespace NecCms.Database
             public int YazarId { get; set; }
             public Kullanici Yazar { get; set; }
             public int? ResimId { get; set; }
+            
             public Dosyalar Resim { get; set; }
 
             [Required] public string Url { get; set; }

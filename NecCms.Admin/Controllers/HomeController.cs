@@ -6,10 +6,12 @@ using NecCms.Admin.Models;
 using NecCms.Database;
 using  System.Linq;
 using Microsoft.EntityFrameworkCore;
+using NecCms.Admin.Filters;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
+    [NecCmsAuthorize]
     public class HomeController : Controller
     {
         private readonly IGenericService _genericService;

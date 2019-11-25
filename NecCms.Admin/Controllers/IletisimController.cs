@@ -1,10 +1,12 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using NecCms.Admin.Filters;
 using NecCms.Database;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
+    [NecCmsAuthorize]
     public class IletisimController : Controller
     {
         private readonly IGenericService _genericService;

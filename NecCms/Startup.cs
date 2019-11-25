@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using NecCms.Database;
 using NecCms.Database.Service;
 using NecCms.Logger;
 using NecCms.Models;
+using SameSiteMode = Microsoft.AspNetCore.Http.SameSiteMode;
 
 namespace NecCms
 {
@@ -54,7 +56,14 @@ namespace NecCms
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+                        "public,max-age=31536000";
+                }
+            });
             app.UseCookiePolicy();
             
             app.UseMiddleware<RequestResponseLoggingMiddleware>();

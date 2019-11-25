@@ -15,4 +15,8 @@
     <ProjectReference Include="..\NecCms.Database\NecCms.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Modules\eklenti\scripts" />
+  </ItemGroup>
+
 </Project>

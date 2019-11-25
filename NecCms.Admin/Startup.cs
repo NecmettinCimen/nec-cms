@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NecCms.Admin.Models;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin
@@ -21,6 +22,14 @@ namespace NecCms.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -29,6 +38,8 @@ namespace NecCms.Admin
             });
 
             services.AddFactory<IGenericService, GenericService>();
+            
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -43,7 +54,10 @@ namespace NecCms.Admin
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
+            AppHttpContext.Services = app.ApplicationServices; 
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -117,7 +117,8 @@ submitForm = (e) => {
             body
         }).then(res => {
             swal.close();
-            if (res.status == 500) {
+            if (res.status === 500) {
+                swal("Hata",'Daha Sonra Tekrar Deneyiniz','error');
                 return false;
             } else {
                 showToaster(2);

@@ -1,5 +1,5 @@
 @model bool
-<script src="~/Modules/eklenti/scripts/openLayersMapBuilder.js"></script>
+<script src="~/images/openLayersMapBuilder.js"></script>
 
 <div class="stage layout-B">
     <div class="stage-body">
@@ -13,23 +13,6 @@
                     </section>
 
 
-                    <script>
-                        window.addEvent("domready", function () {
-                            new openLayersMapBuilder().init({
-                                id: "fwMap38070",
-                                height: "400px",
-                                mapData: { "points": [{ "lat": 38.348347, "lng": 38.313202, "title": "Malatya", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 38.348347, "lng": 38.313202 }, "zoom": 17, "type": "roadmap", "markerClustering": false }
-                            });
-                        })
-                    </script>
-
-                    <p>
-                        <script>
-                            if (window.innerWidth < 450)
-                                GMap.map.setZoom(6);
-
-                        </script>
-                    </p>
                 </section>
             </div>
             <div class="clear"></div>
@@ -198,4 +181,22 @@
             return false;
         }
     </script>
+    
+                    <script>
+                        window.addEvent("domready", function () {
+                            new openLayersMapBuilder().init({
+                                id: "fwMap38070",
+                                height: "400px",
+                                mapData: { "points": [{ "lat": 38.348347, "lng": 38.313202, "title": "Malatya", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 38.348347, "lng": 38.313202 }, "zoom": 17, "type": "roadmap", "markerClustering": false }
+                            });
+                        })
+                    </script>
+
+                    <p>
+                        <script>
+                            if (window.innerWidth < 450)
+                                GMap.map.setZoom(6);
+
+                        </script>
+                    </p>
 }

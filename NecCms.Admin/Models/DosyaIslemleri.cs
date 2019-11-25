@@ -7,16 +7,20 @@ using NecCms.Database.Service;
 
 namespace NecCms.Admin.Models
 {
-    public class DosyaIslemleri
+    public static class DosyaIslemleri
     {
-        public static int Kaydet(IFormFile file, IGenericService _genericService)
+        private static readonly string Dir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")
+            .Replace("admin.aybarshukuk.com", "httpdocs");
+
+        public static int Kaydet(IFormFile file, IGenericService genericService)
         {
-            var resim = string.Format("{0:yyyyMMddHHmmss.}{1}", DateTime.Now, Path.GetFileName(file.FileName).Split(".").Last());
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", resim).Replace("admin.aybarshukuk.com","httpdocs");
+            var resim = $"{DateTime.Now:yyyyMMddHHmmss.}{Path.GetFileName(file.FileName).Split(".").Last()}";
+            var filePath = Path.Combine(Dir, resim).Replace("admin.aybarshukuk.com", "httpdocs");
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
+
 
 //            string data;
 //            using (var memoryStream = new MemoryStream())
@@ -32,8 +36,21 @@ namespace NecCms.Admin.Models
                 Tipi = file.ContentType,
                 Yolu = filePath
             };
-            _genericService.Save(dosya);
+            genericService.Save(dosya);
             return dosya.Id;
+        }
+
+        public static void Delete(string olddosya)
+        {
+            try
+            {
+                var oldFile = Path.Combine(Dir, olddosya);
+                File.Delete(oldFile);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

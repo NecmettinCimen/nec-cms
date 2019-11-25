@@ -12,11 +12,6 @@ namespace NecCms.Controllers
 {
     public class KategoriController : Controller
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
-        public KategoriController(IHostingEnvironment hostingEnvironment, IGenericService genericService, CrmContext crmContext)
-        {
-            _hostingEnvironment = hostingEnvironment;
-        }
 
         public IActionResult Index(string kategori, int skip)
         {

@@ -1,11 +1,13 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using NecCms.Admin.Filters;
 using NecCms.Admin.Models;
 using NecCms.Database;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
+    [NecCmsAuthorize]
     public class TemaController : Controller
     {
         private readonly IGenericService _genericService;
@@ -21,6 +23,7 @@ namespace NecCms.Admin.Controllers
                 return File(System.IO.File.OpenRead(resim.Yolu), resim.Tipi);
             }
 
+        [AdminAuthorize]
         public IActionResult Yonetim()
         {
             return View("~/Views/Shared/_Crud.cshtml");
@@ -86,7 +89,19 @@ namespace NecCms.Admin.Controllers
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
 
-            if (file != null) model.DegerInt = DosyaIslemleri.Kaydet(file, _genericService);
+            if (model.Id != 0)
+            {
+                var dbmodel = _genericService.Queryable<Tema.ParametreDegeri>().First(f => f.Id == model.Id);
+                if (dbmodel.DegerInt != 0)
+                {
+                    var dbdosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.DegerInt);
+                    DosyaIslemleri.Delete(dbdosya.Adi);
+                }
+            }
+            if (file != null)
+            {
+                model.DegerInt = DosyaIslemleri.Kaydet(file, _genericService);
+            }
 
             return Json(new {data = _genericService.Save(model)});
         }

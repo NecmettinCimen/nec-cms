@@ -93,5 +93,33 @@
             {title: "Eposta", data: 'eposta'},
             {title: "Açıklama", data: 'aciklama'},
         ]
+    },{
+        url: '/Kullanici',
+        parentname: 'Yazar',
+        name: 'Yazar Yönetimi',
+        tableurl: '/Kullanici/Liste/',
+        saveurl: '/Kullanici/Kaydet',
+        silurl: '/Kullanici/Kaldir',
+        columns: [
+            {title: "No", data: 'id'},
+            {title: "Ad Soyad", data: 'adSoyad'},
+            {title: "Telefon", data: 'telefon'},
+            {title: "Eposta", data: 'eposta'},
+            {title: "Rol", data: 'rol', render:(data)=>'<button class="btn btn-outline-primary">'+["","Admin","Yazar","Üye"][data]+'</button>'},
+        ],
+        form: [
+            {type: 'input', id: 'adSoyad', name: 'Ad Soyad', required:true},
+            {type: 'input', id: 'eposta', name: 'Eposta', required:true},
+            {type: 'input', id: 'telefon', name: 'Telefon', required:true},
+            {type: 'input', subtype:'password', id: 'parola', name: 'Parola', required:true},
+            {
+                type: 'select',
+                id: 'rol',
+                name: 'Rol',
+                data: [{text: 'Admin', id: 1}, {text: 'Yazar', id: 2}, {text: 'Üye', id: 3}],
+                style: 'width: 100%;float: left;margin-left: 5px;',
+                required: true,
+            },
+        ]
     },
 ];

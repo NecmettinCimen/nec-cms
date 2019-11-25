@@ -45,51 +45,14 @@
         window.lang = "tr";
         window.isHome = true
     </script>
-    <script type="text/javascript" src="~/scripts/mootools-1.5.2.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/scripts/history/history.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/scripts/MenuMatic.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/scripts/fil.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/scripts/init.front.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/Themes/kasaroglu/theme.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="~/scripts/fil/responsive.js" asp-append-version="true"></script>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/normalize.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/base.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/theme.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/MenuMatic.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/_icons/icomoon/style.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/base-resp.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/theme-resp.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Themes/kasaroglu/subversion-wide.css" asp-append-version="true" media="all"/>
-    <link rel="stylesheet" href="~/Modules/Haber/Views/theme/default.css" asp-append-version="true" media="all"/>
-
+    
+    <link rel="stylesheet" href="~/images/compressed.css" asp-append-version="true" media="all"/>
+    
         
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112200-1"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-153112200-1');
-</script>
     
 </head>
 
 <body class="Sayfa-default home fw-front">
-
-<a href="#mainContent" class="skipToPagePart">İçeriğe Atla</a>
-<a href="#siteMainMenu" class="skipToPagePart">Menüye Atla</a>
-<style>
-        .skipToPagePart {
-            position: absolute;
-            top: -1000px;
-            z-index: 100000
-        }
-
-        .skipToPagePart:focus {
-            top: 0
-        }
-    </style>
 
 <div id="wrapper" class="wrap-B">
 
@@ -195,19 +158,6 @@
                             <div class="navi_bot"></div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                            window.addEvent('domready', function () {
-
-                                try {
-                                    window.siteMainMenu = new MenuMatic({
-                                        id: "siteMainMenu"
-                                    });
-                                } catch (err) {
-                                    console.warn("Disabled: Menumatic. MN-MM-01");
-                                }
-
-                            });
-                        </script>
 
                     <div class="law-logo">
                         <a href="http://www.lawyersworldwide.com/" target="_blank"></a>
@@ -271,7 +221,34 @@
         }
     </style>
 
+    <script type="text/javascript" src="~/images/compressed.js" asp-append-version="true"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112200-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153112200-1');
+</script>
+
+
 @RenderSection("Scripts", false)
+
+                    <script type="text/javascript">
+                            window.addEvent('domready', function () {
+
+                                try {
+                                    window.siteMainMenu = new MenuMatic({
+                                        id: "siteMainMenu"
+                                    });
+                                } catch (err) {
+                                    console.warn("Disabled: Menumatic. MN-MM-01");
+                                }
+
+                            });
+                        </script>
+
 
 </body>
 

@@ -1,11 +1,13 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using NecCms.Admin.Filters;
 using NecCms.Admin.Models;
 using NecCms.Database;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
+    [NecCmsAuthorize]
     public class IcerikController : Controller
     {
         private readonly IGenericService _genericService;
@@ -39,12 +41,23 @@ namespace NecCms.Admin.Controllers
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
 
-            if (file != null) model.ResimId = DosyaIslemleri.Kaydet(file, _genericService);
+            if (file != null)
+            {
+                model.ResimId = DosyaIslemleri.Kaydet(file, _genericService);
+            }
 
             if (model.Id != 0)
             {
                 var dbmodel = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == model.Id);
-                if (file == null) model.ResimId = dbmodel.ResimId;
+                if (file == null)
+                {
+                    model.ResimId = dbmodel.ResimId;
+                }
+                else
+                {
+                    var eskidosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.ResimId);
+                    DosyaIslemleri.Delete(eskidosya.Adi);
+                }
                 model.YazarId = dbmodel.YazarId;
                 model.Durum = dbmodel.Durum;
             }
