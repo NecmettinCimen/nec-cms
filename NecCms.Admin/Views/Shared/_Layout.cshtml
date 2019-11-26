@@ -104,11 +104,20 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="/Icerik/Ekle">İçerik Ekle</a>
+                            <a href="/Icerik/Ekle">Yazı Ekle</a>
                         </li>
                         <li>
-                            <a href="/Icerik/Liste">İçerik Listesi</a>
+                            <a href="/Icerik/Liste">Yazı Listesi</a>
                         </li>
+                 @if (YetkiYonetimi.GetRol() == RolEnum.Admin)
+                                 {
+                                     <li>
+                                         <a href="/IcerikTipleri">İçerik Tipleri Yönetimi</a>
+                                     </li>
+                                 }       
+                 <li>
+                     <a href="/IcerikTipDegerleri">İçerik Yönetimi</a>
+                 </li>
                     </ul>
                 </li>
 

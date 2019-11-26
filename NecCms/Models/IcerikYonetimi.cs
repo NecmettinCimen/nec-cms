@@ -5,11 +5,11 @@ using NecCms.Database.Service;
 
 namespace NecCms.Models
 {
-    public class IcerikYonetimi
+    public static class IcerikYonetimi
     {
         private static KategoriDto findByKategoriUrl(string url, int skip, int take)
         {
-            GenericService genericService = new GenericService();
+            var genericService = new GenericService();
             var dbkategoriList = genericService.Queryable<Menu>().Where(x => x.Url.ToLower().Contains(url.ToLower()))
                 .ToList();
             if (dbkategoriList.Count == 0)
@@ -25,6 +25,8 @@ namespace NecCms.Models
                 join m in genericService.Queryable<Menu>() on i.MenuId equals  m.Id
                 where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
                       && dbkategoriList2.Contains(i.MenuId)
+                      join d in genericService.Queryable<Dosyalar>() on i.ResimId equals  d.Id into dn
+                from d in dn.DefaultIfEmpty()
                 orderby i.Id descending
                 select new IcerikDto
                 {
@@ -32,7 +34,8 @@ namespace NecCms.Models
                     Giris = i.Giris,
                     Kategori = m.Isim,
                     Tarih = i.YayinlanmaTarihi,
-                    Url = i.Url
+                    Url = i.Url,
+                    ResimData = d.Adi
                 };
             
             return new KategoriDto
@@ -62,7 +65,7 @@ namespace NecCms.Models
         {
             string prefix = "";
             #if DEBUG
-                        prefix = "https://aybarshukuk.com";
+                        //prefix = "https://aybarshukuk.com";
             #endif
             GenericService genericService = new GenericService();
             var icerik = (genericService.Queryable<Menu>()

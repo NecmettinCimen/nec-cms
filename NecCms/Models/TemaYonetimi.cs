@@ -9,24 +9,16 @@ namespace NecCms.Models
     {
         public static string Find(string kodu)
         {
-            
-            string prefix = "";
-#if DEBUG
-            prefix = "https://aybarshukuk.com";
-#endif
             var genericService = new GenericService();
 
             var parametre = (from pd in genericService.Queryable<Tema.ParametreDegeri>()
                 join p in genericService.Queryable<Tema.Parametre>() on pd.ParametreId equals p
                     .Id
                 where p.Kodu==kodu
-                join d in genericService.Queryable<Dosyalar>() on pd.DegerInt equals d.Id into
-                    dn
-                from d in dn.DefaultIfEmpty()
                 select new TemaDto
                 {
                     Kodu = p.Kodu,
-                    Deger = d == null ? pd.Deger : $"{prefix}/images/{d.Adi}"
+                    Deger = pd.Deger
                 }).ToList();
             return parametre.Count > 0 ? parametre.First().Deger : "";
         }

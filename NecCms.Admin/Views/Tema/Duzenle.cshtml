@@ -48,6 +48,26 @@
     <script src="~/assets/plugins/quill/katex.min.js"></script>
     <script src="~/assets/plugins/quill/quill.min.js"></script>
     <script>
+    pageInit({
+                     url: '/Tema/Duzenle',
+                     parentname: 'Tema',
+                     name: 'Tema Düzenle',
+                     tableurl: '/Tema/ParametreDegerListesi/',
+                     customeditbutton: `<button type="button" onclick="duzenleForm(#id#)" class="btn btn-outline-warning btn-sm btn-pill"><i class="fa fa-edit"></i>Düzenle</button>`,
+                     saveurl: '/Tema/ParametreDegeriKaydet',
+                     formsubmittype: 'formdata',
+                     columns: [
+                         {title: "No", data: 'id'},
+                         {title: "Kodu", data: 'kodu'},
+                         {title: "İsim", data: 'isim'},
+                         {
+                             title: "Durum",
+                             data: 'deger',
+                             render: (data) => "<button class='btn btn-outline-" + (data ? 'success' : 'danger') + "'>" + (data ? 'Veri var' : 'Veri yok') + "</button>"
+                         },
+                     ]
+                 });
+    
     $('#editModalRow').html($('#infodiv').html());
     $('#infodiv').remove();
     $('#editModalDelete').remove();

@@ -1,255 +1,213 @@
-﻿@using Microsoft.AspNetCore.Http
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<!-- FilWEB CMS. Developed by Fil Bilişim Sistemleri www.filbilisim.com -->
-<html lang="tr" class="lang-tr">
-
+﻿<!DOCTYPE html>
+<html>
 <head>
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.4, user-scalable=1"/>
-
-    <title>Aybars Hukuk</title>
     <meta charset="utf-8">
-  
-    <meta name="description" content="Aybars Hukuk Bürosu">
-    <meta name="keywords" content="Aybars Hukuk Bürosu. Aybars Hukuk Bürosu">
-    <meta name="author" content="Aybars Hukuk Bürosu">
-    <meta name="robots" content="all,follow"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="@TemaYonetimi.Find("seokeywords")">
+    <meta name="description" content="@TemaYonetimi.Find("seodescription")">
+    <meta name="author" content="@TemaYonetimi.Find("seoauthor")">
+    <title>@TemaYonetimi.Find("baslik")</title>
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.aybarshukuk.com"/>
-    <meta name="twitter:title" content="Aybars Hukuk Bürosu">
-    <meta name="twitter:description" content="Aybars Hukuk Bürosu">
-	
-    <!-- Open Graph data -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:title" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:description" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:url" content="https://www.aybarshukuk.com"/>
-	    <!-- google -->
-    <meta itemprop="name" content="Aybars Hukuk Bürosu"/>
-    <meta itemprop="description" content="Aybars Hukuk Bürosu"/>
-	    <link rel="canonical" href="https://www.aybarshukuk.com"/>
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="~/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144-precomposed.png">
 
-    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon"/>
+    <!-- BASE CSS -->
+    <link href="~/css/main_font/main_font.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/menu.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
+    <link href="~/css/icon_font/pe-icon-7-stroke.min.css" rel="stylesheet">
+    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
+    <link href="~/css/edu_fonts/edu_fonts.min.css" rel="stylesheet">
+    <link href="~/css/magnific-popup.css" rel="stylesheet">
 
-    <script type="text/javascript">
-        window.appBase = "";
-        window.baseUrl = "/tr";
-        window.theme = "aybars";
-        window.lang = "tr";
-        window.isHome = true
-    </script>
-    
-    <link rel="stylesheet" href="~/images/compressed.css" asp-append-version="true" media="all"/>
-    
-        
-    
+    <!-- YOUR CUSTOM CSS -->
+    <link href="~/css/custom.css" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="~/layerslider/css/layerslider.css" rel="stylesheet">
+    <link href="~/css/tabs.css" rel="stylesheet">
 </head>
 
-<body class="Sayfa-default home fw-front">
+<body>
 
-<div id="wrapper" class="wrap-B">
+<div id="preloader">
+    <div class="pulse"></div>
+</div><!-- Pulse Preloader -->
 
-    <div id="wrapper-content">
-        <div id="pbody">
-            <div id="top">
-                <div class="pre-top">
-                    <div class="wrap">
-                        <div class="body">
-                            <section class="node-content">
-                                <div style="z-index: 10001; position: relative;">
-                                    <p>
-                                        <!-- <a href="https://www.facebook.com/" target="_blank" rel="noopener">
-                                            <em class="icon-facebook3 " style="font-size: 18px;">
-                                            </em>
-                                        </a>
-                                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
-                                            <em class="icon-instagram " style="font-size: 18px;">
-                                            </em>
-                                        </a> <span style="font-size: 18px;">
-                                            <a href="https://tr.linkedin.com" target="_blank" rel="noopener">
-                                                <em class="icon-linkedin ">
-                                                </em>
-                                            </a>
-                                        </span> | 
-                                        -->
-                                        <em class="icon-phone2 "
-                                            style="vertical-align: middle; font-size: 18px;">
-                                            <!--icon-->
-                                        </em> @TemaYonetimi.Find("telefon")
-                                    </p>
-                                </div>
-                                <style>
-                                        .pre-top a {
-                                            color: #fff !important;
-                                            margin: 0;
-                                            display: inline-block;
-                                        }
-
-                                        .pre-top p {
-                                            margin: 0;
-                                            margin-top: -4px;
-                                        }
-                                    </style>
-                            </section>
-                        </div>
-                    </div>
+<!-- Header================================================== -->
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div id="logo">
+                    <a href="/"><img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logo")" width="125" height="40" alt="Atena" data-retina="true"></a>
                 </div>
-                <div class="body">
-                    <div class="mob-menu">
-                        <div id="mobMenuButton"></div>
-                        <div id="mobMenuContainer"></div>
+            </div>
+            <nav class="col-md-9 col-sm-9 col-xs-9">
+                <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+                <div class="main-menu">
+                    <div id="header_menu">
+                        <img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logomobil")" width="125" height="40" alt="Atena" data-retina="true">
                     </div>
-                    <div class="logo-overlay">
-                        <a href="/">
-                            <img src="@Html.Raw(TemaYonetimi.Find(kodu:"logo"))" alt="logo"/>
-                        </a>
-                    </div>
-                    <div class="site-title">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</div>
-
-                    <div id="flags">
-
-                        <div class="site-search-wrap">
-                            <div class="search site-search" data-type="">
-                                <form action="/Arama" method="GET">
-                                    <input type="text" value="Arama" class="text" name="arama">
-                                    <input style="float:left" type="submit" class="ara" value="Ara ">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navi-wrap">
-                        <div class="navi">
-                            <div class="navi_top"></div>
-                            <nav class="navi_body">
-                                <ul class="menulist" id="siteMainMenu">
-                                    @foreach (var m in MenuYonetimi.Menuler)
+                    <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                    <ul>
+                        @foreach (var menu in MenuYonetimi.Menuler)
+                        {
+                            if (menu.Menuler.Count > 0)
+                            {
+                                <li class="submenu">
+                                    <a href="@menu.Url" class="show-submenu">@menu.Isim <i class="icon-down-open-mini"></i></a>
+                                        <ul>
+                                    @foreach (var menu2 in menu.Menuler)
                                     {
-                                        <li>
-                                            <a href="@m.Url" data-tip="Sayfa:default">
-                                                <i class=""></i>
-                                                <span>@m.Isim</span>
-                                            </a>
-                                            @if (m.Menuler.Count > 0)
-                                            {
-                                                <ul>
-                                                    @foreach (var m2 in m.Menuler)
-                                                    {
-                                                        <li>
-                                                            <a href="@m2.Url" data-tip="Sayfa:default">
-                                                                <i class=""></i>
-                                                                <span>@m2.Isim</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            }
-                                        </li>
+                                            <li><a href="@menu2.Url">@menu2.Isim</a></li>
                                     }
+                                        </ul>    
+                                </li>   
+                            }
+                            else
+                            {
+                                <li><a href="@menu.Url">@menu.Isim</a></li>   
+                            }
+                        }
+                        <li><a href="#" data-toggle="modal" data-target="#login">Login</a></li>
+                        <li><a href="#search" id="search_bt"><i class=" icon-search"></i><span>Search</span></a></li>
+                    </ul>
+                </div><!-- End main-menu -->
+            </nav>
+        </div>
+    </div><!-- container -->
+</header><!-- End Header -->
+@RenderBody()
+<footer>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-3 col-sm-3">
+                <p id="logo_footer">
+                    <img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logo")" width="125" height="40" alt="@TemaYonetimi.Find("baslik")" data-retina="true">
+                </p>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <h4>Hakkında</h4>
+                <ul>
+                    <li><a href="#">Hakkımızda</a></li>
+                    <li><a href="#">Haberler</a></li>
+                    <li><a href="#">Giriş</a></li>
+                    <li><a href="#">Üye Ol</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <h4>Yararlı Linkler</h4>
+                <ul>
+                    <li><a href="http://inonu.edu.tr">İnönü Üniversitesi</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <h4>İletişim</h4>
+                <ul>
+                    <li><a href="/iletisim">İletişim</a></li>
+                </ul>
+                <ul id="contacts_footer">
+                    <li>Telefon - <a href="tel://@TemaYonetimi.Find("telefon")">@TemaYonetimi.Find("telefon")</a></li>
+                    <li>Eposta - <a href="mailto://@TemaYonetimi.Find("eposta")">@TemaYonetimi.Find("eposta")</a></li>
+                </ul>
+            </div>
+        </div><!-- End row -->
+    </div><!-- End container -->
+</footer><!-- End footer -->
+<div id="copy">
+    <div class="container">
+        © @TemaYonetimi.Find("baslik") 2019 - Tüm Hakları Saklıdır.
+    </div>
+</div><!-- End copy -->
 
-                                </ul>
-                            </nav>
-                            <div class="navi_bot"></div>
-                        </div>
-                    </div>
 
-                    <div class="law-logo">
-                        <a href="http://www.lawyersworldwide.com/" target="_blank"></a>
+
+<!-- Login modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-popup">
+            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+            <form action="#" class="popup-form" id="myLogin">
+                <input type="text" class="form-control form-white" placeholder="Username">
+                <input type="text" class="form-control form-white" placeholder="Password">
+                <div class="checkbox-holder text-left">
+                    <div class="checkbox">
+                        <input type="checkbox" value="accept_1" id="check_1" name="check_1" />
+                        <label for="check_1"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
                     </div>
                 </div>
-            </div>
-
-            <div id="content">
-                @RenderBody()
-            </div>
-            <!--content-->
-        </div>
-        <!-- pbody -->
-    </div>
-
-
-    <div id="footer">
-        <div class="body">
-            <div class="content">
-                <section class="node-content">
-                    <div class="gle-logo">
-                        <p>
-                            <a href="@TemaYonetimi.Find("anasayfaaltyaziresimlink")" target="_blank" rel="noopener">
-                                <img
-                                    src="@TemaYonetimi.Find("anasayfaaltyaziresim")" alt="aybars"/>
-                            </a>
-                        </p>
-                    </div>
-                    <p>
-                        <span style="font-size: 0.9em;">
-                            @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi"))
-                        </span>
-                    </p>
-                    <p>
-                        @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi2"))
-                    </p>
-                    <style>
-                            .gle-logo {
-                                float: right;
-                                margin-left: 1em;
-                            }
-                        </style>
-                </section>
-            </div>
+                <button type="submit" class="btn btn-submit">Submit</button>
+            </form>
         </div>
     </div>
 </div>
 
-<div class="extra01"></div>
+<!-- Register modal -->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-popup">
+            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+            <form action="#" class="popup-form" id="myRegister">
+                <input type="text" class="form-control form-white" placeholder="Name">
+                <input type="text" class="form-control form-white" placeholder="Last Name">
+                <input type="email" class="form-control form-white" placeholder="Email">
+                <input type="text" class="form-control form-white" placeholder="Password">
+                <div class="checkbox-holder text-left">
+                    <div class="checkbox">
+                        <input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+                        <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,600,600italic,700,700italic&amp;subset=latin,latin-ext"
-      type="text/css"/>
-<style>
-        BODY {
-            font-family: "Raleway", arial, sans-serif
-        }
+<!-- Search modal -->
+<div id="search">
+    <button type="button" class="close">×</button>
+    <form>
+        <input type="search" value="" placeholder="type keyword(s) here" >
+        <button type="submit" class="button">Search</button>
+    </form>
+</div>
 
-        #wrapper-content {
-            background-color: #cccccc
-        }
-    </style>
+<!-- Common scripts -->
+<script src="~/js/jquery-1.11.2.min.js"></script>
+<script src="~/js/common_scripts_min.js"></script>
+<script src="~/js/functions.js"></script>
+<script src="~/assets/validate.js"></script>
 
-    <script type="text/javascript" src="~/images/compressed.js" asp-append-version="true"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112200-1"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-153112200-1');
+<!-- Specific scripts -->
+<script src="~/layerslider/js/greensock.js"></script>
+<script src="~/layerslider/js/layerslider.transitions.js"></script>
+<script src="~/layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        'use strict';
+        $('#layerslider').layerSlider({
+            autoStart: true,
+            responsive: true,
+            responsiveUnder: 1280,
+            layersContainer: 1170,
+            skinsPath: 'layerslider/skins/'
+            // Please make sure that you didn't forget to add a comma to the line endings
+            // except the last line!
+        });
+    });
 </script>
-
-
-@RenderSection("Scripts", false)
-
-                    <script type="text/javascript">
-                            window.addEvent('domready', function () {
-
-                                try {
-                                    window.siteMainMenu = new MenuMatic({
-                                        id: "siteMainMenu"
-                                    });
-                                } catch (err) {
-                                    console.warn("Disabled: Menumatic. MN-MM-01");
-                                }
-
-                            });
-                        </script>
-
-
+<script src="~/js/tabs.js"></script>
+<script>new CBPFWTabs( document.getElementById( 'tabs' ) );</script>
 </body>
-
 </html>

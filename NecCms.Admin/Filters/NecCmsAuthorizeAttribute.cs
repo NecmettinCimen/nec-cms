@@ -10,6 +10,8 @@ namespace NecCms.Admin.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+#if !DEBUG
+            
             if (filterContext.HttpContext.Session.Get<int>("UserId") == 0)
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
@@ -17,6 +19,7 @@ namespace NecCms.Admin.Filters
                         {"action", "Index"},
                         {"controller", "Login"}
                     });
+#endif
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -29,6 +32,7 @@ namespace NecCms.Admin.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+#if !DEBUG
             if (filterContext.HttpContext.Session.Get<RolEnum>("Rol") != RolEnum.Admin)
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
@@ -36,6 +40,7 @@ namespace NecCms.Admin.Filters
                         {"action", "Index"},
                         {"controller", "Home"}
                     });
+#endif
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)

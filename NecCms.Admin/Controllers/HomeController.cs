@@ -22,6 +22,12 @@ namespace NecCms.Admin.Controllers
         }
         public IActionResult Index()
         {
+#if DEBUG
+         
+                HttpContext.Session.Set<int>("UserId",1);
+                HttpContext.Session.Set<RolEnum>("Rol",RolEnum.Admin);
+                HttpContext.Session.Set<string>("AdSoyad","DEBUG");   
+#endif
             return View();
         }
 

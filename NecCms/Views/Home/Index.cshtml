@@ -1,135 +1,125 @@
-﻿<div class="stage layout-B">
-    <div class="stage-body">
-
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-                    <section class="homebanner" style="background-image: url(@TemaYonetimi.Find("anasayfaresim"));">
-
-                        <div class="con">
-                            <p class="headline">
-                                <strong>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</strong>
-                                <br/>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyaziicerik"))
-                            </p>
-                            <p style="margin-top: 2em;">
-                                <a class="buttonX" href='@Html.Raw(TemaYonetimi.Find("anasayfaresimustubuttonurl"))'>
-                                    @Html.Raw(TemaYonetimi.Find("anasayfaresimustubutton"))
-                                    <em class="icon-arrow-right5 " style="font-size: 14px;">
-                                        <!--icon-->
-                                    </em>
-                                </a>
-                            </p>
-                        </div>
-                    </section>
-                    <link href="~/images/homebanner.css" rel="stylesheet"/>
-
-                </section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div id="mainContent"></div>
-                <section class="node-content">
-                    <div style="max-width: 890px; margin: auto;">
-                        <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfaaltbaslik"))</h1>
-                        <p class="headline" style="text-align: center;">
-                            @Html.Raw(TemaYonetimi.Find("anasayfaaltaciklama"))
-                        </p>
-                    </div>
-                    <p>
-                        <span class="page-break"></span>
-                    </p>
-                    <section>
-                        <div class="columns fluid brick">
-                            <div class="cardup">
-                            <div class="cardcustom">
-                                <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))</h1>
-                                <div style="max-width: 1140px; margin: auto;">
-                                    <p>
-                                    <div class="duyuru-box">
-                                        @foreach (var item in IcerikYonetimi.FindByKategoriUrl("haberler", 5))
-                                        {
-                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
-                                                <div class="t">
-                                                    <h5>
-                                                        <a
-                                                            href="@item.Kategori/@item.Url">
-                                                            @item.Baslik
-                                                        </a>
-                                                    </h5>
-                                                    <span class="date">@item.Tarih.ToShortDateString()</span>
-                                                    <br />
-                                                    @item.Giris
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                    <div style="clear: both;">
-                                        <!-- clear -->
-                                    </div>
-                                    <p style="clear: both; text-align: center; margin-top: 2em;">
-                                        <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
-                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                                <!--icon-->
-                                            </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="cardup">
-                            <div class="cardcustom">
-                                <h1 style="text-align: center;">Yayınlar</h1>
-                                <div style="max-width: 1140px; margin: auto;">
-                                    <p>
-                                    <div class="duyuru-box">
-                                        @foreach (var item in AybatsHukuk.Yayinlar())
-                                        {
-                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
-                                                                                            <div class="t">
-                                                                                                <h5>
-                                                                                                    <a
-                                                                                                        href="@item.Kategori/@item.Url">
-                                                                                                        @item.Baslik
-                                                                                                    </a>
-                                                                                                </h5>
-                                                                                                <span class="date">@item.Tarih.ToShortDateString() - <a href="@item.KategoriUrl">@item.Kategori</a></span>
-                                                                                                <br />
-                                                                                                @item.Giris
-                                                                                            </div>
-                                                                                        </div>
-                                        }
-                                    </div>
-                                    <div style="clear: both;">
-                                        <!-- clear -->
-                                    </div>
-                                    <p style="clear: both; text-align: center; margin-top: 2em;">
-                                        <a href="/yayinlar">
-                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                                <!--icon-->
-                                            </em> Tüm Yayınlar
-                                        </a>
-                                    </p>
-                                </div> </div>
-                            </div>
-                                </div>
-                    </section>
-                    <p>
-                        <span class="page-break"></span>
-                    </p>
-                    
-                </section>
-
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
+﻿
+<div id="full-slider-wrapper">
+    <div id="layerslider" style="width:100%;height:650px;">
+        @foreach (var item in IcerikTipiYonetimi.Bul("slider"))
+        {
+            <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+                <img src="@IcerikTipiYonetimi.DosyaPrefix/@item[0]" class="ls-bg" alt="@item[1]">
+                <h3 class="ls-l slide_typo" style="top: 45%; left: 50%;" data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;">@item[1]</h3>
+                <p class="ls-l slide_typo_2" style="top:52%; left:50%;" data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">@item[2]</p>
+                <p class="ls-l" style="top:62%; left:50%;" data-ls="durationin:2000;delayin:1300;easingin:easeOutElastic;"><a href="@item[4]" class="button_intro outline">@item[3]</a></p>
+            </div>   
+        }
     </div>
+</div><!-- End layerslider -->
+
+<div class="container_gray_bg" id="home_feat_1">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in IcerikTipiYonetimi.Bul("slideraltındakimenuler"))
+            {
+            <div class="col-md-4 col-sm-4">
+                            <div class="home_feat_1_box">
+                                <a href="@item[2]">
+                                    <img src="@IcerikTipiYonetimi.DosyaPrefix/@item[0]" class="img-responsive" alt="">
+                                    <div class="short_info">
+                                        <h3>@item[1]</h3><i class="arrow_carrot-right_alt2"></i></div>
+                                </a>
+                            </div>
+                        </div>    
+            }
+            
+        </div><!-- End row -->
+    </div><!-- End container -->
+</div><!-- End container_gray_bg -->
+
+<div class="container margin_60">
+    <div class="main_title">
+        <h2>@TemaYonetimi.Find("anasayfaaltbaslik1")</h2>
+        <p>@TemaYonetimi.Find("anasayfaaltbaslik1aciklama")</p>
+    </div>
+    @foreach (var item in @IcerikTipiYonetimi.Bul("anasayfabolum1"))
+    {
+        <div class="col-md-6 col-sm-6">
+            <div class="box_feat_home">
+                <i class="@item[0]"></i>
+                <h3>@item[1]</h3>
+                <p>@item[2]</p>
+            </div>
+        </div>
+    }
+    <hr class="more_margin">
+
+    <div class="row add_bottom_60">
+        <div class="main_title">
+            <h2>@TemaYonetimi.Find("anasayfaaltbaslik2")</h2>
+            <p>@TemaYonetimi.Find("anasayfaaltbaslik2aciklama")</p>
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div id="graph">
+                <img src="~/img/graphic.jpg" class="wow zoomIn" data-wow-delay="0.1s" alt="">
+                @{ var items = IcerikTipiYonetimi.Bul("anasayfabolum2");}
+                @for (int i = 0; i < items.Count; i++)
+                {
+                    <div class="features step_@(i+1) wow flipInX" data-wow-delay="@(i)s">
+                        <h4><strong>0@(i+1).</strong> @items[i][0]</h4><p>@items[i][1]</p>
+                    </div>   
+                }
+            </div>
+        </div>
+    </div><!-- End row -->
+</div><!-- End container -->
+<div class="container margin_60">
+    <div class="main_title">
+            <h2>@TemaYonetimi.Find("anasayfaaltbaslik3")</h2>
+            <p>@TemaYonetimi.Find("anasayfaaltbaslik3aciklama")</p>
+    </div>
+    <div id="tabs" class="tabs">
+        <nav>
+            <ul>
+                <li><a href="#section-2" class="icon-news"><span>Etkinlikler</span></a></li>
+                <li><a href="#section-3" class="icon-events"><span>Haberler</span></a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <section id="section-2">
+                <div class="row list_news_tabs">
+                    @foreach (var item in IcerikYonetimi.FindByKategoriUrl(url: "etkinlikler", take: 3))
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p>
+                            <span class="date_published">@item.Tarih.ToString("dd MMM yyyy")</span>
+                            <h3><a href="@item.KategoriUrl/@item.Url">@item.Baslik</a></h3>
+                            <p>@item.Giris </p>
+                            <a href="@item.KategoriUrl/@item.Url" class="button small">Daha Fazla</a>
+                        </div>
+                    }
+                </div><!--End row -->
+            </section>
+            <section id="section-3">
+                <div class="row list_news_tabs">
+                    @foreach (var item in IcerikYonetimi.FindByKategoriUrl(url: "haberler", take: 3))
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p>
+                            <span class="date_published">@item.Tarih.ToString("dd MMM yyyy")</span>
+                            <h3><a href="@item.KategoriUrl/@item.Url">@item.Baslik</a></h3>
+                            <p>@item.Giris </p>
+                            <a href="@item.KategoriUrl/@item.Url" class="button small">Daha Fazla</a>
+                        </div>
+                    }
+                </div><!--End row -->
+            </section>
+
+        </div><!-- /content -->
+    </div><!-- End tabs -->
 </div>
+
+<div class="bg_content magnific">
+    <div>
+             <h3>@TemaYonetimi.Find("anasayfaaltbaslik4")</h3>
+             <p>@TemaYonetimi.Find("anasayfaaltbaslik4aciklama")</p>
+        <a href="@TemaYonetimi.Find("anasayfaaltbaslik4link")" class="video_pop"><i class="arrow_triangle-right_alt2"></i></a>
+    </div>
+</div><!-- End bg_content -->
+

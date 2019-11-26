@@ -57,29 +57,20 @@ namespace NecCms.Admin.Controllers
         {
             return Json(new
             {
-                data = _genericService.Queryable<Tema.Parametre>()
-                    .Where(x => x.Id == id || !id.HasValue)
-                    .Select(e => new
-                    {
-                        e.Id,
-                        e.Isim,
-                        e.Kodu,
-                        e.Aciklama,
-                        e.Tip,
-                        Durum = _genericService.Queryable<Tema.ParametreDegeri>()
-                            .Count(w => w.ParametreId == e.Id),
-                        Parametre = !id.HasValue
-                            ? null
-                            : _genericService.Queryable<Tema.ParametreDegeri>()
-                                .Where(w => w.ParametreId == e.Id).Select(x => new
-                                {
-                                    x.Id,
-                                    x.Deger,
-                                    x.DegerInt,
-                                    Dosya = _genericService.Queryable<Dosyalar>()
-                                        .FirstOrDefault(f => f.Id == x.DegerInt)
-                                }).FirstOrDefault()
-                    })
+                data = (from p in _genericService.Queryable<Tema.Parametre>()
+                        .Where(x => x.Id == id || !id.HasValue)
+                        join pd in _genericService.Queryable<Tema.ParametreDegeri>() on p.Id equals pd.ParametreId 
+                            into pdn
+                        from pd in pdn.DefaultIfEmpty()
+                        select new
+                        {
+                            p.Id,
+                            p.Isim,
+                            p.Kodu,
+                            p.Aciklama,
+                            p.Tip,
+                            pd.Deger
+                        })
                     .OrderByDescending(x => x.Id)
                     .ToList()
             });
@@ -100,7 +91,9 @@ namespace NecCms.Admin.Controllers
             }
             if (file != null)
             {
-                model.DegerInt = DosyaIslemleri.Kaydet(file, _genericService);
+                var dosya = DosyaIslemleri.Kaydet(file, _genericService);
+                model.DegerInt = dosya.Id;
+                model.Deger = dosya.Adi;
             }
 
             return Json(new {data = _genericService.Save(model)});

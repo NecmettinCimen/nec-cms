@@ -1,0 +1,131 @@
+<partial name="_Crud"/>
+
+
+@section Scripts
+{
+    <script>
+    pageInit({
+        name:'İçerik Listesi',
+        parent:'İçerik Yönetimi',
+        saveurl: '/IcerikTipDegerleri/Kaydet',
+        tableurl: '/IcerikTipDegerleri/Liste',
+        customeditbutton: `<button class="btn btn-outline-warning btn-sm btn-pill" data-target="#editModal" data-toggle="modal" onclick="icerikTipFormById(#id#)" type="button"><i class="fa fa-edit"></i>Düzenle</button>`,
+        formsubmittype:'formdata',
+        columns:[
+          {title:'No', data:'id'},
+          {title:'İsim', data:'isim'},
+          {title:'Alan', data:'alan'},
+          {title:'Deger', data:'deger'},              
+        ],
+        form:[
+            {
+                type: 'select',
+                id: 'icerikTip',
+                name: 'İçerik Tipi',
+                ajax:'/IcerikTipleri/Liste',
+                text:'isim',
+                style: 'width: 100%;float: left;margin-left: 5px;',
+                required: true,
+                onchange:'icerikTipForm(this)'
+             },
+        ]
+    });
+    $('#editModalDelete').attr('onclick','silBySira()');
+    
+
+    icerikTipForm=(current)=>{
+        fetch('/IcerikTipleri/Liste/'+current.value)
+        .then(res=>res.json())
+        .then(res=>{
+            icerikForm(current.value,res.data[0].alanlar,[]);
+        });
+    };
+    
+    icerikTipFormById=(id)=>{
+            fetch('/IcerikTipDegerleri/Bul/'+id)
+            .then(res=>res.json())
+            .then(res=>{
+                tsira = res.icerikTipDegeri[0].sira
+                icerikForm(res.iceriktip.id,res.iceriktip.alanlar, res.icerikTipDegeri);
+            });
+        };
+    function icerikForm(iceriktipid,alanlar, values) {
+        if(!document.getElementById('editModalRowForm')){
+            $('#editModalRow').append('<div id="editModalRowForm"></div>')
+        }
+        $('#editModalRowForm').empty();
+        alanlar.split(';').map((item, i) => {
+            let element = item.split(':');
+            let items = [{
+                id: "model[" + i + "].icerikTipiId",
+                name: "icerikTipiId",
+                hidden: true,
+                value: iceriktipid,
+                type: 'input'
+            }, {
+                id: "model[" + i + "].alan",
+                name: element[0],
+                hidden: true,
+                value: element[0],
+                type: 'input'
+            }, {
+                id: "model[" + i + "].id",
+                name: 'id',
+                hidden: true,
+                value: values[i] ? values[i].id : 0,
+                type: 'input'
+            }, {
+                id: "model[" + i + "].sira",
+                name: 'sira',
+                hidden: true,
+                value: values[i] ? values[i].sira : 0,
+                type: 'input'
+            }, {
+                id: "model[" + i + "].deger",
+                name: element[0],
+                value: values[i]?values[i].deger:"",
+                type: element[1].replace('yazi', 'textarea').replace('dosya', 'file')
+            }];
+            $('#editModalRowForm').append(prepareForm(items));
+        });
+    }
+    
+    let tsira=0;
+    function silBySira(){
+   Swal.fire({
+        title: 'Kaldırmak istediğinize emin misiniz?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Evet!',
+        cancelButtonText: 'Hayır'
+    }).then((result) => {
+        if (result.value) {
+
+            showToaster(1);
+            fetch('/IcerikTipDegerleri/Kaldir', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Sira: tsira
+                })
+            }).then(res => {
+                    showToaster(2);
+                    return res.json()
+            }).then(res => {
+                if (res) {
+                    table.ajax.reload();
+                    $('#editModal').modal('hide');
+                    Swal.fire(
+                        'Başarılı!',
+                        'Kaldırıldı.',
+                        'success'
+                    )
+                }
+            })
+        }
+    })
+}
+    </script>
+}

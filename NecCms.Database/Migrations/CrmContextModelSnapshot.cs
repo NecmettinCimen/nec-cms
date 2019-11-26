@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NecCms.Database;
 
@@ -15,15 +14,12 @@ namespace NecCms.Database.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("NecCms.Database.CustomLogger", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Path")
                         .IsRequired()
@@ -54,8 +50,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Dosyalar", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Adi")
                         .IsRequired()
@@ -65,7 +60,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -85,8 +80,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Icerik+FotografGalerisi", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("FotografGalerisiDosyaId");
 
@@ -94,7 +88,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -110,14 +104,13 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Icerik+FotografGalerisiDosyalar", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("DosyaId");
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -131,8 +124,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Icerik+Icerikler", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Baslik")
                         .IsRequired();
@@ -150,7 +142,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("ResimId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -172,11 +164,69 @@ namespace NecCms.Database.Migrations
                     b.ToTable("Icerikler");
                 });
 
+            modelBuilder.Entity("NecCms.Database.IcerikTipDegerleri", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Alan")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Deger")
+                        .HasMaxLength(500);
+
+                    b.Property<int>("DegerInt");
+
+                    b.Property<int>("IcerikTipiId");
+
+                    b.Property<int?>("KullaniciId");
+
+                    b.Property<short>("Sil");
+
+                    b.Property<int>("Sira");
+
+                    b.Property<DateTime>("Tarih");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IcerikTipiId");
+
+                    b.ToTable("IcerikTipDegerleri");
+                });
+
+            modelBuilder.Entity("NecCms.Database.IcerikTipleri", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Alanlar")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Isim")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Kodu")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<int?>("KullaniciId");
+
+                    b.Property<short>("Sil");
+
+                    b.Property<DateTime>("Tarih");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IcerikTipleri");
+                });
+
             modelBuilder.Entity("NecCms.Database.Iletisim", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Aciklama")
                         .IsRequired()
@@ -196,7 +246,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -208,8 +258,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Kullanici", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AdSoyad")
                         .IsRequired()
@@ -227,7 +276,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int>("Rol");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -247,7 +296,7 @@ namespace NecCms.Database.Migrations
                             Eposta = "admin@crm.com",
                             Parola = "admin@crm.com",
                             Rol = 1,
-                            Sil = false,
+                            Sil = (short)0,
                             Tarih = new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Telefon = "05456286324"
                         });
@@ -256,15 +305,14 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Menu", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Isim")
                         .IsRequired();
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<int>("Sira");
 
@@ -286,8 +334,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Tema+Parametre", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Aciklama");
 
@@ -298,7 +345,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<int>("Sira");
 
@@ -314,8 +361,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Tema+ParametreDegeri", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Deger");
 
@@ -325,7 +371,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int>("ParametreId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -339,8 +385,7 @@ namespace NecCms.Database.Migrations
             modelBuilder.Entity("NecCms.Database.Uyeler", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AdSoyad")
                         .IsRequired()
@@ -350,7 +395,7 @@ namespace NecCms.Database.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<bool>("Cinsiyet");
+                    b.Property<short>("Cinsiyet");
 
                     b.Property<DateTime>("DogumTarihi");
 
@@ -364,7 +409,7 @@ namespace NecCms.Database.Migrations
 
                     b.Property<int?>("KullaniciId");
 
-                    b.Property<bool>("Sil");
+                    b.Property<short>("Sil");
 
                     b.Property<DateTime>("Tarih");
 
@@ -412,6 +457,14 @@ namespace NecCms.Database.Migrations
                     b.HasOne("NecCms.Database.Kullanici", "Yazar")
                         .WithMany()
                         .HasForeignKey("YazarId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NecCms.Database.IcerikTipDegerleri", b =>
+                {
+                    b.HasOne("NecCms.Database.IcerikTipleri", "IcerikTipi")
+                        .WithMany()
+                        .HasForeignKey("IcerikTipiId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

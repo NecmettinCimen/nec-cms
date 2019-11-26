@@ -229,11 +229,10 @@ setValue = (name, value) => {
 };
 
 prepareForm = (formList) => {
-    var formHtml = formList.map(item => formElements(item));
-    return formHtml;
+    return formList.map(item => formElements(item));
 };
 formElements = (item) => {
-    var elementHtml = '<div class="form-group" style="' + (item.style || "") + '" >';
+    let elementHtml = '<div class="form-group" style="' + (item.style || "") + '" >';
 
     if (!item.hidden)
         elementHtml += `<label for="${item.id}">${item.name}</label>`;
@@ -270,9 +269,23 @@ formElements = (item) => {
 
             elementHtml += '>';
             break;
+        case 'file':
+            elementHtml += `<input type="file" class="form-control ${item.class || ""}" id="${item.id}" name="${item.id}" placeholder="${item.placeholder || item.name}" `;
+
+            if (item.required)
+                elementHtml += ` required`;
+            
+            if (item.value != undefined)
+                elementHtml += ` value="${item.value}"`;
+
+            if (item.onchange)
+                elementHtml += ` onchange="${item.onchange}" onkeypress="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"`;
+
+            elementHtml += '>';
+            break;
         case 'textarea':
             elementHtml += `<textarea class="form-control" id="${item.id}" name="${item.id}"` +
-                ` rows="3" maxLength="${item.maxLength}" ></textarea>`;
+                ` rows="3" maxLength="${item.maxLength}" >${(item.value?item.value:"")}</textarea>`;
             break;
         case 'select':
             if (item.ajax)
@@ -280,11 +293,11 @@ formElements = (item) => {
                     .then(res => res.json())
                     .then(res => {
                         $(`#${item.id}`).select2({
-                            data: res.data.map(s => ({
+                            data: [{id:0,text:'Lütfen Seçiniz'},...res.data.map(s => ({
                                 id: s.id,
                                 text: s[item.text],
                                 data: s.data
-                            }))
+                            }))]
                         })
                     });
 

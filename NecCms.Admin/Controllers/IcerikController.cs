@@ -43,7 +43,7 @@ namespace NecCms.Admin.Controllers
 
             if (file != null)
             {
-                model.ResimId = DosyaIslemleri.Kaydet(file, _genericService);
+                model.ResimId = DosyaIslemleri.Kaydet(file, _genericService).Id;
             }
 
             if (model.Id != 0)

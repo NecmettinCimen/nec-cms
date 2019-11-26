@@ -12,10 +12,11 @@ namespace NecCms.Admin.Models
         private static readonly string Dir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")
             .Replace("admin.aybarshukuk.com", "httpdocs");
 
-        public static int Kaydet(IFormFile file, IGenericService genericService)
+        public static Dosyalar Kaydet(IFormFile file, IGenericService genericService)
         {
             var resim = $"{DateTime.Now:yyyyMMddHHmmss.}{Path.GetFileName(file.FileName).Split(".").Last()}";
             var filePath = Path.Combine(Dir, resim).Replace("admin.aybarshukuk.com", "httpdocs");
+
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
@@ -37,7 +38,7 @@ namespace NecCms.Admin.Models
                 Yolu = filePath
             };
             genericService.Save(dosya);
-            return dosya.Id;
+            return dosya;
         }
 
         public static void Delete(string olddosya)

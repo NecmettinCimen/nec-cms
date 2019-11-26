@@ -7,7 +7,7 @@ namespace NecCms.Database
     {
         public int Id { get; set; }
 
-        [Required] public bool Sil { get; set; } = false;
+        [Required] public short Sil { get; set; } = 0;
 
         [Required] public DateTime Tarih { get; set; } = new DateTime(2019, 1, 1);
         public int? KullaniciId { get; set; }

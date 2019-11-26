@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace NecCms.Database
 {
@@ -18,13 +19,16 @@ namespace NecCms.Database
         public DbSet<Iletisim> Iletisim { get; set; }
 
         public DbSet<CustomLogger> Loggers { get; set; }
+        
+        public DbSet<IcerikTipleri> IcerikTipleri { get; set; }
+        public DbSet<IcerikTipDegerleri> IcerikTipDegerleri { get; set; }
 
         public DbQuery<IstekKullaniciSayisiDto> IstekKullaniciSayisi { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=sql.poseidon.domainhizmetleri.com;Database=aybarshu_kuk;User Id=aybarshu_kuk;Password=Huzt!903;");
+            optionsBuilder.UseMySQL(
+                "Server=remotemysql.com;Database=ySI5U4T5pN;Uid=ySI5U4T5pN;Pwd=LfgCrdAhRa;");
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
@@ -37,10 +41,20 @@ namespace NecCms.Database
             });
         }
     }
-    public class IstekKullaniciSayisiDto
+
+    public class IcerikTipleri:BaseEntity
     {
-        public string y { get; set; }
-        public int a { get; set; }
-        public int b { get; set; }
+        [Required][MaxLength(50)]public string Isim { get; set; }
+        [Required][MaxLength(50)]public string Kodu { get; set; }
+        [Required][MaxLength(500)]public string Alanlar { get; set; }
+    }
+    public class IcerikTipDegerleri:BaseEntity
+    {
+        [Required]public int Sira { get; set; }
+        [Required]public int IcerikTipiId { get; set; }
+        public IcerikTipleri IcerikTipi { get; set; }
+        [Required][MaxLength(50)]public string Alan { get; set; }
+        [MaxLength(500)]public string Deger { get; set; }
+        public int DegerInt { get; set; }
     }
 }

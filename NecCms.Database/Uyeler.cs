@@ -11,7 +11,7 @@ namespace NecCms.Database
 
         [Required] [MaxLength(15)] public string Telefon { get; set; }
 
-        [Required] public bool Cinsiyet { get; set; }
+        [Required] public short Cinsiyet { get; set; }
 
         [Required] public DateTime DogumTarihi { get; set; }
 

@@ -16,7 +16,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Modules\eklenti\scripts" />
+    <_ContentIncludedByDefault Remove="wwwroot\styles\Eklenti\images\map\lounges.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\ara.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\arrow-2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\arrow.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\arrow_down.gif" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\arrow_down_over.gif" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\divider.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\globe.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\law-logo2018.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\logo.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\imgeler\mobil-menu.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images" />
   </ItemGroup>
 
 </Project>

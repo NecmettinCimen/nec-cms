@@ -1,8 +1,8 @@
 ﻿let pages = [
     {
-        "parentname": `İçerik Yönetimi`,
+        "parentname": `Yazı Yönetimi`,
         url: `/Icerik/Liste`,
-        name: 'İçerik Listesi',
+        name: 'Yazı Listesi',
         tableurl: '/Icerik/IcerikListesi/',
         formPageUrl: '/Icerik/Ekle',
         customeditbutton: `<a class="btn btn-outline-warning btn-sm btn-pill" href="/Icerik/Duzenle/#id#"><i class="fa fa-edit"></i>Düzenle</a>`,
@@ -62,24 +62,6 @@
                 required: true,
             },
         ]
-    }, {
-        url: '/Tema/Duzenle',
-        parentname: 'Tema',
-        name: 'Tema Düzenle',
-        tableurl: '/Tema/ParametreDegerListesi/',
-        customeditbutton: `<button type="button" onclick="duzenleForm(#id#)" class="btn btn-outline-warning btn-sm btn-pill"><i class="fa fa-edit"></i>Düzenle</button>`,
-        saveurl: '/Tema/ParametreDegeriKaydet',
-        formsubmittype: 'formdata',
-        columns: [
-            {title: "No", data: 'id'},
-            {title: "Kodu", data: 'kodu'},
-            {title: "İsim", data: 'isim'},
-            {
-                title: "Durum",
-                data: 'durum',
-                render: (data) => "<button class='btn btn-outline-" + (data ? 'success' : 'danger') + "'>" + (data ? 'Veri var' : 'Veri yok') + "</button>"
-            },
-        ]
     },{
         url: '/Iletisim',
         parentname: 'İletişim',
@@ -120,6 +102,24 @@
                 style: 'width: 100%;float: left;margin-left: 5px;',
                 required: true,
             },
+        ]
+    }, {
+        url: '/IcerikTipleri',
+        parentname: 'İçerik Tipleri',
+        name: 'İçerik Yönetimi',
+        tableurl: '/IcerikTipleri/Liste/',
+        saveurl: '/IcerikTipleri/Kaydet',
+        silurl: '/IcerikTipleri/Kaldir',
+        columns: [
+            {title: "No", data: 'id'},
+            {title: "İsim", data: 'isim'},
+            {title: "Kodu", data: 'kodu'},
+            {title: "Alanlar", data: 'alanlar'}
+        ],
+        form: [
+            {type: 'input', id: 'isim', name: 'İsim', required: true},
+            {type: 'input', id: 'kodu', name: 'Kodu', required: true},
+            {type: 'textarea', id: 'alanlar', name: 'Alanlar', required: true},
         ]
     },
 ];

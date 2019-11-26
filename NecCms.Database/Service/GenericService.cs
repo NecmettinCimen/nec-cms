@@ -14,13 +14,13 @@ namespace NecCms.Database.Service
         CrmContext dbContext = new CrmContext();
         public IQueryable<T> Queryable<T>() where T : BaseEntity
         {
-            return dbContext.Set<T>().Where(x => !x.Sil);
+            return dbContext.Set<T>().Where(x => x.Sil == 0);
         }
 
         public bool Remove<T>(T model) where T : BaseEntity
         {
             var dbmodel = dbContext.Set<T>().Find(model.Id);
-            dbmodel.Sil = true;
+            dbmodel.Sil = 1;
 
             dbContext.Set<T>().Update(dbmodel);
 
