@@ -1,122 +1,129 @@
 <link href="~/css/blog.css" rel="stylesheet"/>
 @try
 {
-@model KategoriDto
-<title>@Model.Isim</title>
+    @model KategoriDto
 
-        <div class="sub_header bg_1">
-        	<div id="intro_txt">
-			<h1>@Model.Isim</h1>
-            </div>
-		</div> <!--End sub_header -->
-        
-        <div id="position">
-            <div class="container">
-                <ul>
-                    <li><a href="/">Anasayfa</a></li>
-                    <li>@Model.Isim</li>
-                </ul>
-            </div>
-        </div><!-- Position -->
- 
- 	<div class="container_gray_bg">
-    	<div class="container margin_60">
-    <div class="row">
-         
-     <div class="col-md-9">
-     @if (Model.Icerikler.Count < 1)
-                         {
-                             
-                             <div class="box01e">
-                                 <h5>
-                                     Hiç İçerik Bulunamadı.
-                                 </h5>
-                                 <div class="clear_b"></div>
-                             </div>
-                         }
-                         @foreach (var item in Model.Icerikler)
-                         {
-                             <div class="box01e">
-                                 <h5>
-                                     <a href="@Model.KategoriUrl/@item.Url">@item.Baslik</a>
-                                     <span class="date">@item.Tarih.ToShortDateString() - @item.Kategori</span>
-                                 </h5>
-                                 <div class="spot">
-                                     @item.Giris
-                                 </div>
-                                 <span class="devami">
-                                     <a href="@Model.KategoriUrl/@item.Url">[Devamı]</a>
-                                 </span>
-                                 <div class="clear_b"></div>
-                             </div>
-                             
-                             <div class="post">
-                                 <a href="@Model.KategoriUrl/@item.Url" ><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a>
-                                 <div class="post_info clearfix">
-                                     <div class="post-left">
-                                         <ul>
-                                             <li><i class="icon-calendar-empty"></i>@item.Tarih.ToString("dd/MM/yyyy") <em> Admin</em></li>
-                                             <li><i class="icon-inbox-alt"></i><a href="/@item.KategoriUrl">@item.Kategori</a></li>
-                                         </ul>
-                                     </div>
-                                 </div>
-                                 <h2>@item.Baslik</h2>
-                                 @item.Giris
-                                 <a href="/@item.KategoriUrl/@item.Url" class="button" >Daha Fazla</a>
-                             </div><!-- end post -->
-                         }
-           
-                
-              <div class="text-center">
-                    <ul class="pagination">
-                    @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
-                                            {
-                                                @if (Model.SayfaNo == i)
-                                                {
-                                                    <span>@(i + 1)</span>
-                                                    <li class="active"><a href="#">@(i + 1)</a></li>
-                                                }
-                                                else
-                                                {
-                                                    <li><a href="/@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a></li>
-                                                }
-                                            }
-                    </ul><!-- end pagination-->
-                </div>
-     </div><!-- End col-md-8-->   
-     
-      <aside class="col-md-3" id="sidebar">
+    <title>@Model.Isim</title>
 
-				<div class="widget">
-					<div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="icon-search-1"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-				</div><!-- End Search -->
-                <hr>
-				<div class="widget">
-					<h4>Kategoriler</h4>
-                    <ul id="cat_nav">
-                        @foreach (var m in Model.Menuler.Menuler)
-                                                    {
-                                                        <li><a href="@m.Url">@m.Isim</a></li>
-                                                    }
-                    </ul>
-				</div><!-- End widget -->
- 
-               <hr>
-     </aside>
-  </div>   
-</div>
+    <div class="sub_header bg_1">
+        <div id="intro_txt">
+            <h1>@Model.Isim</h1>
+        </div>
     </div>
-    
+    <!--End sub_header -->
+
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="/">Anasayfa</a>
+                </li>
+                <li>@Model.Isim</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Position -->
+
+    <div class="container_gray_bg">
+        <div class="container margin_60">
+            <div class="row">
+
+                <div class="col-md-9">
+                    @if (Model.Icerikler.Count < 1)
+                    {
+                        <div class="box01e">
+                            <h5>
+                                Hiç İçerik Bulunamadı.
+                            </h5>
+                            <div class="clear_b"></div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Icerikler)
+                    {
+                        <div class="post">
+                            <a href="@Model.KategoriUrl/@item.Url">
+                                <img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive">
+                            </a>
+                            <div class="post_info clearfix">
+                                <div class="post-left">
+                                    <ul>
+                                        <li>
+                                            <i class="icon-calendar-empty"></i>@item.Tarih.ToString("dd/MM/yyyy") <em> Admin</em>
+                                        </li>
+                                        <li>
+                                            <i class="icon-inbox-alt"></i><a href="@item.KategoriUrl">@item.Kategori</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <h2>@item.Baslik</h2>
+                            @item.Giris
+                            <hr/>
+                            <a href="@item.KategoriUrl/@item.Url" class="button">Daha Fazla</a>
+                        </div>
+                        <!-- end post -->
+                    }
+
+
+                    <div class="text-center">
+                        <ul class="pagination">
+                            @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
+                            {
+                                @if (Model.SayfaNo == i)
+                                {
+                                    <span>@(i + 1)</span>
+                                    <li class="active">
+                                        <a href="#">@(i + 1)</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a>
+                                    </li>
+                                }
+                            }
+                        </ul><!-- end pagination-->
+                    </div>
+                </div><!-- End col-md-8-->
+
+                <aside class="col-md-3" id="sidebar">
+
+                    <div class="widget">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="Arama yap."/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="button">
+                                        <i class="icon-search-1"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Search -->
+                    <hr>
+                    @if (Model.Menuler.Menuler.Count() > 0)
+                    {
+                        <div class="widget">
+                            <h4>Alt Menuler</h4>
+                            <ul id="cat_nav">
+                                @foreach (var m in Model.Menuler.Menuler)
+                                {
+                                    <li>
+                                        <a href="@m.Url">@m.Isim</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <!-- End widget -->
+                        <hr>
+                    }
+
+                </aside>
+            </div>
+        </div>
+    </div>
 }
-catch(Exception)
+catch (Exception)
 {
 }

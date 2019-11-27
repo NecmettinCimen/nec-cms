@@ -1,202 +1,196 @@
 @model bool
-<script src="~/images/openLayersMapBuilder.js"></script>
+<div id="map"></div><!-- end map-->
 
-<div class="stage layout-B">
-    <div class="stage-body">
-
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-
-                    <section>
-                        <div id="fwMap38070" class="eklenti-gmap"></div>
-                    </section>
-
-
-                </section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
+<div class="container_gray_bg">
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Category</a>
+                </li>
+                <li>Page active</li>
+            </ul>
         </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/tr/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/tr/28036/Iletisim" itemprop="url">
-                                <span itemprop="title">
-                                    İletişim
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/tr/bize-ulasin" itemprop="url">
-                                <span itemprop="title">
-                                    @Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
+    </div><!-- Position -->
+
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="box_style_1">
+                    <div class="indent_title_in">
+                        <i class="pe-7s-mail-open-file"></i>
+                        <h3>Bize Ulaşın</h3>
                     </div>
-                </div>
-                <div id="mainContent"></div>
-                <h1 class="page-title">@Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))</h1>
-                <section class="node-content">
-                    <section>
-                        <div class="columns fluid">
-                            <div class="col6">
-                                <h2>
-                                    <strong>@Html.Raw(TemaYonetimi.Find("iletisimbaslik"))</strong>
-                                </h2>
-                                <p>
-                                    <img src="@Html.Raw(TemaYonetimi.Find("iletisimresim"))" alt="@Html.Raw(TemaYonetimi.Find("iletisimadres"))"
-                                         data-showlarge="true"/>
-                                </p>
-                                <p style="text-align: justify;">
-                                    @Html.Raw(TemaYonetimi.Find("iletisimaciklama"))
-                                </p>
-                                <p>
-                                    @Html.Raw(TemaYonetimi.Find("iletisimadres"))
-                                    <em class="icon-phone2 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimtelefon"))<br/>
-                                    <em class="icon-phone5 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimfax"))<br/>
-                                    <em class="icon-envelope3 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> <a href="mailto:info@kasaroglu.av.tr">@Html.Raw(TemaYonetimi.Find("iletisimmail"))</a>
-                                </p>
-                            </div>
-                            <div class="col6">
-                                <div class="iletisim_formu">
-                                    <form onsubmit="return false;iletisimform()" method="post">
-                                        @if (Model)
-                                        {
-                                            <h1>Başarılı! Mesajınız Kayıt Edildi.</h1>
-                                        }
-                                        <div class="item f-konu">
-                                            <label>Konu <i class="flrq"></i></label>
-                                            <input id="Konu" class="inp size6" maxlength="100" type="text" required/>
-                                        </div>
-                                        <div class="item f-gonderenin_adi_soyadi">
-                                            <label>
-                                                Adınız Soyadınız
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <input id="AdSoyad" maxlength="100" class="inp size6" type="text"
-                                                   required/>
-                                        </div>
-                                        <div class="item f-eposta">
-                                            <label>
-                                                Eposta Adresiniz
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <input id="Eposta"
-                                                   class="inp size6" type="text" maxlength="50" required/>
-                                        </div>
-                                        <div class="item f-ileti">
-                                            <label>
-                                                Öneriniz / Sorunuz
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <textarea id="Aciklama" class="inp size8"
-                                              maxlength="500"  rows="7" required></textarea>
-                                        </div>
-                                        <div class="item f-captcha">
-                                            <script
-                                                src="https://www.google.com/recaptcha/api.js?render=6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj"></script>
-                                            <script>
-                                                grecaptcha.ready(function () {
-                                                    grecaptcha.execute('6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj', { action: 'iletisim' }).then(function (token) {
-                                                        console.log(token)
-                                                    });
-                                                });
-                                            </script>
-                                        </div>
-                                        <div class="item f-gonder">
-                                            <p>
-                                                <input value="Gönder" name="" type="submit" class="button size4"
-                                                       data-validators="">
-                                            </p>
-                                        </div>
-                                    </form>
+                    <div class="wrapper_indent">
+                        <div id="message-contact"></div>
+                        @if (Model)
+                        {
+                            <h1>Başarılı! Mesajınız Gönderildi.</h1>
+                        }
+                        <form asp-action="kaydet" asp-controller="iletisim" data-ajax="true" 
+                                                                              data-ajax-mode="replace" data-ajax-update="#character-container">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Ad Soyad</label>
+                                        <input type="text" required="required" maxlength="100" class="form-control styled" name="model.adSoyad" placeholder="Ad Soyad">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Eposta</label>
+                                        <input type="email" required="required" maxlength="50" class="form-control styled" name="model.eposta" placeholder="Eposta">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <style>
-                        .page-title {
-                            display: none
-                        }
-                    </style>
-                </section>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Konu</label>
+                                        <input type="text" required="required" maxlength="100" class="form-control styled" name="model.konu" placeholder="Konu">
+                                    </div>
+                                </div>
 
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Açıklama</label>
+                                        <textarea maxlength="500" rows="5" name="model.aciklama" class="form-control styled" style="height:100px;" placeholder="Your message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit" class="button add_bottom_30" id="submit-contact">Gönder</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- End wrapper_indent -->
+
+                    <hr class="styled_2">
+
+                    <div class="indent_title_in">
+                        <i class="pe-7s-look"></i>
+                        <h3>Plan a visit</h3>
+                        <p>
+                            Mussum ipsum cacilds, vidis litro abertis.
+                        </p>
+                    </div>
+                    <div class="wrapper_indent">
+                        <div id="message-visit"></div>
+                        <form method="post" action="assets/visit.php" id="visit">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>First name</label>
+                                        <input type="text" class="form-control styled" id="name_visit" name="name_visit" placeholder="First name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input type="text" class="form-control styled" id="lastname_visit" name="lastname_visit" placeholder="Last name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" id="email_visit" name="email_visit" class="form-control styled" placeholder="Enter Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Phone number</label>
+                                        <input type="text" id="phone_visit" name="phone_visit" class="form-control styled" placeholder="Phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Preferred visit date</label>
+                                        <input class="date-pick form-control styled" data-date-format="M d, D" type="text" name="date_visit" id="date_visit" placeholder="Select date">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Preferred visit time</label>
+                                        <input class="time-pick form-control styled" type="text" name="time_visit" id="time_visit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="submit" value="Submit" class="button add_bottom_30" id="submit-visit">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- End wrapper_indent -->
+                </div><!-- End box style 1-->
+            </div><!-- End col-md-9 -->
+
+            <aside class="col-md-3">
+                <h3>Contacts info</h3>
+                <p>
+                    11 Fifth Ave - New York, US<br>
+                    + 61 (2) 8093 3400 / + 61 (2) 8093 3402<br>
+                    <a href="#">info@domain.com</a>
+                </p>
+                <h5>Get directions</h5>
+                <form action="http://maps.google.com/maps" method="get" target="_blank">
+                    <div class="form-group">
+                        <input type="text" name="saddr" placeholder="Enter your location" class="form-control styled">
+                        <input type="hidden" name="daddr" value="New York, NY 11430">
+                        <!-- Write here your end point -->
+                    </div>
+                    <input type="submit" value="Get directions" class="button small nomargin">
+                </form>
+                <hr class="styled">
+                <h3>Dipartmens</h3>
+                <ul class="contacts_info">
+                    <li>
+                        <strong>Administration</strong><br>
+                        <a href="tel://003823932342">0038 23932342</a> - <a href="tel://003823932342">admin@atena.com</a><br>
+                        <small>Monday to Friday 9am - 7pm</small>
+                    </li>
+                    <li>
+                        <strong>Admission</strong><br>
+                        <a href="tel://003823932342">0038 23932342</a> - <a href="tel://003823932342">admission@atena.com</a><br>
+                        <small>Monday to Friday 9am - 7pm</small>
+                    </li>
+                    <li>
+                        <strong>General questions</strong><br>
+                        <a href="tel://003823932342">0038 23932342</a> - <a href="tel://003823932342">questions@atena.com</a><br>
+                        <small>Monday to Friday 9am - 7pm</small>
+                    </li>
+                </ul>
+                <hr class="styled">
+                <div class="banner">
+                    <i class=" iconcustom-school"></i>
+                    <h3>Take a campus tour</h3>
+                    <p>
+                        Zril causae ancillae sit ea. Dicam veritus mediocritatem sea ex, nec id agam eius.
+                    </p>
+                    <a href="tour.html" class="banner_bt">Start tour</a>
+                </div>
+            </aside>
+
+        </div><!--End row -->
+    </div><!--End container -->
+</div><!--End container_gray_bg -->
 
 @section Scripts
 {
-    <script>
-        iletisimform=e=>{
-            fetch('/iletisim/kaydet',{
-                method:'post',
-                headers:{'content-type':'application/json'},
-                body:JSON.stringify({
-                    Konu:document.getElementById('Konu').value,
-                    AdSoyad:document.getElementById('AdSoyad').value,
-                    Eposta:document.getElementById('Eposta').value,
-                    Aciklama:document.getElementById('Aciklama').value,
-                })
-            })
-            .then(res=>res.json())
-            .then(res=>alert(res));
-            return false;
-        }
-    </script>
-    
-                    <script>
-                        window.addEvent("domready", function () {
-                            new openLayersMapBuilder().init({
-                                id: "fwMap38070",
-                                height: "400px",
-                                mapData: { "points": [{ "lat": 38.348347, "lng": 38.313202, "title": "Malatya", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 38.348347, "lng": 38.313202 }, "zoom": 17, "type": "roadmap", "markerClustering": false }
-                            });
-                        })
-                    </script>
-
-                    <p>
-                        <script>
-                            if (window.innerWidth < 450)
-                                GMap.map.setZoom(6);
-
-                        </script>
-                    </p>
+    <!-- GOOGLE map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJZqZRigLhXPJUt8t4mBZBiHDqVoNtSXY"></script>
+    <script type="text/javascript" src="~/js/mapmarker.jquery.js"></script>
+    <script type="text/javascript" src="~/js/mapmarker_func.jquery.js"></script>
 }

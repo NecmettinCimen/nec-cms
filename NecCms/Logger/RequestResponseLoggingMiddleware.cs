@@ -24,7 +24,13 @@ namespace NecCms.Logger
         public async Task Invoke(HttpContext context)
         {
 
-            if (context.Request.Path.ToString().StartsWith("/images"))
+            if (context.Request.Path.ToString().StartsWith("/images") 
+                || context.Request.Path.ToString().StartsWith("/assets")
+                || context.Request.Path.ToString().StartsWith("/css")
+                || context.Request.Path.ToString().StartsWith("/img")
+                || context.Request.Path.ToString().StartsWith("/js")
+                || context.Request.Path.ToString().StartsWith("/layerslider")
+                )
             {
                 await _next(context);
             }

@@ -1,61 +1,45 @@
-@try
-{
+ @try 
+{ 
 @model IcerikDto
 <title>@Model.Baslik</title>
-<div class="stage layout-B">
-    <div class="stage-body">
-
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-                    <div style="background-image: url(@Model.ResimData)" class="banner banner-large">
-                        <p> </p>
-                    </div>
-                </section>
+    
+        <div class="sub_header bg_1" style="background: url(@IcerikTipiYonetimi.DosyaPrefix/@Model.ResimData)">
+        	<div id="intro_txt">
+			<h1>@Model.Baslik</h1>
+            <p>@Model.Giris</p>
             </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
+		</div> <!--End sub_header -->
+ 
+ 		<div class="container_gray_bg">
+        <div id="position">
+    	<div class="container">
+                	<ul>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li><a href="@Model.KategoriUrl">@Model.Kategori</a></li>
+                    <li>@Model.Baslik</li>
+                    </ul>
         </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/@Model.Kategori" itemprop="url">
-                                <span itemprop="title">
-                                    @Model.Kategori
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="mainContent"></div>
-                <h1 class="page-title">@Model.Baslik</h1>
-                <section class="node-content">
+    </div><!-- Position -->
+        <div class="container margin_60">
+ 		<div class="row">
+  
+           <div class="col-md-12">
+                	<div class="box_style_1">
+                   	<div class="indent_title_in">
+                    <i class="pe-7s-news-paper"></i>
+				<h3>@Model.Baslik</h3>
+			</div>
+            	<div class="wrapper_indent">
                     @Html.Raw(Model.Icerik)
-
-                </section>
-
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+                    </div>
+                    <hr class="styled_2">
+                    </div>
+           </div>
+            </div><!--End row -->
+        </div><!--End container -->
+        </div><!--End container_gray_bg -->
+  
+  	
 }
 catch (Exception)
 {

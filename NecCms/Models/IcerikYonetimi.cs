@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Scaffolding.Internal;
 using NecCms.Database;
 using NecCms.Database.Service;
 
@@ -35,7 +36,8 @@ namespace NecCms.Models
                     Kategori = m.Isim,
                     Tarih = i.YayinlanmaTarihi,
                     Url = i.Url,
-                    ResimData = d.Adi
+                    ResimData = d.Adi,
+                    KategoriUrl = m.Url
                 };
             
             return new KategoriDto
@@ -63,30 +65,24 @@ namespace NecCms.Models
 
         public static IcerikDto Find(string kategoriurl, string icerikurl)
         {
-            string prefix = "";
-            #if DEBUG
-                        //prefix = "https://aybarshukuk.com";
-            #endif
-            GenericService genericService = new GenericService();
-            var icerik = (genericService.Queryable<Menu>()
-                .Where(x => x.Url.ToLower().Contains(kategoriurl.ToLower()))
-                .Join(genericService.Queryable<Icerik.Icerikler>(), m => m.Id, i => i.MenuId, (m, i) => new {m, i})
-                .Where(@t =>
-                    @t.i.Durum == Icerik.IcerikDurumEnum.Yayinlandi && @t.i.Url.ToLower().Contains(icerikurl.ToLower()))
-                .GroupJoin(genericService.Queryable<Dosyalar>(), @t => @t.i.ResimId, d => d.Id,
-                    (@t, dnull) => new {@t, dnull})
-                .SelectMany(@t => @t.dnull.DefaultIfEmpty(), (@t, d) => new {@t, d})
-                .OrderByDescending(@t => @t.@t.@t.i.Id)
-                .Select(@t => new IcerikDto
+            var genericService = new GenericService();
+            var icerik = (from m in genericService.Queryable<Menu>()
+                where m.Url.ToLower().Contains(kategoriurl.ToLower())
+                join i in genericService.Queryable<Icerik.Icerikler>() on m.Id equals i.MenuId
+                where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi && i.Url.ToLower().Contains(icerikurl.ToLower())
+                join d in genericService.Queryable<Dosyalar>() on i.ResimId equals d.Id into dn
+                from d in dn.DefaultIfEmpty()
+                select new IcerikDto
                 {
-                    Baslik = @t.@t.@t.i.Baslik,
-                    Icerik = @t.@t.@t.i.Icerik,
-                    Giris = @t.@t.@t.i.Giris,
-                    ResimData = @t.d != null ? $"{prefix}/images/{@t.d.Adi}" : "",
-                    Kategori = @t.@t.@t.m.Isim,
-                    Tarih = @t.@t.@t.i.YayinlanmaTarihi,
-                    Url = @t.@t.@t.i.Url
-                })).FirstOrDefault();
+                    Baslik = i.Baslik,
+                    Icerik = i.Icerik,
+                    Giris = i.Giris,
+                    ResimData = d.Adi,
+                    Kategori = m.Isim,
+                    KategoriUrl = m.Url,
+                    Tarih = i.YayinlanmaTarihi,
+                    Url = i.Url
+                }).FirstOrDefault();            
             return icerik;
         }
 
