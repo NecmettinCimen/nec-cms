@@ -31,12 +31,9 @@
                 <div class="col-md-9">
                     @if (Model.Icerikler.Count < 1)
                     {
-                        <div class="box01e">
                             <h5>
                                 Hiç İçerik Bulunamadı.
                             </h5>
-                            <div class="clear_b"></div>
-                        </div>
                     }
                     @foreach (var item in Model.Icerikler)
                     {
@@ -71,7 +68,6 @@
                             {
                                 @if (Model.SayfaNo == i)
                                 {
-                                    <span>@(i + 1)</span>
                                     <li class="active">
                                         <a href="#">@(i + 1)</a>
                                     </li>

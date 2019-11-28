@@ -87,7 +87,7 @@
                     @foreach (var item in IcerikYonetimi.FindByKategoriUrl(url: "etkinlikler", take: 3))
                     {
                         <div class="col-md-4 col-sm-4">
-                            <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p>
+                            @* <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p> *@
                             <span class="date_published">@item.Tarih.ToString("dd MMM yyyy")</span>
                             <h3><a href="@item.KategoriUrl/@item.Url">@item.Baslik</a></h3>
                             <p>@item.Giris </p>
@@ -101,7 +101,7 @@
                     @foreach (var item in IcerikYonetimi.FindByKategoriUrl(url: "haberler", take: 3))
                     {
                         <div class="col-md-4 col-sm-4">
-                            <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p>
+                            @* <p><a href="@item.KategoriUrl/@item.Url"><img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive"></a></p> *@
                             <span class="date_published">@item.Tarih.ToString("dd MMM yyyy")</span>
                             <h3><a href="@item.KategoriUrl/@item.Url">@item.Baslik</a></h3>
                             <p>@item.Giris </p>
