@@ -85,14 +85,11 @@
                             </div>
                             <div class="col6">
                                 <div class="iletisim_formu">
-                                    <form onsubmit="return false;iletisimform()" method="post">
-                                        @if (Model)
-                                        {
-                                            <h1>Başarılı! Mesajınız Kayıt Edildi.</h1>
-                                        }
+                                    <form action="/iletisim/kaydet" onsubmit="send(this);return false;">
+                                        
                                         <div class="item f-konu">
                                             <label>Konu <i class="flrq"></i></label>
-                                            <input id="Konu" class="inp size6" maxlength="100" type="text" required/>
+                                            <input name="Konu" class="inp size6" maxlength="100" type="text" required/>
                                         </div>
                                         <div class="item f-gonderenin_adi_soyadi">
                                             <label>
@@ -101,7 +98,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <input id="AdSoyad" maxlength="100" class="inp size6" type="text"
+                                            <input name="AdSoyad" maxlength="100" class="inp size6" type="text"
                                                    required/>
                                         </div>
                                         <div class="item f-eposta">
@@ -111,7 +108,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <input id="Eposta"
+                                            <input name="Eposta"
                                                    class="inp size6" type="text" maxlength="50" required/>
                                         </div>
                                         <div class="item f-ileti">
@@ -121,7 +118,7 @@
                                                     class="flrq">
                                                 </i>
                                             </label>
-                                            <textarea id="Aciklama" class="inp size8"
+                                            <textarea name="Aciklama" class="inp size8"
                                               maxlength="500"  rows="7" required></textarea>
                                         </div>
                                         <div class="item f-captcha">
@@ -165,21 +162,23 @@
 @section Scripts
 {
     <script>
-        iletisimform=e=>{
-            fetch('/iletisim/kaydet',{
-                method:'post',
-                headers:{'content-type':'application/json'},
-                body:JSON.stringify({
-                    Konu:document.getElementById('Konu').value,
-                    AdSoyad:document.getElementById('AdSoyad').value,
-                    Eposta:document.getElementById('Eposta').value,
-                    Aciklama:document.getElementById('Aciklama').value,
-                })
-            })
-            .then(res=>res.json())
-            .then(res=>alert(res));
-            return false;
-        }
+                async function send(oFormElement){
+                        const formData = new FormData(oFormElement);
+                    
+                        try {
+                            const response = await fetch(oFormElement.action, {
+                                method: 'POST',
+                                body: formData
+                            });
+                    
+                            if (response.ok) {
+                                alert("Başarılı! Mesajınız alındı.")
+                            }
+                    
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
+                }
     </script>
     
                     <script>
