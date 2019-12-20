@@ -11,7 +11,7 @@ namespace NecCms.Models
         {
             get
             {
-                var prefix = "http://girisimciliktopluluguadmin.azurewebsites.net";
+                var prefix = "http://topluluk.admin.necmettincimen.com";
                 return $"{prefix}/images";
             }
         }

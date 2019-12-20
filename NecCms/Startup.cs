@@ -65,7 +65,7 @@ namespace NecCms
                 }
             });
             app.UseCookiePolicy();
-            
+
             //app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseMvc(routes =>
@@ -74,19 +74,19 @@ namespace NecCms
                 routes.MapRoute(
                     "kategori",
                     "{kategori}",
-                    new {controller = "Kategori", action = "Index"}
+                    new { controller = "Kategori", action = "Index" }
                 );
 
                 routes.MapRoute(
                     "kategori",
                     "{kategori}/sayfa/{skip?}",
-                    new {controller = "Kategori", action = "Index"}
+                    new { controller = "Kategori", action = "Index" }
                 );
 
                 routes.MapRoute(
                     "icerik",
                     "{kategori}/{icerik}",
-                    new {controller = "Icerik", action = "Index"}
+                    new { controller = "Icerik", action = "Index" }
                 );
                 routes.MapRoute(
                     "default",

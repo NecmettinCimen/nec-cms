@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NecCms.Database.Migrations
@@ -12,7 +13,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -31,12 +32,12 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
-                    Isim = table.Column<string>(maxLength: 20, nullable: false),
-                    Kodu = table.Column<string>(maxLength: 20, nullable: false),
+                    Isim = table.Column<string>(maxLength: 50, nullable: false),
+                    Kodu = table.Column<string>(maxLength: 50, nullable: false),
                     Alanlar = table.Column<string>(maxLength: 500, nullable: false)
                 },
                 constraints: table =>
@@ -49,7 +50,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -68,7 +69,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -88,7 +89,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Tarih = table.Column<DateTime>(nullable: false),
                     RemoteIpAddress = table.Column<string>(maxLength: 20, nullable: false),
                     Path = table.Column<string>(maxLength: 250, nullable: false),
@@ -107,7 +108,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -133,7 +134,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -153,7 +154,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -175,7 +176,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -197,13 +198,15 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
+                    Sira = table.Column<int>(nullable: false),
                     IcerikTipiId = table.Column<int>(nullable: false),
                     Alan = table.Column<string>(maxLength: 50, nullable: false),
-                    Deger = table.Column<string>(maxLength: 500, nullable: false)
+                    Deger = table.Column<string>(maxLength: 500, nullable: true),
+                    DegerInt = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,7 +224,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -263,7 +266,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -287,7 +290,7 @@ namespace NecCms.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Sil = table.Column<short>(nullable: false),
                     Tarih = table.Column<DateTime>(nullable: false),
                     KullaniciId = table.Column<int>(nullable: true),
@@ -298,7 +301,7 @@ namespace NecCms.Database.Migrations
                 {
                     table.PrimaryKey("PK_FotografGalerisi", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FotografGalerisiDosyaId",
+                        name: "FK_FotografGalerisi_FotografGalerisiDosyalar_FotografGalerisiDosyaId",
                         column: x => x.FotografGalerisiDosyaId,
                         principalTable: "FotografGalerisiDosyalar",
                         principalColumn: "Id",

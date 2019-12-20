@@ -19,16 +19,15 @@ namespace NecCms.Database
         public DbSet<Iletisim> Iletisim { get; set; }
 
         public DbSet<CustomLogger> Loggers { get; set; }
-        
+
         public DbSet<IcerikTipleri> IcerikTipleri { get; set; }
         public DbSet<IcerikTipDegerleri> IcerikTipDegerleri { get; set; }
 
         public DbQuery<IstekKullaniciSayisiDto> IstekKullaniciSayisi { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(
-                "Server=remotemysql.com;Database=ySI5U4T5pN;Uid=ySI5U4T5pN;Pwd=LfgCrdAhRa;");
+            optionsBuilder.UseSqlServer("Data Source=necmettincimen.com;Initial Catalog=dbtopluluk;User ID=sa;Password=Nebula21", builder => builder.UseRowNumberForPaging());
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
@@ -36,25 +35,29 @@ namespace NecCms.Database
         {
             modelBuilder.Entity<Kullanici>().HasData(new Kullanici
             {
-                Id = 1, AdSoyad = "Admin", Eposta = "admin@crm.com", Parola = "admin@crm.com", Rol = RolEnum.Admin,
+                Id = 1,
+                AdSoyad = "Admin",
+                Eposta = "admin@crm.com",
+                Parola = "admin@crm.com",
+                Rol = RolEnum.Admin,
                 Telefon = "05456286324"
             });
         }
     }
 
-    public class IcerikTipleri:BaseEntity
+    public class IcerikTipleri : BaseEntity
     {
-        [Required][MaxLength(50)]public string Isim { get; set; }
-        [Required][MaxLength(50)]public string Kodu { get; set; }
-        [Required][MaxLength(500)]public string Alanlar { get; set; }
+        [Required] [MaxLength(50)] public string Isim { get; set; }
+        [Required] [MaxLength(50)] public string Kodu { get; set; }
+        [Required] [MaxLength(500)] public string Alanlar { get; set; }
     }
-    public class IcerikTipDegerleri:BaseEntity
+    public class IcerikTipDegerleri : BaseEntity
     {
-        [Required]public int Sira { get; set; }
-        [Required]public int IcerikTipiId { get; set; }
+        [Required] public int Sira { get; set; }
+        [Required] public int IcerikTipiId { get; set; }
         public IcerikTipleri IcerikTipi { get; set; }
-        [Required][MaxLength(50)]public string Alan { get; set; }
-        [MaxLength(500)]public string Deger { get; set; }
+        [Required] [MaxLength(50)] public string Alan { get; set; }
+        [MaxLength(500)] public string Deger { get; set; }
         public int DegerInt { get; set; }
     }
 }
