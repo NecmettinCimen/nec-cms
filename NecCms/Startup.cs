@@ -66,7 +66,7 @@ namespace NecCms
             });
             app.UseCookiePolicy();
 
-            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
 
             app.UseMvc(routes =>
             {

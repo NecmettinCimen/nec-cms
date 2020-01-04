@@ -437,11 +437,10 @@
                 .then(res=>res.json())
                 .then(res=>{
                     $('#istekler').empty();
-                    getCity(res);
                     res.map((item,i)=>{
                             parser.setUA(item.userAgent);
                             let result = parser.getResult();
-                            $('#istekler').append('<tr><td>'+item.id+'</td><td>'+formatDateLocate(item.tarih)+' '+item.tarih.substr(11,5)+'</td><td class="ip_'+item.remoteIpAddress.replace(/./g,'_')+'"></td><td>'+item.path+'</td><td>'+(item.queryString||"")+'</td><td>'+item.time+'</td><td>'+(result.browser.name||"")+" / "+((result.device.name||result.os.name)||"")+'</td></tr>') 
+                            $('#istekler').append('<tr><td>'+item.id+'</td><td>'+formatDateLocate(item.tarih)+' '+item.tarih.substr(11,5)+'</td><td class="ip_'+item.remoteIpAddress.replace(/./g,'_')+'">'+item.remoteIpAddress+'</td><td>'+item.path+'</td><td>'+(item.queryString||"")+'</td><td>'+item.time+'</td><td>'+(result.browser.name||"")+" / "+((result.device.name||result.os.name)||"")+'</td></tr>') 
                     });
                 });
             };

@@ -39,7 +39,7 @@ namespace NecCms.Admin.Controllers
 
                         WHILE 0<datediff(day,@i,@length) 
                             BEGIN
-                                insert into #Temporary values (format(@i,'dd MMMM yyyy dddd'),0,0);
+                                insert into #Temporary values (convert(varchar,@i,104),0,0);
                                 update #Temporary set a=l.a , b=l.b from 
                                 ({sql}) l where #Temporary.y =  l.y;
                                 SET @i = dateadd(day,1,@i);
@@ -62,19 +62,19 @@ namespace NecCms.Admin.Controllers
         public IActionResult IstekKullaniciSayisi(DateTime baslangic, DateTime bitis)
         {
             var result = GetSql(DateSql(
-                $@"select format(Tarih,'dd MMMM yyyy dddd') y, count(*) a, count(distinct RemoteIpAddress) b from Loggers
+                $@"select convert(varchar,Tarih,104) y, count(*) a, count(distinct RemoteIpAddress) b from Loggers
                                 where datepart(dayofyear ,Tarih) = datepart(dayofyear,@i)
-                                group by format(Tarih,'dd MMMM yyyy dddd')", baslangic,bitis));
+                                group by convert(varchar,Tarih,104)", baslangic,bitis));
 
             return Json(result);
         }
         public IActionResult ToplamIcerikIletisimSayisi(DateTime baslangic, DateTime bitis)
         {
             var result = GetSql(DateSql(
-                $@"select format(i.Tarih,'dd') y, count(distinct i.Id) a,count(distinct i2.Id) b from Icerikler i
-                        left join Iletisim i2 on format(i.Tarih,'yyyyMMdd') = format(i2.Tarih,'yyyyMMdd')
+                $@"select convert(varchar,i.Tarih,104) y, count(distinct i.Id) a,count(distinct i2.Id) b from Icerikler i
+                        left join Iletisim i2 on convert(varchar,i.Tarih,104) = convert(varchar,i2.Tarih,104)
                         where i.Sil=0 and i2.Sil=0 and datepart(dayofyear ,i.Tarih) = datepart(dayofyear,@i)
-                        group by format(i.Tarih,'dd')",baslangic,bitis));
+                        group by convert(varchar,i.Tarih,104)",baslangic,bitis));
 
             return Json(result);
         }
