@@ -10,7 +10,7 @@ using NecCms.Database;
 namespace NecCms.Database.Migrations
 {
     [DbContext(typeof(CrmContext))]
-    [Migration("20191219070732_initial")]
+    [Migration("20200322072659_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

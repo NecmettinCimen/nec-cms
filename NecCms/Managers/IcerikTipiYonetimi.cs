@@ -11,7 +11,10 @@ namespace NecCms.Models
         {
             get
             {
-                var prefix = "http://topluluk.admin.necmettincimen.com";
+                var prefix = "http://market.admin.necmettincimen.com";
+#if DEBUG
+                prefix = "https://localhost:5001";
+#endif
                 return $"{prefix}/images";
             }
         }

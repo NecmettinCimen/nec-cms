@@ -126,7 +126,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.UstId,
                         principalTable: "Menu",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,7 +190,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.DosyaId,
                         principalTable: "Dosyalar",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -216,7 +216,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.IcerikTipiId,
                         principalTable: "IcerikTipleri",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -246,7 +246,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.MenuId,
                         principalTable: "Menu",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Icerikler_Dosyalar_ResimId",
                         column: x => x.ResimId,
@@ -258,7 +258,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.YazarId,
                         principalTable: "Kullanicilar",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,7 +282,7 @@ namespace NecCms.Database.Migrations
                         column: x => x.ParametreId,
                         principalTable: "Parametre",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -305,13 +305,13 @@ namespace NecCms.Database.Migrations
                         column: x => x.FotografGalerisiDosyaId,
                         principalTable: "FotografGalerisiDosyalar",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_FotografGalerisi_Icerikler_IcerikId",
                         column: x => x.IcerikId,
                         principalTable: "Icerikler",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.InsertData(

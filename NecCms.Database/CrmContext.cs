@@ -27,7 +27,12 @@ namespace NecCms.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost\\sekiz;Initial Catalog=dbtopluluk;User ID=sa;Password=A{J8c]fu^j\\FuZ&>", builder => builder.UseRowNumberForPaging());
+#if DEBUG
+            optionsBuilder.UseSqlServer("Data Source=23.97.247.65,51433;Initial Catalog=dbmarket;User ID=sa;Password=A{J8c]fu^j\\FuZ&>", builder => builder.UseRowNumberForPaging());
+#endif
+#if !DEBUG
+            optionsBuilder.UseSqlServer("Data Source=localhost\\sekiz;Initial Catalog=dbmarket;User ID=sa;Password=A{J8c]fu^j\\FuZ&>", builder => builder.UseRowNumberForPaging());
+#endif
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
