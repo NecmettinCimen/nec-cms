@@ -1,210 +1,123 @@
 ﻿<!DOCTYPE html>
 <html lang="tr">
+
 <head>
+    <title>Necmettin Çimen</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="@TemaYonetimi.Find("seokeywords")">
-    <meta name="description" content="@TemaYonetimi.Find("seodescription")">
-    <meta name="author" content="@TemaYonetimi.Find("seoauthor")">
-    <title>@TemaYonetimi.Find("baslik")</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
 
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="~/img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="~/img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="~/img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="~/img/apple-touch-icon-144x144-precomposed.png">
-
-    <!-- BASE CSS -->
-    <link href="~/css/main_font/main_font.css" rel="stylesheet">
-    <link href="~/css/animate.min.css" rel="stylesheet">
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/menu.css" rel="stylesheet">
-    <link href="~/css/style.css" rel="stylesheet">
-    <link href="~/css/responsive.css" rel="stylesheet">
-    <link href="~/css/elegant_font/elegant_font.min.css" rel="stylesheet">
-    <link href="~/css/icon_font/pe-icon-7-stroke.min.css" rel="stylesheet">
-    <link href="~/css/fontello/css/fontello.min.css" rel="stylesheet">
-    <link href="~/css/edu_fonts/edu_fonts.min.css" rel="stylesheet">
-    <link href="~/css/magnific-popup.css" rel="stylesheet">
-
-    <!-- YOUR CUSTOM CSS -->
-    <link href="~/css/custom.css" rel="stylesheet">
-
-    <!-- SPECIFIC CSS -->
-    <link href="~/layerslider/css/layerslider.css" rel="stylesheet">
-    <link href="~/css/tabs.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/css/site.min.css">
 </head>
 
-<body>
-
-<div id="preloader">
-    <div class="pulse"></div>
-</div><!-- Pulse Preloader -->
-
-<!-- Header================================================== -->
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-3">
-                <div id="logo">
-                    <a href="/"><img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logo")" width="125" height="40" alt="Atena" data-retina="true"></a>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div class="site-wrap">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
                 </div>
             </div>
-            <nav class="col-md-9 col-sm-9 col-xs-9">
-                <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
-                <div class="main-menu">
-                    <div id="header_menu">
-                        <img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logomobil")" width="125" height="40" alt="Atena" data-retina="true">
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <div class="header-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6 d-flex">
+                        <a href="/" class="site-logo">
+                            Necmettin Çimen
+                        </a>
+                        <a href="#"
+                            class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                                class="icon-menu h3"></span></a>
                     </div>
-                    <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
-                    <ul>
-                        @foreach (var menu in MenuYonetimi.Menuler)
-                        {
-                            if (menu.Menuler.Count > 0)
-                            {
-                                <li class="submenu">
-                                    <a href="@menu.Url" class="show-submenu">@menu.Isim <i class="icon-down-open-mini"></i></a>
-                                        <ul>
-                                    @foreach (var menu2 in menu.Menuler)
-                                    {
-                                            <li><a href="@menu2.Url">@menu2.Isim</a></li>
+                    <div class="col-12 col-lg-6 ml-auto d-flex">
+                        <div class="ml-md-auto top-social d-none d-lg-inline-block">
+                        </div>
+                        <form action="#" class="search-form d-inline-block">
+                            <div class="d-flex">
+                                <input type="email" class="form-control" placeholder="Search...">
+                                <button type="submit" class="btn btn-secondary"><span
+                                        class="icon-search"></span></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-6 d-block d-lg-none text-right">
+                    </div>
+                </div>
+            </div>
+            <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+                <div class="container">
+                    <div class="d-flex align-items-center">
+
+                        <div class="mr-auto">
+                            <nav class="site-navigation position-relative text-right" role="navigation">
+                                <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                                    @foreach(var menu in MenuYonetimi.Menuler){
+                                    <li>
+                                        <a href="@menu.Url" class="nav-link text-left">@menu.Isim</a>
+                                    </li>
                                     }
-                                        </ul>    
-                                </li>   
-                            }
-                            else
-                            {
-                                <li><a href="@menu.Url">@menu.Isim</a></li>   
-                            }
-                        }
-                    </ul>
-                </div><!-- End main-menu -->
-            </nav>
-        </div>
-    </div><!-- container -->
-</header><!-- End Header -->
-@RenderBody()
-<footer>
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-3 col-sm-3">
-                <p id="logo_footer">
-                    <img src="@IcerikTipiYonetimi.DosyaPrefix/@TemaYonetimi.Find("logo")" width="125" height="40" alt="@TemaYonetimi.Find("baslik")" data-retina="true">
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <h4>Hakkında</h4>
-                <ul>
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">Haberler</a></li>
-                    <li><a href="#">Giriş</a></li>
-                    <li><a href="#">Üye Ol</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <h4>Yararlı Linkler</h4>
-                <ul>
-                    <li><a href="http://inonu.edu.tr">İnönü Üniversitesi</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <h4>İletişim</h4>
-                <ul>
-                    <li><a href="/iletisim">İletişim</a></li>
-                </ul>
-                <ul id="contacts_footer">
-                    <li>Telefon - <a href="tel://@TemaYonetimi.Find("telefon")">@TemaYonetimi.Find("telefon")</a></li>
-                    <li>Eposta - <a href="mailto://@TemaYonetimi.Find("eposta")">@TemaYonetimi.Find("eposta")</a></li>
-                </ul>
-            </div>
-        </div><!-- End row -->
-    </div><!-- End container -->
-</footer><!-- End footer -->
-<div id="copy">
-    <div class="container">
-        © @TemaYonetimi.Find("baslik") 2019 - Tüm Hakları Saklıdır.
-    </div>
-</div><!-- End copy -->
-
-
-
-<!-- Login modal -->
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content modal-popup">
-            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-            <form action="#" class="popup-form" id="myLogin">
-                <input type="text" class="form-control form-white" placeholder="Username">
-                <input type="text" class="form-control form-white" placeholder="Password">
-                <div class="checkbox-holder text-left">
-                    <div class="checkbox">
-                        <input type="checkbox" value="accept_1" id="check_1" name="check_1" />
-                        <label for="check_1"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-submit">Submit</button>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- Register modal -->
-<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content modal-popup">
-            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-            <form action="#" class="popup-form" id="myRegister">
-                <input type="text" class="form-control form-white" placeholder="Name">
-                <input type="text" class="form-control form-white" placeholder="Last Name">
-                <input type="email" class="form-control form-white" placeholder="Email">
-                <input type="text" class="form-control form-white" placeholder="Password">
-                <div class="checkbox-holder text-left">
-                    <div class="checkbox">
-                        <input type="checkbox" value="accept_2" id="check_2" name="check_2" />
-                        <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+        @RenderBody()
+
+        <div class="site-section subscribe bg-light">
+            <div class="container">
+                <form action="#" class="row align-items-center">
+                    <div class="col-md-5 mr-auto">
+                        <h2>Newsletter Subcribe</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae
+                            omnis pariatur obcaecati possimus nisi ea iste!</p>
+                    </div>
+                    <div class="col-md-6 ml-auto">
+                        <div class="d-flex">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button type="submit" class="btn btn-secondary"><span
+                                    class="icon-paper-plane"></span></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                                template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-submit">Register</button>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+    <!-- .site-wrap -->
 
-<!-- Search modal -->
-<div id="search">
-    <button type="button" class="close">×</button>
-    <form>
-        <input type="search" value="" placeholder="type keyword(s) here" >
-        <button type="submit" class="button">Search</button>
-    </form>
-</div>
 
-<!-- Common scripts -->
-<script src="~/js/jquery-1.11.2.min.js"></script>
-<script src="~/js/common_scripts_min.js"></script>
-<script src="~/js/functions.js"></script>
-<script src="~/assets/validate.js"></script>
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#ff5e15" /></svg></div>
 
-<!-- Specific scripts -->
-<script src="~/layerslider/js/greensock.js"></script>
-<script src="~/layerslider/js/layerslider.transitions.js"></script>
-<script src="~/layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        'use strict';
-        $('#layerslider').layerSlider({
-            autoStart: true,
-            responsive: true,
-            responsiveUnder: 1280,
-            layersContainer: 1170,
-            skinsPath: 'layerslider/skins/'
-        });
-    });
-</script>
-<script src="~/js/tabs.js"></script>
-<script>new CBPFWTabs( document.getElementById( 'tabs' ) );</script>
-@RenderSection("Scripts",false)
+    <script src="~/js/site.min.js"></script>
+
 </body>
+
 </html>

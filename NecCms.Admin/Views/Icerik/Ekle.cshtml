@@ -1,7 +1,5 @@
 ﻿@section Styles{
-    <link href="~/assets/plugins/quill/quill.core.css" rel="stylesheet"/>
-    <link href="~/assets/plugins/quill/quill.bubble.css" rel="stylesheet"/>
-    <link href="~/assets/plugins/quill/quill.snow.css" rel="stylesheet"/>
+<link href="~/assets/plugins/summernote/summernote.css" rel="stylesheet" />
 }
 
 <div class="row">
@@ -9,6 +7,12 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">İçerik </h4>
+
+                <form id="wordForm" method="post" action="/Icerik/WordToHtml" enctype="multipart/form-data">
+                    <label for="wordfile">Word File</label>
+                    <input class="form-control" type="file" name="wordfile" id="wordfile" />
+                    <button class="btn btn-primary">Aktar</button>
+                </form>
 
                 <form id="editModalForm">
 
@@ -26,128 +30,119 @@
 </div>
 
 @section Scripts{
-    <script src="~/assets/plugins/quill/katex.min.js"></script>
-    <script src="~/assets/plugins/quill/quill.min.js"></script>
-    <script src="~/assets/js/url_slug.min.js"></script>
-    <script>
+<script src="~/assets/plugins/summernote/summernote.js"></script>
+<script src="~/assets/js/url_slug.min.js"></script>
+<script>
 
-        pageInit({
-            url: '/Icerik/Ekle',
-            name: 'Yazı Ekle',
-            parentname: 'Yazı Yönetimi',
-            saveurl: '/Icerik/Kaydet',
-            formsubmittype: 'formdata',
-            customsuccessfun:'window.location="/Icerik/Liste"',
-            form: [
-                {
-                    type: 'input',
-                    html: true,
-                    hidden: true,
-                    id: 'id',
-                },
-                {
-                    type: 'input',
-                    id: 'baslik',
-                    name: 'Başlık',
-                    onchange:"$('#url').val(url_slug(this.value))"
-                },
-                {
-                    type: 'input',
-                    subtype: 'file',
-                    id: 'resimfile',
-                    name: 'Resim'
-                },
-                {
-                    type: 'textarea',
-                    id: 'giris',
-                    name: 'Giris'
-                },
-                {
-                    type: 'html',
-                    name: 'İçerik',
-                    html:'<div class="row"><div class="col-md-12"><div id="snow-editor" style="height: 500px;"></div></div></div>'
-                },
-                {
-                    type: 'input',
-                    html: true,
-                    hidden: true,
-                    id: 'icerik',
-                },
-                {
-                    type: 'select',
-                    id: 'menuId',
-                    name: 'Menu',
-                    ajax: '/Menu/Liste',
-                    text: 'isim',
-                    style: 'width: 30%;float: left;margin-left: 5px;',
-                    required: true,
-                },
+    wordToHtml = async (e) => {
+        e.preventDefault();
+        Swal.showLoading();
+        var oFormElement = e.target;
+        const formData = new FormData(oFormElement);
 
-                {
-                    type: 'date',
-                    id: 'yayinlanmaTarihi',
-                    name: "Yayınlanma Tarihi",
-                    style: 'width: 30%;float: left;margin-left: 5px;',
-                    value:formatDateLocate(new Date().toISOString())
-                },
-                {
-                    type: 'input',
-                    id: 'url',
-                    name: 'Özel Adres',
-                    maxLength: 250,
-                    style: 'width: 30%;float: left;margin-left: 5px;',
-                },
-            ]
-        });
-        var quill;
-        setTimeout(() => {
+        try {
+            const response = await fetch(oFormElement.action, {
+                method: 'POST',
+                body: formData
+            })
+            const responseJson = await response.json();
+            if (responseJson.success) {
+                swal.close()
+                $('#summernote').summernote('code', responseJson.data);
+            }
 
-            quill = new Quill("#snow-editor", {
-                theme: "snow",
-                modules: {
-                    toolbar: [
-                        [{
-                            font: []
-                        }, {
-                            size: []
-                        }],
-                        ["bold", "italic", "underline", "strike"],
-                        [{
-                            color: []
-                        }, {
-                            background: []
-                        }],
-                        [{
-                            script: "super"
-                        }, {
-                            script: "sub"
-                        }],
-                        [{
-                            header: [!1, 1, 2, 3, 4, 5, 6]
-                        }, "blockquote", "code-block"],
-                        [{
-                            list: "ordered"
-                        }, {
-                            list: "bullet"
-                        }, {
-                            indent: "-1"
-                        }, {
-                            indent: "+1"
-                        }],
-                        ["direction", {
-                            align: []
-                        }],
-                        ["link", "image", "video", "formula"],
-                        ["clean"]
-                    ]
-                }
-            });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    $('#wordForm').on('submit', wordToHtml)
 
-            quill.on('text-change', function (delta, oldDelta, source) {
-                $('#icerik').val($('#snow-editor > div.ql-editor')[0].innerHTML)
-            });
-            loadPage();
-            if (window.location.pathname.toLowerCase().match('duzenle')) {
+    pageInit({
+        url: '/Icerik/Ekle',
+        name: 'Yazı Ekle',
+        parentname: 'Yazı Yönetimi',
+        saveurl: '/Icerik/Kaydet',
+        formsubmittype: 'formdata',
+        customsuccessfun: 'window.location="/Icerik/Liste"',
+        form: [
+            {
+                type: 'input',
+                html: true,
+                hidden: true,
+                id: 'id',
+            },
+            {
+                type: 'input',
+                id: 'baslik',
+                name: 'Başlık',
+                onchange: "$('#url').val(url_slug(this.value))"
+            },
+            {
+                type: 'input',
+                subtype: 'file',
+                id: 'resimfile',
+                name: 'Resim'
+            },
+            {
+                type: 'textarea',
+                id: 'giris',
+                name: 'Giris'
+            },
+            {
+                type: 'html',
+                name: 'İçerik',
+                html: '<div class="row"><div class="col-md-12"><textarea id="summernote" name="icerik" style="height: 500px;"></textarea></div></div>'
+            },
+            {
+                type: 'input',
+                html: true,
+                hidden: true,
+                id: 'icerik',
+            },
+            {
+                type: 'select',
+                id: 'menuId',
+                name: 'Menu',
+                ajax: '/Menu/Liste',
+                text: 'isim',
+                style: 'width: 30%;float: left;margin-left: 5px;',
+                required: true,
+            },
+
+            {
+                type: 'date',
+                id: 'yayinlanmaTarihi',
+                name: "Yayınlanma Tarihi",
+                style: 'width: 30%;float: left;margin-left: 5px;',
+                value: formatDateLocate(new Date().toISOString())
+            },
+            {
+                type: 'input',
+                id: 'url',
+                name: 'Özel Adres',
+                maxLength: 250,
+                style: 'width: 30%;float: left;margin-left: 5px;',
+            },
+        ]
+    });
+    setTimeout(() => {
+
+        $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+        loadPage();
+        if (window.location.pathname.toLowerCase().match('duzenle')) {
             fetch(window.location.pathname.toLowerCase().replace('duzenle', 'bul'))
                 .then(res => res.json())
                 .then(res => {
@@ -155,14 +150,14 @@
                     $('#id').val(res.data.id);
                     $('#baslik').val(res.data.baslik);
                     $('#giris').val(res.data.giris);
-                    $('#snow-editor > div.ql-editor')[0].innerHTML = (res.data.icerik);
+                    $('#summernote').summernote('code', res.data.icerik)
                     $('#menuId').val(res.data.menuId).change();
                     $('#yayinlanmaTarihi').val(res.data.yayinlanmaTarihi);
                     $('#url').val(res.data.url);
                 })
         }
-        }, 1000)
+    }, 1000)
 
-        
-    </script>
+
+</script>
 }

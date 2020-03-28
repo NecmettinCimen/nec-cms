@@ -52,7 +52,7 @@ namespace NecCms.Models
             };
         }
 
-        public static KategoriDto FindByKategoriUrl(string url, int skip, int take = 5)
+        public static KategoriDto FindByKategoriUrl(string url, int skip, int take = 3)
         {
             return findByKategoriUrl(url, skip, take);
         }

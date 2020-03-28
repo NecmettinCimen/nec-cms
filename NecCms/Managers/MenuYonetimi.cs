@@ -24,17 +24,7 @@ namespace NecCms.Models
                         {
                             Id = m.Id,
                             Isim = m.Isim,
-                            Sira = m.Sira,
-                            Url = m.Url,
-                            Menuler = (from m2 in genericService.Queryable<Menu>()
-                                where m2.UstId == m.Id
-                                orderby m2.Sira
-                                select new MenuDto
-                                {
-                                    Isim = m2.Isim,
-                                    Sira = m2.Sira,
-                                    Url = m2.Url
-                                }).ToList()
+                            Url = m.Url
                         }).ToList();
                 return menuler;
             }
