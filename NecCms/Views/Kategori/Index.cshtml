@@ -1,125 +1,105 @@
-<link href="~/css/blog.css" rel="stylesheet"/>
-@try
-{
-    @model KategoriDto
+@model KategoriDto
+<title>@Model.Isim</title>
 
-    <title>@Model.Isim</title>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="section-title">
+            <span class="caption d-block small">Kategorileri</span>
+            <h2>@Model.Isim</h2>
+          </div>
+          
+          @foreach(var icerik in Model.Icerikler){
+            <div class="post-entry-2 d-flex">
+                <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
+                <div class="contents order-md-1 pl-0">
+                  <h2><a href="@icerik.KategoriUrl/@icerik.Url">@icerik.Baslik</a></h2>
+                  <p class="mb-3">@icerik.Giris</p>
+                  <div class="post-meta">
+                    <span class="d-block"><a href="#">Necmettin</a> in </span>
+                    <span class="date-read">@icerik.Tarih.ToShortDateString() <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  </div>
+                </div>
+              </div>
+          }
 
-    <div class="sub_header bg_1">
-        <div id="intro_txt">
-            <h1>@Model.Isim</h1>
         </div>
-    </div>
-    <!--End sub_header -->
+        <div class="col-lg-3">
+          <div class="section-title">
+            <h2>Popular Posts</h2>
+          </div>
 
-    <div id="position">
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="/">Anasayfa</a>
-                </li>
-                <li>@Model.Isim</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Position -->
-
-    <div class="container_gray_bg">
-        <div class="container margin_60">
-            <div class="row">
-
-                <div class="col-md-9">
-                    @if (Model.Icerikler.Count < 1)
-                    {
-                            <h5>
-                                Hiç İçerik Bulunamadı.
-                            </h5>
-                    }
-                    @foreach (var item in Model.Icerikler)
-                    {
-                        <div class="post">
-                            <a href="@Model.KategoriUrl/@item.Url">
-                                <img src="@IcerikTipiYonetimi.DosyaPrefix/@item.ResimData" alt="@item.Baslik" class="img-responsive">
-                            </a>
-                            <div class="post_info clearfix">
-                                <div class="post-left">
-                                    <ul>
-                                        <li>
-                                            <i class="icon-calendar-empty"></i>@item.Tarih.ToString("dd/MM/yyyy") <em> Admin</em>
-                                        </li>
-                                        <li>
-                                            <i class="icon-inbox-alt"></i><a href="@item.KategoriUrl">@item.Kategori</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h2>@item.Baslik</h2>
-                            @item.Giris
-                            <hr/>
-                            <a href="@item.KategoriUrl/@item.Url" class="button">Daha Fazla</a>
-                        </div>
-                        <!-- end post -->
-                    }
-
-
-                    <div class="text-center">
-                        <ul class="pagination">
-                            @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
-                            {
-                                @if (Model.SayfaNo == i)
-                                {
-                                    <li class="active">
-                                        <a href="#">@(i + 1)</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li>
-                                        <a href="/@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a>
-                                    </li>
-                                }
-                            }
-                        </ul><!-- end pagination-->
-                    </div>
-                </div><!-- End col-md-8-->
-
-                <aside class="col-md-3" id="sidebar">
-
-                    <div class="widget">
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="form-control input-lg" placeholder="Arama yap."/>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-info btn-lg" type="button">
-                                        <i class="icon-search-1"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div><!-- End Search -->
-                    <hr>
-                    @if (Model.Menuler.Menuler.Count() > 0)
-                    {
-                        <div class="widget">
-                            <h4>Alt Menuler</h4>
-                            <ul id="cat_nav">
-                                @foreach (var m in Model.Menuler.Menuler)
-                                {
-                                    <li>
-                                        <a href="@m.Url">@m.Isim</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        <!-- End widget -->
-                        <hr>
-                    }
-
-                </aside>
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">01</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
             </div>
+          </div>
+
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">02</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">03</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="trend-entry d-flex pl-0">
+            <div class="number align-self-start">04</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+          
+          <p>
+            <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+          </p>
         </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <ul class="custom-pagination list-unstyled">
+            @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
+            {
+                @if (Model.SayfaNo == i)
+                {
+                    <li class="active">
+                        @(i + 1)
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a>
+                    </li>
+                }
+            }
+          </ul>
+        </div>
+      </div>
     </div>
-}
-catch (Exception)
-{
-}
+  </div>

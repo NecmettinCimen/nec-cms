@@ -1,4 +1,5 @@
 
+using System;
 using Microsoft.AspNetCore.Mvc;
 using NecCms.Database;
 using NecCms.Database.Service;
@@ -19,10 +20,18 @@ namespace NecCms.Controllers
             return View(false);
         }
 
-        public IActionResult Kaydet([FromForm]Iletisim model)
+        [HttpPost]
+        public IActionResult Index(Iletisim model)
         {
-            _genericService.Save(model);
-            return Json(true);
+            try
+            {
+                var result = _genericService.Save(model);
+                return View(true);
+            }
+            catch (Exception ex)
+            {
+                return View(false);
+            }
         }
 
     }

@@ -1,88 +1,105 @@
-@try
-{
 @model KategoriDto
 <title>@Model.Isim</title>
-<div class="stage layout-C">
-    <div class="stage-body">
 
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/tr/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a  itemprop="url">
-                                <span itemprop="title">
-                                    @Model.Isim
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                    </div>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="section-title">
+            <span class="caption d-block small">Arama</span>
+            <h2>@Model.Isim</h2>
+          </div>
+          
+          @foreach(var icerik in Model.Icerikler){
+            <div class="post-entry-2 d-flex">
+                <div class="thumbnail order-md-2" style="background-image: url('images/img_h_4.jpg')"></div>
+                <div class="contents order-md-1 pl-0">
+                  <h2><a href="@icerik.KategoriUrl/@icerik.Url">@icerik.Baslik</a></h2>
+                  <p class="mb-3">@icerik.Giris</p>
+                  <div class="post-meta">
+                    <span class="d-block"><a href="#">Necmettin</a> in </span>
+                    <span class="date-read">@icerik.Tarih.ToShortDateString() <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                  </div>
                 </div>
-                <div id="mainContent"></div>
-                <div class="haber-grup" id="haber-grup">
-                    <h1 class="page-title">@Model.Isim</h1>
-@if (Model.Icerikler.Count < 1)
-                    {
-                        
-                        <div class="box01e">
-                            <h5>
-                                Hiç İçerik Bulunamadı.
-                            </h5>
-                            <div class="clear_b"></div>
-                        </div>
-                    }
-                    @foreach (var item in Model.Icerikler)
-                    {
-                        <div class="box01e">
-                            <h5>
-                                <a href="@item.KategoriUrl/@item.Url">@item.Baslik</a>
-                                <span class="date">@item.Tarih.ToShortDateString()</span>
-                            </h5>
-                            <div class="spot">
-                                @item.Giris
-                            </div>
-                            <span class="devami">
-                                <a href="@item.KategoriUrl/@item.Url">[Devamı]</a>
-                            </span>
-                            <div class="clear_b"></div>
-                        </div>
-                    }
-                    <div class="pages">
-                        @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
-                        {
-                            @if (Model.SayfaNo == i)
-                            {
-                                <span>@(i + 1)</span>
-                            }
-                            else
-                            {
-                                <a href="/Arama?arama=@Model.Isim&skip=@(i + 1)">@(i + 1)</a>
-                            }
-                        }
-                    </div>
-                </div>
+              </div>
+          }
+
+        </div>
+        <div class="col-lg-3">
+          <div class="section-title">
+            <h2>Popular Posts</h2>
+          </div>
+
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">01</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
             </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
+          </div>
+
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">02</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="trend-entry d-flex">
+            <div class="number align-self-start">03</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="trend-entry d-flex pl-0">
+            <div class="number align-self-start">04</div>
+            <div class="trend-contents">
+              <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
+              <div class="post-meta">
+                <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
+                <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+              </div>
+            </div>
+          </div>
+          
+          <p>
+            <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
+          </p>
         </div>
-        <div class="stage-sep">
-            <div class="body"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <ul class="custom-pagination list-unstyled">
+            @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
+            {
+                @if (Model.SayfaNo == i)
+                {
+                    <li class="active">
+                        @(i + 1)
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="/Arama?arama=@Model.Isim&skip=@(i + 1)">@(i + 1)</a>
+                    </li>
+                }
+            }
+          </ul>
         </div>
-        
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
+      </div>
     </div>
-</div>
-}
-catch (Exception)
-{
-}
+  </div>

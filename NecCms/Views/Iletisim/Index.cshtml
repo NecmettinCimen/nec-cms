@@ -1,117 +1,51 @@
 @model bool
-<div id="map"></div><!-- end map-->
 
-<div class="container_gray_bg">
-    <div id="position">
-        <div class="container">
-            <ul>
-                <li>
-                    <a href="/">Anasayfa</a>
-                </li>
-                <li>İletişim</li>
-            </ul>
-        </div>
-    </div><!-- Position -->
-
-    <div class="container margin_60">
+<div class="site-section bg-light">
+    <div class="container">
         <div class="row">
-            <div class="col-md-9">
-                <div class="box_style_1">
-                    <div class="indent_title_in">
-                        <i class="pe-7s-mail-open-file"></i>
-                        <h3>Bize Ulaşın</h3>
-                    </div>
-                    <div class="wrapper_indent">
-                        <div id="message-contact"></div>
-                            <h1 id="basarili" class="hide">Başarılı! Mesajınız Gönderildi.</h1>
-                        <form action="/iletisim/kaydet" onsubmit="send(this);return false;">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Ad Soyad</label>
-                                        <input type="text" required="required" maxlength="100" class="form-control styled" name="adSoyad" placeholder="Ad Soyad">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Eposta</label>
-                                        <input type="email" required="required" maxlength="50" class="form-control styled" name="eposta" placeholder="Eposta">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Konu</label>
-                                        <input type="text" required="required" maxlength="100" class="form-control styled" name="konu" placeholder="Konu">
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Açıklama</label>
-                                        <textarea maxlength="500" rows="5" name="aciklama" class="form-control styled" style="height:100px;" placeholder="Your message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="button add_bottom_30" id="submit-contact">Gönder</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div><!-- End wrapper_indent -->
-                
-                </div><!-- End box style 1-->
-            </div><!-- End col-md-9 -->
-
-            <aside class="col-md-3">
-                <h3>İletişim Bilgilerimiz</h3>
-                <p>
-                    İnönü Üniversitesi Merkez Kampüsü Malatya, Türkiye<br>
-                    @TemaYonetimi.Find("telefon")<br>
-                    <a href="#">@TemaYonetimi.Find("eposta")</a>
-                </p>
-                <h5>Adres Tarifi</h5>
-                <form action="http://maps.google.com/maps" method="get" target="_blank">
-                    <div class="form-group">
-                        <input type="text" name="saddr" placeholder="Adresinizi giriniz." class="form-control styled">
-                        <input type="hidden" name="daddr" value="İnönü Üniversitesi Merkez Kampüsü Malatya, Türkiye">
-                    </div>
-                    <input type="submit" value="Göster" class="button small nomargin">
-                </form>
-            </aside>
-
-        </div><!--End row -->
-    </div><!--End container -->
-</div><!--End container_gray_bg -->
-
-@section Scripts
-{
-    <!-- GOOGLE map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJZqZRigLhXPJUt8t4mBZBiHDqVoNtSXY"></script>
-    <script type="text/javascript" src="~/js/mapmarker.jquery.js"></script>
-    <script type="text/javascript" src="~/js/mapmarker_func.jquery.js"></script>
-    
-    <script>
-        async function send(oFormElement){
-                const formData = new FormData(oFormElement);
-            
-                try {
-                    const response = await fetch(oFormElement.action, {
-                        method: 'POST',
-                        body: formData
-                    });
-            
-                    if (response.ok) {
-                        console.log(response.body)
+            <div class="col-lg-12">
+                <div class="section-title mb-5">
+                    <h2>İletişim</h2>
+                </div>
+                <form method="post" enctype="application/x-www-form-urlencoded">
+                    @if(Model){
+                    <div class="alert alert-success">Başarılı! Mesajınız Gönderildi.</div>
                     }
-            
-                } catch (error) {
-                    console.error('Error:', error);
-                }
-        }
-    </script>
-}
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="AdSoyad">Ad Soyad</label>
+                            <input type="text" id="AdSoyad" name="AdSoyad" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="Eposta">Eposta</label>
+                            <input type="text" id="Eposta" name="Eposta" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Konu">Konu</label>
+                            <input type="text" id="Konu" name="Konu" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Aciklama">Mesaj</label>
+                            <textarea name="Aciklama" id="Aciklama" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" value="Gönder" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
