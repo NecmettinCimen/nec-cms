@@ -1,5 +1,7 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NecCms.Admin.Models;
 using NecCms.Database;
 using NecCms.Database.Service;
@@ -19,7 +21,7 @@ namespace NecCms.Admin.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Liste(int? id)
         {
             return Json(new
@@ -41,36 +43,36 @@ namespace NecCms.Admin.Controllers
                     .ToList()
             });
         }
-        
-        
+
+
         public IActionResult Bul(int id)
         {
             var icerikTipDegeri = _genericService.Queryable<IcerikTipDegerleri>().First(x => x.Id == id);
             return Json(new
             {
-                iceriktip = _genericService.Queryable<IcerikTipleri>().First(x=>x.Id == icerikTipDegeri.IcerikTipiId),
-                icerikTipDegeri = _genericService.Queryable<IcerikTipDegerleri>().Where(x=>x.Sira == icerikTipDegeri.Sira).ToList()
+                iceriktip = _genericService.Queryable<IcerikTipleri>().First(x => x.Id == icerikTipDegeri.IcerikTipiId),
+                icerikTipDegeri = _genericService.Queryable<IcerikTipDegerleri>().Where(x => x.Sira == icerikTipDegeri.Sira).ToList()
             });
         }
 
-        public IActionResult Kaydet(IcerikTipDegerleri[] model)
+        public async Task<IActionResult> Kaydet(IcerikTipDegerleri[] model)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
             var sira = 1;
-            if(_genericService.Queryable<IcerikTipDegerleri>().Count()>0)
-                sira += _genericService.Queryable<IcerikTipDegerleri>().Select(x => x.Sira).Last();
+            if (await _genericService.Queryable<IcerikTipDegerleri>().CountAsync() > 0)
+                sira += await _genericService.Queryable<IcerikTipDegerleri>().Select(x => x.Sira).LastAsync();
             foreach (var item in model)
             {
                 if (item.Id != 0)
                 {
-                    var dbmodel = _genericService.Queryable<IcerikTipDegerleri>().First(f => f.Id == item.Id);
+                    var dbmodel = await _genericService.Queryable<IcerikTipDegerleri>().FirstAsync(f => f.Id == item.Id);
                     if (dbmodel.DegerInt != 0)
                     {
-                        if (file!=null)
+                        if (file != null)
                         {
-                            var dbdosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.DegerInt);
+                            var dbdosya =await _genericService.Queryable<Dosyalar>().FirstAsync(f => f.Id == dbmodel.DegerInt);
                             DosyaIslemleri.Delete(dbdosya.Adi);
-                            var dosya = DosyaIslemleri.Kaydet(file, _genericService);
+                            var dosya = await DosyaIslemleri.Kaydet(file, _genericService);
                             item.DegerInt = dosya.Id;
                             item.Deger = dosya.Adi;
                         }
@@ -83,21 +85,21 @@ namespace NecCms.Admin.Controllers
                 }
                 else
                 {
-                    if (file != null&&item.Deger==null)
+                    if (file != null && item.Deger == null)
                     {
-                        var dosya = DosyaIslemleri.Kaydet(file, _genericService);
+                        var dosya =await DosyaIslemleri.Kaydet(file, _genericService);
                         item.DegerInt = dosya.Id;
                         item.Deger = dosya.Adi;
                     }
-                    
+
                     item.Sira = sira;
                 }
-                
 
-                _genericService.Save(item);
+
+                await _genericService.Save(item);
 
             }
-            return Json(new {data = true});
+            return Json(new { data = true });
         }
 
         public IActionResult Kaldir([FromBody] IcerikTipDegerleri model)
@@ -107,7 +109,7 @@ namespace NecCms.Admin.Controllers
             {
                 _genericService.Remove(item);
             }
-            return Json(new {data = true});
+            return Json(new { data = true });
         }
     }
 }

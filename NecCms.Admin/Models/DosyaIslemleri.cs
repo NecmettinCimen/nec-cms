@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using NecCms.Database;
 using NecCms.Database.Service;
@@ -12,14 +13,14 @@ namespace NecCms.Admin.Models
         private static readonly string Dir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")
             .Replace("admin.aybarshukuk.com", "httpdocs");
 
-        public static Dosyalar Kaydet(IFormFile file, IGenericService genericService)
+        public static async Task<Dosyalar> Kaydet(IFormFile file, IGenericService genericService)
         {
             var resim = $"{DateTime.Now:yyyyMMddHHmmss.}{Path.GetFileName(file.FileName).Split(".").Last()}";
-            var filePath = Path.Combine(Dir, resim).Replace("admin.aybarshukuk.com", "httpdocs");
+            var filePath = Path.Combine(Dir, resim).Replace("admin.", "");
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                file.CopyTo(fileStream);
+                await file.CopyToAsync(fileStream);
             }
 
 
@@ -37,7 +38,7 @@ namespace NecCms.Admin.Models
                 Tipi = file.ContentType,
                 Yolu = filePath
             };
-            genericService.Save(dosya);
+            await genericService.Save(dosya);
             return dosya;
         }
 

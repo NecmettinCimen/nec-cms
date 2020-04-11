@@ -1,5 +1,7 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NecCms.Admin.Filters;
 using NecCms.Admin.Models;
 using NecCms.Database;
@@ -76,22 +78,22 @@ namespace NecCms.Admin.Controllers
             });
         }
 
-        public IActionResult ParametreDegeriKaydet(Tema.ParametreDegeri model)
+        public async Task<IActionResult> ParametreDegeriKaydet(Tema.ParametreDegeri model)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
 
             if (model.Id != 0)
             {
-                var dbmodel = _genericService.Queryable<Tema.ParametreDegeri>().First(f => f.Id == model.Id);
+                var dbmodel = await _genericService.Queryable<Tema.ParametreDegeri>().FirstAsync(f => f.Id == model.Id);
                 if (dbmodel.DegerInt != 0)
                 {
-                    var dbdosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.DegerInt);
+                    var dbdosya = await _genericService.Queryable<Dosyalar>().FirstAsync(f => f.Id == dbmodel.DegerInt);
                     DosyaIslemleri.Delete(dbdosya.Adi);
                 }
             }
             if (file != null)
             {
-                var dosya = DosyaIslemleri.Kaydet(file, _genericService);
+                var dosya = await DosyaIslemleri.Kaydet(file, _genericService);
                 model.DegerInt = dosya.Id;
                 model.Deger = dosya.Adi;
             }

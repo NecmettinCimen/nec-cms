@@ -4,14 +4,13 @@ using NecCms.Admin.Filters;
 using NecCms.Admin.Models;
 using NecCms.Database;
 using NecCms.Database.Service;
-using DocumentFormat.OpenXml.Office2013.Word;
-using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
 using OpenXmlPowerTools;
 using System.Xml.Linq;
 using System;
 using System.IO;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace NecCms.Admin.Controllers
 {
@@ -45,7 +44,7 @@ namespace NecCms.Admin.Controllers
             return Json(new { data = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id) });
         }
 
-        public IActionResult Kaydet(Icerik.Icerikler model)
+        public async Task<IActionResult> Kaydet(Icerik.Icerikler model, string[] tags)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
 
@@ -56,14 +55,14 @@ namespace NecCms.Admin.Controllers
 
             if (model.Id != 0)
             {
-                var dbmodel = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == model.Id);
+                var dbmodel = await _genericService.Queryable<Icerik.Icerikler>().FirstAsync(x => x.Id == model.Id);
                 if (file == null)
                 {
                     model.ResimId = dbmodel.ResimId;
                 }
                 else
                 {
-                    var eskidosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.ResimId);
+                    var eskidosya = await _genericService.Queryable<Dosyalar>().FirstAsync(f => f.Id == dbmodel.ResimId);
                     DosyaIslemleri.Delete(eskidosya.Adi);
                 }
                 model.YazarId = dbmodel.YazarId;
@@ -74,10 +73,19 @@ namespace NecCms.Admin.Controllers
                 model.YazarId = 1;
                 model.Durum = Icerik.IcerikDurumEnum.Hazirlandi;
             }
+            int icerikId = await _genericService.Save(model);
+
+            await _genericService.Save(tags.Select(s => new Tags
+            {
+                IcerikId = icerikId,
+                Icerik = s,
+                Id = !_genericService.Queryable<Tags>().Any(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()) ?
+                 0 : _genericService.Queryable<Tags>().Where(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()).Select(f => f.Id).First()
+            }).ToList());
 
             return Json(new
             {
-                data = _genericService.Save(model)
+                data = icerikId
             });
         }
 
@@ -137,6 +145,15 @@ namespace NecCms.Admin.Controllers
                 : Icerik.IcerikDurumEnum.Hazirlandi;
 
             return Json(new { data = _genericService.Save(dbmodel) });
+        }
+        public IActionResult Tags()
+        {
+
+            return Json(new
+            {
+                data = _genericService.Queryable<Tags>().OrderBy(x => x.Icerik)
+                    .ToList()
+            });
         }
     }
 }

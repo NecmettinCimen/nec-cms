@@ -10,7 +10,7 @@ namespace NecCms.Models
         public string Giris { get; set; }
         public string Kategori { get; set; }
         public string ResimData { get; set; }
-        public DateTime Tarih { get; set; }
+        public DateTime? Tarih { get; set; }
         public string KategoriUrl { get; set; }
     }
 }

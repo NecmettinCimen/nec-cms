@@ -118,7 +118,7 @@ submitForm = (e) => {
         }).then(res => {
             swal.close();
             if (res.status === 500) {
-                swal("Hata",'Daha Sonra Tekrar Deneyiniz','error');
+                swal("Hata", 'Daha Sonra Tekrar Deneyiniz', 'error');
                 return false;
             } else {
                 showToaster(2);
@@ -231,7 +231,7 @@ setValue = (name, value) => {
 prepareForm = (formList) => {
     return formList.map(item => formElements(item));
 };
-formElements = (item) => {
+formElements = async (item) => {
     let elementHtml = '<div class="form-group" style="' + (item.style || "") + '" >';
 
     if (!item.hidden)
@@ -274,7 +274,7 @@ formElements = (item) => {
 
             if (item.required)
                 elementHtml += ` required`;
-            
+
             if (item.value != undefined)
                 elementHtml += ` value="${item.value}"`;
 
@@ -285,26 +285,27 @@ formElements = (item) => {
             break;
         case 'textarea':
             elementHtml += `<textarea class="form-control" id="${item.id}" name="${item.id}"` +
-                ` rows="3" maxLength="${item.maxLength}" >${(item.value?item.value:"")}</textarea>`;
+                ` rows="3" maxLength="${item.maxLength}" >${(item.value ? item.value : "")}</textarea>`;
             break;
         case 'select':
-            if (item.ajax)
-                fetch(item.ajax)
-                    .then(res => res.json())
-                    .then(res => {
-                        $(`#${item.id}`).select2({
-                            data: [{id:0,text:'Lütfen Seçiniz'},...res.data.map(s => ({
-                                id: s.id,
-                                text: s[item.text],
-                                data: s.data
-                            }))]
-                        })
-                    });
+            if (item.ajax) {
+                var res = await (await fetch(item.ajax)).json()
+                console.log(res.data)
+                $(`#${item.id}`).select2({
+                    data: [{ id: 0, text: 'Lütfen Seçiniz' }, ...res.data.map(s => ({
+                        id: s.id,
+                        text: s[item.text],
+                        data: s.data,
+                        tags: (item.tags || false)
+                    }))]
+                })
+            }
 
             setTimeout(() => $(`#${item.id}`).select2({
                 width: 'resolve',
                 placeHolder: item.name,
-                data: item.data
+                data: item.data,
+                tags: (item.tags || false)
             }), 100);
 
             elementHtml += `<select class="form-control" ${item.required ? `required` : ""}` +

@@ -89,11 +89,6 @@
                 name: 'Giris'
             },
             {
-                type: 'html',
-                name: 'İçerik',
-                html: '<div class="row"><div class="col-md-12"><textarea id="summernote" name="icerik" style="height: 500px;"></textarea></div></div>'
-            },
-            {
                 type: 'input',
                 html: true,
                 hidden: true,
@@ -105,7 +100,7 @@
                 name: 'Menu',
                 ajax: '/Menu/Liste',
                 text: 'isim',
-                style: 'width: 30%;float: left;margin-left: 5px;',
+                style: 'width: 33%;float: left;margin-left: 5px;',
                 required: true,
             },
 
@@ -113,7 +108,7 @@
                 type: 'date',
                 id: 'yayinlanmaTarihi',
                 name: "Yayınlanma Tarihi",
-                style: 'width: 30%;float: left;margin-left: 5px;',
+                style: 'width: 33%;float: left;margin-left: 5px;',
                 value: formatDateLocate(new Date().toISOString())
             },
             {
@@ -121,7 +116,19 @@
                 id: 'url',
                 name: 'Özel Adres',
                 maxLength: 250,
-                style: 'width: 30%;float: left;margin-left: 5px;',
+                style: 'width: 33%;float: left;margin-left: 5px;',
+            },
+            {
+                type: 'select',
+                id: 'tags',
+                name: 'Tags',
+                multi:true,
+                tags:true
+            },
+            {
+                type: 'html',
+                name: 'İçerik',
+                html: '<div class="row"><div class="col-md-12"><textarea id="summernote" name="icerik" style="height: 500px;"></textarea></div></div>'
             },
         ]
     });

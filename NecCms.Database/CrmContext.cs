@@ -22,6 +22,7 @@ namespace NecCms.Database
 
         public DbSet<IcerikTipleri> IcerikTipleri { get; set; }
         public DbSet<IcerikTipDegerleri> IcerikTipDegerleri { get; set; }
+        public DbSet<Tags> Tags { get; set; }
 
         public DbQuery<IstekKullaniciSayisiDto> IstekKullaniciSayisi { get; set; }
 
