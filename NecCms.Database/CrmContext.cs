@@ -5,6 +5,11 @@ namespace NecCms.Database
 {
     public class CrmContext : DbContext
     {
+        public CrmContext()
+        {
+                
+        }
+
         public DbSet<Kullanici> Kullanicilar { get; set; }
         public DbSet<Icerik.Icerikler> Icerikler { get; set; }
         public DbSet<Icerik.FotografGalerisi> FotografGalerisi { get; set; }
@@ -28,12 +33,7 @@ namespace NecCms.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-#if DEBUG
-            optionsBuilder.UseSqlServer("Data Source=23.97.247.65,51433;Initial Catalog=dbblog;User ID=sa;Password=A{J8c]fu^j\\FuZ&>", builder => builder.UseRowNumberForPaging());
-#endif
-#if !DEBUG
-            optionsBuilder.UseSqlServer("Data Source=localhost\\sekiz;Initial Catalog=dbblog;User ID=sa;Password=A{J8c]fu^j\\FuZ&>", builder => builder.UseRowNumberForPaging());
-#endif
+            optionsBuilder.UseSqlite("Data Source=blog.necmettin.me.db");
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 

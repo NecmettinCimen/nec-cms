@@ -14,20 +14,26 @@ namespace NecCms.Database.Service
 
     public class GenericService : IGenericService
     {
-        CrmContext dbContext = new CrmContext();
+        public GenericService(CrmContext dbContext)
+        {
+            this.DbContext = dbContext;
+        }
+
+        private CrmContext DbContext { get; }
+
         public IQueryable<T> Queryable<T>() where T : BaseEntity
         {
-            return dbContext.Set<T>().Where(x => x.Sil == 0);
+            return DbContext.Set<T>().Where(x => x.Sil == 0);
         }
 
         public async Task<bool> Remove<T>(T model) where T : BaseEntity
         {
-            var dbmodel = await dbContext.Set<T>().FindAsync(model.Id);
+            var dbmodel = await DbContext.Set<T>().FindAsync(model.Id);
             dbmodel.Sil = 1;
 
-            dbContext.Set<T>().Update(dbmodel);
+            DbContext.Set<T>().Update(dbmodel);
 
-            await dbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
 
             return true;
         }
@@ -35,22 +41,22 @@ namespace NecCms.Database.Service
         public async Task<int> Save<T>(T model) where T : BaseEntity
         {
             if (model.Id == 0)
-                await dbContext.Set<T>().AddAsync(model);
+                await DbContext.Set<T>().AddAsync(model);
             else
-                dbContext.Set<T>().Update(model);
+                DbContext.Set<T>().Update(model);
 
-            await dbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
 
             return model.Id;
         }
         public async Task<bool> Save<T>(List<T> model) where T : BaseEntity
         {
             if (model.Any(w => w.Id == 0))
-                await dbContext.Set<T>().AddRangeAsync(model.Where(w => w.Id == 0).ToList());
+                await DbContext.Set<T>().AddRangeAsync(model.Where(w => w.Id == 0).ToList());
             if (model.Any(w => w.Id != 0))
-                dbContext.Set<T>().UpdateRange(model.Where(w => w.Id != 0).ToList());
+                DbContext.Set<T>().UpdateRange(model.Where(w => w.Id != 0).ToList());
 
-            await dbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync();
 
             return true;
         }

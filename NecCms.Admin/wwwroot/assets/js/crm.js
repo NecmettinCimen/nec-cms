@@ -9,7 +9,7 @@ loadPage = () => {
     }
 };
 
-pageInit = (page) => {
+pageInit = async (page) => {
     tpage = page;
     document.title = page.name;
     $('.pageHeader').text(page.name);
@@ -70,8 +70,12 @@ pageInit = (page) => {
             }],
         });
 
-    if (page.form)
-        $('#editModalRow').append(prepareForm(page.form));
+    if (page.form) {
+        
+        var innerHtml = await prepareForm(page.form);
+        debugger
+        $('#editModalRow').append(innerHtml);
+    }
 
     if (page.formsubmittype == 'formdata') {
         $('#editModalForm').attr('action', (tpage.saveurl || (tpage.url.replace('/Index', '') + '/Save')));
@@ -128,8 +132,7 @@ submitForm = (e) => {
             if (res.data) {
                 if (tpage.customsuccessfun) {
                     eval(tpage.customsuccessfun)
-                }
-                else {
+                } else {
                     table.ajax.reload();
                     $('#editModal').modal('hide')
                 }
@@ -152,8 +155,7 @@ async function FileUpload(oFormElement) {
             swal.close();
             if (tpage.customsuccessfun) {
                 eval(tpage.customsuccessfun)
-            }
-            else {
+            } else {
                 showToaster(2);
                 table.ajax.reload();
                 $('#editModal').modal('hide')
@@ -228,8 +230,12 @@ setValue = (name, value) => {
         return value;
 };
 
-prepareForm = (formList) => {
-    return formList.map(item => formElements(item));
+prepareForm = async (formList) => {
+    return await formList.map(async item => {
+        var result =await formElements(item);
+        debugger
+        return result;
+    });
 };
 formElements = async (item) => {
     let elementHtml = '<div class="form-group" style="' + (item.style || "") + '" >';
@@ -292,7 +298,7 @@ formElements = async (item) => {
                 var res = await (await fetch(item.ajax)).json()
                 console.log(res.data)
                 $(`#${item.id}`).select2({
-                    data: [{ id: 0, text: 'Lütfen Seçiniz' }, ...res.data.map(s => ({
+                    data: [{id: 0, text: 'Lütfen Seçiniz'}, ...res.data.map(s => ({
                         id: s.id,
                         text: s[item.text],
                         data: s.data,

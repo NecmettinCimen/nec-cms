@@ -7,6 +7,8 @@ using NecCms.Database.Service;
 namespace NecCms.Admin.Controllers
 {
     [NecCmsAuthorize]
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class IletisimController : Controller
     {
         private readonly IGenericService _genericService;
@@ -16,11 +18,14 @@ namespace NecCms.Admin.Controllers
             _genericService = genericService;
         }
 
+        [HttpGet("Index")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Index()
         {
             return View("_Table");
         }
 
+        [HttpGet("List")]
         public IActionResult List()
         {
             return Json(new

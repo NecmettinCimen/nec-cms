@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NecCms.Admin.Models;
+using NecCms.Database;
 using NecCms.Database.Service;
 
 namespace NecCms.Admin
@@ -42,11 +44,18 @@ namespace NecCms.Admin
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<CrmContext>();
+            
+            services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env,CrmContext context)
         {
+            await context.Database.MigrateAsync();
+            
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -63,6 +72,15 @@ namespace NecCms.Admin
                 routes.MapRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
+            });
+            
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

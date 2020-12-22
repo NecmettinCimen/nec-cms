@@ -15,6 +15,8 @@ using Microsoft.EntityFrameworkCore;
 namespace NecCms.Admin.Controllers
 {
     [NecCmsAuthorize]
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class IcerikController : Controller
     {
         private readonly IGenericService _genericService;
@@ -24,27 +26,34 @@ namespace NecCms.Admin.Controllers
             _genericService = genericService;
         }
 
+        [HttpGet("Liste")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Liste()
         {
             return View();
         }
 
+        [HttpGet("Ekle")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Ekle()
         {
             return View();
         }
 
+        [HttpGet("Duzenle")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Duzenle(int id)
         {
             return View("Ekle");
         }
 
+        [HttpPost("Bul")]
         public IActionResult Bul(int id)
         {
             return Json(new { data = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id) });
         }
-
-        public async Task<IActionResult> Kaydet(Icerik.Icerikler model, string[] tags)
+        [HttpPost("Kaydet")]
+        public async Task<IActionResult> Kaydet(Icerik.Icerikler model)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
 
@@ -75,20 +84,20 @@ namespace NecCms.Admin.Controllers
             }
             int icerikId = await _genericService.Save(model);
 
-            await _genericService.Save(tags.Select(s => new Tags
-            {
-                IcerikId = icerikId,
-                Icerik = s,
-                Id = !_genericService.Queryable<Tags>().Any(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()) ?
-                 0 : _genericService.Queryable<Tags>().Where(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()).Select(f => f.Id).First()
-            }).ToList());
+            // await _genericService.Save(tags.Select(s => new Tags
+            // {
+            //     IcerikId = icerikId,
+            //     Icerik = s,
+            //     Id = !_genericService.Queryable<Tags>().Any(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()) ?
+            //      0 : _genericService.Queryable<Tags>().Where(w => w.Icerik.ToLower().Trim() == s.ToLower().Trim()).Select(f => f.Id).First()
+            // }).ToList());
 
             return Json(new
             {
                 data = icerikId
             });
         }
-
+        [HttpPost("WordToHtml")]
         public IActionResult WordToHtml()
         {
             var file = Request.Form.Files.First();
@@ -115,11 +124,12 @@ namespace NecCms.Admin.Controllers
                 return Json(new { success = false, data = ex.Message });
             }
         }
+        [HttpPost("Kaldir")]
         public IActionResult Kaldir([FromBody] Icerik.Icerikler model)
         {
             return Json(new { data = _genericService.Remove(model) });
         }
-
+        [HttpGet("IcerikListesi")]
         public IActionResult IcerikListesi()
         {
             return Json(new
@@ -136,7 +146,7 @@ namespace NecCms.Admin.Controllers
                        }
             });
         }
-
+        [HttpGet("Durum")]
         public IActionResult Durum(int id)
         {
             var dbmodel = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id);
@@ -146,6 +156,7 @@ namespace NecCms.Admin.Controllers
 
             return Json(new { data = _genericService.Save(dbmodel) });
         }
+        [HttpPost("Tags")]
         public IActionResult Tags()
         {
 

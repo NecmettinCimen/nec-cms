@@ -8,6 +8,8 @@ namespace NecCms.Admin.Controllers
 {
     [NecCmsAuthorize]
     [AdminAuthorize]
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class KullaniciController : Controller
     {
         private readonly IGenericService _genericService;
@@ -17,11 +19,14 @@ namespace NecCms.Admin.Controllers
             _genericService = genericService;
         }
         // GET
+        [HttpGet("Index")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Index()
         {
             return View("_Crud");
         }
         
+        [HttpGet("Liste")]
         public IActionResult Liste(int? id)
         {
             return Json(new
@@ -31,12 +36,13 @@ namespace NecCms.Admin.Controllers
             });
         }
 
+        [HttpPost("Liste")]
         public IActionResult Kaydet([FromBody] Kullanici model)
         {
             _genericService.Save(model);
             return Json(new {data = model});
         }
-
+        [HttpPost("Kaldir")]
         public IActionResult Kaldir([FromBody] Kullanici model)
         {
             return Json(new {data = _genericService.Remove(model)});

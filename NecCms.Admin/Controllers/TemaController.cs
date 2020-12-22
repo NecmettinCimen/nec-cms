@@ -10,6 +10,8 @@ using NecCms.Database.Service;
 namespace NecCms.Admin.Controllers
 {
     [NecCmsAuthorize]
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class TemaController : Controller
     {
         private readonly IGenericService _genericService;
@@ -19,23 +21,28 @@ namespace NecCms.Admin.Controllers
             _genericService = genericService;
         }
         
+        [HttpGet("resim")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Resim(int id)
         {
-                Dosyalar resim = _genericService.Queryable<Dosyalar>().First(f=>f.Id == id);
+                var resim = _genericService.Queryable<Dosyalar>().First(f=>f.Id == id);
                 return File(System.IO.File.OpenRead(resim.Yolu), resim.Tipi);
             }
 
         [AdminAuthorize]
+        [HttpGet("yonetim")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Yonetim()
         {
             return View("~/Views/Shared/_Crud.cshtml");
         }
-
+        [HttpGet("duzenle")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Duzenle()
         {
             return View();
         }
-
+        [HttpGet("ParametreListesi")]
         public IActionResult ParametreListesi(int? id)
         {
             return Json(new
@@ -44,17 +51,17 @@ namespace NecCms.Admin.Controllers
                     .OrderByDescending(x => x.Id).ToList()
             });
         }
-
+        [HttpPost("ParametreKaydet")]
         public IActionResult ParametreKaydet([FromBody] Tema.Parametre model)
         {
             return Json(new {data = _genericService.Save(model)});
         }
-
+        [HttpPost("ParametreKaldir")]
         public IActionResult ParametreKaldir([FromBody] Tema.Parametre model)
         {
             return Json(new {data = _genericService.Remove(model)});
         }
-
+        [HttpGet("ParametreDegerListesi")]
         public IActionResult ParametreDegerListesi(int? id)
         {
             return Json(new
@@ -77,7 +84,7 @@ namespace NecCms.Admin.Controllers
                     .ToList()
             });
         }
-
+        [HttpPost("ParametreDegeriKaydet")]
         public async Task<IActionResult> ParametreDegeriKaydet(Tema.ParametreDegeri model)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;

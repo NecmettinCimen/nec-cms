@@ -8,6 +8,8 @@ using NecCms.Database.Service;
 namespace NecCms.Admin.Controllers
 {
     [NecCmsAuthorize]
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class MenuController : Controller
     {
         private readonly IGenericService _genericService;
@@ -17,11 +19,14 @@ namespace NecCms.Admin.Controllers
             _genericService = genericService;
         }
 
+        [HttpGet("Index")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("Liste")]
         public IActionResult Liste(int? id)
         {
             return Json(new
@@ -31,12 +36,13 @@ namespace NecCms.Admin.Controllers
             });
         }
 
+        [HttpPost("Kaydet")]
         public IActionResult Kaydet([FromBody] Menu model)
         {
             _genericService.Save(model);
             return Json(new {data = model});
         }
-
+        [HttpPost("SiralamaKaydet")]
         public IActionResult SiralamaKaydet([FromBody] List<Menu> model)
         {
             foreach (var item in model)
@@ -49,6 +55,7 @@ namespace NecCms.Admin.Controllers
             return Json(new {data = true});
         }
         
+        [HttpPost("Kaldir")]
         public IActionResult Kaldir([FromBody] Menu model)
         {
             return Json(new {data = _genericService.Remove(model)});

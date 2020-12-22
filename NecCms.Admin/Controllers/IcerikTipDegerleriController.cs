@@ -8,6 +8,8 @@ using NecCms.Database.Service;
 
 namespace NecCms.Admin.Controllers
 {
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class IcerikTipDegerleriController : Controller
     {
         private readonly IGenericService _genericService;
@@ -16,12 +18,16 @@ namespace NecCms.Admin.Controllers
         {
             _genericService = genericService;
         }
-        // GET
+
+        [HttpGet("Index")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("Liste")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult Liste(int? id)
         {
             return Json(new
@@ -44,7 +50,7 @@ namespace NecCms.Admin.Controllers
             });
         }
 
-
+        [HttpGet("Bul")]
         public IActionResult Bul(int id)
         {
             var icerikTipDegeri = _genericService.Queryable<IcerikTipDegerleri>().First(x => x.Id == id);
@@ -54,7 +60,7 @@ namespace NecCms.Admin.Controllers
                 icerikTipDegeri = _genericService.Queryable<IcerikTipDegerleri>().Where(x => x.Sira == icerikTipDegeri.Sira).ToList()
             });
         }
-
+        [HttpPost("Bul")]
         public async Task<IActionResult> Kaydet(IcerikTipDegerleri[] model)
         {
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files.First() : null;
@@ -101,7 +107,7 @@ namespace NecCms.Admin.Controllers
             }
             return Json(new { data = true });
         }
-
+        [HttpPost("Kaldir")]
         public IActionResult Kaldir([FromBody] IcerikTipDegerleri model)
         {
             var list = _genericService.Queryable<IcerikTipDegerleri>().Where(x => x.Sira == model.Sira).ToList();
