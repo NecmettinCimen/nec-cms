@@ -8,7 +8,7 @@ namespace NecCms.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new IcerikDto { Baslik = "" });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

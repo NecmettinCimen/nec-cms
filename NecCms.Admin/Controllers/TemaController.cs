@@ -66,8 +66,6 @@ namespace NecCms.Admin.Controllers
                         e.Kodu,
                         e.Aciklama,
                         e.Tip,
-                        Durum = _genericService.Queryable<Tema.ParametreDegeri>()
-                            .Count(w => w.ParametreId == e.Id),
                         Parametre = !id.HasValue
                             ? null
                             : _genericService.Queryable<Tema.ParametreDegeri>()
@@ -78,7 +76,9 @@ namespace NecCms.Admin.Controllers
                                     x.DegerInt,
                                     Dosya = _genericService.Queryable<Dosyalar>()
                                         .FirstOrDefault(f => f.Id == x.DegerInt)
-                                }).FirstOrDefault()
+                                }).FirstOrDefault(),
+                        Deger = _genericService.Queryable<Tema.ParametreDegeri>()
+                                .Where(w => w.ParametreId == e.Id).Select(x => x.Deger).FirstOrDefault()
                     })
                     .OrderByDescending(x => x.Id)
                     .ToList()

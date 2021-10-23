@@ -73,12 +73,7 @@
         columns: [
             {title: "No", data: 'id'},
             {title: "Kodu", data: 'kodu'},
-            {title: "İsim", data: 'isim'},
-            {
-                title: "Durum",
-                data: 'durum',
-                render: (data) => "<button class='btn btn-outline-" + (data ? 'success' : 'danger') + "'>" + (data ? 'Veri var' : 'Veri yok') + "</button>"
-            },
+            {title: "Deger", data: 'deger'}
         ]
     },{
         url: '/Iletisim',

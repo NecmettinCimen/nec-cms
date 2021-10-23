@@ -1,167 +1,89 @@
 @model bool
-<script src="~/images/openLayersMapBuilder.js"></script>
+ <script src="https://www.google.com/recaptcha/api.js"></script>
 
-<div class="stage layout-B">
-    <div class="stage-body">
+<!--=====================================
+=            Address and Map            =
+======================================-->
+<title>@Html.Raw(TemaYonetimi.Find("iletisimtitle","iletisimtitle"))</title>
+<section class="address">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 align-self-center">
+				<div class="block">
+					<div class="address-block text-center mb-5">
+						<div class="icon">
+							<i class="ti-mobile"></i>
+						</div>
+						<div class="details">
+							@Html.Raw(TemaYonetimi.Find("iletisimtelefon","<h3>(90) 789 456 7890 (USA)</h3><h3>(88) 016 725 0455 (UK)</h3>"))
+						</div>
+					</div>
+					<div class="address-block text-center">
+						<div class="icon">
+							<i class="ti-map-alt"></i>
+						</div>
+						<div class="details">
+							@Html.Raw(TemaYonetimi.Find("iletisimadres","<h3>36. St Michael’s St, Oxford OX1, UK</h3><h3>123, Ankara, Türkiye</h3>"))
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-7 mt-5 mt-lg-0">
+				<div class="google-map">
+					<!-- Google Map -->
+<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="@Html.Raw(TemaYonetimi.Find("iletisimharitasrc","https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=ankara%20t%C3%BCrkiye+(ankara)&amp;t=k&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"))"><a href="http://www.gps.ie/">gps devices</a></iframe></div>				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-
-                    <section>
-                        <div id="fwMap38070" class="eklenti-gmap"></div>
-                    </section>
-
-
-                </section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/Iletisim" itemprop="url">
-                                <span itemprop="title">
-                                    İletişim
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="#" itemprop="url">
-                                <span itemprop="title">
-                                    @Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="mainContent"></div>
-                <h1 class="page-title">@Html.Raw(TemaYonetimi.Find("iletisimanabaslik"))</h1>
-                <section class="node-content">
-                    <section>
-                        <div class="columns fluid">
-                            <div class="col6">
-                                <h2>
-                                    <strong>@Html.Raw(TemaYonetimi.Find("iletisimbaslik"))</strong>
-                                </h2>
-                                <p>
-                                    <img src="@Html.Raw(TemaYonetimi.Find("iletisimresim"))" alt="@Html.Raw(TemaYonetimi.Find("iletisimadres"))"
-                                         data-showlarge="true"/>
-                                </p>
-                                <p style="text-align: justify;">
-                                    @Html.Raw(TemaYonetimi.Find("iletisimaciklama"))
-                                </p>
-                                <p>
-                                    @Html.Raw(TemaYonetimi.Find("iletisimadres"))
-                                    <em class="icon-phone2 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimtelefon"))<br/>
-                                    <em class="icon-phone5 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> @Html.Raw(TemaYonetimi.Find("iletisimfax"))<br/>
-                                    <em class="icon-envelope3 "
-                                        style="font-size: 16px;">
-                                        <!--icon-->
-                                    </em> <a href="mailto:info@kasaroglu.av.tr">@Html.Raw(TemaYonetimi.Find("iletisimmail"))</a>
-                                </p>
-                            </div>
-                            <div class="col6">
-                                <div class="iletisim_formu">
+<!--====  End of Address and Map  ====-->
+<section class="contact-form section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="mb-5 text-center">Mail Gönderin</h2>
+			</div>
+			<div class="col-12">
                                     <form action="/iletisim/kaydet" onsubmit="send(this);return false;">
-                                        
-                                        <div class="item f-konu">
-                                            <label>Konu <i class="flrq"></i></label>
-                                            <input name="Konu" class="inp size6" maxlength="100" type="text" required/>
-                                        </div>
-                                        <div class="item f-gonderenin_adi_soyadi">
-                                            <label>
-                                                Adınız Soyadınız
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <input name="AdSoyad" maxlength="100" class="inp size6" type="text"
-                                                   required/>
-                                        </div>
-                                        <div class="item f-eposta">
-                                            <label>
-                                                Eposta Adresiniz
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <input name="Eposta"
-                                                   class="inp size6" type="text" maxlength="50" required/>
-                                        </div>
-                                        <div class="item f-ileti">
-                                            <label>
-                                                Öneriniz / Sorunuz
-                                                <i
-                                                    class="flrq">
-                                                </i>
-                                            </label>
-                                            <textarea name="Aciklama" class="inp size8"
-                                              maxlength="500"  rows="7" required></textarea>
-                                        </div>
-                                        <div class="item f-captcha">
-                                            <script
-                                                src="https://www.google.com/recaptcha/api.js?render=6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj"></script>
-                                            <script>
-                                                grecaptcha.ready(function () {
-                                                    grecaptcha.execute('6Lcf38MUAAAAAH70wtQqXs62yvY7F7Z5tylFmXRj', { action: 'iletisim' }).then(function (token) {
-                                                        console.log(token)
-                                                    });
-                                                });
-                                            </script>
-                                        </div>
-                                        <div class="item f-gonder">
-                                            <p>
-                                                <input value="Gönder" name="" type="submit" class="button size4"
-                                                       data-validators="">
-                                            </p>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <style>
-                        .page-title {
-                            display: none
-                        }
-                    </style>
-                </section>
+					<div class="row">
+						<!-- Name -->
+						<div class="col-md-6 mb-2">
+							<input class="form-control main" type="text" placeholder="Ad Soyad" name="AdSoyad" required>
+						</div>
+						<!-- Email -->
+						<div class="col-md-6 mb-2">
+							<input class="form-control main" type="email" placeholder="Eposta" name="Eposta" required>
+						</div>
+						<!-- Message -->
+						<div class="col-md-12 mb-2">
+							<textarea class="form-control main" rows="10" placeholder="Mesajınız" name="Aciklama"></textarea>
+						</div>
+						<!-- Submit Button -->
+						<div class="col-12 text-right">
+							<button 
+							class="btn btn-main-md g-recaptcha" 
+        data-sitekey="6LdcM-0cAAAAAN3WgOa7WXfGk-bISBhOkFipWWmd" 
+        data-callback='onSubmit' 
+        data-action='submit'
+>Gönder</button>
 
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
 
 @section Scripts
 {
-    <script>
+	//6LdcM-0cAAAAANV-fqUQ2P5TVxNQJB1DDCXkzWo1
+
+	 <script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
                 async function send(oFormElement){
                         const formData = new FormData(oFormElement);
                     
@@ -180,22 +102,4 @@
                         }
                 }
     </script>
-    
-                    <script>
-                        window.addEvent("domready", function () {
-                            new openLayersMapBuilder().init({
-                                id: "fwMap38070",
-                                height: "400px",
-                                mapData: { "points": [{ "lat": 38.348347, "lng": 38.313202, "title": "Malatya", "desc": "", "icon": "/styles/Eklenti/images/map/lounges.png" }], "center": { "lat": 38.348347, "lng": 38.313202 }, "zoom": 17, "type": "roadmap", "markerClustering": false }
-                            });
-                        })
-                    </script>
-
-                    <p>
-                        <script>
-                            if (window.innerWidth < 450)
-                                GMap.map.setZoom(6);
-
-                        </script>
-                    </p>
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Microsoft.AspNetCore.Hosting;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using NecCms.Database.Service;
 using NecCms.Database;
 using NecCms.Models;
 
@@ -28,17 +23,17 @@ namespace NecCms.Controllers
                 case MenuTip.TekSayfa when model.Icerikler.Count == 0:
                     return Redirect("/");
                 case MenuTip.TekSayfa:
-                {
-                    var kategoriicerik = model.Icerikler.First();
-                    var icerik = IcerikYonetimi.Find(kategori, kategoriicerik.Url);
-                    return View("~/Views/Icerik/Index.cshtml", icerik);
-                }
+                    {
+                        var kategoriicerik = model.Icerikler.First();
+                        var icerik = IcerikYonetimi.Find(kategori, kategoriicerik.Url);
+                        return View("~/Views/Icerik/Index.cshtml", icerik);
+                    }
                 case MenuTip.MenuListesi when model.Icerikler.Count == 0:
                     return Redirect("/");
                 case MenuTip.MenuListesi:
-                {
-                    return View("~/Views/Kategori/MenuListesi.cshtml", model);
-                }
+                    {
+                        return View("~/Views/Kategori/MenuListesi.cshtml", model);
+                    }
             }
             return View(model);
         }

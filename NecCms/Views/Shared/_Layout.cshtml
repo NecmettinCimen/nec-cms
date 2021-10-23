@@ -2,251 +2,197 @@
 @{
     Layout = null;
 }
-<!DOCTYPE html>
-<!-- FilWEB CMS. Developed by Fil Bilişim Sistemleri www.filbilisim.com -->
-<html lang="tr" class="lang-tr">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.4, user-scalable=1"/>
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
 
-    <title>Aybars Hukuk</title>
-    <meta charset="utf-8">
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
   
-    <meta name="description" content="Aybars Hukuk Bürosu">
-    <meta name="keywords" content="Aybars Hukuk Bürosu. Aybars Hukuk Bürosu">
-    <meta name="author" content="Aybars Hukuk Bürosu">
-    <meta name="robots" content="all,follow"/>
+  <!-- PLUGINS CSS STYLE -->
+  <link rel="stylesheet" href="~/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="~/plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="~/plugins/slick/slick.css">
+  <link rel="stylesheet" href="~/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="~/plugins/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="~/plugins/aos/aos.css">
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.aybarshukuk.com"/>
-    <meta name="twitter:title" content="Aybars Hukuk Bürosu">
-    <meta name="twitter:description" content="Aybars Hukuk Bürosu">
-	
-    <!-- Open Graph data -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:title" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:description" content="Aybars Hukuk Bürosu"/>
-    <meta property="og:url" content="https://www.aybarshukuk.com"/>
-	    <!-- google -->
-    <meta itemprop="name" content="Aybars Hukuk Bürosu"/>
-    <meta itemprop="description" content="Aybars Hukuk Bürosu"/>
-	    <link rel="canonical" href="https://www.aybarshukuk.com"/>
+  <!-- CUSTOM CSS -->
+  <link href="~/css/style.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon"/>
-
-    <script type="text/javascript">
-        window.appBase = "";
-        window.baseUrl = "/tr";
-        window.theme = "aybars";
-        window.lang = "tr";
-        window.isHome = true
-    </script>
-    
-    <link rel="stylesheet" href="~/images/compressed.css" asp-append-version="true" media="all"/>
-    
-        
-    
 </head>
 
-<body class="Sayfa-default home fw-front">
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 
-<div id="wrapper" class="wrap-B">
 
-    <div id="wrapper-content">
-        <div id="pbody">
-            <div id="top">
-                <div class="pre-top">
-                    <div class="wrap">
-                        <div class="body">
-                            <section class="node-content">
-                                <div style="z-index: 10001; position: relative;">
-                                    <p>
-                                        <!-- <a href="https://www.facebook.com/" target="_blank" rel="noopener">
-                                            <em class="icon-facebook3 " style="font-size: 18px;">
-                                            </em>
-                                        </a>
-                                        <a href="https://www.instagram.com/" target="_blank" rel="noopener">
-                                            <em class="icon-instagram " style="font-size: 18px;">
-                                            </em>
-                                        </a> <span style="font-size: 18px;">
-                                            <a href="https://tr.linkedin.com" target="_blank" rel="noopener">
-                                                <em class="icon-linkedin ">
-                                                </em>
-                                            </a>
-                                        </span> | 
-                                        -->
-                                        <em class="icon-phone2 "
-                                            style="vertical-align: middle; font-size: 18px;">
-                                            <!--icon-->
-                                        </em> @TemaYonetimi.Find("telefon")
-                                    </p>
-                                </div>
-                                <style>
-                                        .pre-top a {
-                                            color: #fff !important;
-                                            margin: 0;
-                                            display: inline-block;
-                                        }
-
-                                        .pre-top p {
-                                            margin: 0;
-                                            margin-top: -4px;
-                                        }
-                                    </style>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-                <div class="body">
-                    <div class="mob-menu">
-                        <div id="mobMenuButton"></div>
-                        <div id="mobMenuContainer"></div>
-                    </div>
-                    <div class="logo-overlay">
-                        <a href="/">
-                            <img src="@Html.Raw(TemaYonetimi.Find(kodu:"logo"))" alt="logo"/>
-                        </a>
-                    </div>
-                    <div class="site-title">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</div>
-
-                    <div id="flags">
-
-                        <div class="site-search-wrap">
-                            <div class="search site-search" data-type="">
-                                <form action="/Arama" method="GET">
-                                    <input type="text" value="Arama" class="text" name="arama">
-                                    <input style="float:left" type="submit" class="ara" value="Ara ">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navi-wrap">
-                        <div class="navi">
-                            <div class="navi_top"></div>
-                            <nav class="navi_body">
-                                <ul class="menulist" id="siteMainMenu">
-                                    @foreach (var m in MenuYonetimi.Menuler)
+<nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="@Html.Raw(TemaYonetimi.Find("logo","/images/logo.png"))" alt="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="ti-menu"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+          @foreach (var m in MenuYonetimi.Menuler)
                                     {
-                                        <li>
-                                            <a href="@m.Url" data-tip="Sayfa:default">
-                                                <i class=""></i>
-                                                <span>@m.Isim</span>
-                                            </a>
+                                        
                                             @if (m.Menuler.Count > 0)
-                                            {
-                                                <ul>
+                        {
+                            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="@m.Url" data-toggle="dropdown">@m.Isim <span><i class="ti-angle-down"></i></span>
+          </a>
+          <!-- Dropdown list -->
+          <ul class="dropdown-menu">
+              
                                                     @foreach (var m2 in m.Menuler)
-                                                    {
-                                                        <li>
-                                                            <a href="@m2.Url" data-tip="Sayfa:default">
-                                                                <i class=""></i>
-                                                                <span>@m2.Isim</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            }
-                                        </li>
+                                    {
+                                    <li><a class="dropdown-item" href="@m2.Url">@m2.Isim</a></li>                                        
                                     }
+          </ul>
+        </li>
+                        }
+                        else
+                        {
+        <li class="nav-item @@contact">
+          <a class="nav-link" href="@m.Url">@m.Isim</a>
+        </li>                            
+                        }
+                    }
 
-                                </ul>
-                            </nav>
-                            <div class="navi_bot"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div id="content">
-                @RenderBody()
-            </div>
-            <!--content-->
-        </div>
-        <!-- pbody -->
+        
+      </ul>
     </div>
+  </div>
+</nav>
+@RenderBody()
+
+<!--=====================================
+=            Section comment            =
+======================================-->
+
+<section class="section cta-hire bg-gary">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<!-- Hire Title -->
+				<h2>@Html.Raw(TemaYonetimi.Find("hersayfailetisimbaslik","We are hunting Genius Developers"))</h2>
+				<!-- Job Description -->
+				<p>@Html.Raw(TemaYonetimi.Find("hersayfailetisimaciklama",@"Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque
+					in ipsum id orci porta dapibus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus."))</p>
+				<!-- Action Button -->
+				<a href="@Html.Raw(TemaYonetimi.Find("hersayfailetisimadres","/iletisim"))" class="mt-3 btn btn-main-md">@Html.Raw(TemaYonetimi.Find("hersayfailetisimbutton","Join the team"))</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--====  End of Section comment  ====-->
 
 
-    <div id="footer">
-        <div class="body">
-            <div class="content">
-                <section class="node-content">
-                    <div class="gle-logo">
-                        <p>
-                            <a href="@TemaYonetimi.Find("anasayfaaltyaziresimlink")" target="_blank" rel="noopener">
-                                <img
-                                    src="@TemaYonetimi.Find("anasayfaaltyaziresim")" alt="aybars"/>
-                            </a>
-                        </p>
-                    </div>
-                    <p>
-                        <span style="font-size: 0.9em;">
-                            @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi"))
-                        </span>
-                    </p>
-                    <p>
-                        @Html.Raw(TemaYonetimi.Find("anasayfaaltyazi2"))
-                    </p>
-                    <style>
-                            .gle-logo {
-                                float: right;
-                                margin-left: 1em;
-                            }
-                        </style>
-                </section>
-            </div>
+<!--============================
+=            Footer            =
+=============================-->
+<footer>
+  <div class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
+          <div class="block">
+            <a href="index.html"><img src="@Html.Raw(TemaYonetimi.Find("hersayfaaltlogo","/images/logo-alt.png"))" alt="footer-logo"></a>
+            <!-- Social Site Icons -->
+            <ul class="social-icon list-inline">
+              <li class="list-inline-item">
+                <a href="@Html.Raw(TemaYonetimi.Find("hersayfafacebook","https://www.facebook.com/themefisher"))"><i class="ti-facebook"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="@Html.Raw(TemaYonetimi.Find("hersayfatwitter","https://twitter.com/themefisher"))"><i class="ti-twitter"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="@Html.Raw(TemaYonetimi.Find("hersayfainsgram","https://www.instagram.com/themefisher/"))"><i class="ti-instagram"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
+                  @foreach (var m in MenuYonetimi.Menuler)
+                                    {
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
+
+                                        
+                                            @if (m.Menuler.Count > 0)
+                        {
+                                      <div class="block-2">
+            <!-- heading -->
+            <h6>@m.Isim</h6>
+            <!-- links -->
+            <ul>
+              
+                                                    @foreach (var m2 in m.Menuler)
+                                    {
+              <li><a href="@m2.Url">@m2.Isim</a></li>                                      
+                                    }
+                                    
+            </ul>
+          </div>
+                        }
+                        else
+                        {
+                                      <div class="block-2">
+            <!-- links -->
+            <ul>
+              
+              <li><a href="@m.Url"><h6>@m.Isim</h6></a></li>                                      
+                                    
+            </ul>
+          </div>
+        
+                        }
+      </div>
+
+                    }
+
     </div>
-</div>
+  </div>
+  <div class="text-center bg-dark py-4">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script></small>
+  </div>
 
-<div class="extra01"></div>
-
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,600,600italic,700,700italic&amp;subset=latin,latin-ext"
-      type="text/css"/>
-<style>
-        BODY {
-            font-family: "Raleway", arial, sans-serif
-        }
-
-        #wrapper-content {
-            background-color: #cccccc
-        }
-    </style>
-
-    <script type="text/javascript" src="~/images/compressed.js" asp-append-version="true"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153112200-1"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-153112200-1');
-</script>
+</footer>
 
 
+  <!-- To Top -->
+  <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="~/plugins/jquery/jquery.min.js"></script>
+  <script src="~/plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="~/plugins/slick/slick.min.js"></script>
+  <script src="~/plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="~/plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="~/plugins/aos/aos.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+  <script src="~/plugins/google-map/gmap.js"></script>
+  
+  <script src="~/js/script.js"></script>
+
+  
 @RenderSection("Scripts", false)
-
-                    <script type="text/javascript">
-                            window.addEvent('domready', function () {
-
-                                try {
-                                    window.siteMainMenu = new MenuMatic({
-                                        id: "siteMainMenu"
-                                    });
-                                } catch (err) {
-                                    console.warn("Disabled: Menumatic. MN-MM-01");
-                                }
-
-                            });
-                        </script>
-
-
 </body>
 
 </html>

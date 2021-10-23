@@ -1,111 +1,85 @@
 @try
 {
-@model KategoriDto
+    @model KategoriDto
 <title>@Model.Isim</title>
-<div class="stage layout-C">
-    <div class="stage-body">
-
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="@Model.KategoriUrl" itemprop="url">
-                                <span itemprop="title">
-                                    @Model.Isim
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
-                        </div>
-                    </div>
-                </div>
-                <div id="mainContent"></div>
-                <div class="haber-grup" id="haber-grup" style="min-height: 415px;">
-                    <h1 class="page-title">@Model.Isim</h1>
-                    @if (Model.Icerikler.Count < 1)
-                    {
-                        
-                        <div class="box01e">
-                            <h5>
-                                Hiç İçerik Bulunamadı.
-                            </h5>
-                            <div class="clear_b"></div>
-                        </div>
-                    }
-                    @foreach (var item in Model.Icerikler)
-                    {
-                        <div class="box01e">
-                            <h5>
-                                <a href="@item.KategoriUrl/@item.Url">@item.Baslik</a>
-                                <span class="date">@item.Tarih.ToShortDateString() - @item.Kategori</span>
-                            </h5>
-                            <div class="spot">
-                                @item.Giris
-                            </div>
-                            <span class="devami">
-                                <a href="@item.KategoriUrl/@item.Url">[Devamı]</a>
-                            </span>
-                            <div class="clear_b"></div>
-                        </div>
-                    }
-                    <div class="pages">
-                        @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
-                        {
-                            @if (Model.SayfaNo == i)
-                            {
-                                <span>@(i + 1)</span>
-                            }
-                            else
-                            {
-                                <a href="@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a>
-                            }
-                        }
-                    </div>
+    <section class="section page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <!-- Page Title -->
+                <h1>@Model.Isim</h1>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
         </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-1" style="display: @(Model.Menuler.Menuler.Count > 0 ? " block" : "none");">
-            <div class="body">
-                <div class="page_navi">
-                    <ul>
-                        <li class="active">
-                            <a href="@Model.Menuler.Url">@Model.Menuler.Isim</a>
-                        </li>
-                        <ul>
-                            @foreach (var m in Model.Menuler.Menuler)
+    </section>
+
+    <section class="post-grid section pt-0">
+        <div class="container">
+            <div class="row">
+                @if (Model.Icerikler.Count < 1)
+                {
+
+                    <div>
+                        <h5>
+                            Hiç İçerik Bulunamadı.
+                        </h5>
+                    </div>
+                }
+                @foreach (var item in Model.Icerikler)
+                {
+                    <div class="col-lg-4 col-md-6">
+
+                        <article class="post-sm">
+                            <!-- Post Image -->
+                    <div class="post-thumb">
+                                <a href="@item.KategoriUrl/@item.Url"><img class="w-100" src="@item.ResimData" alt="Post-Image"></a>
+                            </div>
+                            <!-- Post Title -->
+                    <div class="post-title">
+                                <h3><a href="@item.KategoriUrl/@item.Url">@item.Baslik</a></h3>
+                            </div>
+                            <!-- Post Meta -->
+                    <div class="post-meta">
+                                <ul class="list-inline post-tag">
+                                    <li class="list-inline-item">
+                                        @item.Tarih.ToShortDateString() - @item.Kategori
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Post Details -->
+                    <div class="post-details">
+                                <p>@item.Giris </p>
+                            </div>
+                        </article>
+                    </div>
+                }
+                <div class="col-12">
+                    <!-- Pagination -->
+                <nav class="pagination-nav">
+                        <ul class="pagination">
+                            @for (var i = 0; i < Model.IcerikSayisi / 10 + 1; i++)
                             {
-                                <li class="page">
-                                    <a style="color:@(Model.KategoriUrl.Contains(m.Url) ? " black" : "grey")"
-                                       href="@m.Url">
-                                        @m.Isim</a>
-                                </li>
+                                @if (Model.SayfaNo == i)
+                                {
+                                    <li class="page-item active"><a class="page-link" href="#">@(i + 1)</a></li>
+                                    <span></span>
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a class="page-link" href="@Model.KategoriUrl/sayfa/@(i + 1)">@(i + 1)</a></li>
+                                }
                             }
                         </ul>
-                    </ul>
+                    </nav>
                 </div>
-                <section class="node-content"></section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
+
+                <!-- Post -->
+
         </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+        </div>
+    </section>
+
 }
-catch(Exception)
+catch (Exception)
 {
 }

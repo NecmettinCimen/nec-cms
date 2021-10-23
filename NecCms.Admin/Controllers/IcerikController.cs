@@ -34,7 +34,7 @@ namespace NecCms.Admin.Controllers
 
         public IActionResult Bul(int id)
         {
-            return Json(new {data = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id)});
+            return Json(new { data = _genericService.Queryable<Icerik.Icerikler>().First(x => x.Id == id) });
         }
 
         public IActionResult Kaydet(Icerik.Icerikler model)
@@ -55,8 +55,9 @@ namespace NecCms.Admin.Controllers
                 }
                 else
                 {
-                    var eskidosya = _genericService.Queryable<Dosyalar>().First(f => f.Id == dbmodel.ResimId);
-                    DosyaIslemleri.Delete(eskidosya.Adi);
+                    var eskidosya = _genericService.Queryable<Dosyalar>().FirstOrDefault(f => f.Id == dbmodel.ResimId);
+                    if (eskidosya != null)
+                        DosyaIslemleri.Delete(eskidosya.Adi);
                 }
                 model.YazarId = dbmodel.YazarId;
                 model.Durum = dbmodel.Durum;
@@ -75,7 +76,7 @@ namespace NecCms.Admin.Controllers
 
         public IActionResult Kaldir([FromBody] Icerik.Icerikler model)
         {
-            return Json(new {data = _genericService.Remove(model)});
+            return Json(new { data = _genericService.Remove(model) });
         }
 
         public IActionResult IcerikListesi()
@@ -83,15 +84,15 @@ namespace NecCms.Admin.Controllers
             return Json(new
             {
                 data = from x in _genericService.Queryable<Icerik.Icerikler>()
-                    join m in _genericService.Queryable<Menu>() on x.MenuId equals m.Id
-                    orderby x.Id descending
-                    select new
-                    {
-                        x.Baslik,
-                        x.Id,
-                        x.Durum,
-                        Menu = m.Isim
-                    }
+                       join m in _genericService.Queryable<Menu>() on x.MenuId equals m.Id
+                       orderby x.Id descending
+                       select new
+                       {
+                           x.Baslik,
+                           x.Id,
+                           x.Durum,
+                           Menu = m.Isim
+                       }
             });
         }
 
@@ -102,7 +103,7 @@ namespace NecCms.Admin.Controllers
                 ? Icerik.IcerikDurumEnum.Yayinlandi
                 : Icerik.IcerikDurumEnum.Hazirlandi;
 
-            return Json(new {data = _genericService.Save(dbmodel)});
+            return Json(new { data = _genericService.Save(dbmodel) });
         }
     }
 }

@@ -1,61 +1,36 @@
 @try
 {
-@model IcerikDto
+    @model IcerikDto
 <title>@Model.Baslik</title>
-<div class="stage layout-B">
-    <div class="stage-body">
-
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-                    <div style="background-image: url(@Model.ResimData)" class="banner banner-large">
-                        <p> </p>
-                    </div>
-                </section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div class="breadcrumbs">
-                    <div class="body">
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/" itemprop="url">
-                                <span itemprop="title">
-                                    Ana Sayfa
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
+    <section class="section blog-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 m-auto">
+                    <!-- Single Post -->
+                <article class="single-post">
+                        <!-- Post title -->
+                    <div class="post-title text-center">
+                            <h1>@Model.Baslik</h1>
+                            <!-- Tags -->
+                        <ul class="list-inline post-tag">
+                                <li class="list-inline-item">
+                                    <a href="#">@Model.Kategori</a>
+                                </li>
+                            </ul>
                         </div>
-                        <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="step">
-                            <a href="/@Model.Kategori" itemprop="url">
-                                <span itemprop="title">
-                                    @Model.Kategori
-                                </span>
-                            </a>
-                            <span class="sep">›</span>
+                        <!-- Post body -->
+                    <div class="post-body">
+                        
+						<div class="feature-image">
+							<img class="img-fluid" src="@Model.ResimData" alt="feature-image">
+						</div>
+                            @Html.Raw(Model.Icerik)
                         </div>
-                    </div>
+                    </article>
                 </div>
-                <div id="mainContent"></div>
-                <h1 class="page-title">@Model.Baslik</h1>
-                <section class="node-content">
-                    @Html.Raw(Model.Icerik)
-
-                </section>
-
             </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
         </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+    </section>
 }
 catch (Exception)
 {

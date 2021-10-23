@@ -24,7 +24,7 @@ namespace NecCms.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=sql.poseidon.domainhizmetleri.com;Database=aybarshu_kuk;User Id=aybarshu_kuk;Password=Huzt!903;");
+                "Server=sql.athena.domainhizmetleri.com;Database=necmett1_db;User Id=necmett1_db;Password=Nebula21");
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 
@@ -33,7 +33,7 @@ namespace NecCms.Database
             modelBuilder.Entity<Kullanici>().HasData(new Kullanici
             {
                 Id = 1, AdSoyad = "Admin", Eposta = "admin@crm.com", Parola = "admin@crm.com", Rol = RolEnum.Admin,
-                Telefon = "05456286324"
+                Telefon = "-"
             });
         }
     }

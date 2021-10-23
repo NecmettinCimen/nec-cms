@@ -6,441 +6,520 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACOQ/jGqQOUufa6MXTvcMkwAAAAACAAAAAAAQZgAAAAEAACAAAAC/bIXol5NQQOabVoU9k/g2P6on7ANyXD4ngU60liEdkAAAAAAOgAAAAAIAACAAAAA8Jn6hCYIy5MUAVcOkzhQbXQ5+1mP4IVGbCEN69Lj9MCAAAAAlneV9l3jhjjPDkcoUDOuYW437PDP3yPgqvUuAFAEPdkAAAAClyJk5I32UbjT0+4nADhsZ7nlNsr5nWSShBNpDK4zDGY2dy2fBJJ4tVrggdm30i3OJ9HTelEzh1ZPQkd8uQd0x</EncryptedPassword>
-    <_PublishTargetUrl>ftp://admin.aybarshukuk.com/admin.aybarshukuk.com</_PublishTargetUrl>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUwwQEwiZgkyc8Wv2jpfjkQAAAAACAAAAAAAQZgAAAAEAACAAAADZdNc6+PvwutRz6nVjutTSej1rSOuA8fZkwcsODvNNsAAAAAAOgAAAAAIAACAAAACK/QGCbv7QKP6Hct6RDAKN7dfvqLZr6GpovAaypyi5eCAAAADaPfUzbVv/96G+pkm3NLfbUj0Ku8P2rK6iw5hH9YJe7EAAAAAnHiq+DULEM2cAOCr+DgKbpgExN409jvTQOXs6umG1jGTkI7GoqAVQqCQpqRlZLkwtHd/gDlfWyzaG7x7TEI5O</EncryptedPassword>
+    <_PublishTargetUrl>ftp://185.210.94.60/necmettin.me</_PublishTargetUrl>
+    <History>True|2021-10-23T20:50:21.9788567Z;False|2021-10-23T23:49:12.9155804+03:00;True|2021-10-23T23:46:29.5507902+03:00;False|2021-10-23T23:44:44.2338302+03:00;True|2021-10-23T23:16:26.4297485+03:00;False|2021-10-23T23:15:21.9513355+03:00;False|2021-10-23T22:26:35.6672259+03:00;True|2021-10-23T21:24:25.6181702+03:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="dotnet-aspnet-codegenerator-design.dll">
-      <publishTime>09/24/2019 19:58:14</publishTime>
+      <publishTime>09/24/2019 22:58:14</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
-      <publishTime>09/13/2019 09:37:55</publishTime>
+      <publishTime>04/30/2018 19:29:02</publishTime>
     </File>
     <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
-      <publishTime>09/13/2019 09:37:59</publishTime>
+      <publishTime>04/30/2018 19:29:04</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
-      <publishTime>06/18/2019 21:21:18</publishTime>
+      <publishTime>06/19/2019 00:21:18</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Design.dll">
-      <publishTime>06/18/2019 21:21:54</publishTime>
+      <publishTime>06/19/2019 00:21:54</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.dll">
-      <publishTime>06/18/2019 21:21:26</publishTime>
+      <publishTime>06/19/2019 00:21:26</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
-      <publishTime>06/18/2019 21:21:34</publishTime>
+      <publishTime>06/19/2019 00:21:34</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
-      <publishTime>06/18/2019 21:21:54</publishTime>
+      <publishTime>06/19/2019 00:21:54</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
-      <publishTime>09/24/2019 19:57:40</publishTime>
+      <publishTime>09/24/2019 22:57:40</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
-      <publishTime>09/24/2019 19:57:46</publishTime>
+      <publishTime>09/24/2019 22:57:46</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
-      <publishTime>09/24/2019 19:57:50</publishTime>
+      <publishTime>09/24/2019 22:57:50</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
-      <publishTime>09/24/2019 19:57:48</publishTime>
+      <publishTime>09/24/2019 22:57:48</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
-      <publishTime>09/24/2019 19:57:42</publishTime>
+      <publishTime>09/24/2019 22:57:42</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
-      <publishTime>09/24/2019 19:57:42</publishTime>
+      <publishTime>09/24/2019 22:57:42</publishTime>
     </File>
     <File Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll">
-      <publishTime>09/24/2019 19:57:52</publishTime>
+      <publishTime>09/24/2019 22:57:52</publishTime>
     </File>
     <File Include="NecCms.Admin.deps.json">
-      <publishTime>11/17/2019 23:54:50</publishTime>
+      <publishTime>10/23/2021 23:49:20</publishTime>
     </File>
     <File Include="NecCms.Admin.dll">
-      <publishTime>11/17/2019 23:54:48</publishTime>
+      <publishTime>10/23/2021 23:49:19</publishTime>
     </File>
     <File Include="NecCms.Admin.pdb">
-      <publishTime>11/17/2019 23:54:48</publishTime>
+      <publishTime>10/23/2021 23:49:19</publishTime>
     </File>
     <File Include="NecCms.Admin.runtimeconfig.json">
-      <publishTime>11/17/2019 21:32:04</publishTime>
+      <publishTime>10/23/2021 21:23:23</publishTime>
     </File>
     <File Include="NecCms.Admin.Views.dll">
-      <publishTime>11/17/2019 23:54:49</publishTime>
+      <publishTime>10/23/2021 23:49:20</publishTime>
     </File>
     <File Include="NecCms.Admin.Views.pdb">
-      <publishTime>11/17/2019 23:54:49</publishTime>
+      <publishTime>10/23/2021 23:49:20</publishTime>
     </File>
     <File Include="NecCms.Database.dll">
-      <publishTime>11/17/2019 21:32:01</publishTime>
+      <publishTime>10/23/2021 21:23:21</publishTime>
     </File>
     <File Include="NecCms.Database.pdb">
-      <publishTime>11/17/2019 21:32:01</publishTime>
+      <publishTime>10/23/2021 21:23:21</publishTime>
     </File>
     <File Include="NuGet.Frameworks.dll">
-      <publishTime>09/13/2019 09:37:44</publishTime>
+      <publishTime>04/25/2018 00:27:10</publishTime>
     </File>
     <File Include="Remotion.Linq.dll">
-      <publishTime>02/06/2018 22:25:00</publishTime>
+      <publishTime>07/02/2018 01:25:00</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll">
-      <publishTime>04/17/2019 18:07:28</publishTime>
+      <publishTime>04/17/2019 21:07:28</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/sni.dll">
-      <publishTime>09/13/2019 09:41:47</publishTime>
+      <publishTime>12/07/2017 14:24:24</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/sni.dll">
-      <publishTime>09/13/2019 09:41:47</publishTime>
+      <publishTime>12/07/2017 14:24:22</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/sni.dll">
-      <publishTime>09/13/2019 09:41:47</publishTime>
+      <publishTime>12/07/2017 14:24:22</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll">
-      <publishTime>09/13/2019 09:41:49</publishTime>
+      <publishTime>05/15/2018 16:29:52</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll">
-      <publishTime>04/17/2019 18:07:28</publishTime>
+      <publishTime>04/17/2019 21:07:28</publishTime>
     </File>
     <File Include="System.Composition.AttributedModel.dll">
-      <publishTime>09/13/2019 09:37:48</publishTime>
+      <publishTime>05/11/2016 07:55:42</publishTime>
     </File>
     <File Include="System.Composition.Convention.dll">
-      <publishTime>09/13/2019 09:37:48</publishTime>
+      <publishTime>05/11/2016 07:55:42</publishTime>
     </File>
     <File Include="System.Composition.Hosting.dll">
-      <publishTime>09/13/2019 09:37:50</publishTime>
+      <publishTime>05/11/2016 07:55:42</publishTime>
     </File>
     <File Include="System.Composition.Runtime.dll">
-      <publishTime>09/13/2019 09:37:50</publishTime>
+      <publishTime>05/11/2016 07:55:44</publishTime>
     </File>
     <File Include="System.Composition.TypedParts.dll">
-      <publishTime>09/13/2019 09:37:50</publishTime>
+      <publishTime>05/11/2016 07:55:46</publishTime>
     </File>
     <File Include="System.Data.SqlClient.dll">
-      <publishTime>04/17/2019 18:07:28</publishTime>
+      <publishTime>04/17/2019 21:07:28</publishTime>
     </File>
     <File Include="System.Interactive.Async.dll">
-      <publishTime>07/11/2018 13:48:42</publishTime>
+      <publishTime>11/07/2018 16:48:42</publishTime>
     </File>
     <File Include="System.Text.Encoding.CodePages.dll">
-      <publishTime>09/13/2019 09:41:49</publishTime>
+      <publishTime>05/15/2018 16:29:52</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>11/17/2019 23:54:50</publishTime>
+      <publishTime>10/23/2021 23:49:20</publishTime>
     </File>
     <File Include="wwwroot/assets/css/bootstrap.min.css">
-      <publishTime>11/17/2019 18:03:38</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/css/icons.min.css">
-      <publishTime>11/17/2019 18:03:47</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/jkanban.min.css">
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/css/select2.min.css">
-      <publishTime>10/20/2019 16:36:03</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/css/sweetalert2.min.css">
-      <publishTime>11/17/2019 23:38:12</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/css/theme.min.css">
-      <publishTime>11/17/2019 18:03:50</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/dripicons-v2.ttf">
-      <publishTime>11/17/2019 18:06:32</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/dripicons-v2.woff">
-      <publishTime>11/17/2019 18:06:37</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-brands-400.ttf">
-      <publishTime>11/17/2019 18:06:41</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-brands-400.woff">
-      <publishTime>11/17/2019 18:06:45</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-brands-400.woff2">
-      <publishTime>11/17/2019 18:06:48</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-regular-400.ttf">
-      <publishTime>11/17/2019 18:06:52</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-regular-400.woff">
-      <publishTime>11/17/2019 18:06:55</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-regular-400.woff2">
-      <publishTime>11/17/2019 18:06:59</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-solid-900.ttf">
-      <publishTime>11/17/2019 18:07:02</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/fa-solid-900.woff">
-      <publishTime>11/17/2019 18:07:06</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/feather.woff">
-      <publishTime>11/17/2019 18:07:09</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/materialdesignicons-webfont.ttf">
-      <publishTime>11/17/2019 18:07:13</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/fonts/materialdesignicons-webfont.woff">
-      <publishTime>11/17/2019 18:07:16</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/images/favicon.ico">
-      <publishTime>11/17/2019 18:04:00</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/images/flags/us.jpg">
-      <publishTime>11/17/2019 18:08:16</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/images/users/avatar-2.jpg">
-      <publishTime>11/17/2019 18:04:19</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/images/users/avatar-3.jpg">
-      <publishTime>11/17/2019 18:07:51</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/bootstrap-datepicker.min.js">
-      <publishTime>10/20/2019 16:56:21</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/bootstrap-datepicker.tr.min.js">
-      <publishTime>10/20/2019 16:56:32</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/bootstrap.bundle.min.js">
-      <publishTime>11/17/2019 18:04:36</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/crm-fn.js">
-      <publishTime>11/17/2019 21:13:08</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/crm-pages.js">
-      <publishTime>11/17/2019 23:51:08</publishTime>
+      <publishTime>10/23/2021 23:47:57</publishTime>
     </File>
     <File Include="wwwroot/assets/js/crm.js">
-      <publishTime>11/17/2019 23:51:50</publishTime>
+      <publishTime>10/23/2021 23:12:06</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/jkanban.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/jquery.min.js">
-      <publishTime>11/17/2019 18:04:33</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/metismenu.min.js">
-      <publishTime>11/17/2019 18:04:40</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/select2.min.js">
-      <publishTime>10/20/2019 16:36:18</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/simplebar.min.js">
-      <publishTime>11/17/2019 18:04:48</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/sweetalert2.min.js">
-      <publishTime>11/17/2019 23:38:23</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/theme.js">
-      <publishTime>11/17/2019 18:04:51</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/url_slug.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/js/waves.js">
-      <publishTime>11/17/2019 18:04:44</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/plugins/charts/jquery.knob.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/plugins/charts/jquery.sparkline.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/plugins/charts/morris.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
+    </File>
+    <File Include="wwwroot/assets/plugins/charts/raphael.min.js">
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/buttons.bootstrap4.css">
-      <publishTime>11/17/2019 19:13:35</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/buttons.bootstrap4.min.js">
-      <publishTime>11/17/2019 19:14:38</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/buttons.flash.min.js">
-      <publishTime>11/17/2019 19:14:47</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/buttons.html5.min.js">
-      <publishTime>11/17/2019 19:14:44</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/buttons.print.min.js">
-      <publishTime>11/17/2019 19:14:51</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.bootstrap4.css">
-      <publishTime>11/17/2019 19:13:27</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.bootstrap4.js">
-      <publishTime>11/17/2019 19:13:59</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.buttons.min.js">
-      <publishTime>11/17/2019 19:14:35</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.keyTable.min.js">
-      <publishTime>11/17/2019 19:14:55</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.responsive.min.js">
-      <publishTime>11/17/2019 19:14:03</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/dataTables.select.min.js">
-      <publishTime>11/17/2019 19:14:59</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/jquery.dataTables.min.js">
-      <publishTime>11/17/2019 19:13:56</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/pdfmake.min.js">
-      <publishTime>11/17/2019 19:15:03</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/responsive.bootstrap4.css">
-      <publishTime>11/17/2019 19:13:31</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/responsive.bootstrap4.min.js">
-      <publishTime>11/17/2019 19:14:07</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/select.bootstrap4.css">
-      <publishTime>11/17/2019 19:13:40</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/datatables/vfs_fonts.js">
-      <publishTime>11/17/2019 19:15:08</publishTime>
+      <publishTime>10/23/2021 19:11:48</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/quill/katex.min.js">
-      <publishTime>11/17/2019 20:11:35</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/quill/quill.bubble.css">
-      <publishTime>11/17/2019 20:11:17</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/quill/quill.core.css">
-      <publishTime>11/17/2019 20:11:12</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/quill/quill.min.js">
-      <publishTime>11/17/2019 20:11:39</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/assets/plugins/quill/quill.snow.css">
-      <publishTime>11/17/2019 20:11:22</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/css/site.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/images/20191117205715.jpeg">
-      <publishTime>11/17/2019 20:57:18</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117210336.jpeg">
-      <publishTime>11/17/2019 21:03:37</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117210350.jpeg">
-      <publishTime>11/17/2019 21:03:50</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117210717.jpeg">
-      <publishTime>11/17/2019 21:07:17</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117210917.jpeg">
-      <publishTime>11/17/2019 21:09:17</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117211050.jpeg">
-      <publishTime>11/17/2019 21:10:50</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117211117.jpeg">
-      <publishTime>11/17/2019 21:11:17</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117211127.jpeg">
-      <publishTime>11/17/2019 21:11:27</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
     </File>
     <File Include="wwwroot/images/20191117211700.jpeg">
-      <publishTime>11/17/2019 21:17:00</publishTime>
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191119233658.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120150032.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120151537.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120151546.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120162858.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120162939.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120162956.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191120184457.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20191125144322.jpg">
+      <publishTime>10/23/2021 19:33:22</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023230512.png">
+      <publishTime>10/23/2021 23:05:12</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023230529.png">
+      <publishTime>10/23/2021 23:05:29</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023230603.png">
+      <publishTime>10/23/2021 23:06:03</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023230642.png">
+      <publishTime>10/23/2021 23:06:42</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023230720.png">
+      <publishTime>10/23/2021 23:07:20</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023231001.png">
+      <publishTime>10/23/2021 23:10:01</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023231039.png">
+      <publishTime>10/23/2021 23:10:39</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023231130.png">
+      <publishTime>10/23/2021 23:11:30</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023231241.png">
+      <publishTime>10/23/2021 23:12:43</publishTime>
+    </File>
+    <File Include="wwwroot/images/20211023231355.png">
+      <publishTime>10/23/2021 23:13:55</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/bootstrap/LICENSE">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/lib/jquery/LICENSE.txt">
-      <publishTime>11/16/2019 08:50:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

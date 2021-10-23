@@ -139,6 +139,7 @@ submitForm = (e) => {
 };
 
 async function FileUpload(oFormElement) {
+    debugger
     showToaster(1);
     const formData = new FormData(oFormElement);
 
@@ -158,6 +159,11 @@ async function FileUpload(oFormElement) {
                 table.ajax.reload();
                 $('#editModal').modal('hide')
             }
+        } else {
+            swal.close();
+            showToaster(3);
+            table.ajax.reload();
+            $('#editModal').modal('hide')
         }
 
     } catch (error) {
@@ -351,6 +357,8 @@ showToaster = (id) => {
         id = "#bekletoast";
     if (id === 2)
         id = "#basarilitoast";
+    if (id === 3)
+        id = "#basarisiztoast";
 
     $(id).toast('show');
     setTimeout(() => $(id).toast('hide'), 2000);

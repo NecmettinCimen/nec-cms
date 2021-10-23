@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NecCms.Database;
@@ -9,6 +10,12 @@ namespace NecCms.Models
     {
         private static KategoriDto findByKategoriUrl(string url, int skip, int take)
         {
+
+            string prefix = "";
+#if DEBUG
+                        prefix = "https://necmettin.me";
+#endif
+
             GenericService genericService = new GenericService();
             var dbkategoriList = genericService.Queryable<Menu>().Where(x => x.Url.ToLower().Contains(url.ToLower()))
                 .ToList();
@@ -23,6 +30,8 @@ namespace NecCms.Models
 
             var icerikler = from i in genericService.Queryable<Icerik.Icerikler>()
                             join m in genericService.Queryable<Menu>() on i.MenuId equals m.Id
+                            join r in genericService.Queryable<Dosyalar>() on i.ResimId equals r.Id into rn
+                            from r in rn.DefaultIfEmpty()
                             where i.Durum == Icerik.IcerikDurumEnum.Yayinlandi
                                   && dbkategoriList2.Contains(i.MenuId)
                             orderby i.Id descending
@@ -30,10 +39,11 @@ namespace NecCms.Models
                             {
                                 Baslik = i.Baslik,
                                 Giris = i.Giris,
-                                Kategori = m.Isim,
+                                Kategori = m.Isim,  
                                 KategoriUrl = m.Url,
                                 Tarih = i.YayinlanmaTarihi,
-                                Url = i.Url
+                                Url = i.Url,
+                                ResimData = r != null ? $"{prefix}/images/{r.Adi}" : "",
                             };
 
             return new KategoriDto
@@ -63,7 +73,7 @@ namespace NecCms.Models
         {
             string prefix = "";
 #if DEBUG
-                        prefix = "https://aybarshukuk.com";
+                        prefix = "https://necmettin.me";
 #endif
             GenericService genericService = new GenericService();
             return (from m in genericService.Queryable<Menu>()

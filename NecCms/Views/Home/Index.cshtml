@@ -1,135 +1,215 @@
-﻿<div class="stage layout-B">
-    <div class="stage-body">
+﻿<title>@TemaYonetimi.Find("anasayfaresimustuyazibaslik","Anasayfa Başlık")</title>
+<!--====================================
+=            Hero Section            =
+=====================================-->
+<section class="section gradient-banner">
+	<div class="shapes-container">
+		<div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
+		<div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
+		<div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
+		<div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
+		<div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
+		<div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
+		<div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
+		<div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
+		<div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="100"></div>
+		<div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
+		<div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200"></div>
+		<div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="100"></div>
+		<div class="shape" data-aos="fade-up" data-aos-duration="500" data-aos-delay="0"></div>
+		<div class="shape" data-aos="fade-down" data-aos-duration="500" data-aos-delay="0"></div>
+		<div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="100"></div>
+		<div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="0"></div>
+	</div>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-md-6 order-2 order-md-1 text-center text-md-left">
+				<h1 class="text-white font-weight-bold mb-4">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik","Showcase your app with Small Apps"))</h1>
+				<p class="text-white mb-5">@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyaziicerik",@"Besides its beautiful design. Laapp is an incredibly rich core framework for you to
+					showcase your App."))</p>
+				<a href="@Html.Raw(TemaYonetimi.Find("anasayfaresimustubuttonurl","FAQ.html"))" class="btn btn-main-md">@Html.Raw(TemaYonetimi.Find("anasayfaresimustubutton","Download Now"))</a>
+			</div>
+			<div class="col-md-6 text-center order-1 order-md-2">
+				<img class="img-fluid" src="@TemaYonetimi.Find("anasayfaresim","/images/mobile.png")" alt="screenshot">
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Hero Section  ====-->
 
-        <div class="stage-1">
-            <div class="body">
-                <section class="node-content">
-                    <section class="homebanner" style="background-image: url(@TemaYonetimi.Find("anasayfaresim"));">
-
-                        <div class="con">
-                            <p class="headline">
-                                <strong>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyazibaslik"))</strong>
-                                <br/>@Html.Raw(TemaYonetimi.Find("anasayfaresimustuyaziicerik"))
-                            </p>
-                            <p style="margin-top: 2em;">
-                                <a class="buttonX" href='@Html.Raw(TemaYonetimi.Find("anasayfaresimustubuttonurl"))'>
-                                    @Html.Raw(TemaYonetimi.Find("anasayfaresimustubutton"))
-                                    <em class="icon-arrow-right5 " style="font-size: 14px;">
-                                        <!--icon-->
-                                    </em>
-                                </a>
-                            </p>
-                        </div>
-                    </section>
-                    <link href="~/images/homebanner.css" rel="stylesheet"/>
-
-                </section>
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="stage-sep">
-            <div class="body"></div>
-        </div>
-        <div class="stage-0">
-            <div class="body">
-                <div id="mainContent"></div>
-                <section class="node-content">
-                    <div style="max-width: 890px; margin: auto;">
-                        <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfaaltbaslik"))</h1>
-                        <p class="headline" style="text-align: center;">
-                            @Html.Raw(TemaYonetimi.Find("anasayfaaltaciklama"))
-                        </p>
-                    </div>
-                    <p>
-                        <span class="page-break"></span>
-                    </p>
-                    <section>
-                        <div class="columns fluid brick">
-                            <div class="cardup">
-                            <div class="cardcustom">
-                                <h1 style="text-align: center;">@Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))</h1>
-                                <div style="max-width: 1140px; margin: auto;">
-                                    <p>
-                                    <div class="duyuru-box">
-                                        @foreach (var item in IcerikYonetimi.FindByKategoriUrl("haberler", 5))
-                                        {
-                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
-                                                <div class="t">
-                                                    <h5>
-                                                        <a
-                                                            href="@item.Kategori/@item.Url">
-                                                            @item.Baslik
-                                                        </a>
-                                                    </h5>
-                                                    <span class="date">@item.Tarih.ToShortDateString()</span>
-                                                    <br />
-                                                    @item.Giris
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                    <div style="clear: both;">
-                                        <!-- clear -->
-                                    </div>
-                                    <p style="clear: both; text-align: center; margin-top: 2em;">
-                                        <a href="@Html.Raw(TemaYonetimi.Find("anasayfasonbaslikurl"))">
-                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                                <!--icon-->
-                                            </em> Tüm @Html.Raw(TemaYonetimi.Find("anasayfasonbaslik"))
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="cardup">
-                            <div class="cardcustom">
-                                <h1 style="text-align: center;">Yayınlar</h1>
-                                <div style="max-width: 1140px; margin: auto;">
-                                    <p>
-                                    <div class="duyuru-box">
-                                        @foreach (var item in AybatsHukuk.Yayinlar())
-                                        {
-                                            <div class="duyuru-item" style="width: auto;border-bottom: 1px #eee solid;margin-bottom: 10px">
-                                                                                            <div class="t">
-                                                                                                <h5>
-                                                                                                    <a
-                                                                                                        href="@item.Kategori/@item.Url">
-                                                                                                        @item.Baslik
-                                                                                                    </a>
-                                                                                                </h5>
-                                                                                                <span class="date">@item.Tarih.ToShortDateString() - <a href="@item.KategoriUrl">@item.Kategori</a></span>
-                                                                                                <br />
-                                                                                                @item.Giris
-                                                                                            </div>
-                                                                                        </div>
-                                        }
-                                    </div>
-                                    <div style="clear: both;">
-                                        <!-- clear -->
-                                    </div>
-                                    <p style="clear: both; text-align: center; margin-top: 2em;">
-                                        <a href="/yayinlar">
-                                            <em class="icon-file " style="font-size: 20px; vertical-align: middle;">
-                                                <!--icon-->
-                                            </em> Tüm Yayınlar
-                                        </a>
-                                    </p>
-                                </div> </div>
-                            </div>
-                                </div>
-                    </section>
-                    <p>
-                        <span class="page-break"></span>
-                    </p>
+<section class="section pt-0 position-relative pull-top">
+	<div class="container">
+		<div class="rounded shadow p-5 bg-white">
+			<div class="row">
+                
+                @foreach (var item in IcerikYonetimi.FindByKategoriUrl(TemaYonetimi.Find("anasayfailk3icerik3tane","haberler"), 3))
+                {
                     
-                </section>
+				<div class="col-lg-4 col-md-6 mt-5 mt-md-0 text-center">
+					<h3 class="mt-4 text-capitalize h5 ">@item.Baslik</h3>
+					<p class="regular text-muted">@item.Giris</p>
+				</div>
+                }
+			</div>
+		</div>
+	</div>
+</section>
 
-            </div>
-            <div class="clear"></div>
-            <div class="bot"></div>
-        </div>
-        <div class="clear"></div>
-        <div class="stage-bot"></div>
-    </div>
-</div>
+
+@foreach (var item in IcerikYonetimi.FindByKategoriUrl(TemaYonetimi.Find("anasayfaikiciicerik","haberler"), 2).Select((value,i) => new {i, value}))
+{
+    
+<!--==================================
+=            Feature Grid            =
+===================================-->
+    @if(item.i % 2 == 0)
+    {
+        
+    <section class="feature section pt-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 ml-auto justify-content-center">
+				<!-- Feature Mockup -->
+				<div class="image-content" data-aos="fade-right">
+					<img class="img-fluid" src="@item.value.ResimData" alt="@item.value.Baslik">
+				</div>
+			</div>
+			<div class="col-lg-6 mr-auto align-self-center">
+				<div class="feature-content">
+					@Html.Raw(item.value.Giris)
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+    }
+    else
+    {
+        
+<section class="feature section pt-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 ml-auto align-self-center">
+				<div class="feature-content">
+					@Html.Raw(item.value.Giris)
+				</div>
+			</div>
+			<div class="col-lg-6 mr-auto justify-content-center">
+				<!-- Feature mockup -->
+				<div class="image-content" data-aos="fade-left">
+					<img class="img-fluid" src="@item.value.ResimData" alt="@item.value.Baslik">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    }
+
+<!--====  End of Feature Grid  ====-->
+}
+
+<!--==============================
+=            Services            =
+===============================-->
+<section class="service section bg-gray">
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>@Html.Raw(TemaYonetimi.Find("anasayfaservislerbaslik","An Interface For Lifestyle"))</h2>
+					<p>@Html.Raw(TemaYonetimi.Find("anasayfaservisleraciklama",@"Small Apps makes
+						it easy to stay on top of your Life Style. No late tasks. No gimmicks."))</p>
+				</div>
+			</div>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-lg-6 align-self-center">
+				<!-- Feature Image -->
+				<div class="service-thumb left" data-aos="fade-right">
+					<img class="img-fluid" src="@Html.Raw(TemaYonetimi.Find("anasayfaservislerresim","/images/feature/iphone-ipad.jpg"))" alt="@Html.Raw(TemaYonetimi.Find("anasayfaservislerbaslik","An Interface For Lifestyle"))">
+				</div>
+			</div>
+			<div class="col-lg-5 mr-auto align-self-center">
+				<div class="service-box">
+					<div class="row align-items-center">
+						@for (var i = 0; i < 4; i++)
+					   {
+						   <div class="col-md-6 col-xs-12">
+							<!-- Service 01 -->
+							<div class="service-item">
+								<!-- Icon -->
+								<i class="@Html.Raw(TemaYonetimi.Find("anasayfaservisler"+(i+1)+"icon","ti-bookmark"))"></i>
+								<!-- Heading -->
+								<h3>@Html.Raw(TemaYonetimi.Find("anasayfaservisler"+(i+1)+"baslik","Easy Prototyping"))</h3>
+								<!-- Description -->
+								<p>@Html.Raw(TemaYonetimi.Find("anasayfaservisler"+(i+1)+"aciklama","Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur aliquet quam id dui"))</p>
+							</div>
+						</div>
+					   }
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!--=================================
+=            Video Promo            =
+==================================-->
+<section class="video-promo section bg-1">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="content-block">
+					<!-- Heading -->
+					<h2>@Html.Raw(TemaYonetimi.Find("anasayfavideobaslik","Watch Our Promo Video"))</h2>
+					<!-- Promotional Speech -->
+					<p>@Html.Raw(TemaYonetimi.Find("anasayfavideoaciklama",@"Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat, accumsan id imperdiet et,
+						porttitor at sem. Vivamus"))</p>
+					<!-- Popup Video -->
+					<a data-fancybox href="@Html.Raw(TemaYonetimi.Find("anasayfavideourl","https://www.youtube.com/watch?v=jrkvirglgaQ"))">
+						<i class="ti-control-play video"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Video Promo  ====-->
+
+<!--=================================
+=            Testimonial            =
+==================================-->
+<section class="section testimonial" id="testimonial">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<!-- Testimonial Slider -->
+				<div class="testimonial-slider owl-carousel owl-theme">
+					
+@foreach (var item in IcerikYonetimi.FindByKategoriUrl(TemaYonetimi.Find("anasayfamusteriyorumlari","haberler"), 3))
+{
+						<!-- Testimonial 01 -->
+					<div class="item">
+						<div class="block shadow">
+							<!-- Speech -->
+							<p>
+								@item.Giris
+							</p>
+							<!-- Person Thumb -->
+							<div class="image">
+								<img src="@item.ResimData" alt="image">
+							</div>
+							<!-- Name and Company -->
+							<cite>@item.Baslik</cite>
+						</div>
+					</div>
+}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--====  End of Testimonial  ====-->
