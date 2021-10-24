@@ -24,7 +24,7 @@ namespace NecCms.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Server=sql.athena.domainhizmetleri.com;Database=necmett1_db;User Id=necmett1_db;Password=Nebula21");
+                "Server=sql.athena.domainhizmetleri.com;Database=showlaz1_db;User Id=showlaz1_db;Password=Nebula21");
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 

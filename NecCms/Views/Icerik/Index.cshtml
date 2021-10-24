@@ -22,7 +22,10 @@
                     <div class="post-body">
                         
 						<div class="feature-image">
-							<img class="img-fluid" src="@Model.ResimData" alt="feature-image">
+                                @if (!string.IsNullOrEmpty(Model.ResimData))
+                                {
+                                <img class="img-fluid" src="@Model.ResimData" alt="@Model.Baslik">
+                                }
 						</div>
                             @Html.Raw(Model.Icerik)
                         </div>

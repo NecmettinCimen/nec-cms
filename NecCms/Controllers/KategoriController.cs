@@ -12,6 +12,8 @@ namespace NecCms.Controllers
         {
             if (kategori.ToLower() == "iletisim")
                 return View("~/Views/Iletisim/Index.cshtml");
+            if (kategori.ToLower() == "anasayfa")
+                return View("~/Views/Home/Index.cshtml");
 
             skip = skip == 0 ? 0 : skip - 1;
             var model = IcerikYonetimi.FindByKategoriUrl(kategori, skip * 10, 10);
