@@ -13,7 +13,7 @@ namespace NecCms.Models
 
             string prefix = "";
 #if DEBUG
-                        prefix = "https://necmettin.me";
+                        prefix = "https://showlazer.com";
 #endif
 
             GenericService genericService = new GenericService();
@@ -73,7 +73,7 @@ namespace NecCms.Models
         {
             string prefix = "";
 #if DEBUG
-                        prefix = "https://necmettin.me";
+                        prefix = "https://showlazer.com";
 #endif
             GenericService genericService = new GenericService();
             return (from m in genericService.Queryable<Menu>()

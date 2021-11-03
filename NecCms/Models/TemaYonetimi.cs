@@ -12,7 +12,7 @@ namespace NecCms.Models
 
             string prefix = "";
 #if DEBUG
-            prefix = "https://necmettin.me";
+            prefix = "https://showlazer.com";
 #endif
             var genericService = new GenericService();
 

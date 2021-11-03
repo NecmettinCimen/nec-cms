@@ -1,7 +1,9 @@
 @try
 {
     @model IcerikDto
-<title>@Model.Baslik</title>
+    if(Model != null)
+    {
+    <title>@Model.Baslik</title>
     <section class="section blog-single">
         <div class="container">
             <div class="row">
@@ -12,11 +14,15 @@
                     <div class="post-title text-center">
                             <h1>@Model.Baslik</h1>
                             <!-- Tags -->
+                                @if(Model.Baslik != Model.Kategori)
+                                {
+                                
                         <ul class="list-inline post-tag">
                                 <li class="list-inline-item">
                                     <a href="#">@Model.Kategori</a>
                                 </li>
                             </ul>
+                                }
                         </div>
                         <!-- Post body -->
                     <div class="post-body">
@@ -27,13 +33,15 @@
                                 <img class="img-fluid" src="@Model.ResimData" alt="@Model.Baslik">
                                 }
 						</div>
+                            @Html.Raw(Model.Giris)
                             @Html.Raw(Model.Icerik)
                         </div>
                     </article>
                 </div>
             </div>
         </div>
-    </section>
+    </section>        
+    }
 }
 catch (Exception)
 {
