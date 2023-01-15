@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/NecCms.Admin/bin/Debug/netcoreapp2.2/NecCms.Admin.dll",
+            "program": "${workspaceFolder}/NecCms.Admin/bin/Debug/net7.0/NecCms.Admin.dll",
             "args": [],
             "cwd": "${workspaceFolder}/NecCms.Admin",
             "stopAtEntry": false,
@@ -31,7 +31,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "Webbuild",
-            "program": "${workspaceFolder}/NecCms/bin/Debug/netcoreapp2.2/NecCms.dll",
+            "program": "${workspaceFolder}/NecCms/bin/Debug/net7.0/NecCms.dll",
             "args": [],
             "cwd": "${workspaceFolder}/NecCms",
             "stopAtEntry": false,
